@@ -53,6 +53,9 @@ public class Robot {
         return this.color.toString();
     }
 
+    public void LoseLive() {
+        this.lives -= 1;
+    }
     public int getLives(){
         return this.lives;
     }}
