@@ -1,10 +1,10 @@
-package models.Player;
+package dtu.logic.models.Player;
 
 import java.util.List;
 
-import models.Color;
-import models.Cards.ProgramCard;
-import models.Robot.Robot;
+import dtu.logic.models.Color;
+import dtu.logic.models.Cards.ProgramCard;
+import dtu.logic.models.Robot.Robot;
 
 import java.util.ArrayList;
 

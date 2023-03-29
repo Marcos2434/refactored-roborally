@@ -1,4 +1,4 @@
-package models.Cards;
+package dtu.logic.models.Cards;
 
 public class ProgramCard extends Card {
     private int intensity;

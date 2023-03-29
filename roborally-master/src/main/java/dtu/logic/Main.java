@@ -1,6 +1,7 @@
-import models.*;
-import models.Board.Board;
-import models.Player.Player;
+package dtu.logic;
+import dtu.logic.models.*;
+import dtu.logic.models.Board.Board;
+import dtu.logic.models.Player.Player;
 
 import java.util.ArrayList;
 
@@ -9,7 +10,7 @@ import java.util.*;
 
 // javac Main.java; java Main.java
 
-class Main {
+public class Main {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);

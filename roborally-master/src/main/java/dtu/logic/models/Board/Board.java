@@ -1,4 +1,4 @@
-package models.Board;
+package dtu.logic.models.Board;
 
 public class Board {
 

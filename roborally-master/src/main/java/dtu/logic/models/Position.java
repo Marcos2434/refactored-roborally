@@ -1,4 +1,4 @@
-package models;
+package dtu.logic.models;
 
 public class Position {
     private int x;

@@ -8,24 +8,30 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+import dtu.logic.Main;
+
 public class Roborally extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		BorderPane container = new BorderPane();
+		
+		Main.main(null);
 
-		Board b = new Board(10, 15);
-		b.setRobot(5, 7, CardinalPoints.E);
+		// BorderPane container = new BorderPane();
+
+		// Board b = new Board(10, 15);
+		// b.setRobot(5, 7, CardinalPoints.E);
 		
-		ControlPanel cp = new ControlPanel(b);
-		container.setCenter(b);
-		container.setBottom(cp);
+		// ControlPanel cp = new ControlPanel(b);
+		// container.setCenter(b);
+		// container.setBottom(cp);
 		
-		Scene s = new Scene(container);
+		// Scene s = new Scene(container);
 		
-		primaryStage.setScene(s);
-		primaryStage.setTitle("RoboRally - v. 0.1");
-		primaryStage.show();
+		// primaryStage.setScene(s);
+		// primaryStage.setTitle("RoboRally - v. 0.1");
+		// primaryStage.show();
+
 	}
 
 	public static void main(String[] args) {

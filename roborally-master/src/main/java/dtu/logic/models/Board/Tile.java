@@ -1,4 +1,4 @@
-package models.Board;
+package dtu.logic.models.Board;
 
 public class Tile {
       // effect method for tiles, this normal tile does nothing()

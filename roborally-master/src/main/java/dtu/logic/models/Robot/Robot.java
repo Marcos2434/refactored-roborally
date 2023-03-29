@@ -1,9 +1,9 @@
-package models.Robot;
+package dtu.logic.models.Robot;
 import java.util.List;
 
-import models.Color;
-import models.Position;
-import models.Cards.ProgramCard;
+import dtu.logic.models.Color;
+import dtu.logic.models.Position;
+import dtu.logic.models.Cards.ProgramCard;
 
 import java.util.ArrayList;
 

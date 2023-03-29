@@ -1,6 +1,6 @@
-package models.Cards;
+package dtu.logic.models.Cards;
 
-import models.Direction;
+import dtu.logic.models.Direction;
 
 public class MovementCard extends ProgramCard {
     private int intensity;

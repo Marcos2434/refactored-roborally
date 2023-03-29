@@ -1,4 +1,4 @@
-package models;
+package dtu.logic.models;
 
 public enum Direction {
     UP, DOWN,
