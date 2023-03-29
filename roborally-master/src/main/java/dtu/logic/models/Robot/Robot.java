@@ -52,4 +52,7 @@ public class Robot {
     public String toString() {
         return this.color.toString();
     }
-}
+
+    public int getLives(){
+        return this.lives;
+    }}

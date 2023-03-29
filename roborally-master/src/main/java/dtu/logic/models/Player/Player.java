@@ -1,12 +1,11 @@
 package dtu.logic.models.Player;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dtu.logic.models.Color;
 import dtu.logic.models.Cards.ProgramCard;
 import dtu.logic.models.Robot.Robot;
-
-import java.util.ArrayList;
 
 public class Player {
     private Robot robot;
