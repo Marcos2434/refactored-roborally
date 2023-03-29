@@ -15,7 +15,7 @@ public class PlayerTest {
     Player testPlayer;
     
     
-    @Given("A player is created")
+    @Given("A player is created with a chosen color for the robot")
     public void a_player_is_created() {
         // Write code here that turns the phrase above into concrete actions
         Color userTestInputColor = Color.RED;
