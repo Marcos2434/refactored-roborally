@@ -8,7 +8,7 @@ import java.util.ArrayList;
 // string input
 import java.util.*;
 
-// javac Main.java; java Main.java
+//javac Main.java; java Main.java
 
 public class Main {
     public static void main(String[] args) {
