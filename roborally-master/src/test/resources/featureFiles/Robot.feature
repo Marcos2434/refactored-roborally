@@ -3,7 +3,7 @@ Feature: Robot Selection
 
     @tag1
     Scenario: As a player i want my robot to start with 3 lives
-        Given A robot being created
+        Given A robot being created with a color
         Then A robot is created with three lives
     
     @tag2
