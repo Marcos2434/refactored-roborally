@@ -1,14 +1,12 @@
 dtu\logic\models\Board\Tile.class
 dtu\roborally\view\widgets\ControlPanel$2.class
 dtu\roborally\view\TileType.class
-dtu\Roborally.class
 dtu\roborally\view\widgets\ControlPanel$4.class
 dtu\roborally\view\CardinalPoints.class
 dtu\logic\models\Cards\MovementCard.class
 dtu\logic\models\Direction.class
 dtu\logic\models\Position.class
 dtu\roborally\view\widgets\ControlPanel$5.class
-dtu\logic\Main.class
 dtu\roborally\view\widgets\ControlPanel.class
 dtu\logic\models\Cards\Card.class
 dtu\roborally\view\widgets\ControlPanel$1.class

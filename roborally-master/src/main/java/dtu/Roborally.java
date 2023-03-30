@@ -8,14 +8,14 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-import dtu.logic.Main;
+//import dtu.logic.Main;
 
 public class Roborally extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
-		Main.main(null);
+		//Main.main(null);
 
 		// BorderPane container = new BorderPane();
 
