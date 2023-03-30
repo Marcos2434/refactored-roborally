@@ -41,8 +41,17 @@ public void the_amount_of_lives_that_are_left_after_loosing_lives_in_my_robot_ca
         for (int i=0;i < int1;i++) {
             robot.LoseLive();
         }
-        assertEquals(3-int1,robot.getLives());
-    // Write code here that turns the phrase above into concrete actions
-    
+        assertEquals(3-int1,robot.getLives());    
 }
+
+@Then("The robot recieved {int} damage and shows it")
+public void the_robot_recieved_damage(Integer int1) {
+    assertEquals(0,robot.getDamageTaken());
+    for (int i=0;i < int1;i++) {
+        robot.Takedmg();
+    }
+    assertEquals(0+int1,robot.getDamageTaken());
+
+}
+
 }
