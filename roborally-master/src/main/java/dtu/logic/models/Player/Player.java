@@ -12,6 +12,7 @@ public class Player {
     private Robot robot;
     private Deck deck;
     private ArrayList<ProgramCard> hand = new ArrayList<ProgramCard>();
+    private Deck deck;
     
     public Player(Color color) {
         this.robot = new Robot(color);
@@ -44,7 +45,14 @@ public class Player {
     }
 
     public void GenerateDeck() {
+<<<<<<< HEAD
         Deck deck = new Deck();
     }
+=======
+        this.deck = new Deck();
+    }
+
+
+>>>>>>> 603e1463c2f109335cdffe3b348581ff10805ec5
 }
 
