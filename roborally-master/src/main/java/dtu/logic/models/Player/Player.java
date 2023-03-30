@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dtu.logic.models.Color;
+import dtu.logic.models.Cards.Deck;
 import dtu.logic.models.Cards.ProgramCard;
 import dtu.logic.models.Robot.Robot;
 
 public class Player {
     private Robot robot;
+    private Deck deck;
     private ArrayList<ProgramCard> hand = new ArrayList<ProgramCard>();
     
     public Player(Color color) {
@@ -39,6 +41,10 @@ public class Player {
     @Override
     public String toString() {
         return "Player with robot of color" + robot;
+    }
+
+    public void GenerateDeck() {
+        Deck deck = new Deck();
     }
 }
 
