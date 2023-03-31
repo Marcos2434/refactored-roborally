@@ -20,7 +20,7 @@ public class Robot {
     public Robot(Color color) {
         this.color = color;
     }
-    public void Takedmg(){
+    public void takeDmg(){
         this.damageTaken += 1;
     }
     public int getDamageTaken() {
