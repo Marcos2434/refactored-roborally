@@ -27,5 +27,17 @@ Feature: Robot Selection
         Given A robot being created with a color and a checkpoint
         Then the robot turns and it can display the direction
         
- 
+    @tag6 
+    Scenario: When a robot moves around in a circle
+        Given A robot being created with a color and a checkpoint
+        Then It turns to the right and moves forward and backwards 4 times
+        
+    @tag7
+    Scenario: A robot moves over an edge
+        Given A robot being created with a color and a checkpoint
+        When A robot moves over the edge
+        Then The robot looses a lifetoken, resets damage and go back to last checkpoint.
+  
+       
+        
 
