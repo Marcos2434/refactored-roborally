@@ -4,6 +4,7 @@ import java.util.List;
 import dtu.logic.models.Color;
 import dtu.logic.models.Direction;
 import dtu.logic.models.Position;
+import dtu.logic.models.Board.Tile;
 import dtu.logic.models.Cards.ProgramCard;
 
 import java.util.ArrayList;
@@ -73,8 +74,6 @@ public class Robot {
         if (this.DirID == 4){pos.addY(-d);}
         if (this.pos.getX() < 0 || this.pos.getX() > 13 ||
             this.pos.getY() < 0 || this.pos.getY()>10){Death();}
-
-
     }
     public void move(int round) {
         this.moveByCard(this.getProgramCardAt(round));
@@ -98,14 +97,15 @@ public class Robot {
     public int getDamageTaken() {
         return damageTaken;
     }
+
     public void LoseLive() {
         this.lives -= 1;
     }
    
-
     public int getLives(){
         return this.lives;
     }
+    
     //Register handeling
     public void addCardsToRegister(List<ProgramCard> cards) {
         for (ProgramCard c : cards) {
@@ -118,6 +118,7 @@ public class Robot {
         (i);
     }
 
+    // others 
     @Override
     public String toString() {
         return this.color.toString();
