@@ -6,9 +6,7 @@ public class MovementCard extends ProgramCard {
     private int intensity;
 
     MovementCard(int intensity) {
-        super(intensity);
-
-        
+        super(intensity); 
     }
 
     
