@@ -19,7 +19,8 @@ public class RobotTest {
     public void a_robot_being_created_with_a_color() {
         
         robot = new Robot(Color.BLUE);  
-        robot.setCheckpoint(new Position(0,0));
+        robot.setCheckpoint(new Position(5,5));
+        robot.setPos(new Position(5,5));
     }
     // a robot has 3 lives when created.
     @Then("A robot is created with three lives")
@@ -48,7 +49,7 @@ public class RobotTest {
     // Reaching 10 dmg, then loose live, reset dmg and go to checkpoint and moves away from checkpoint
     // also checks if the robot actually 
     @When("The robot takes {int} damage.")
-    public void the_robot_takes_damage(Integer int1) {
+    public void the_robot_takes_damage(int int1) {
         robot.setPos(new Position(1,2));
         assertEquals(1, robot.getPos().getX());
         assertEquals(2, robot.getPos().getY());
@@ -60,8 +61,8 @@ public class RobotTest {
     public void the_robot_looses_a_lifetoken_resets_damage_and_go_back_to_last_checkpoint() {
         assertEquals(2, robot.getLives());
         assertEquals(0, robot.getDamageTaken());
-        assertEquals(0, robot.getPos().getX());
-        assertEquals(0, robot.getPos().getY());
+        assertEquals(5, robot.getPos().getX());
+        assertEquals(5, robot.getPos().getY());
     }
     //Being able to turn and show the direction
     @Then("the robot turns and it can display the direction")
@@ -76,7 +77,51 @@ public class RobotTest {
         assertEquals(Direction.RIGHT.getId(),robot.getDirection().getId());
         robot.turn(-5); //testing full rotation to the right
         assertEquals(Direction.UP.getId(),robot.getDirection().getId());
-        
     }
+    // Check of movement
+    @Then("It turns to the right and moves forward and backwards {int} times")
+    public void it_turns_to_the_right_and_moves_forward_and_backwards_times(Integer int1) {
+            //moving right
+            robot.turn(1);
+            robot.moveforward(true);
+            assertEquals(5,robot.getPos().getX());
+            assertEquals(6,robot.getPos().getY());
+            robot.moveforward(false);
+            assertEquals(5,robot.getPos().getX());
+            assertEquals(5,robot.getPos().getY());
+            //moving down
+            robot.turn(1);
+            robot.moveforward(true);
+            assertEquals(6,robot.getPos().getX());
+            assertEquals(5,robot.getPos().getY());
+            robot.moveforward(false);
+            assertEquals(5,robot.getPos().getX());
+            assertEquals(5,robot.getPos().getY());
+            //moving left
+            robot.turn(1);
+            robot.moveforward(true);
+            assertEquals(5,robot.getPos().getX());
+            assertEquals(4,robot.getPos().getY());
+            robot.moveforward(false);
+            assertEquals(5,robot.getPos().getX());
+            assertEquals(5,robot.getPos().getY());
+            //moving left
+            robot.turn(1);
+            robot.moveforward(true);
+            assertEquals(4,robot.getPos().getX());
+            assertEquals(5,robot.getPos().getY());
+            robot.moveforward(false);
+            assertEquals(5,robot.getPos().getX());
+            assertEquals(5,robot.getPos().getY());
+    }
+    //Death by moving over edge
+    @When("A robot moves over the edge")
+    public void a_robot_moves_over_the_edge() { 
+    //Moves over the left edge
+    robot.setPos(new Position(0,0));
+    robot.takeDmg();
+    robot.turn(-1);
+    robot.moveforward(true);
     
+}
 }

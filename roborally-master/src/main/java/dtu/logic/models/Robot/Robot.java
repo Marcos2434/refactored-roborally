@@ -62,6 +62,18 @@ public class Robot {
                 }
             }
         }
+    }
+    public void moveforward(Boolean forward){
+        int d;
+        if (forward){d = 1;}
+        else {d = -1;}
+        if (this.DirID == 1){pos.addX(-d);}
+        if (this.DirID == 2){pos.addY(d);}
+        if (this.DirID == 3){pos.addX(d);}
+        if (this.DirID == 4){pos.addY(-d);}
+        if (this.pos.getX() < 0 || this.pos.getX() > 13 ||
+            this.pos.getY() < 0 || this.pos.getY()>10){Death();}
+
 
     }
     public void move(int round) {
@@ -89,6 +101,8 @@ public class Robot {
     public void LoseLive() {
         this.lives -= 1;
     }
+   
+
     public int getLives(){
         return this.lives;
     }
