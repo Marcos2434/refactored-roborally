@@ -39,7 +39,7 @@ public class RobotTest {
     }
     // Shows that the robot can take dmg
     @Then("The robot recieved {int} damage and shows it")
-    public void the_robot_recieved_damage(Integer int1) {
+    public void the_robot_recieved_damage(int int1) {
         assertEquals(0,robot.getDamageTaken());
         for (int i=0;i < int1;i++) {
             robot.takeDmg();

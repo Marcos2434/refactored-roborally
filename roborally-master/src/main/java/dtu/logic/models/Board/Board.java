@@ -28,8 +28,8 @@ public class Board {
     }
 
     public Tile getTileAt(Position pos) {
-        if (pos.getY()>=0 && pos.getX()>=0 && pos.getY()<14 && pos.getX()<10){
-            return this.grid[pos.getY()][pos.getX()];
+        if (pos.getY()>=0 && pos.getX()>=0 && pos.getX()<14 && pos.getY()<10){
+            return this.grid[pos.getX()][pos.getY()];
         }
         else{
             return null;
