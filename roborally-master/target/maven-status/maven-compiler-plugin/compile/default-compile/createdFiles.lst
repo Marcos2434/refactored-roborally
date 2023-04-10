@@ -21,4 +21,3 @@ dtu\logic\models\Board\Board.class
 dtu\logic\models\Cards\ProgramCard.class
 dtu\logic\models\Color.class
 dtu\roborally\view\widgets\ControlPanel$6.class
-dtu\logic\models\Player\Player.class
