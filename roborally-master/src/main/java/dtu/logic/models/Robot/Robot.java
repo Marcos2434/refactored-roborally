@@ -20,7 +20,7 @@ public class Robot {
 
     private int DirID;
 
-    private ArrayList<ProgramCard> register = new ArrayList<ProgramCard>(); 
+    public ArrayList<ProgramCard> register = new ArrayList<ProgramCard>(); 
 
     
     public Robot(Color color) {
@@ -64,6 +64,7 @@ public class Robot {
             }
         }
     }
+
     public void moveforward(Boolean forward){
         int d;
         if (forward){d = 1;}
@@ -75,6 +76,7 @@ public class Robot {
         if (this.pos.getX() < 0 || this.pos.getX() > 13 ||
             this.pos.getY() < 0 || this.pos.getY()>10){Death();}
     }
+
     public void move(int round) {
         this.moveByCard(this.getProgramCardAt(round));
     }

@@ -9,8 +9,8 @@ import dtu.logic.models.Cards.ProgramCard;
 import dtu.logic.models.Robot.Robot;
 
 public class Player {
-    private Robot robot;
-    private Deck deck;
+    public Robot robot;
+    public Deck deck;
     private ArrayList<ProgramCard> hand = new ArrayList<ProgramCard>();
     
     public Player(Color color) {
@@ -24,24 +24,27 @@ public class Player {
     public void GenerateDeck() {
         this.deck = new Deck();
     }
+    
 
-    public void drawProgrammingCards(Deck deck) {
+    public void drawProgrammingCards() {
         for (int i = 0; i < 9 - this.robot.getDamageTaken(); i++) {
+            String name = ((deck.cards).get(i)).name;
      
-            hand.add(new ProgramCard(5));
+            hand.add(new ProgramCard(name, 3));
         }
     }
 
     
 
-    public void chooseProgrammingCards() {
+    public void chooseProgrammingCards(Integer numberOfCards) {
         // Choose from the hand
 
-        // ArrayList<Card> firstFive = Arrays.copyOfRange(this.hand, 0, 5); 
-        List<ProgramCard> firstFive = this.hand.subList(0, 5); // for now, choose first 5
+
+        List<ProgramCard> registerCards = hand.subList(0, numberOfCards);
 
         // add to robot register
-        robot.addCardsToRegister(firstFive);
+        robot.addCardsToRegister(registerCards);
+        
     }
 
     @Override

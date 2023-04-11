@@ -6,5 +6,9 @@ Feature: Robot Selection
         Given A player is created with a chosen color for the robot
         Then A robot is assigned to the player
     
+    
+
+
   
         
+    
