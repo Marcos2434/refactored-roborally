@@ -10,12 +10,12 @@ Feature: Player receives cards from the deck
          Given A player is created with a chosen color for the robot and a deck is generated 
          When The player receives 9 cards from the deck
          Then The player has 9 cards in his hand
+    
     @tag3
     Scenario: As a player I want to be able to have different kinds of cards in my generated deck
             Given A player is created with a chosen color for the robot and a deck is generated 
             Then The deck has 5 different kinds of cards in it
     
-   
     @tag4
     Scenario: As a player i want to be able to choose 5 cards out of my hand
           Given A player is created with a chosen color for the robot and a deck is generated 
