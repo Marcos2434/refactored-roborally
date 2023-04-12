@@ -6,12 +6,12 @@ import dtu.logic.models.Direction;
 import dtu.logic.models.Position;
 import dtu.logic.models.Board.Tile;
 import dtu.logic.models.Cards.ProgramCard;
-
+import javafx.scene.image.Image;
 import java.util.ArrayList;
 
 public class Robot {
     private Color color;
-
+    private Image image;
     private int damageTaken = 0;
     private int lives = 3;
 
@@ -26,14 +26,13 @@ public class Robot {
     public Robot(Color color) {
         this.color = color;
         this.DirID = 1;
+        this.image = new Image(getClass().getClassLoader().getResourceAsStream(this.color.getPictureFile()));
     }
     // Position and movement
     public void setPos(Position pos) {
         this.pos = pos;
     }
-    public Position getPos() {
-        return pos;
-    }
+
 
     public void setCheckpoint(Position pos){
         this.checkpoint = pos;
@@ -77,12 +76,7 @@ public class Robot {
             this.pos.getY() < 0 || this.pos.getY()>10){Death();}
     }
 
-    public void move(int round) {
-        this.moveByCard(this.getProgramCardAt(round));
-    }
-
-    private void moveByCard(ProgramCard card) {
-        
+ 
     }
     // Damage and live control
     public void Death(){
@@ -136,13 +130,13 @@ public class Robot {
         pos.set(x, y);
     }
 
-    public void setX(int x){
-        pos.setX(x);
-    }
+    // public void setX(int x){
+    //     pos.setX(x);
+    // }
 
-    public void setY(int y){
-        pos.setY(y);
-    }
+    // public void setY(int y){
+    //     pos.setY(y);
+    // }
 
     @Override
     public String toString() {
