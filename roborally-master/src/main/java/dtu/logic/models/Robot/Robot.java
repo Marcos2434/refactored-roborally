@@ -46,6 +46,8 @@ public class Robot {
         return Direction.getDirById(this.DirID); 
     }
 
+    public int getDirID(){return this.DirID;}
+
     public void turn(int intens){
         if (intens>0){
             for (int i = 0; i < intens;i++){
@@ -65,14 +67,24 @@ public class Robot {
         }
     }
 
-    public void moveforward(Boolean forward){
+    public Position getPosAhead(){
+        if (this.DirID == 1){return new Position(this.pos.getX()-1, this.pos.getY());}
+        else if (this.DirID == 2){return new Position(this.pos.getX(), this.pos.getY()+1);}
+        else if (this.DirID == 3){return new Position(this.pos.getX()+1, this.pos.getY());}
+        else if (this.DirID == 4){return new Position(this.pos.getX(), this.pos.getY()-1);}
+        else {return null;}
+    }
+
+    public void moveforward(Boolean forward,Boolean MoveAllowed){
         int d;
         if (forward){d = 1;}
         else {d = -1;}
-        if (this.DirID == 1){pos.addX(-d);}
-        if (this.DirID == 2){pos.addY(d);}
-        if (this.DirID == 3){pos.addX(d);}
-        if (this.DirID == 4){pos.addY(-d);}
+        if (MoveAllowed){
+            if (this.DirID == 1){pos.addX(-d);}
+            else if (this.DirID == 2){pos.addY(d);}
+            else if (this.DirID == 3){pos.addX(d);}
+            else if (this.DirID == 4){pos.addY(-d);}
+        }
         if (this.pos.getX() < 0 || this.pos.getX() > 13 ||
             this.pos.getY() < 0 || this.pos.getY()>10){Death();}
     }

@@ -25,24 +25,24 @@ public class BoardTest {
         robot = new Robot(Color.BLUE);
         robot.setPos(pos1);
         robot.setCheckpoint(new Position(5,5));
-        this.pos1 = new Position(1,4);
+        this.pos1 = new Position(4,4);
         this.pos2 = new Position(5,2);
         this.pos3 = new Position(-1,4);
         String[][] board1 = {   
-            {"T","T","HT","T","T","T","T","T"," "," "},
-            {"T","T","HT","T","T","T","T","T"," "," "},
-            {"T","T","HT","T","T","T","T","T"," "," "},
-            {"T","T","HT","T","T","T","T","T"," "," "},
-            {"T","T","HT","T","T","T","T","T"," "," "},
-            {"T","T","HT","T","T","T","T","T"," "," "},
-            {"T","T","HT","T","T","T","T","T"," "," "},
-            {"T","T","HT","T","T","T","T","T"," "," "},
-            {"T","T","HT","T","T","T","T","T"," "," "},
-            {"T","T","HT","T","T","T","T","T"," "," "},
-            {"T","T","HT","T","T","T","T","T"," "," "},
-            {"T","T","HT","T","T","T","T","T"," "," "},
-            {"T","T","HT","T","T","T","T","T"," "," "},
-            {"T","T","HT","T","T","T","T","T"," "," "}
+            {"T","T","HT","T","T","T","T","T","T","T"},
+            {"T","T","HT","T","WT 1","WT 4","T","T","T","T"},
+            {"T","T","HT","T","T","T","T","T","T","T"},
+            {"T","T","HT","T","T","T","T","T","T","T"},
+            {"T","T","HT","T","T","T","T","T","T","T"},
+            {"T","T","HT","T","T","T","T","T","T","T"},
+            {"T","T","HT","T","T","T","T","T","T","T"},
+            {"T","T","HT","T","T","T","T","T","T","T"},
+            {"T","T","HT","T","T","T","T","T","T","T"},
+            {"T","T","HT","T","T","T","T","T","T","T"},
+            {"T","T","HT","T","T","T","T","T","T","T"},
+            {"T","T","HT","T","T","T","T","T","T","T"},
+            {"T","T","HT","T","T","T","T","T","T","T"},
+            {"T","T","HT","T","T","T","T","T","T","T"}
         };
         this.board = new Board(board1);
         assertNotNull(board);
@@ -67,4 +67,25 @@ public class BoardTest {
         assertEquals(5, robot.getPos().getX());
         assertEquals(5, robot.getPos().getY());
 }
+    @Then("Show me a wall tile")
+    public void show_me_a_wall_tile() {
+        if (board.getTileAt(new Position(1,4)) instanceof TileWall){
+            TileWall WT = (TileWall) board.getTileAt(new Position(1,4));
+            assertEquals("WT",WT.getname()); // check that wall tile is created
+        }
+    }
+
+    // wall interactions
+    @Then("the robot tries to move throug a wall and can't move")
+    public void the_robot_tries_to_move_throug_a_wall_and_can_t_move() {
+    robot.setPos(new Position(1,4));
+
+    robot.moveforward(true,board.allowmove(robot));
+    assertEquals(robot.getPos().getX(), 1);
+    robot.turn(1);
+    robot.moveforward(true,board.allowmove(robot));
+    assertEquals(robot.getPos().getY(), 4);
+
+}
+
 }
