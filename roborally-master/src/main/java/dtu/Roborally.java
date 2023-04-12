@@ -1,7 +1,7 @@
 package dtu;
 
 import dtu.roborally.view.CardinalPoints;
-import dtu.roborally.view.widgets.Board;
+import dtu.roborally.
 import dtu.roborally.view.widgets.ControlPanel;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -17,8 +17,8 @@ public class Roborally extends Application {
 		
 		BorderPane container = new BorderPane();
 
-		Board b = new Board(10, 15);
-		b.setRobot(5, 7, CardinalPoints.E);
+		Board b = new Board(10, 10);
+		b.setRobot(3, 5, CardinalPoints.N);
 		
 		ControlPanel cp = new ControlPanel(b);
 		container.setCenter(b);
