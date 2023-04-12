@@ -1,1 +1,5 @@
+dtu/logic/models/Player/Player.class
+dtu/logic/models/Cards/MovementCard.class
+dtu/logic/models/Direction.class
+dtu/logic/models/Position.class
 dtu/roborally/view/widgets/ControlPanel$6.class

@@ -19,3 +19,23 @@ C:\Users\Natalia\Desktop\Roborally v2\refactored-roborally\roborally-master\src\
 C:\Users\Natalia\Desktop\Roborally v2\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Color.java
 C:\Users\Natalia\Desktop\Roborally v2\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Direction.java
 C:\Users\Natalia\Desktop\Roborally v2\refactored-roborally\roborally-master\src\main\java\dtu\Roborally.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Board/Tile.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/MovementCard.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Board/TileFactory.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Color.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Board/Board.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Player/Player.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Rotation.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Position.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/roborally/view/widgets/Tile.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/roborally/view/CardinalPoints.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/ProgramCard.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Board/TileHole.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Direction.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/roborally/view/widgets/Board.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/roborally/view/TileType.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/roborally/view/widgets/ControlPanel.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/Card.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Robot/Robot.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/Roborally.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/Main.java
