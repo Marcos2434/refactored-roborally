@@ -1,6 +1,7 @@
 package dtu.logic.models.Board;
 
 import dtu.logic.models.Position;
+import dtu.logic.models.Robot.Robot;
 
 public class Board {
 
@@ -35,6 +36,19 @@ public class Board {
             return null;
             
         }
+    }
+    // check if a robot is allowed a move:
+    public boolean allowmove(Robot robot){
+        if (getTileAt(robot.getPos()) instanceof TileWall){
+            TileWall WT = (TileWall) getTileAt(robot.getPos());
+            if (robot.getDirID() == WT.getDirID()){return false;}   
+        }
+        if (getTileAt(robot.getPosAhead()) instanceof TileWall){
+            TileWall WT = (TileWall) getTileAt(robot.getPosAhead());
+            if (Math.abs(robot.getDirID() - WT.getDirID()) == 2){return false;}
+            else{return true;}
+        }
+        else {return true;} 
     }
 
 }

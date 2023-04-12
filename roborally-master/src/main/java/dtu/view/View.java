@@ -1,18 +1,20 @@
-package dtu;
+package dtu.view;
 
-import dtu.roborally.view.CardinalPoints;
-import dtu.roborally.view.widgets.Board;
-import dtu.roborally.view.widgets.ControlPanel;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
+
+import javafx.event.Event;
+import javafx.event.EventHandler;
 
 import dtu.controller.*;
 
 //import dtu.logic.Main;
 
-public class Roborally extends Application {
+public class View extends Application {
 
 	
 	@Override
@@ -33,21 +35,35 @@ public class Roborally extends Application {
 		// ControlPanel cp = new ControlPanel(b);
 		// container.setCenter(b);
 		// container.setBottom(cp);
+
+        RobotViewer rv = new RobotViewer();
 		
+        Button createPlayerButton = new Button();
+        createPlayerButton.setText("Create player");
+        createPlayerButton.setOnMouseClicked(new EventHandler<Event>() {
+            @Override
+            public void handle(Event event) {
+                c.createPlayer("RED");
+                c.getP().getRobot().registerObserver(rv);
+                System.out.println("Player created");
+            }
+        });
+
+        
+
+        container.setBottom(createPlayerButton);
 		
 		
 		
 		Scene s = new Scene(container);
 		
 		primaryStage.setScene(s);
-		primaryStage.setTitle("RoboRally - v. 0.1");
+		primaryStage.setTitle("RoboRally - v. 0.1 - Own");
 		primaryStage.show();
 
 	}
 
 	public static void main(String[] args) {
-
-
 		// Launch GUI
 		launch(args);
 	}
