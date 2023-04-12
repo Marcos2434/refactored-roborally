@@ -36,6 +36,6 @@ public class RobotPositionTest {
     @Then("Player receives position of robot")
     public void player_receives_pos_of_robot(){
         Position pos = testPlayer.getRobot().getPos();
-        System.out.println("Position is " + pos.getX() +" , "+ pos.getY() );
+        //System.out.println("Position is " + pos.getX() +" , "+ pos.getY() );
     }
 }
