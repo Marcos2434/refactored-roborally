@@ -15,22 +15,20 @@ public class Roborally extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
-		//Main.main(null);
+		BorderPane container = new BorderPane();
 
-		// BorderPane container = new BorderPane();
-
-		// Board b = new Board(10, 15);
-		// b.setRobot(5, 7, CardinalPoints.E);
+		Board b = new Board(10, 15);
+		b.setRobot(5, 7, CardinalPoints.E);
 		
-		// ControlPanel cp = new ControlPanel(b);
-		// container.setCenter(b);
-		// container.setBottom(cp);
+		ControlPanel cp = new ControlPanel(b);
+		container.setCenter(b);
+		container.setBottom(cp);
 		
-		// Scene s = new Scene(container);
+		Scene s = new Scene(container);
 		
-		// primaryStage.setScene(s);
-		// primaryStage.setTitle("RoboRally - v. 0.1");
-		// primaryStage.show();
+		primaryStage.setScene(s);
+		primaryStage.setTitle("RoboRally - v. 0.1");
+		primaryStage.show();
 
 	}
 
