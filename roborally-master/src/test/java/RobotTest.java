@@ -83,34 +83,34 @@ public class RobotTest {
     public void it_turns_to_the_right_and_moves_forward_and_backwards_times(Integer int1) {
             //moving right
             robot.turn(1);
-            robot.moveforward(true);
+            robot.moveforward(true,true);
             assertEquals(5,robot.getPos().getX());
             assertEquals(6,robot.getPos().getY());
-            robot.moveforward(false);
+            robot.moveforward(false,true);
             assertEquals(5,robot.getPos().getX());
             assertEquals(5,robot.getPos().getY());
             //moving down
             robot.turn(1);
-            robot.moveforward(true);
+            robot.moveforward(true,true);
             assertEquals(6,robot.getPos().getX());
             assertEquals(5,robot.getPos().getY());
-            robot.moveforward(false);
+            robot.moveforward(false,true);
             assertEquals(5,robot.getPos().getX());
             assertEquals(5,robot.getPos().getY());
             //moving left
             robot.turn(1);
-            robot.moveforward(true);
+            robot.moveforward(true,true);
             assertEquals(5,robot.getPos().getX());
             assertEquals(4,robot.getPos().getY());
-            robot.moveforward(false);
+            robot.moveforward(false,true);
             assertEquals(5,robot.getPos().getX());
             assertEquals(5,robot.getPos().getY());
             //moving left
             robot.turn(1);
-            robot.moveforward(true);
+            robot.moveforward(true,true);
             assertEquals(4,robot.getPos().getX());
             assertEquals(5,robot.getPos().getY());
-            robot.moveforward(false);
+            robot.moveforward(false,true);
             assertEquals(5,robot.getPos().getX());
             assertEquals(5,robot.getPos().getY());
     }
@@ -121,7 +121,7 @@ public class RobotTest {
     robot.setPos(new Position(0,0));
     robot.takeDmg();
     robot.turn(-1);
-    robot.moveforward(true);
+    robot.moveforward(true,true);
     
 }
 }
