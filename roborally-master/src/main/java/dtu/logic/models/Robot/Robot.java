@@ -43,6 +43,9 @@ public class Robot {
         this.pos = pos;
         notify(pos);
     }
+    public Position getPos() {
+        return(pos);
+    }
 
 
     public void setCheckpoint(Position pos){
@@ -100,7 +103,7 @@ public class Robot {
     }
 
  
-    }
+    
     // Damage and live control
     public void Death(){
         this.pos = this.checkpoint;

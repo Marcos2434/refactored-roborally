@@ -1,10 +1,12 @@
 package dtu.view;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.Pane;
 
 import javafx.event.Event;
@@ -28,7 +30,7 @@ public class View extends Application {
 		// Ex. Tell controller to move robot
 
 		BorderPane container = new BorderPane();
-		
+		container.setPrefSize(500, 500);	
 		// Board b = new Board(10, 15);
 		// b.setRobot(5, 7, CardinalPoints.E);
 		
@@ -37,22 +39,28 @@ public class View extends Application {
 		// container.setBottom(cp);
 
         RobotViewer rv = new RobotViewer();
-		
+
+		String colors[] = {"RED","ORANGE","YELLOW","BLUE","PURPLE","BLACK","WHITE","GREEN"};
+		ChoiceBox colorChoice = new ChoiceBox(FXCollections.observableArrayList(colors));
+ 
+
+
+
         Button createPlayerButton = new Button();
         createPlayerButton.setText("Create player");
         createPlayerButton.setOnMouseClicked(new EventHandler<Event>() {
+		
             @Override
             public void handle(Event event) {
-                c.createPlayer("RED");
+                c.createPlayer(colorChoice.getValue().toString());
                 c.getP().getRobot().registerObserver(rv);
-                System.out.println("Player created");
+                System.out.println("Player created:"+colorChoice.getValue().toString());
             }
+		
         });
 
-        
-
         container.setBottom(createPlayerButton);
-		
+		container.setCenter(colorChoice);
 		
 		
 		Scene s = new Scene(container);
