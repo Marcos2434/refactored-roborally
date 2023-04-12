@@ -14,9 +14,6 @@ public class Controller {
         // Create board
         // Board b = new Board(null);
 
-        // Create players
-        // Create cards
-        // Create game
     }
 
     public void createPlayer(String color) {
