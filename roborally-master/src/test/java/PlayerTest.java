@@ -25,4 +25,8 @@ public class PlayerTest {
     public void a_robot_is_assigned_to_the_player() {
         assertNotNull(testPlayer.getRobot());
     }
+    @Then("The robot is facing a direction")
+    public void the_robot_is_facing_a_direction() {
+        assertNotNull(testPlayer.getRobot().getDirection());
+    }
 }
