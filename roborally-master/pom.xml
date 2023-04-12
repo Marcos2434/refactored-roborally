@@ -41,7 +41,7 @@
 				<artifactId>javafx-maven-plugin</artifactId>
 				<version>0.0.5</version>
 				<configuration>
-					<mainClass>dtu.Roborally</mainClass>
+					<mainClass>dtu.view.View</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>

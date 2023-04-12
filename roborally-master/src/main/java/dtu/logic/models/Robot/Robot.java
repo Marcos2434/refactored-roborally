@@ -21,7 +21,17 @@ public class Robot {
     private int DirID;
 
     public ArrayList<ProgramCard> register = new ArrayList<ProgramCard>(); 
+    private List<RobotObserver> observers = new ArrayList<RobotObserver>();
 
+    public void notify(Position pos) {
+        for (RobotObserver observer : observers) {
+            observer.updateCoords(pos);
+        }
+    }
+
+    public void registerObserver(RobotObserver observer) {
+        observers.add(observer);
+    }
     
     public Robot(Color color) {
         this.color = color;
@@ -30,6 +40,7 @@ public class Robot {
     // Position and movement
     public void setPos(Position pos) {
         this.pos = pos;
+        notify(pos);
     }
     public Position getPos() {
         return pos;
