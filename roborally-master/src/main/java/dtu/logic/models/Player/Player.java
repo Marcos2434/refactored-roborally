@@ -37,6 +37,10 @@ public class Player {
         robot.addCardsToRegister(firstFive);
     }
 
+    public void moveRobot(int x, int y){
+        robot.setPos(x, y);
+    }
+
     @Override
     public String toString() {
         return "Player with robot of color" + robot;

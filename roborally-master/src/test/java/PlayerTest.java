@@ -24,5 +24,6 @@ public class PlayerTest {
     @Then("A robot is assigned to the player")
     public void a_robot_is_assigned_to_the_player() {
         assertNotNull(testPlayer.getRobot());
+        assertNotNull(this.testPlayer);
     }
 }
