@@ -120,18 +120,6 @@ public class Robot {
         (i);
     }
 
-    public void move(int round) {
-        this.moveByCard(this.getProgramCardAt(round));
-    }
-
-    private void moveByCard(ProgramCard card) {
-        
-    }
-
-    public Position getPos() {
-        return pos;
-    }
-
     public void setPos(int x, int y){
         pos.set(x, y);
     }
