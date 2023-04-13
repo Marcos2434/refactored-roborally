@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-import dtu.controller.*;
+//import dtu.controller.Controller;
 
 //import dtu.logic.Main;
 
@@ -17,9 +17,10 @@ public class Roborally extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-        Controller c = new Controller();
-		// Launch controller
-		c.launch(); // create board... etc.
+        // // Create controller
+        // Controller c = new Controller();
+		// // Launch controller
+		// c.launch(); // create board... etc.
 		
 		BorderPane container = new BorderPane();
 
@@ -39,26 +40,17 @@ public class Roborally extends Application {
             {"T","T","HT","T","T","T","T","T","T","T"},
             {"T","T","HT","T","T","T","T","T","T","T"}
         };
+        String[][] startField = {
+            {"T","T","T","T","WT 1","WT 1","T","T","T","T"},
+            {"T","S","WT 4","T","S","S","T","WT 2","S","T"},
+            {"T","T","T","S","T","T","S","T","T","T"},
+        };
 
         Board board = new Board(board1);
 		
 		ControlPanel cp = new ControlPanel(board);
 		container.setCenter(board);
 		container.setBottom(cp);
-		// Create controller
-		
-		
-		// Ex. Tell controller to move robot
-
-		
-		// Board b = new Board(10, 15);
-		// b.setRobot(5, 7, CardinalPoints.E);
-		
-		// ControlPanel cp = new ControlPanel(b);
-		// container.setCenter(b);
-		// container.setBottom(cp);
-		
-		
 		
 		
 		Scene s = new Scene(container);

@@ -188,13 +188,13 @@ public class Robot {
         pos.set(x, y);
     }
 
-    // public void setX(int x){
-    //     pos.setX(x);
-    // }
+    public void setX(int x){
+        pos.setX(x);
+    }
 
-    // public void setY(int y){
-    //     pos.setY(y);
-    // }
+    public void setY(int y){
+        pos.setY(y);
+    }
 
     @Override
     public String toString() {
