@@ -35,12 +35,7 @@ public class Roborally extends Application {
             {"T","T","HT","T","T","T","T","T","T","T"},
             {"T","T","HT","T","T","T","T","T","T","T"},
             {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","T","T"}
-        };
-        String[][] startField = {
+            //Start Field
             {"T","T","T","T","WT 1","WT 1","T","T","T","T"},
             {"T","S","WT 4","T","S","S","T","WT 2","S","T"},
             {"T","T","T","S","T","T","S","T","T","T"},
