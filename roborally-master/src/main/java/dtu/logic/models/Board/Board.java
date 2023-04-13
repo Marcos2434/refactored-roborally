@@ -18,7 +18,7 @@ public class Board extends GridPane{
                 for (int col = 0; col < 10; col++) {
                         String T = stringGrid[row][col];
                         this.grid[row][col] = TileFactory.createtile(T);
-                        add(this.grid[row][col], row, col);
+                        add(this.grid[row][col], col, row);
                         
                 }
             }

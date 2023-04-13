@@ -43,7 +43,7 @@ public class Roborally extends Application {
 		Scene s = new Scene(container);
 		
 		primaryStage.setScene(s);
-		primaryStage.setTitle("RoboRally - v. 0.1");
+		primaryStage.setTitle("RoboRally - v. 0.1 - Tiles update");
 		primaryStage.show();
 
 	}
