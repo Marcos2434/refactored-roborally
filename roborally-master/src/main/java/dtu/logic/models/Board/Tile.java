@@ -13,10 +13,10 @@ public class Tile extends Canvas{
 
     private String name = "T";
     protected TileType type;
-   	private boolean containsRobot;
-    private Direction direction;
+   	protected boolean containsRobot;
+    protected Direction direction;
     protected Image image;
-	private static Image robotImage;
+	protected static Image robotImage;
 
     static {
 		robotImage = new Image(Tile.class.getClassLoader().getResourceAsStream("robot.png"));

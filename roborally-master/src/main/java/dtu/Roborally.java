@@ -17,7 +17,7 @@ public class Roborally extends Application {
 		
 		BorderPane container = new BorderPane();
 
-		String[][] board1 = {   
+		String[][] board1 = {
             {"T","T","HT","T","T","T","T","T","T","T"},
             {"T","T","HT","T","WT 1","WT 4","T","T","T","T"},
             {"T","T","HT","T","T","T","T","T","T","T"},

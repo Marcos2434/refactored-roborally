@@ -13,7 +13,7 @@ public class TileFactory {
         
         if (tiles[0].trim().equals("WT")){ 
             
-            return new TileWall(Direction.getDirById(Integer.parseInt(tiles[1])));
+            return new TileWall(TileType.WALL, Integer.parseInt(tiles[1]));
             
         }
             

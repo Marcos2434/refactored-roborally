@@ -5,7 +5,9 @@ public enum TileType {
 	FLOOR("tiles/floor.png"),
 	HOLE("tiles/pit.png"),
 	ACID("tiles/acid.png"),
-	RADIATION("tiles/radiation.png");
+	RADIATION("tiles/radiation.png"),
+	WALL("tiles/wall.png"),
+	START("tiles/start.png");
 	
 	private String pictureFile;
 	
