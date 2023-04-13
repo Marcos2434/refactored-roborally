@@ -43,6 +43,12 @@ Feature: Robot Selection
         Given Two robots being created 
         When The robots are beside eachother and one robot tries to move through the other
         Then the other robot is pushed  
+    
+    @tag9 
+    Scenario: As a robot, when i move, i want to ocupie the tile i am on.
+        Given A robot being created with a color and a checkpoint
+        Then i move. The Tile behind me is not ocupied and the tile i moved to is.
+        
        
         
 
