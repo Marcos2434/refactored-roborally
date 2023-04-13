@@ -1,5 +1,7 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.runner.RunWith;
 import io.cucumber.junit.Cucumber;
@@ -36,9 +38,8 @@ public class RobotTest {
     @Given("A robot being created with a color and a checkpoint")
     public void a_robot_being_created_with_a_color() {
         
-        robot = new Robot(Color.BLUE,new Position(2,2));  
-        robot.setCheckpoint(new Position(5,5));
-        robot.setPos(new Position(5,5));
+        robot = new Robot(Color.BLUE,new Position(5,5));  
+       
     }
     // a robot has 3 lives when created.
     @Then("A robot is created with three lives")
@@ -166,5 +167,15 @@ public class RobotTest {
     public void the_other_robot_is_pushed() {
         assertEquals(4,robot1.getPos().getX());
         assertEquals(3,robot2.getPos().getX());
+}
+
+    @Then("i move. The Tile behind me is not ocupied and the tile i moved to is.")
+    public void i_move_the_tile_behind_me_is_not_ocupied_and_the_tile_i_moved_to_is() {
+        robot.moveforward(true, board);
+        assertTrue(board.getTileAt(new Position(robot.getPos().getX(),robot.getPos().getY())).isOcupied());
+        assertFalse(board.getTileAt(new Position(robot.getPos().getX()+1,robot.getPos().getY())).isOcupied());
+        robot.moveforward(true, board);
+        assertTrue(board.getTileAt(new Position(robot.getPos().getX(),robot.getPos().getY())).isOcupied());
+        assertFalse(board.getTileAt(new Position(robot.getPos().getX()+1,robot.getPos().getY())).isOcupied());
 }
 }
