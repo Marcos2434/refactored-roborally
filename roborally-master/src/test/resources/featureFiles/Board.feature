@@ -26,3 +26,19 @@ Feature: Boardfunctions
         Scenario: A robot walks into a wall and is unable to move to the next tile.
         Given A layout, a board is created. And a position is created
         Then the robot tries to move throug a wall and can't move
+
+    @tag6
+        Scenario: As a Board, i want to be able to add players to the player list.
+        Given A Board and four players
+        Then Add the players to the player list
+
+    @tag7
+        Scenario:   As a Board, if a players robot have the same position as any other players in the board 
+                    it cannot be added
+        Given A Board and four players
+        Then Add the player is not added if they have the same position
+    
+    @tag8
+        Scenario: As a Board, if a players robot has the same Color as another player the player cannot be added
+        Given A Board and four players
+        Then Add the player is not added if they have the same Color
