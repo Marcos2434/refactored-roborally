@@ -2,8 +2,9 @@ package dtu.logic.models.Board;
 
 import dtu.logic.models.Position;
 import dtu.logic.models.Robot.Robot;
+import javafx.scene.layout.GridPane;
 
-public class Board {
+public class Board extends GridPane{
 
     private Tile[][] grid = new Tile[14][10];
 
@@ -13,10 +14,11 @@ public class Board {
             System.out.println("Invalid size of grid");
         }
         else{
-            for (int i = 0; i < 10; i++) { 
-                for (int j = 0; j < 10; j++) {
-                        String T = stringGrid[i][j];
-                        this.grid[i][j] = TileFactory.createtile(T);
+            for (int row = 0; row < 10; row++) { 
+                for (int col = 0; col < 10; col++) {
+                        String T = stringGrid[row][col];
+                        this.grid[row][col] = TileFactory.createtile(T);
+                        add(this.grid[row][col], row, col);
                         
                 }
             }

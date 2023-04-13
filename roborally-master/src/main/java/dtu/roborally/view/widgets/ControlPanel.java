@@ -8,10 +8,14 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
+import dtu.logic.models.Direction;
+import dtu.logic.models.Board.Board;
+import dtu.logic.models.Robot.Robot;
 
 public class ControlPanel extends GridPane {
 
 	private Board board;
+	private Robot robot;
 	
 	private Button rotate = new Button("\u2b6e");
 	private Button moveN = new Button("\u2b9d");
@@ -45,63 +49,35 @@ public class ControlPanel extends GridPane {
 		rotate.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				CardinalPoints newDirection = CardinalPoints.N;
-				switch (board.getCurrentRobotDirection()) {
-				case N:
-					newDirection = CardinalPoints.E;
-					break;
-				case E:
-					newDirection = CardinalPoints.S;
-					break;
-				case S:
-					newDirection = CardinalPoints.W;
-					break;
-				case W:
-					newDirection = CardinalPoints.N;
-					break;
-
-				}
-				board.setRobot(board.getCurrentRobotRow(), board.getCurrentRobotColumn(), newDirection);
+				robot.turn(1);
 			}
 		});
 		
 		moveN.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				board.setRobot(
-						Math.max(0, board.getCurrentRobotRow() - 1),
-						board.getCurrentRobotColumn(),
-						board.getCurrentRobotDirection());
+				robot.setY(robot.getY()-1);
 			}
 		});
 		
 		moveS.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				board.setRobot(
-						Math.min(board.getRowCount() - 1, board.getCurrentRobotRow() + 1),
-						board.getCurrentRobotColumn(),
-						board.getCurrentRobotDirection());
+				robot.setY(robot.getY()+1);
 			}
 		});
 		
 		moveW.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				board.setRobot(
-						board.getCurrentRobotRow(),
-						Math.max(0, board.getCurrentRobotColumn() - 1),
-						board.getCurrentRobotDirection());
+				robot.setX(robot.getX()-1);
 			}
 		});
 		
 		moveE.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				board.setRobot(
-						board.getCurrentRobotRow(),
-						Math.min(board.getColumnCount() - 1, board.getCurrentRobotColumn() + 1),
-						board.getCurrentRobotDirection());
+				robot.setX(robot.getX()+1);
 			}
 		});
 	}

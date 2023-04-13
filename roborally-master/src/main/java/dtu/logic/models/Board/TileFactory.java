@@ -9,7 +9,7 @@ public class TileFactory {
         
         if  (tiles[0].equals("HT")){
             
-            return new TileHole();}
+            return new TileHole(TileType.HOLE);}
         
         if (tiles[0].trim().equals("WT")){ 
             
@@ -17,7 +17,7 @@ public class TileFactory {
             
         }
             
-        else{return new Tile();}
+        else{return new Tile(TileType.FLOOR);}
     }
 }
 

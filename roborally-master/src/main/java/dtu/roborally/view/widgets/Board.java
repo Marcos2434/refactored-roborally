@@ -34,7 +34,7 @@ public class Board extends GridPane {
 	private void loadBoard() {
 		for (int j = 0; j < rows; j++) {
 			for (int i = 0; i < cols; i++) {
-				Tile t = new Tile(getRandomTileType());
+				Tile t = new Tile();
 				board[j][i] = t;
 				add(t, i, j);
 			}

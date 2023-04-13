@@ -1,7 +1,7 @@
 package dtu;
 
-import dtu.roborally.view.CardinalPoints;
-import dtu.roborally.
+//import dtu.roborally.view.CardinalPoints;
+import dtu.logic.models.Board.Board;
 import dtu.roborally.view.widgets.ControlPanel;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -17,11 +17,27 @@ public class Roborally extends Application {
 		
 		BorderPane container = new BorderPane();
 
-		Board b = new Board(10, 10);
-		b.setRobot(3, 5, CardinalPoints.N);
+		String[][] board1 = {   
+            {"T","T","HT","T","T","T","T","T","T","T"},
+            {"T","T","HT","T","WT 1","WT 4","T","T","T","T"},
+            {"T","T","HT","T","T","T","T","T","T","T"},
+            {"T","T","HT","T","T","T","T","T","T","T"},
+            {"T","T","HT","T","T","T","T","T","T","T"},
+            {"T","T","HT","T","T","T","T","T","T","T"},
+            {"T","T","HT","T","T","T","T","T","T","T"},
+            {"T","T","HT","T","T","T","T","T","T","T"},
+            {"T","T","HT","T","T","T","T","T","T","T"},
+            {"T","T","HT","T","T","T","T","T","T","T"},
+            {"T","T","HT","T","T","T","T","T","T","T"},
+            {"T","T","HT","T","T","T","T","T","T","T"},
+            {"T","T","HT","T","T","T","T","T","T","T"},
+            {"T","T","HT","T","T","T","T","T","T","T"}
+        };
+
+        Board board = new Board(board1);
 		
-		ControlPanel cp = new ControlPanel(b);
-		container.setCenter(b);
+		ControlPanel cp = new ControlPanel(board);
+		container.setCenter(board);
 		container.setBottom(cp);
 		
 		Scene s = new Scene(container);

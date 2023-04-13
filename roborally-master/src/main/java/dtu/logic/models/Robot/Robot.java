@@ -35,6 +35,14 @@ public class Robot {
         return pos;
     }
 
+    public int getX() {
+        return pos.getX();
+    }
+
+    public int getY() {
+        return pos.getY();
+    }
+
     public void setCheckpoint(Position pos){
         this.checkpoint = pos;
     }
