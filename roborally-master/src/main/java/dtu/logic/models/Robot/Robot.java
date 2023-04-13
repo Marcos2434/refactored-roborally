@@ -4,14 +4,15 @@ import java.util.List;
 import dtu.logic.models.Color;
 import dtu.logic.models.Direction;
 import dtu.logic.models.Position;
+import dtu.logic.models.Board.Board;
 import dtu.logic.models.Board.Tile;
 import dtu.logic.models.Cards.ProgramCard;
-
+import javafx.scene.image.Image;
 import java.util.ArrayList;
 
 public class Robot {
     private Color color;
-
+    private Image image;
     private int damageTaken = 0;
     private int lives = 3;
 
@@ -21,18 +22,36 @@ public class Robot {
     private int DirID;
 
     public ArrayList<ProgramCard> register = new ArrayList<ProgramCard>(); 
+    private List<RobotObserver> observers = new ArrayList<RobotObserver>();
 
+    public void notify(Position pos) {
+        for (RobotObserver observer : observers) {
+            observer.updateCoords(pos);
+        }
+    }
+
+    public void registerObserver(RobotObserver observer) {
+        observers.add(observer);
+    }
     
-    public Robot(Color color) {
+    public Robot(Color color,Position position) {
         this.color = color;
         this.DirID = 1;
+        this.pos = position;
+        this.checkpoint = position;
+        this.image = new Image(getClass().getClassLoader().getResourceAsStream(this.color.getPictureFile()));
     }
     // Position and movement
     public void setPos(Position pos) {
         this.pos = pos;
+        notify(pos);
     }
     public Position getPos() {
-        return pos;
+        return(pos);
+    }
+
+    public Color getColor() {
+        return color;
     }
 
     public int getX() {
@@ -83,27 +102,52 @@ public class Robot {
         else {return null;}
     }
 
-    public void moveforward(Boolean forward,Boolean MoveAllowed){
+    public void moveforward(Boolean forward,Board board){
         int d;
         if (forward){d = 1;}
         else {d = -1;}
-        if (MoveAllowed){
+        //Update old tile
+        board.getTileAt(pos).unOccupy();
+
+        if (board.allowmove(this)){
+            //Move other robot out of the way first, if there is one
+            if (board.getTileAt(getPosAhead())!=null){
+                if (board.getTileAt(getPosAhead()).isOcupied()){
+                    Robot r = board.getRobotAt(getPosAhead());
+                    Push(r,board);
+                }
+            }
+            // move
             if (this.DirID == 1){pos.addX(-d);}
             else if (this.DirID == 2){pos.addY(d);}
             else if (this.DirID == 3){pos.addX(d);}
-            else if (this.DirID == 4){pos.addY(-d);}
+            else if (this.DirID == 4){pos.addY(-d);} 
         }
+        // check if over the edge
         if (this.pos.getX() < 0 || this.pos.getX() > 13 ||
             this.pos.getY() < 0 || this.pos.getY()>10){Death();}
+            
+        //update new tile
+        board.getTileAt(pos).Occupy();
     }
 
-    public void move(int round) {
-        this.moveByCard(this.getProgramCardAt(round));
-    }
+    public void Push(Robot robot,Board board){
+        board.getTileAt(robot.getPos()).unOccupy();
 
-    private void moveByCard(ProgramCard card) {
+        if (this.DirID == 1){robot.getPos().addX(-1);}
+        else if (this.DirID == 2){robot.getPos().addY(1);}
+        else if (this.DirID == 3){robot.getPos().addX(1);}
+        else if (this.DirID == 4){robot.getPos().addY(-1);}
         
-    }
+        if (robot.pos.getX() < 0 || robot.pos.getX() > 13 ||
+            robot.pos.getY() < 0 || robot.pos.getY()>10){Death();}
+        else{robot.takeDmg();}
+
+        board.getTileAt(robot.getPos()).Occupy();
+        
+        
+    }       
+ 
     // Damage and live control
     public void Death(){
         this.pos = this.checkpoint;
@@ -144,13 +188,13 @@ public class Robot {
         pos.set(x, y);
     }
 
-    public void setX(int x){
-        pos.setX(x);
-    }
+    // public void setX(int x){
+    //     pos.setX(x);
+    // }
 
-    public void setY(int y){
-        pos.setY(y);
-    }
+    // public void setY(int y){
+    //     pos.setY(y);
+    // }
 
     @Override
     public String toString() {

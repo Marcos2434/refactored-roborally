@@ -14,7 +14,7 @@ public class TileHole extends Tile{
     }
     @Override
     public String getname(){
-    System.out.println("TileHole");
+    
     return this.name;
 }
 

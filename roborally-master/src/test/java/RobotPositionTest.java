@@ -11,6 +11,7 @@ import io.cucumber.java.en.And;
 
 import dtu.logic.models.*;
 import dtu.logic.models.Player.*;
+import dtu.logic.models.Robot.Robot;
 
 public class RobotPositionTest {
     Player testPlayer;
@@ -19,8 +20,8 @@ public class RobotPositionTest {
     @Given("A player is created with a chosen color")
     public void a_player_is_createdCopy() {
         // Write code here that turns the phrase above into concrete actions
-        Color userTestInputColor = Color.RED;
-        testPlayer = new Player(userTestInputColor);
+        Robot robot = new Robot(Color.RED,new Position(2,2));
+        testPlayer = new Player(robot,"Casper");
     }
     @And("A robot is assigned to player")
     public void a_robot_is_assigned_to_the_playerCopy() {

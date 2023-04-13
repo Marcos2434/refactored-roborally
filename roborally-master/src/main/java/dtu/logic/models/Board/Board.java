@@ -1,13 +1,15 @@
 package dtu.logic.models.Board;
 
 import dtu.logic.models.Position;
+import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.Robot;
 import javafx.scene.layout.GridPane;
 
 public class Board extends GridPane{
 
     private Tile[][] grid = new Tile[14][10];
-
+    private Player[] players;
+    private static int nextPlayerIdx = 0;
     
     public Board(String[][] stringGrid){
         if (stringGrid.length != 14 || stringGrid[0].length != 10){
@@ -23,20 +25,58 @@ public class Board extends GridPane{
                 }
             }
         }
-        
     }
-
+    public void initPlayers(){
+        players = new Player[4];
+        nextPlayerIdx = 0;
+    }
     public Tile[][] getGrid() {
         return this.grid;
     }
 
+    public void addPlayer(Player player){
+        boolean allowed = true;
+
+        for (int j = 0; j < nextPlayerIdx; j++){
+            if (players[j].getRobot().getColor()  ==  (player.getRobot().getColor())){
+                allowed = false;
+            }
+        }
+        for (int i = 0; i < nextPlayerIdx; i++){
+            if (players[i].getRobot().getPos()  .equals  (player.getRobot().getPos())){
+                allowed = false;
+            }
+        }
+        if (allowed){
+            players[nextPlayerIdx] = player;
+            nextPlayerIdx++;
+        }
+    }
+    public void removePlayer(Player player){
+        for (int i = 0; i < players.length;i++){
+            if (players[i].getName().equals(player.getName())){
+                players[i] = null;
+                nextPlayerIdx--;
+            }
+        }
+        if (this.players[nextPlayerIdx] != null){
+            for (int i = 0; i < nextPlayerIdx; i++){
+                if (players[i] == null){
+                    players[i] = players[i+1];
+                    players[i+1] = null;
+                }
+            }
+        }
+    }
+    public Player[] getPlayers(){
+        return this.players;
+    }
     public Tile getTileAt(Position pos) {
         if (pos.getY()>=0 && pos.getX()>=0 && pos.getX()<14 && pos.getY()<10){
             return this.grid[pos.getX()][pos.getY()];
         }
         else{
             return null;
-            
         }
     }
     // check if a robot is allowed a move:
@@ -53,5 +93,21 @@ public class Board extends GridPane{
         else {return true;} 
     }
 
+    public Robot getRobotAt(Position pos){
+        if (pos.getY()>=0 && pos.getX()>=0 && pos.getX()<14 && pos.getY()<10 && getTileAt(pos).isOcupied() == true){
+            
+            for (int i=0; i<players.length; i++){
+                if (players[i].getRobot().getPos().getX() == pos.getX() && players[i].getRobot().getPos().getY() == pos.getY()){
+                    return players[i].getRobot();
+                }
+                else{;}
+            }
+            return null;
+
+        }
+        else{
+            return null;
+        }
+    }
 }
 

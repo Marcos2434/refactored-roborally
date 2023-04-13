@@ -12,7 +12,7 @@ public class Tile extends Canvas{
     public static final int TILE_SIZE = 66;
 
     private String name = "T";
-    protected TileType type;
+     protected TileType type;
    	protected boolean containsRobot;
     protected Direction direction;
     protected Image image;
@@ -44,15 +44,25 @@ public class Tile extends Canvas{
 			gc.restore();
         }
 	}
-
+private Boolean Ocupied = false;
     // effect method for tiles, this normal tile does nothing()
     public void effect(Robot robot){
-    System.out.println("Tile effect");
+    ;
     }
 
     public String getname(){
-        System.out.println("Tile name");
         return this.name;
     }
 
+    public void Occupy(){
+        this.Ocupied = true;
+    }
+
+    public void unOccupy(){
+        this.Ocupied = false;
+    }
+
+    public boolean isOcupied(){
+        return this.Ocupied;
+    }
 }
