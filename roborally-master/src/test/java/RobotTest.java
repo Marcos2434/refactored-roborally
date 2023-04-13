@@ -10,15 +10,33 @@ import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 
 import dtu.logic.models.*;
+import dtu.logic.models.Board.Board;
+import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.*;
 public class RobotTest {
     Robot robot;
+    String[][] board1 = {   
+        {"T","T","T","T","T","T","T","T","T","T"},
+        {"T","T","T","T","T","T","T","T","T","T"},
+        {"T","T","T","T","T","T","T","T","T","T"},
+        {"T","T","T","T","T","T","T","T","T","T"},
+        {"T","T","T","T","T","T","T","T","T","T"},
+        {"T","T","T","T","T","T","T","T","T","T"},
+        {"T","T","T","T","T","T","T","T","T","T"},
+        {"T","T","T","T","T","T","T","T","T","T"},
+        {"T","T","T","T","T","T","T","T","T","T"},
+        {"T","T","T","T","T","T","T","T","T","T"},
+        {"T","T","T","T","T","T","T","T","T","T"},
+        {"T","T","T","T","T","T","T","T","T","T"},
+        {"T","T","T","T","T","T","T","T","T","T"},
+        {"T","T","T","T","T","T","T","T","T","T"}};
+    Board board = new Board(board1);
     // initiats a robot with everything needed, change this when making a
     // new test that requires a new thing so that we know every test works properly with complicated robots as well.
     @Given("A robot being created with a color and a checkpoint")
     public void a_robot_being_created_with_a_color() {
         
-        robot = new Robot(Color.BLUE);  
+        robot = new Robot(Color.BLUE,new Position(2,2));  
         robot.setCheckpoint(new Position(5,5));
         robot.setPos(new Position(5,5));
     }
@@ -83,34 +101,34 @@ public class RobotTest {
     public void it_turns_to_the_right_and_moves_forward_and_backwards_times(Integer int1) {
             //moving right
             robot.turn(1);
-            robot.moveforward(true,true);
+            robot.moveforward(true,board);
             assertEquals(5,robot.getPos().getX());
             assertEquals(6,robot.getPos().getY());
-            robot.moveforward(false,true);
+            robot.moveforward(false,board);
             assertEquals(5,robot.getPos().getX());
             assertEquals(5,robot.getPos().getY());
             //moving down
             robot.turn(1);
-            robot.moveforward(true,true);
+            robot.moveforward(true,board);
             assertEquals(6,robot.getPos().getX());
             assertEquals(5,robot.getPos().getY());
-            robot.moveforward(false,true);
+            robot.moveforward(false,board);
             assertEquals(5,robot.getPos().getX());
             assertEquals(5,robot.getPos().getY());
             //moving left
             robot.turn(1);
-            robot.moveforward(true,true);
+            robot.moveforward(true,board);
             assertEquals(5,robot.getPos().getX());
             assertEquals(4,robot.getPos().getY());
-            robot.moveforward(false,true);
+            robot.moveforward(false,board);
             assertEquals(5,robot.getPos().getX());
             assertEquals(5,robot.getPos().getY());
             //moving left
             robot.turn(1);
-            robot.moveforward(true,true);
+            robot.moveforward(true,board);
             assertEquals(4,robot.getPos().getX());
             assertEquals(5,robot.getPos().getY());
-            robot.moveforward(false,true);
+            robot.moveforward(false,board);
             assertEquals(5,robot.getPos().getX());
             assertEquals(5,robot.getPos().getY());
     }
@@ -121,7 +139,32 @@ public class RobotTest {
     robot.setPos(new Position(0,0));
     robot.takeDmg();
     robot.turn(-1);
-    robot.moveforward(true,true);
+    robot.moveforward(true,board);
     
+}
+    Robot robot1;
+    Robot robot2;
+    @Given("Two robots being created")
+    public void two_robots_being_created() {
+        robot1 = new Robot(Color.BLUE,new Position(5,2)); 
+        board.getTileAt(new Position(5,2)).Occupy();
+        robot2 = new Robot(Color.RED,new Position(4,2));
+        board.getTileAt(new Position(4,2)).Occupy();
+        board.initPlayers();
+        board.addPlayer(new Player(robot1,"Casper"));
+        board.addPlayer(new Player(robot2,"Marcos"));
+    }
+    @When("The robots are beside eachother and one robot tries to move through the other")
+    public void the_robots_are_beside_eachother_and_one_robot_tries_to_move_through_the_other() {
+        System.out.println("------------------------");
+       
+        
+        robot1.moveforward(true, board);
+        
+    }
+    @Then("the other robot is pushed")
+    public void the_other_robot_is_pushed() {
+        assertEquals(4,robot1.getPos().getX());
+        assertEquals(3,robot2.getPos().getX());
 }
 }

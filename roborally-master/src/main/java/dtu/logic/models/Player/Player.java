@@ -9,16 +9,24 @@ import dtu.logic.models.Cards.ProgramCard;
 import dtu.logic.models.Robot.Robot;
 
 public class Player {
-    public Robot robot;
-    public Deck deck;
+    private String name;
+    private Robot robot;
+    private Deck deck;
     private ArrayList<ProgramCard> hand = new ArrayList<ProgramCard>();
     
-    public Player(Color color) {
-        this.robot = new Robot(color);
+    public Player(Robot robot,String name) {
+        this.robot = robot;
+        this.name = name;
     }
-
+    public Deck getDeck(){
+        return deck;
+    }
     public Robot getRobot() {
         return robot;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void GenerateDeck() {

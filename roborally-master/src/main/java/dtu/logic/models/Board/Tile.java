@@ -4,15 +4,25 @@ import dtu.logic.models.Robot.Robot;
 
 public class Tile {
     private String name = "T";
-   
+    private Boolean Ocupied = false;
     // effect method for tiles, this normal tile does nothing()
     public void effect(Robot robot){
-    System.out.println("Tile effect");
+    ;
     }
 
     public String getname(){
-        System.out.println("Tile name");
         return this.name;
     }
 
+    public void Occupy(){
+        this.Ocupied = true;
+    }
+
+    public void unOccupy(){
+        this.Ocupied = false;
+    }
+
+    public boolean isOcupied(){
+        return this.Ocupied;
+    }
 }

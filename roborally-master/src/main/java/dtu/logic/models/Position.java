@@ -41,4 +41,12 @@ public class Position {
     public String toString() {
         return "(" + this.x + ", " + this.y + ")";
     }
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Position){
+            Position pos = (Position) o;
+            return this.x == pos.getX() && this.y == getY();
+        }
+        else{return false;}
+    }
 }

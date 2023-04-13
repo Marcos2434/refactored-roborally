@@ -2,6 +2,8 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.ArrayList;
 
+import javax.swing.text.Position;
+
 import org.junit.runner.RunWith;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -13,6 +15,8 @@ import io.cucumber.java.en.Then;
 import dtu.logic.models.*;
 import dtu.logic.models.Cards.Deck;
 import dtu.logic.models.Player.*;
+import dtu.logic.models.Robot.Robot;
+import dtu.logic.models.Position.*;
 public class Cards9Test {
         private Player testPlayer;
         Deck deck;
@@ -22,8 +26,8 @@ public class Cards9Test {
         // Write code here that turns the phrase above into concrete actions
         @Given("A player is created with a chosen color for the robot and a deck is generated")
         public void a_player_is_created_with_a_chosen_color_for_the_robot_and_a_deck_is_generated() {
-            Color userTestInputColor = Color.RED;
-            testPlayer = new Player(userTestInputColor);
+            Robot robot = new Robot(Color.RED,new dtu.logic.models.Position(0, 0));
+            testPlayer = new Player(robot,"Casper");
             testPlayer.GenerateDeck();
         }
 
@@ -40,12 +44,12 @@ public class Cards9Test {
         
         @Then("The deck has {int} different kinds of cards in it")
         public void the_deck_has_different_kinds_of_cards_in_it(Integer int1) {
-        testPlayer.deck.CheckDeckMovement(testPlayer.deck.cards);       
+        testPlayer.getDeck().CheckDeckMovement(testPlayer.getDeck().cards);       
         }
        
         @Then("The deck has all necessary programming cards in it")
         public void the_deck_has_all_necessary_programming_cards_in_it() { 
-        testPlayer.deck.CheckDeckMovement(testPlayer.deck.cards);
+        testPlayer.getDeck().CheckDeckMovement(testPlayer.getDeck().cards);
         }
         
         //As a player i want to be able to choose 5 cards out of my hand
@@ -56,12 +60,12 @@ public class Cards9Test {
         }
         @Then("The player has {int} cards in the register")
         public void the_player_has_cards_in_the_register(Integer int1) {
-            testPlayer.robot.register.size();
+            testPlayer.getRobot().register.size();
         }
 
         @Then("The cards are shuffeled")
         public void the_cards_are_shuffeled() {
             testPlayer.drawProgrammingCards();
-            testPlayer.deck.shuffleDeck(testPlayer.deck.cards);
+            testPlayer.getDeck().shuffleDeck(testPlayer.getDeck().cards);
         }
 }
