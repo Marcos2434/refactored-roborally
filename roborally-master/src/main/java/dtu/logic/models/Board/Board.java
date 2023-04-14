@@ -3,22 +3,24 @@ package dtu.logic.models.Board;
 import dtu.logic.models.Position;
 import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.Robot;
+import javafx.scene.layout.GridPane;
 
-public class Board {
+public class Board extends GridPane{
 
-    private Tile[][] grid = new Tile[14][10];
+    private Tile[][] grid = new Tile[13][10];
     private Player[] players;
     private static int nextPlayerIdx = 0;
     
-    public Board(String[][] stringGrid){
-        if (stringGrid.length != 14 || stringGrid[0].length != 10){
+    public Board(String[][] boardGrid){
+        if (boardGrid.length != 13 || boardGrid[0].length != 10){
             System.out.println("Invalid size of grid");
         }
         else{
-            for (int i = 0; i < 10; i++) { 
-                for (int j = 0; j < 10; j++) {
-                        String T = stringGrid[i][j];
-                        this.grid[i][j] = TileFactory.createtile(T);
+            for (int row = 0; row < 13; row++) { 
+                for (int col = 0; col < 10; col++) {
+                        String T = boardGrid[row][col];
+                        this.grid[row][col] = TileFactory.createtile(T);
+                        add(this.grid[row][col], col, row);
                         
                 }
             }

@@ -1,13 +1,34 @@
 package dtu.logic.models.Board;
 
-import dtu.logic.models.Direction;
 import dtu.logic.models.Robot.Robot;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
+import javafx.scene.transform.Affine;
+import javafx.scene.transform.Rotate;
 
 public class TileWall extends Tile{
     private String name = "WT";
     private int DirID;
 
-    public TileWall(Direction dir){this.DirID = dir.getId();}
+    @Override
+    protected void redraw() {
+		GraphicsContext gc = getGraphicsContext2D();
+        gc.transform(new Affine(new Rotate(90*(DirID-0.5), 33, 33)));
+		gc.drawImage(image, 0, 0);
+		
+        if (containsRobot) {
+        	gc.save();
+        	gc.transform(new Affine(new Rotate(90*(direction.getId()), 33, 33)));
+			gc.drawImage(robotImage, 0, 0);
+			gc.restore();
+        }
+    }
+
+    public TileWall(TileType type, int dir){
+        super(type);
+        this.DirID = dir;
+        redraw();
+	}
 
     public void effect(Robot robot){;}
     
