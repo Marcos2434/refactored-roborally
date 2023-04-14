@@ -1,7 +1,5 @@
 package dtu.logic.models.Board;
 
-import dtu.logic.models.Direction;
-
 public class TileFactory {
     public static Tile createtile(String T){
         String[] tiles = T.split(" ");
@@ -9,15 +7,21 @@ public class TileFactory {
         
         if  (tiles[0].equals("HT")){
             
-            return new TileHole();}
+            return new TileHole(TileType.HOLE);}
         
-        if (tiles[0].trim().equals("WT")){ 
+        else if (tiles[0].trim().equals("WT")){ 
             
-            return new TileWall(Direction.getDirById(Integer.parseInt(tiles[1])));
+            return new TileWall(TileType.WALL, Integer.parseInt(tiles[1]));
             
         }
+         
+        else if (tiles[0].trim().equals("S")){ 
             
-        else{return new Tile();}
+            return new TileStart(TileType.START);
+            
+        }
+
+        else{return new Tile(TileType.FLOOR);}
     }
 }
 

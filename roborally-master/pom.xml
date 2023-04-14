@@ -41,7 +41,10 @@
 				<artifactId>javafx-maven-plugin</artifactId>
 				<version>0.0.5</version>
 				<configuration>
-					<mainClass>dtu.view.View</mainClass>
+					//Marcos's login panel
+					//<mainClass>dtu.view.View</mainClass>
+					//Adam's board
+					<mainClass>dtu.Roborally</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>
