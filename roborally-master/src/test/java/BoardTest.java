@@ -42,7 +42,6 @@ public class BoardTest {
             {"T","T","HT","T","T","T","T","T","T","T"},
             {"T","T","HT","T","T","T","T","T","T","T"},
             {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","T","T"}
         };
         this.board = new Board(board1);
       
@@ -111,9 +110,7 @@ public class BoardTest {
             {"T","T","HT","T","T","T","T","T","T","T"},
             {"T","T","HT","T","T","T","T","T","T","T"},
             {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","T","T"}
-        };
+            {"T","T","HT","T","T","T","T","T","T","T"},};
         this.board = new Board(board1);
         robot1 = new Robot(Color.BLUE,new Position(3,3));
         robot2 = new Robot(Color.GREEN,new Position(3,3));

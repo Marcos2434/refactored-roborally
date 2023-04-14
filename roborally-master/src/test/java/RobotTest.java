@@ -31,7 +31,7 @@ public class RobotTest {
         {"T","T","T","T","T","T","T","T","T","T"},
         {"T","T","T","T","T","T","T","T","T","T"},
         {"T","T","T","T","T","T","T","T","T","T"},
-        {"T","T","T","T","T","T","T","T","T","T"}};
+        };
     Board board = new Board(board1);
     // initiats a robot with everything needed, change this when making a
     // new test that requires a new thing so that we know every test works properly with complicated robots as well.
@@ -157,10 +157,7 @@ public class RobotTest {
     }
     @When("The robots are beside eachother and one robot tries to move through the other")
     public void the_robots_are_beside_eachother_and_one_robot_tries_to_move_through_the_other() {
-        System.out.println("------------------------");
-       
-        
-        robot1.moveforward(true, board);
+       robot1.moveforward(true, board);
         
     }
     @Then("the other robot is pushed")

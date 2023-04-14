@@ -30,6 +30,7 @@ public class Board extends GridPane{
         players = new Player[4];
         nextPlayerIdx = 0;
     }
+    
     public Tile[][] getGrid() {
         return this.grid;
     }
