@@ -12,12 +12,20 @@ C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\controller\Controller.java
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Cards\ProgramCard.java
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Board\TileFactory.java
+<<<<<<< Updated upstream
+=======
+C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Board\TileStart.java
+>>>>>>> Stashed changes
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\roborally\view\TileType.java
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\roborally\view\widgets\ControlPanel.java
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Direction.java
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Player\Player.java
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Rotation.java
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\roborally\view\widgets\Tile.java
+<<<<<<< Updated upstream
+=======
+C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Board\TileType.java
+>>>>>>> Stashed changes
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Board\TileWall.java
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Color.java
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\roborally\view\widgets\Board.java
