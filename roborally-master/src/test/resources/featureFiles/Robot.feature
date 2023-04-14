@@ -48,6 +48,12 @@ Feature: Robot Selection
     Scenario: As a robot, when i move, i want to ocupie the tile i am on.
         Given A robot being created with a color and a checkpoint
         Then i move. The Tile behind me is not ocupied and the tile i moved to is.
+
+    @tag10
+    Scenario: As a robot, I want to be able to shoot a lazer that deals damage
+        Given Two robots being created 
+        When The robots are facing eachother and fire their lazer 
+        Then both robots take dmg.
         
        
         

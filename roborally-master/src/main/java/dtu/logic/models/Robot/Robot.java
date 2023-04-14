@@ -72,8 +72,13 @@ public class Robot {
     public Direction getDirection(){
         return Direction.getDirById(this.DirID); 
     }
+    public void setDir(Direction dir){
+        this.DirID = dir.getId();
+    }
+
 
     public int getDirID(){return this.DirID;}
+
 
     public void turn(int intens){
         if (intens>0){
@@ -131,28 +136,14 @@ public class Robot {
         board.getTileAt(pos).Occupy();
     }
 
-    public void Push(Robot robot,Board board){
-        board.getTileAt(robot.getPos()).unOccupy();
-
-        if (this.DirID == 1){robot.getPos().addX(-1);}
-        else if (this.DirID == 2){robot.getPos().addY(1);}
-        else if (this.DirID == 3){robot.getPos().addX(1);}
-        else if (this.DirID == 4){robot.getPos().addY(-1);}
-        
-        if (robot.pos.getX() < 0 || robot.pos.getX() > 13 ||
-            robot.pos.getY() < 0 || robot.pos.getY()>10){Death();}
-        else{robot.takeDmg();}
-
-        board.getTileAt(robot.getPos()).Occupy();
-        
-        
-    }       
+     
  
     // Damage and live control
     public void Death(){
         this.pos = this.checkpoint;
         this.lives -=1;
         this.damageTaken = 0;
+
     }
     public void takeDmg(){
         this.damageTaken += 1;
@@ -171,7 +162,32 @@ public class Robot {
     public int getLives(){
         return this.lives;
     }
+    // interaction with other robots
+    public void Push(Robot robot,Board board){
+        board.getTileAt(robot.getPos()).unOccupy();
+
+        if (this.DirID == 1){robot.getPos().addX(-1);}
+        else if (this.DirID == 2){robot.getPos().addY(1);}
+        else if (this.DirID == 3){robot.getPos().addX(1);}
+        else if (this.DirID == 4){robot.getPos().addY(-1);}
+        
+        if (robot.pos.getX() < 0 || robot.pos.getX() > 13 ||
+            robot.pos.getY() < 0 || robot.pos.getY()>10){Death();}
+        else{robot.takeDmg();}
+
+        board.getTileAt(robot.getPos()).Occupy();  
+    } 
     
+    public void FIRE(Board board){
+        
+        Lazer lazer = new Lazer(new Position(pos.getX(), pos.getY()),this.getDirection());
+        if (lazer.moveTillHit(board) == true){
+            
+            Robot hitRob = board.getRobotAt(lazer.getPos());
+            
+            hitRob.takeDmg();
+        }
+    }
     //Register handeling
     public void addCardsToRegister(List<ProgramCard> cards) {
         for (ProgramCard c : cards) {

@@ -2,6 +2,7 @@ package dtu.logic.models.Board;
 
 import dtu.logic.models.Position;
 import dtu.logic.models.Player.Player;
+import dtu.logic.models.Robot.Lazer;
 import dtu.logic.models.Robot.Robot;
 import javafx.scene.layout.GridPane;
 
@@ -73,7 +74,7 @@ public class Board extends GridPane{
         return this.players;
     }
     public Tile getTileAt(Position pos) {
-        if (pos.getY()>=0 && pos.getX()>=0 && pos.getX()<14 && pos.getY()<10){
+        if (pos.getY()>=0 && pos.getX()>=0 && pos.getX()<13 && pos.getY()<10){
             return this.grid[pos.getX()][pos.getY()];
         }
         else{
@@ -93,6 +94,21 @@ public class Board extends GridPane{
         }
         else {return true;} 
     }
+
+    //@Overload
+    public boolean allowmove(Lazer lazer){
+        if (getTileAt(lazer.getPos()) instanceof TileWall){
+            TileWall WT = (TileWall) getTileAt(lazer.getPos());
+            if (lazer.getDir().getId() == WT.getDirID()){return false;}   
+        }
+        if (getTileAt(lazer.getPosAhead()) instanceof TileWall){
+            TileWall WT = (TileWall) getTileAt(lazer.getPosAhead());
+            if (Math.abs(lazer.getDir().getId() - WT.getDirID()) == 2){return false;}
+            else{return true;}
+        }
+        else {return true;} 
+    }
+
 
     public Robot getRobotAt(Position pos){
         if (pos.getY()>=0 && pos.getX()>=0 && pos.getX()<14 && pos.getY()<10 && getTileAt(pos).isOcupied() == true){

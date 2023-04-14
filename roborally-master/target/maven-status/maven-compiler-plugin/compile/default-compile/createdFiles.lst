@@ -32,4 +32,5 @@ dtu\roborally\view\widgets\Board.class
 dtu\logic\models\Robot\Robot.class
 dtu\roborally\view\widgets\Tile.class
 dtu\logic\models\Board\Board.class
+dtu\logic\models\Robot\Lazer.class
 dtu\logic\models\Color.class

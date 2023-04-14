@@ -175,4 +175,26 @@ public class RobotTest {
         assertTrue(board.getTileAt(new Position(robot.getPos().getX(),robot.getPos().getY())).isOcupied());
         assertFalse(board.getTileAt(new Position(robot.getPos().getX()+1,robot.getPos().getY())).isOcupied());
 }
+    @When("The robots are facing eachother and fire their lazer")
+    public void the_robots_are_facing_eachother_and_fire_their_lazer() {
+        
+        
+        robot1.setPos(5, 0);
+        
+        robot1.setDir(Direction.RIGHT);
+        robot2.setPos(5, 8);
+        robot2.setDir(Direction.LEFT);
+        board.getTileAt(new Position(5,0)).Occupy();
+        board.getTileAt(new Position(5,8)).Occupy();
+        board.getTileAt(new Position(5,2)).unOccupy();
+        board.getTileAt(new Position(4,2)).unOccupy();
+        
+        robot1.FIRE(board);
+        
+    }
+    @Then("both robots take dmg.")
+    public void both_robots_take_dmg() {
+        assertEquals(0,robot1.getDamageTaken());
+        assertEquals(1,robot2.getDamageTaken());
+}
 }

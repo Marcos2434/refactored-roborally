@@ -1,5 +1,6 @@
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.runner.RunWith;
@@ -141,5 +142,16 @@ public class BoardTest {
         board.addPlayer(player1);
         board.addPlayer(player3);
         assertNull(board.getPlayers()[1]);
+}
+
+    @When("the robots move")
+    public void the_robots_move() {
+        board.addPlayer(player1);
+        robot1.moveforward(true, board);
+        
+    }
+    @Then("The robots position is still the same in playerlist")
+    public void the_robots_position_is_still_the_same_in_playerlist() {
+        assertTrue(board.getPlayers()[0].getRobot().getPos().equals(robot1.getPos()));
 }
 }
