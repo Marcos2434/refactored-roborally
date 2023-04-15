@@ -37,7 +37,24 @@ Feature: Robot Selection
         Given A robot being created with a color and a checkpoint
         When A robot moves over the edge
         Then The robot looses a lifetoken, resets damage and go back to last checkpoint.
-  
+    
+    @tag8
+    Scenario: As a robot, when i move into another robot and have movement left, the other robot is pushed the rest of the way
+        Given Two robots being created 
+        When The robots are beside eachother and one robot tries to move through the other
+        Then the other robot is pushed  
+    
+    @tag9 
+    Scenario: As a robot, when i move, i want to ocupie the tile i am on.
+        Given A robot being created with a color and a checkpoint
+        Then i move. The Tile behind me is not ocupied and the tile i moved to is.
+
+    @tag10
+    Scenario: As a robot, I want to be able to shoot a lazer that deals damage
+        Given Two robots being created 
+        When The robots are facing eachother and fire their lazer 
+        Then both robots take dmg.
+        
        
         
 

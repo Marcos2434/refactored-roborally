@@ -1,8 +1,8 @@
 package dtu.roborally.view.widgets;
 
 
+import dtu.logic.models.Board.TileType;
 import dtu.roborally.view.CardinalPoints;
-import dtu.roborally.view.TileType;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -23,9 +23,9 @@ public class Tile extends Canvas {
 		robotImage = new Image(Tile.class.getClassLoader().getResourceAsStream("robot.png"));
 	}
 	
-	public Tile(TileType type) {
+	public Tile() {
 		super(TILE_SIZE, TILE_SIZE);
-		this.type = type;
+		this.type = TileType.FLOOR;
 		this.image = new Image(getClass().getClassLoader().getResourceAsStream(this.type.getPictureFile()));
 		
 		redraw();
