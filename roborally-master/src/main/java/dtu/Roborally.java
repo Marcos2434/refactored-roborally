@@ -1,7 +1,13 @@
 package dtu;
 
+import java.util.ArrayList;
+import java.util.Random;
+
+import dtu.logic.models.Color;
+import dtu.logic.models.Position;
 //import dtu.roborally.view.CardinalPoints;
 import dtu.logic.models.Board.Board;
+import dtu.logic.models.Robot.Robot;
 import dtu.roborally.view.widgets.ControlPanel;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -28,12 +34,12 @@ public class Roborally extends Application {
             {"T","T","HT","T","T","T","T","T","T","T"},
             {"T","T","HT","T","WT 1","WT 4","T","T","T","T"},
             {"T","T","HT","T","T","T","T","T","T","T"},
+            {"T","T","HT","T","T","C 1","T","T","T","T"},
             {"T","T","HT","T","T","T","T","T","T","T"},
             {"T","T","HT","T","T","T","T","T","T","T"},
             {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","T","T"},
+            {"T","T","HT","T","T","T","T","T","C 3","T"},
+            {"C 2","T","HT","T","T","T","T","T","T","T"},
             {"T","T","HT","T","T","T","T","T","T","T"},
             //Start Field
             {"T","T","T","T","WT 1","WT 1","T","T","T","T"},
@@ -42,6 +48,43 @@ public class Roborally extends Application {
         };
 
         Board board = new Board(board1);
+        
+        Position[] startPositions = new Position[6];
+        
+
+        startPositions[0] = new Position(1, 11);
+        startPositions[1] = new Position(3, 12);
+        startPositions[2]= new Position(4, 11);
+        startPositions[3]= new Position(5, 11);
+        startPositions[4] = new Position(6, 12);
+        startPositions[5] = new Position(8, 11);
+        
+
+        Random randInt = new Random();
+        int randomIndex = randInt.nextInt(startPositions.length);
+        Position randomPosition = startPositions[randomIndex];
+        Robot robot = new Robot(Color.RED, randomPosition, board);
+
+        randomIndex = randInt.nextInt(startPositions.length);
+        randomPosition = startPositions[randomIndex];
+        Robot robot2 = new Robot(Color.BLUE, randomPosition, board);
+
+        randomIndex = randInt.nextInt(startPositions.length);
+        randomPosition = startPositions[randomIndex];
+        Robot robot3 = new Robot(Color.GREEN, randomPosition, board);
+
+        randomIndex = randInt.nextInt(startPositions.length);
+        randomPosition = startPositions[randomIndex];
+        Robot robot4 = new Robot(Color.BLACK, randomPosition, board);
+
+        randomIndex = randInt.nextInt(startPositions.length);
+        randomPosition = startPositions[randomIndex];
+        Robot robot5 = new Robot(Color.PURPLE, randomPosition, board);
+
+        randomIndex = randInt.nextInt(startPositions.length);
+        randomPosition = startPositions[randomIndex];
+        Robot robot6 = new Robot(Color.YELLOW, randomPosition, board);
+
 		
 		ControlPanel cp = new ControlPanel(board);
 		container.setCenter(board);
@@ -51,7 +94,7 @@ public class Roborally extends Application {
 		Scene s = new Scene(container);
 		
 		primaryStage.setScene(s);
-		primaryStage.setTitle("RoboRally - v. 0.1 - Tiles update");
+		primaryStage.setTitle("Tylko jedno w głowie mam");
 		primaryStage.show();
 
 	}

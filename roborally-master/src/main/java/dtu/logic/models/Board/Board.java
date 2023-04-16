@@ -20,7 +20,7 @@ public class Board extends GridPane{
             for (int row = 0; row < 13; row++) { 
                 for (int col = 0; col < 10; col++) {
                         String T = boardGrid[row][col];
-                        this.grid[row][col] = TileFactory.createtile(T);
+                        this.grid[row][col] = TileFactory.createtile(T, col, row);
                         add(this.grid[row][col], col, row);
                         
                 }
@@ -74,8 +74,8 @@ public class Board extends GridPane{
         return this.players;
     }
     public Tile getTileAt(Position pos) {
-        if (pos.getY()>=0 && pos.getX()>=0 && pos.getX()<13 && pos.getY()<10){
-            return this.grid[pos.getX()][pos.getY()];
+        if (pos.getY()>=0 && pos.getX()>=0 && pos.getX()<10 && pos.getY()<13){
+            return this.grid[pos.getY()][pos.getX()];
         }
         else{
             return null;
