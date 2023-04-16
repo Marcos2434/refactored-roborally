@@ -39,7 +39,15 @@ public class Robot {
         this.DirID = 1;
         this.pos = position;
         this.checkpoint = position;
+        this.image = new Image(getClass().getClassLoader().getResourceAsStream(this.color.getPictureFile()));  
+    }
+    public Robot(Color color,Position position, Board board) {
+        this.color = color;
+        this.DirID = 1;
+        this.pos = position;
+        this.checkpoint = position;
         this.image = new Image(getClass().getClassLoader().getResourceAsStream(this.color.getPictureFile()));
+        board.getTileAt(pos).Occupy(image, DirID);    
     }
     // Position and movement
     public void setPos(Position pos) {
@@ -133,7 +141,7 @@ public class Robot {
             this.pos.getY() < 0 || this.pos.getY()>10){Death();}
             
         //update new tile
-        board.getTileAt(pos).Occupy();
+        board.getTileAt(pos).Occupy(image, DirID);
     }
 
      
@@ -175,7 +183,7 @@ public class Robot {
             robot.pos.getY() < 0 || robot.pos.getY()>10){Death();}
         else{robot.takeDmg();}
 
-        board.getTileAt(robot.getPos()).Occupy();  
+        board.getTileAt(robot.getPos()).Occupy(image, DirID);  
     } 
     
     public void FIRE(Board board){
