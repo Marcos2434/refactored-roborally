@@ -20,6 +20,7 @@ public class Controller {
 
     public void createPlayer(Color color,String name) {
         this.p = new Player(new Robot(Color.BLUE,new Position(2,2)),name);
+        System.out.println(name+" has chosen color "+color);
     }
 
     public Player getP() {

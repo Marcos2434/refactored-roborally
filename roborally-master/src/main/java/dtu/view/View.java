@@ -183,10 +183,48 @@ public class View extends Application {
 										}
 										c.createPlayer((Color.RED), red.getText());
 									}
-									
-									
-									// c.createPlayer(checkarray[i].getText());
-									
+									if (checkarray[i].getText().contains("blue")){
+										if (blue.getText().isEmpty()){
+											blue.setText("BLUE");
+										}
+										c.createPlayer((Color.BLUE), blue.getText());
+									}
+									if (checkarray[i].getText().contains("green")){
+										if (green.getText().isEmpty()){
+											green.setText("GREEN");
+										}
+										c.createPlayer((Color.GREEN), green.getText());
+									}
+									if (checkarray[i].getText().contains("yellow")){
+										if (yellow.getText().isEmpty()){
+											yellow.setText("YELLOW");
+										}
+										c.createPlayer((Color.YELLOW), yellow.getText());
+									}
+									if (checkarray[i].getText().contains("orange")){
+										if (orange.getText().isEmpty()){
+											orange.setText("ORANGE");
+										}
+										c.createPlayer((Color.ORANGE), orange.getText());
+									}
+									if (checkarray[i].getText().contains("purple")){
+										if (purple.getText().isEmpty()){
+											purple.setText("PURPLE");
+										}
+										c.createPlayer((Color.PURPLE), purple.getText());
+									}
+									if (checkarray[i].getText().contains("white")){
+										if (white.getText().isEmpty()){
+											white.setText("WHITE");
+										}
+										c.createPlayer((Color.WHITE), white.getText());
+									}
+									if (checkarray[i].getText().contains("black")){
+										if (black.getText().isEmpty()){
+											black.setText("BLACK");
+										}
+										c.createPlayer((Color.BLACK), black.getText());
+									}
 								}
 																
 								// c.createPlayer(colorChoice.getValue().toString());
