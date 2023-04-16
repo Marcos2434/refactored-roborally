@@ -24,12 +24,20 @@ import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.fxml.FXMLLoader;
+import dtu.logic.models.Color;
 
 
 import java.io.IOException;
 //import dtu.logic.Main;
+class Tuple<A, B> {
+    private A first;
+    private B second;
 
+    public Tuple(A first, B second) {
+        this.first = first;
+        this.second = second;
+    }
+}
 
 public class View extends Application {
 
@@ -83,37 +91,33 @@ public class View extends Application {
         RobotViewer rv = new RobotViewer();
 
 		// RED
-		Text r = new Text("Red");
-		TextField red= new TextField("RED");
+		Text r = new Text("RED");
+		TextField red= new TextField();
+		red.setPromptText("Player Name");
 		CheckBox CheckRed = new CheckBox("Is red playing");
 		VBox vboxRED = new VBox(r,red,CheckRed);
 		vboxRED.setPrefSize(125, 200);
 		
 		//BLUE
-		Text b = new Text("Blue");
-		TextField blue= new TextField("BLUE");
+		Text b = new Text("BLUE");
+		TextField blue= new TextField();
+		blue.setPromptText("Player Name");
 		CheckBox CheckBlue = new CheckBox("Is blue playing");
 		VBox vboxBLUE = new VBox(b,blue,CheckBlue);
 		vboxBLUE.setPrefSize(125, 200);
 	
-	
-	
-	
-
-    // GREEN("colors/green.png"),
-    // YELLOW("colors/yellow.png"),
-    
-
 		//GREEN
 		Text g = new Text("GREEN");
-		TextField green= new TextField("GREEN");
+		TextField green= new TextField();
+		green.setPromptText("Player Name");
 		CheckBox CheckGreen = new CheckBox("Is green playing");
 		VBox vboxGREEN = new VBox(g,green,CheckGreen);
 		vboxGREEN.setPrefSize(125, 200);
 
 		//YELLOW
 		Text y = new Text("YELLOW");
-		TextField yellow= new TextField("YELLOW");
+		TextField yellow= new TextField();
+		yellow.setPromptText("Player Name");
 		CheckBox CheckYellow = new CheckBox("Is yellow playing");
 		VBox vboxYELLOW = new VBox(y,yellow,CheckYellow);
 		vboxYELLOW.setPrefSize(125, 200);
@@ -123,28 +127,32 @@ public class View extends Application {
 
 		//ORANGE
 		Text o = new Text("ORANGE");
-		TextField orange= new TextField("ORANGE");
+		TextField orange= new TextField();
+		orange.setPromptText("Player Name");
 		CheckBox CheckOrange = new CheckBox("Is orange playing");
 		VBox vboxORANGE = new VBox(o,orange,CheckOrange);
 		vboxORANGE.setPrefSize(125, 200);
 
 		//PURPLE
 		Text p = new Text("PURPLE");
-		TextField purple= new TextField("PURPLE");
+		TextField purple= new TextField();
+		purple.setPromptText("Player Name");
 		CheckBox CheckPurple = new CheckBox("Is purple playing");
 		VBox vboxPURPLE = new VBox(p,purple,CheckPurple);
 		vboxPURPLE.setPrefSize(125, 200);
 
 		//WHITE
 		Text w = new Text("WHITE");
-		TextField white= new TextField("WHITE");
+		TextField white= new TextField();
+		white.setPromptText("Player Name");
 		CheckBox CheckWhite = new CheckBox("Is white playing");
 		VBox vboxWHITE = new VBox(w,white,CheckWhite);
 		vboxWHITE.setPrefSize(125, 200);
 
 		//BLACK
 		Text bl = new Text("BLACK");
-		TextField black= new TextField("BLACK");
+		TextField black= new TextField();
+		black.setPromptText("Player Name");
 		CheckBox CheckBlack = new CheckBox("Is black playing");
 		VBox vboxBLACK = new VBox(bl,black,CheckBlack);
 		vboxBLACK.setPrefSize(125, 200);
@@ -153,27 +161,46 @@ public class View extends Application {
 
 
 		VBox RGB = new VBox(RGB1,RGB2);
-		// RGB.setPrefSize(500, 400);
+		
+		
+		// Tuple<Text,Boolean>[] checkarray = {(r,CheckRed.isSelected())};
+		CheckBox[] checkarray = {CheckRed,CheckBlue,CheckGreen,CheckYellow,CheckOrange,CheckPurple,CheckWhite,CheckBlack};
+		
+	
 
-		String colors[] = {"RED","ORANGE","YELLOW","BLUE","PURPLE","BLACK","WHITE","GREEN"};
-		ChoiceBox colorChoice = new ChoiceBox(FXCollections.observableArrayList(colors));
- 
         Button createPlayerButton = new Button();
         createPlayerButton.setText("Start Game");
         createPlayerButton.setOnMouseClicked(new EventHandler<Event>() {
 		
             @Override
             public void handle(Event event) {
-                c.createPlayer(colorChoice.getValue().toString());
-                c.getP().getRobot().registerObserver(rv);
-                System.out.println("Player created:" + colorChoice.getValue().toString());
+							//For loop going through all checkboxes
+							for(int i = 0; i < checkarray.length; i++){
+								if (checkarray[i].isSelected()){
+									if (checkarray[i].getText().contains("red")){
+										if (red.getText().isEmpty()){
+											red.setText("RED");
+										}
+										c.createPlayer((Color.RED), red.getText());
+									}
+									
+									
+									// c.createPlayer(checkarray[i].getText());
+									
+								}
+																
+								// c.createPlayer(colorChoice.getValue().toString());
+                // c.getP().getRobot().registerObserver(rv);
+                // System.out.println("Player created:" + colorChoice.getValue().toString());
             }
-        });
+          }
+        }
+			);
 
 
 		menu.setLeft(RGB);
         menu.setBottom(createPlayerButton);
-		menu.setCenter(colorChoice);
+
 		
 		
 		Scene s = new Scene(menu);

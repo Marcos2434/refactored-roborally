@@ -12,6 +12,7 @@ dtu/roborally/view/widgets/ControlPanel$3.class
 dtu/logic/models/Cards/MovementCard$CardName.class
 dtu/logic/models/Board/TileType.class
 dtu/roborally/view/TileType.class
+dtu/view/Tuple.class
 dtu/logic/models/Player/Player.class
 dtu/view/RobotViewer.class
 dtu/logic/models/Position.class

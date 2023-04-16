@@ -18,8 +18,8 @@ public class Controller {
         
     }
 
-    public void createPlayer(String color) {
-        this.p = new Player(new Robot(Color.BLUE,new Position(2,2)),"Casper");
+    public void createPlayer(Color color,String name) {
+        this.p = new Player(new Robot(Color.BLUE,new Position(2,2)),name);
     }
 
     public Player getP() {

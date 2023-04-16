@@ -2,6 +2,7 @@ package dtu;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Arrays;
 
 import dtu.logic.models.Color;
 import dtu.logic.models.Position;
@@ -50,6 +51,14 @@ public class Roborally extends Application {
         Board board = new Board(board1);
         
         Position[] startPositions = new Position[6];
+        int[] vótmá = new int[6];
+        vótmá[0] = 0;
+        vótmá[1] = 0;
+        vótmá[2] = 0;
+        vótmá[3] = 0;
+        vótmá[4] = 0;
+        vótmá[5] = 0;
+
         
 
         startPositions[0] = new Position(1, 11);
@@ -58,34 +67,34 @@ public class Roborally extends Application {
         startPositions[3]= new Position(5, 11);
         startPositions[4] = new Position(6, 12);
         startPositions[5] = new Position(8, 11);
-        
 
         Random randInt = new Random();
         int randomIndex = randInt.nextInt(startPositions.length);
         Position randomPosition = startPositions[randomIndex];
-        Robot robot = new Robot(Color.RED, randomPosition, board);
+        Robot robot = new Robot(Color.RED, startPositions[0], board);
 
         randomIndex = randInt.nextInt(startPositions.length);
         randomPosition = startPositions[randomIndex];
-        Robot robot2 = new Robot(Color.BLUE, randomPosition, board);
+        Robot robot2 = new Robot(Color.BLUE, startPositions[1], board);
 
         randomIndex = randInt.nextInt(startPositions.length);
         randomPosition = startPositions[randomIndex];
-        Robot robot3 = new Robot(Color.GREEN, randomPosition, board);
+        Robot robot3 = new Robot(Color.GREEN, startPositions[2], board);
 
         randomIndex = randInt.nextInt(startPositions.length);
         randomPosition = startPositions[randomIndex];
-        Robot robot4 = new Robot(Color.BLACK, randomPosition, board);
+        Robot robot4 = new Robot(Color.BLACK, startPositions[3], board);
 
         randomIndex = randInt.nextInt(startPositions.length);
         randomPosition = startPositions[randomIndex];
-        Robot robot5 = new Robot(Color.PURPLE, randomPosition, board);
+        Robot robot5 = new Robot(Color.PURPLE, startPositions[4], board);
 
         randomIndex = randInt.nextInt(startPositions.length);
         randomPosition = startPositions[randomIndex];
-        Robot robot6 = new Robot(Color.YELLOW, randomPosition, board);
+        Robot robot6 = new Robot(Color.YELLOW, startPositions[5], board);
+        
 
-		
+        
 		ControlPanel cp = new ControlPanel(board);
 		container.setCenter(board);
 		container.setBottom(cp);

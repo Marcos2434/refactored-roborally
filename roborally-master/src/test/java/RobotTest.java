@@ -148,9 +148,7 @@ public class RobotTest {
     @Given("Two robots being created")
     public void two_robots_being_created() {
         robot1 = new Robot(Color.BLUE,new Position(5,2)); 
-        board.getTileAt(new Position(5,2)).Occupy();
         robot2 = new Robot(Color.RED,new Position(4,2));
-        board.getTileAt(new Position(4,2)).Occupy();
         board.initPlayers();
         board.addPlayer(new Player(robot1,"Casper"));
         board.addPlayer(new Player(robot2,"Marcos"));
@@ -184,8 +182,6 @@ public class RobotTest {
         robot1.setDir(Direction.RIGHT);
         robot2.setPos(5, 8);
         robot2.setDir(Direction.LEFT);
-        board.getTileAt(new Position(5,0)).Occupy();
-        board.getTileAt(new Position(5,8)).Occupy();
         board.getTileAt(new Position(5,2)).unOccupy();
         board.getTileAt(new Position(4,2)).unOccupy();
         
@@ -196,5 +192,5 @@ public class RobotTest {
     public void both_robots_take_dmg() {
         assertEquals(0,robot1.getDamageTaken());
         assertEquals(1,robot2.getDamageTaken());
-}
+    }
 }
