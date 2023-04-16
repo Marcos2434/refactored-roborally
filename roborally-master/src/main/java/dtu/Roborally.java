@@ -50,16 +50,7 @@ public class Roborally extends Application {
 
         Board board = new Board(board1);
         
-        Position[] startPositions = new Position[6];
-        int[] vótmá = new int[6];
-        vótmá[0] = 0;
-        vótmá[1] = 0;
-        vótmá[2] = 0;
-        vótmá[3] = 0;
-        vótmá[4] = 0;
-        vótmá[5] = 0;
-
-        
+        Position[] startPositions = new Position[6];    
 
         startPositions[0] = new Position(1, 11);
         startPositions[1] = new Position(3, 12);
