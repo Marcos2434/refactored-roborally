@@ -49,6 +49,7 @@ public class Roborally extends Application {
         };
 
         Board board = new Board(board1);
+        // Robot robot2 = new Robot(Color.BLUE, new Position(3, 12), board);
         
         Position[] startPositions = new Position[6];    
 
@@ -86,7 +87,7 @@ public class Roborally extends Application {
         
 
         
-		ControlPanel cp = new ControlPanel(board);
+		ControlPanel cp = new ControlPanel(board, robot2);
 		container.setCenter(board);
 		container.setBottom(cp);
 		

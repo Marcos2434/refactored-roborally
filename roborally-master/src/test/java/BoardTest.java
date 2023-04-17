@@ -82,7 +82,7 @@ public class BoardTest {
 
     robot.moveforward(true,board);
     assertEquals(1,robot.getPos().getX());
-    robot.turn(1);
+    robot.turn(1, board);
     robot.moveforward(true,board);
     assertEquals(4,robot.getPos().getY());
 

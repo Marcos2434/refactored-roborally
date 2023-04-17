@@ -18,6 +18,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.TextField;
 import dtu.controller.*;
 import dtu.logic.models.Board.Board;
+import dtu.logic.models.Robot.Robot;
 import dtu.roborally.view.widgets.ControlPanel;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -25,7 +26,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import dtu.logic.models.Color;
-
+import dtu.logic.models.Position;
 
 import java.io.IOException;
 //import dtu.logic.Main;
@@ -62,8 +63,9 @@ public class View extends Application {
         };
 
         Board board = new Board(board1);
+		Robot robot = new Robot(Color.BLUE, new Position(3, 12), board);
 		
-		ControlPanel cp = new ControlPanel(board);
+		ControlPanel cp = new ControlPanel(board, robot);
 		menu.setCenter(board);
 		menu.setBottom(cp);
 		

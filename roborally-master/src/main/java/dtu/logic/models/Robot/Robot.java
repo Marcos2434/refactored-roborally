@@ -88,7 +88,7 @@ public class Robot {
     public int getDirID(){return this.DirID;}
 
 
-    public void turn(int intens){
+    public void turn(int intens, Board board){
         if (intens>0){
             for (int i = 0; i < intens;i++){
                 this.DirID += 1;
@@ -105,6 +105,8 @@ public class Robot {
                 }
             }
         }
+        //update tile
+        board.getTileAt(pos).Occupy(image, DirID);
     }
 
     public Position getPosAhead(){
@@ -131,14 +133,14 @@ public class Robot {
                 }
             }
             // move
-            if (this.DirID == 1){pos.addX(-d);}
-            else if (this.DirID == 2){pos.addY(d);}
-            else if (this.DirID == 3){pos.addX(d);}
-            else if (this.DirID == 4){pos.addY(-d);} 
+            if (this.DirID == 1){pos.addY(-d);}
+            else if (this.DirID == 2){pos.addX(d);}
+            else if (this.DirID == 3){pos.addY(d);}
+            else if (this.DirID == 4){pos.addX(-d);} 
         }
         // check if over the edge
-        if (this.pos.getX() < 0 || this.pos.getX() > 13 ||
-            this.pos.getY() < 0 || this.pos.getY()>10){Death();}
+        if (this.pos.getX() < 0 || this.pos.getY() > 13 ||
+            this.pos.getY() < 0 || this.pos.getX()>10){Death();}
             
         //update new tile
         board.getTileAt(pos).Occupy(image, DirID);

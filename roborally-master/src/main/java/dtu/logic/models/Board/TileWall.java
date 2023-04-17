@@ -13,7 +13,6 @@ public class TileWall extends Tile{
     @Override
     protected void redraw() {
 		GraphicsContext gc = getGraphicsContext2D();
-        gc.transform(new Affine(new Rotate(90*(DirID-0.5), 33, 33)));
 		gc.drawImage(image, 0, 0);
 		
         if (containsRobot) {
@@ -27,6 +26,7 @@ public class TileWall extends Tile{
     public TileWall(TileType type, int dir){
         super(type);
         this.DirID = dir;
+        this.image = new Image("tiles/wall" + DirID + ".png");
         redraw();
 	}
 

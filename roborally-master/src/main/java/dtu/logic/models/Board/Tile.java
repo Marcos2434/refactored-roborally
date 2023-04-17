@@ -61,7 +61,7 @@ private Boolean Ocupied = false;
     public void unOccupy(){
         this.containsRobot = false;
         this.robotImage = null;
-        this.robotDirection = (Integer) null;
+        this.robotDirection = -1;
         redraw();
     }
 

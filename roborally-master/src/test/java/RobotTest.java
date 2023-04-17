@@ -86,22 +86,22 @@ public class RobotTest {
     //Being able to turn and show the direction
     @Then("the robot turns and it can display the direction")
     public void the_robot_turns() {
-        robot.turn(0); //Test of unambigoius input
+        robot.turn(0, board); //Test of unambigoius input
         assertEquals(Direction.UP.getId(), robot.getDirection().getId());
-        robot.turn(1); //Test of turning right
+        robot.turn(1, board); //Test of turning right
         assertEquals(Direction.RIGHT.getId(),robot.getDirection().getId());
-        robot.turn(-1); // Testing leftturn
+        robot.turn(-1, board); // Testing leftturn
         assertEquals(Direction.UP.getId(), robot.getDirection().getId());
-        robot.turn(5); //testing full rotation to the right
+        robot.turn(5, board); //testing full rotation to the right
         assertEquals(Direction.RIGHT.getId(),robot.getDirection().getId());
-        robot.turn(-5); //testing full rotation to the right
+        robot.turn(-5, board); //testing full rotation to the right
         assertEquals(Direction.UP.getId(),robot.getDirection().getId());
     }
     // Check of movement
     @Then("It turns to the right and moves forward and backwards {int} times")
     public void it_turns_to_the_right_and_moves_forward_and_backwards_times(Integer int1) {
             //moving right
-            robot.turn(1);
+            robot.turn(1, board);
             robot.moveforward(true,board);
             assertEquals(5,robot.getPos().getX());
             assertEquals(6,robot.getPos().getY());
@@ -109,7 +109,7 @@ public class RobotTest {
             assertEquals(5,robot.getPos().getX());
             assertEquals(5,robot.getPos().getY());
             //moving down
-            robot.turn(1);
+            robot.turn(1, board);
             robot.moveforward(true,board);
             assertEquals(6,robot.getPos().getX());
             assertEquals(5,robot.getPos().getY());
@@ -117,7 +117,7 @@ public class RobotTest {
             assertEquals(5,robot.getPos().getX());
             assertEquals(5,robot.getPos().getY());
             //moving left
-            robot.turn(1);
+            robot.turn(1, board);
             robot.moveforward(true,board);
             assertEquals(5,robot.getPos().getX());
             assertEquals(4,robot.getPos().getY());
@@ -125,7 +125,7 @@ public class RobotTest {
             assertEquals(5,robot.getPos().getX());
             assertEquals(5,robot.getPos().getY());
             //moving left
-            robot.turn(1);
+            robot.turn(1, board);
             robot.moveforward(true,board);
             assertEquals(4,robot.getPos().getX());
             assertEquals(5,robot.getPos().getY());
@@ -139,7 +139,7 @@ public class RobotTest {
     //Moves over the left edge
     robot.setPos(new Position(0,0));
     robot.takeDmg();
-    robot.turn(-1);
+    robot.turn(-1, board);
     robot.moveforward(true,board);
     
 }
