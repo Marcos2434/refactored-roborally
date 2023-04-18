@@ -45,7 +45,7 @@ public class Position {
     public boolean equals(Object o) {
         if (o instanceof Position){
             Position pos = (Position) o;
-            return this.column == pos.getColumn() && this.row == getRow();
+            return this.column == pos.getColumn() && this.row == pos.getRow();
         }
         else{return false;}
     }
