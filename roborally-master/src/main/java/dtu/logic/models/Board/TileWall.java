@@ -29,6 +29,12 @@ public class TileWall extends Tile{
         this.image = new Image("tiles/wall" + DirID + ".png");
         redraw();
 	}
+    
+    public TileWall(TileType type, int dir, Boolean test){
+        super(type);
+        this.DirID = dir;
+        redraw();
+	}
 
     public void effect(Robot robot){;}
     

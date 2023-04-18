@@ -110,10 +110,10 @@ public class Robot {
     }
 
     public Position getPosAhead(){
-        if (this.DirID == 1){return new Position(this.pos.getX()-1, this.pos.getY());}
-        else if (this.DirID == 2){return new Position(this.pos.getX(), this.pos.getY()+1);}
-        else if (this.DirID == 3){return new Position(this.pos.getX()+1, this.pos.getY());}
-        else if (this.DirID == 4){return new Position(this.pos.getX(), this.pos.getY()-1);}
+        if (this.DirID == 1){return new Position(this.pos.getX(), this.pos.getY()-1);}
+        else if (this.DirID == 2){return new Position(this.pos.getX()+1, this.pos.getY());}
+        else if (this.DirID == 3){return new Position(this.pos.getX(), this.pos.getY()+1);}
+        else if (this.DirID == 4){return new Position(this.pos.getX()-1, this.pos.getY());}
         else {return null;}
     }
 
@@ -139,8 +139,8 @@ public class Robot {
             else if (this.DirID == 4){pos.addX(-d);} 
         }
         // check if over the edge
-        if (this.pos.getX() < 0 || this.pos.getY() > 13 ||
-            this.pos.getY() < 0 || this.pos.getX()>10){Death();}
+        if (this.pos.getY() < 0 || this.pos.getY() > 13 ||
+            this.pos.getX() < 0 || this.pos.getX()>10){Death();}
             
         //update new tile
         board.getTileAt(pos).Occupy(image, DirID);
@@ -176,13 +176,13 @@ public class Robot {
     public void Push(Robot robot,Board board){
         board.getTileAt(robot.getPos()).unOccupy();
 
-        if (this.DirID == 1){robot.getPos().addX(-1);}
-        else if (this.DirID == 2){robot.getPos().addY(1);}
-        else if (this.DirID == 3){robot.getPos().addX(1);}
-        else if (this.DirID == 4){robot.getPos().addY(-1);}
+        if (this.DirID == 1){robot.getPos().addY(-1);}
+        else if (this.DirID == 2){robot.getPos().addX(1);}
+        else if (this.DirID == 3){robot.getPos().addY(1);}
+        else if (this.DirID == 4){robot.getPos().addX(-1);}
         
-        if (robot.pos.getX() < 0 || robot.pos.getX() > 13 ||
-            robot.pos.getY() < 0 || robot.pos.getY()>10){Death();}
+        if (robot.pos.getY() < 0 || robot.pos.getY() > 13 ||
+            robot.pos.getX() < 0 || robot.pos.getX()>10){Death();}
         else{robot.takeDmg();}
 
         board.getTileAt(robot.getPos()).Occupy(image, DirID);  

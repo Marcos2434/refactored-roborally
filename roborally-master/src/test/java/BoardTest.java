@@ -6,7 +6,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.runner.RunWith;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
-
+import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
@@ -26,9 +27,9 @@ public class BoardTest {
     public void a_board_can_be_created() {
         robot = new Robot(Color.BLUE,new Position(5,5));
         this.pos1 = new Position(4,4);
-        this.pos2 = new Position(5,2);
+        this.pos2 = new Position(2, 5);
         this.pos3 = new Position(-1,4);
-        robot.setPos(pos1);
+
         String[][] board1 = {   
             {"T","T","HT","T","T","T","T","T","T","T"},
             {"T","T","HT","T","WT 1","WT 4","T","T","T","T"},
@@ -44,8 +45,9 @@ public class BoardTest {
             {"T","T","HT","T","T","T","T","T","T","T"},
             {"T","T","HT","T","T","T","T","T","T","T"},
         };
-        this.board = new Board(board1);
-      
+        this.board = new Board(board1, true);
+        robot.setPos(pos1);
+        
     }
     // test extraction of tile
     @Then("Show me what Tile it is")
@@ -57,8 +59,8 @@ public class BoardTest {
 
     @When("the robot steps on a holetile")
     public void the_robot_steps_on_a_holetile() {
-    robot.setPos(new Position(0,2));
-    board.getTileAt(robot.getPos()).effect(robot);
+        robot.setPos(new Position(2, 0));
+        board.getTileAt(robot.getPos()).effect(robot);
 }
     @Then("The robot Dies")
     public void the_robot_dies() {
@@ -78,7 +80,7 @@ public class BoardTest {
     // wall interactions
     @Then("the robot tries to move throug a wall and can't move")
     public void the_robot_tries_to_move_throug_a_wall_and_can_t_move() {
-    robot.setPos(new Position(1,4));
+    robot.setPos(new Position(4, 1));
 
     robot.moveforward(true,board);
     assertEquals(1,robot.getPos().getX());
@@ -112,7 +114,7 @@ public class BoardTest {
             {"T","T","HT","T","T","T","T","T","T","T"},
             {"T","T","HT","T","T","T","T","T","T","T"},
             {"T","T","HT","T","T","T","T","T","T","T"},};
-        this.board = new Board(board1);
+        this.board = new Board(board1, true);
         robot1 = new Robot(Color.BLUE,new Position(3,3));
         robot2 = new Robot(Color.GREEN,new Position(3,3));
         robot3 = new Robot(Color.BLUE,new Position(5,3));
