@@ -16,11 +16,8 @@ public class Tile extends Canvas{
    	protected boolean containsRobot;
     protected Direction direction;
     protected Image image;
-	protected static Image robotImage;
-
-    static {
-		robotImage = new Image(Tile.class.getClassLoader().getResourceAsStream("robot.png"));
-	}
+	protected Image robotImage;
+    protected int robotDirection;
 
     public Tile(TileType type) {
 		super(TILE_SIZE, TILE_SIZE);
@@ -39,7 +36,7 @@ public class Tile extends Canvas{
 		
         if (containsRobot) {
         	gc.save();
-        	gc.transform(new Affine(new Rotate(90*(direction.getId()), 33, 33)));
+            gc.transform(new Affine(new Rotate(90*(robotDirection-1), 33, 33)));
 			gc.drawImage(robotImage, 0, 0);
 			gc.restore();
         }
@@ -54,12 +51,18 @@ private Boolean Ocupied = false;
         return this.name;
     }
 
-    public void Occupy(){
-        this.Ocupied = true;
+    public void Occupy(Image robotImage, int rD){
+        this.containsRobot = true;
+        this.robotImage = robotImage;
+        this.robotDirection = rD;
+        redraw();
     }
 
     public void unOccupy(){
-        this.Ocupied = false;
+        this.containsRobot = false;
+        this.robotImage = null;
+        this.robotDirection = (Integer) null;
+        redraw();
     }
 
     public boolean isOcupied(){

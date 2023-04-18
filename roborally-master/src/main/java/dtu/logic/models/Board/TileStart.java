@@ -15,6 +15,6 @@ public class TileStart extends Tile{
     public String getname(){
     
     return this.name;
-}
+    }
 
 }
