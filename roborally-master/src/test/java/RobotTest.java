@@ -143,21 +143,26 @@ public class RobotTest {
     robot.moveforward(true,board);
     
 }
+    Player player1; 
+    Player player2;
     Robot robot1;
     Robot robot2;
     @Given("Two robots being created")
     public void two_robots_being_created() {
         robot1 = new Robot(Color.BLUE,new Position(5,5), board); 
         robot2 = new Robot(Color.RED,new Position(5,4), board);
+        player1 = new Player(robot1,"Casper");
+        player2 = new Player(robot2,"Marcos");
         board.getTileAt(robot1.getPos()).Occupy(robot1.getImage(), robot1.getDirID());
-        board.getTileAt(robot2.getPos()).Occupy(robot2.getImage(), robot1.getDirID());
-        board.initPlayers();
-        board.addPlayer(new Player(robot1,"Casper"));
-        board.addPlayer(new Player(robot2,"Marcos"));
-        System.out.println(board.getPlayers().length);
+        board.getTileAt(robot2.getPos()).Occupy(robot2.getImage(), robot2.getDirID());
+        
+        
     }
     @When("The robots are beside eachother and one robot tries to move through the other")
     public void the_robots_are_beside_eachother_and_one_robot_tries_to_move_through_the_other() {
+        board.initPlayers();
+        board.addPlayer(player1);
+        board.addPlayer(player2);
         robot1.moveforward(true, board);
         
     }
@@ -178,6 +183,12 @@ public class RobotTest {
 }
     @When("The robots are facing eachother and fire their lazer")
     public void the_robots_are_facing_eachother_and_fire_their_lazer() {
+        board.initPlayers();
+        board.addPlayer(player1);
+        board.addPlayer(player2);
+        System.out.println(board.getPlayers()[0]);
+        System.out.println(board.getPlayers()[1]);
+        
         board.getTileAt(robot1.getPos()).unOccupy();
         board.getTileAt(robot2.getPos()).unOccupy();
         

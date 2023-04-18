@@ -96,6 +96,9 @@ public class Board extends GridPane{
             return null;
         }
     }
+    public int getplayeridx(){
+        return nextPlayerIdx;
+    }
     // check if a robot is allowed a move:
     public boolean allowmove(Robot robot){
         if (getTileAt(robot.getPos()) instanceof TileWall){
