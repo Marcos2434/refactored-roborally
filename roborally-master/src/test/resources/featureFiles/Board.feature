@@ -22,6 +22,11 @@ Feature: Boardfunctions
         Given A layout, a board is created. And a position is created
         Then Show me a wall tile
 
+    @tag5 
+        Scenario: A robot walks into a wall and is unable to move
+        Given A layout, a board is created. And a position is created
+        Then the robot tries to move throug a wall and can't move
+
     @tag6
         Scenario: As a Board, i want to be able to add players to the player list.
         Given A Board and four players
@@ -44,8 +49,4 @@ Feature: Boardfunctions
         When the robots move
         Then The robots position is still the same in playerlist
 
-    @tag5 
-        Scenario: A robot walks into a wall and is unable to move
-        Given A layout, a board is created. And a position is created
-        When the robot walks into a wall
-        Then The robot is unable to move
+    
