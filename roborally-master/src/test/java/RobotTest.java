@@ -184,17 +184,10 @@ public class RobotTest {
     @When("The robots are facing eachother and fire their lazer")
     public void the_robots_are_facing_eachother_and_fire_their_lazer() {
         board.initPlayers();
-        System.out.println("_________________");
-        System.out.println(player1.getRobot().getPos().equals(player2.getRobot().getPos()));
-        System.out.println(player1.getRobot().getPos().getColumn());
-        System.out.println(player2.getRobot().getPos().getColumn());
-        System.out.println(player1.getRobot().getPos().getRow());
-        System.out.println(player2.getRobot().getPos().getRow());
+        
         board.addPlayer(player1);
         board.addPlayer(player2);
         
-        System.out.println(board.getPlayers()[0]);
-        System.out.println(board.getPlayers()[1]);
         
         board.getTileAt(robot1.getPos()).unOccupy();
         board.getTileAt(robot2.getPos()).unOccupy();

@@ -57,13 +57,13 @@ public class Board extends GridPane{
         for (int j = 0; j < nextPlayerIdx; j++){
             if (players[j].getRobot().getColor()  ==  (player.getRobot().getColor())){
                 allowed = false;
-                System.out.println("Color chack");
+               
             }
         }
         for (int i = 0; i < nextPlayerIdx; i++){
             if (players[i].getRobot().getPos()  .equals  (player.getRobot().getPos())){
                 allowed = false;
-                System.out.println("Coordinate check");
+              
             }
         }
         if (allowed){
