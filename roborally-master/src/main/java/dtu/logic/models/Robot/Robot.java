@@ -29,7 +29,9 @@ public class Robot {
             observer.updateCoords(pos);
         }
     }
-
+    public Image getImage(){
+        return image;
+    }
     public void registerObserver(RobotObserver observer) {
         observers.add(observer);
     }
@@ -63,11 +65,11 @@ public class Robot {
     }
 
     public int getX() {
-        return pos.getX();
+        return pos.getColumn();
     }
 
     public int getY() {
-        return pos.getY();
+        return pos.getRow();
     }
 
     public void setCheckpoint(Position pos){
@@ -110,10 +112,10 @@ public class Robot {
     }
 
     public Position getPosAhead(){
-        if (this.DirID == 1){return new Position(this.pos.getX(), this.pos.getY()-1);}
-        else if (this.DirID == 2){return new Position(this.pos.getX()+1, this.pos.getY());}
-        else if (this.DirID == 3){return new Position(this.pos.getX(), this.pos.getY()+1);}
-        else if (this.DirID == 4){return new Position(this.pos.getX()-1, this.pos.getY());}
+        if (this.DirID == 1){return new Position(this.pos.getColumn(), this.pos.getRow()-1);}
+        else if (this.DirID == 2){return new Position(this.pos.getColumn()+1, this.pos.getRow());}
+        else if (this.DirID == 3){return new Position(this.pos.getColumn(), this.pos.getRow()+1);}
+        else if (this.DirID == 4){return new Position(this.pos.getColumn()-1, this.pos.getRow());}
         else {return null;}
     }
 
@@ -139,8 +141,8 @@ public class Robot {
             else if (this.DirID == 4){pos.addX(-d);} 
         }
         // check if over the edge
-        if (this.pos.getY() < 0 || this.pos.getY() > 13 ||
-            this.pos.getX() < 0 || this.pos.getX()>10){Death();}
+        if (this.pos.getRow() < 0 || this.pos.getRow() > 13 ||
+            this.pos.getColumn() < 0 || this.pos.getColumn()>10){Death();}
             
         //update new tile
         board.getTileAt(pos).Occupy(image, DirID);
@@ -182,8 +184,8 @@ public class Robot {
         else if (this.DirID == 3){robot.getPos().addY(1);}
         else if (this.DirID == 4){robot.getPos().addX(-1);}
         
-        if (robot.pos.getY() < 0 || robot.pos.getY() > 13 ||
-            robot.pos.getX() < 0 || robot.pos.getX()>10){Death();}
+        if (robot.pos.getRow() < 0 || robot.pos.getRow() > 13 ||
+            robot.pos.getColumn() < 0 || robot.pos.getColumn()>10){Death();}
         else{robot.takeDmg();}
 
         board.getTileAt(robot.getPos()).Occupy(image, DirID);  
@@ -191,7 +193,7 @@ public class Robot {
     
     public void FIRE(Board board){
         
-        Lazer lazer = new Lazer(new Position(pos.getX(), pos.getY()),this.getDirection());
+        Lazer lazer = new Lazer(new Position(pos.getColumn(), pos.getRow()),this.getDirection());
         if (lazer.moveTillHit(board) == true){
             
             Robot hitRob = board.getRobotAt(lazer.getPos());
@@ -216,11 +218,11 @@ public class Robot {
     }
 
     public void setX(int x){
-        pos.setX(x);
+        pos.setColumn(x);
     }
 
     public void setY(int y){
-        pos.setY(y);
+        pos.setRow(y);
     }
 
     @Override

@@ -1,4 +1,9 @@
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
+
+import static org.junit.Assert.assertNotNull;
 
 import java.util.ArrayList;
 
@@ -60,12 +65,14 @@ public class Cards9Test {
         }
         @Then("The player has {int} cards in the register")
         public void the_player_has_cards_in_the_register(Integer int1) {
-            testPlayer.getRobot().register.size();
+            assertEquals(5, testPlayer.getRobot().register.size());
+            //testPlayer.getRobot().register.size();
         }
 
         @Then("The cards are shuffeled")
         public void the_cards_are_shuffeled() {
             testPlayer.drawProgrammingCards();
             testPlayer.getDeck().shuffleDeck(testPlayer.getDeck().cards);
+            assertNotNull(testPlayer.getDeck());
         }
 }

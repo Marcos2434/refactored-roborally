@@ -1,51 +1,51 @@
 package dtu.logic.models;
 
 public class Position {
-    private int x;
-    private int y;
+    private int column;
+    private int row;
 
-    public Position(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public Position(int column, int row) {
+        this.column = column;
+        this.row = row;
     }
 
-    public int getX() {
-        return x;
+    public int getColumn() {
+        return column;
     }
 
-    public int getY() {
-        return y;
+    public int getRow() {
+        return row;
     }
 
     public void addX(int x) {
-        this.x += x;
+        this.column += x;
     }
 
     public void addY(int y) {
-        this.y += y;
+        this.row += y;
     }
 
-    public void setX(int x) {
-        this.x = x;
+    public void setColumn(int x) {
+        this.column = x;
     }
 
-    public void setY(int y) {
-        this.y = y;
+    public void setRow(int y) {
+        this.row = y;
     }
 
     public void set(int x, int y) {
-        this.x = x;
-        this.y = y;
+        this.column = x;
+        this.row = y;
     }
 
     public String toString() {
-        return "(" + this.x + ", " + this.y + ")";
+        return "(" + this.column + ", " + this.row + ")";
     }
     @Override
     public boolean equals(Object o) {
         if (o instanceof Position){
             Position pos = (Position) o;
-            return this.x == pos.getX() && this.y == getY();
+            return this.column == pos.getColumn() && this.row == getRow();
         }
         else{return false;}
     }

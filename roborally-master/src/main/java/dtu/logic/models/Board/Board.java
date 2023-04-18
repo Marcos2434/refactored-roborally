@@ -89,8 +89,8 @@ public class Board extends GridPane{
         return this.players;
     }
     public Tile getTileAt(Position pos) {
-        if (pos.getY()>=0 && pos.getX()>=0 && pos.getX()<10 && pos.getY()<13){
-            return this.grid[pos.getY()][pos.getX()];
+        if (pos.getRow()>=0 && pos.getColumn()>=0 && pos.getColumn()<10 && pos.getRow()<13){
+            return this.grid[pos.getRow()][pos.getColumn()];
         }
         else{
             return null;
@@ -102,6 +102,7 @@ public class Board extends GridPane{
             TileWall WT = (TileWall) getTileAt(robot.getPos());
             if (robot.getDirID() == WT.getDirID()){return false;}   
         }
+        
         if (getTileAt(robot.getPosAhead()) instanceof TileWall){
             TileWall WT = (TileWall) getTileAt(robot.getPosAhead());
             if (Math.abs(robot.getDirID() - WT.getDirID()) == 2){return false;}
@@ -126,10 +127,10 @@ public class Board extends GridPane{
 
 
     public Robot getRobotAt(Position pos){
-        if (pos.getY()>=0 && pos.getX()>=0 && pos.getX()<14 && pos.getY()<10 && getTileAt(pos).isOcupied() == true){
+        if (pos.getRow()>=0 && pos.getColumn()>=0 && pos.getColumn()<13 && pos.getRow()<10 && getTileAt(pos).isOcupied() == true){
             
-            for (int i=0; i<players.length; i++){
-                if (players[i].getRobot().getPos().getX() == pos.getX() && players[i].getRobot().getPos().getY() == pos.getY()){
+            for (int i=0; i<nextPlayerIdx; i++){
+                if (players[i].getRobot().getPos().getColumn() == pos.getColumn() && players[i].getRobot().getPos().getRow() == pos.getRow()){
                     return players[i].getRobot();
                 }
                 else{;}
