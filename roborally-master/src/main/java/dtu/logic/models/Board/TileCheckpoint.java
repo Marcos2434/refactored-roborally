@@ -20,6 +20,7 @@ public class TileCheckpoint extends Tile{
 		
         if (containsRobot) {
         	gc.save();
+            gc.transform(new Affine(new Rotate(90*(robotDirection-1), 33, 33)));
 			gc.drawImage(robotImage, 0, 0);
 			gc.restore();
         }

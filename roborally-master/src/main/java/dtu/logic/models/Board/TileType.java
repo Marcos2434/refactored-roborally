@@ -6,7 +6,7 @@ public enum TileType {
 	HOLE("tiles/pit.png"),
 	ACID("tiles/acid.png"),
 	RADIATION("tiles/radiation.png"),
-	WALL("tiles/wall.png"),
+	WALL("tiles/wall1.png"),
 	START("tiles/start.png"),
 	CHECKPOINT("tiles/checkpoint1.png");
 	
