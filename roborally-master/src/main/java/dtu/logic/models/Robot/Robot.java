@@ -150,10 +150,11 @@ public class Robot {
  
     // Damage and live control
     public void Death(){
+        // board.getTileAt(pos).unOccupy();
         this.pos = this.checkpoint;
         this.lives -=1;
         this.damageTaken = 0;
-
+        // board.getTileAt(pos).Occupy(image, DirID);
     }
     public void takeDmg(){
         this.damageTaken += 1;

@@ -23,6 +23,7 @@ public class ControlPanel extends GridPane {
 	private Button turnL = new Button("\u21B6");
 	private Button turnR = new Button("\u21B7");
 	private Button uTurn = new Button("\u27F2");
+	private Button rekt = new Button("\u2716");
 	
 	public ControlPanel(Board board, Robot robot) {
 		this.board = board;
@@ -42,6 +43,7 @@ public class ControlPanel extends GridPane {
 		add(moveB1, 2, 2);
 		add(moveB2, 1, 2);
 		add(moveB3, 3, 2);
+		add(rekt, 4, 1);
 		
 		ColumnConstraints firstCol = new ColumnConstraints();
 		firstCol.setHgrow(Priority.ALWAYS);
@@ -116,6 +118,13 @@ public class ControlPanel extends GridPane {
 			@Override
 			public void handle(ActionEvent event) {
 				robot.turn(1, board);;
+			}
+		});
+
+		rekt.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				robot.Death();
 			}
 		});
 	}

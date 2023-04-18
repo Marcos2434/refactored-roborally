@@ -36,6 +36,7 @@ dtu/logic/models/Rotation.class
 dtu/roborally/view/widgets/ControlPanel$2.class
 dtu/logic/models/Board/TileFactory.class
 dtu/roborally/view/widgets/ControlPanel$8.class
+dtu/roborally/view/widgets/ControlPanel$10.class
 dtu/logic/models/Color.class
 dtu/roborally/view/widgets/Tile.class
 dtu/logic/models/Board/Board.class
