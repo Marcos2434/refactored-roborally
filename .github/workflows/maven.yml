@@ -27,6 +27,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Test Code !
+      run: cd roborally-master
       run: mvn clean test
 
 
