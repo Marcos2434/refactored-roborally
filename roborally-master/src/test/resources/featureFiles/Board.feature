@@ -49,4 +49,10 @@ Feature: Boardfunctions
         When the robots move
         Then The robots position is still the same in playerlist
 
-    
+    @tag10
+        Scenario: As a Lazertile i want to be a walltile that can shoot a lazer.
+        Given A Board and four players
+        When A robot is placed to be hit by the lazer tile
+        Then The robot takes damge
+        When A robot tries to move trough the wall
+        Then It is unable to

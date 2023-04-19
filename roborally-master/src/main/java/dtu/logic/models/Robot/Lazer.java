@@ -7,11 +7,13 @@ import dtu.logic.models.Board.Board;
 public class Lazer {
     private Position pos;
     private Direction Dir;
-
+    private int DirID;
     public Lazer(Position pos, Direction dir){
         this.pos = pos;
         this.Dir = dir;
+        this.DirID = dir.getId();
     }
+
     public void setPos(Position pos) {
         this.pos = pos;
     }
@@ -19,12 +21,22 @@ public class Lazer {
         return pos;
     }
 
-    public void setDir(Position pos) {
-        this.pos = pos;
+    public void setDir(Direction dir) {
+        this.Dir = dir;
     }
 
     public Direction getDir(){
         return this.Dir;
+    }
+    public void Uturn(){
+        for (int i=0; i<2;i++){
+            this.DirID +=1;
+            setDir(Direction.getDirById(DirID));
+            if (DirID > 4){
+                this.DirID =1;
+                setDir(Direction.UP); 
+            }
+        }
     }
     public Position getPosAhead(){
         if (this.Dir == Direction.UP){return new Position(this.pos.getColumn()-1, this.pos.getRow());}
@@ -34,6 +46,7 @@ public class Lazer {
         else {return null;}
     }
     public boolean moveTillHit(Board board){
+      
         for (int i = 0; i <=13;i++){
             
             if (board.allowmove(this)){

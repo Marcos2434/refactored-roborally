@@ -1,7 +1,7 @@
 package dtu.logic.models.Board;
 
 import dtu.logic.models.Position;
-
+import dtu.logic.models.Direction;
 public class TileFactory {
     public static Tile createtile(String T, int col, int row){
         String[] tiles = T.split(" ");
@@ -15,6 +15,12 @@ public class TileFactory {
         else if (tiles[0].trim().equals("WT")){ 
             
             return new TileWall(TileType.WALL, Integer.parseInt(tiles[1]));
+            
+        }
+
+        else if (tiles[0].trim().equals("LT")){ 
+            System.out.println("Created lazer tile");
+            return new TileLazer(TileType.LAZER, Direction.getDirById(Integer.parseInt(tiles[1])),new Position(col,row));
             
         }
          
@@ -44,7 +50,11 @@ public class TileFactory {
         else if (tiles[0].trim().equals("WT")){ 
             
             return new TileWall(TileType.WALL, Integer.parseInt(tiles[1]), test);
+        }
+
+        else if (tiles[0].trim().equals("LT")){ 
             
+            return new TileLazer(TileType.LAZER, Direction.getDirById(Integer.parseInt(tiles[1])),new Position(col,row),test);
         }
          
         else if (tiles[0].trim().equals("S")){ 

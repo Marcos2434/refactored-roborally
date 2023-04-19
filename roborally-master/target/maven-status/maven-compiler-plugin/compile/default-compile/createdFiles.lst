@@ -13,6 +13,7 @@ dtu\view\RobotViewer.class
 dtu\roborally\view\widgets\ControlPanel$4.class
 dtu\logic\models\Rotation.class
 dtu\logic\models\Board\TileFactory.class
+dtu\logic\models\Board\TileLazer.class
 dtu\logic\models\Robot\Robot.class
 dtu\roborally\view\widgets\Tile.class
 dtu\logic\models\Robot\Lazer.class
@@ -31,6 +32,7 @@ dtu\view\View.class
 dtu\roborally\view\widgets\ControlPanel$10.class
 dtu\logic\models\Cards\ProgramCard.class
 dtu\logic\models\Player\Player.class
+dtu\logic\models\Robot\MoveableObj.class
 dtu\logic\models\Board\Tile.class
 dtu\logic\models\Board\TileType.class
 dtu\roborally\view\widgets\ControlPanel$7.class
