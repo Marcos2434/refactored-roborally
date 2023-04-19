@@ -106,8 +106,8 @@ public class BoardTest {
             {"T","T","HT","T","T","T","T","T","T","T"},
             {"T","T","HT","T","WT 1","WT 4","T","T","T","T"},
             {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"},
+            {"T","T","BT 3 1","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"},
             {"T","LT 4","T","T","T","T","T","T","T","T"},
@@ -182,5 +182,19 @@ public class BoardTest {
     public void it_is_unable_to() {
         assertEquals(0,robot1.getPos().getColumn());
 }
-
+    @When("A robot is placed on the BeltTile")
+    public void a_robot_is_placed_on_the_belt_tile() {
+        board.moveRobot(robot1,new Position(2,4));
+        Tile tile =  board.getTileAt(robot1.getPos());
+        if (tile instanceof TileBelt){
+            System.out.println("Tilebelt");
+            TileBelt BT = (TileBelt) tile;
+            BT.effect(robot1,board);
+        }
+        
+    }
+    @Then("The robot is pushed in the direction of the belt.")
+    public void the_robot_is_pushed_in_the_direction_of_the_belt() {
+        assertEquals(5,robot1.getPos().getRow());
+}
 }
