@@ -6,6 +6,7 @@ import dtu.logic.models.Direction;
 import dtu.logic.models.Position;
 import dtu.logic.models.Board.Board;
 import dtu.logic.models.Board.Tile;
+import dtu.logic.models.Cards.Card;
 import dtu.logic.models.Cards.ProgramCard;
 import javafx.scene.image.Image;
 import java.util.ArrayList;
@@ -229,5 +230,38 @@ public class Robot {
     public String toString() {
         return this.color.toString();
     }
+
+    public void move(Board board, ProgramCard card){
+        if (card.name=="FORWARDS"){
+            if (card.intensity==1){
+                this.moveforward(true,board);
+            }
+            if (card.intensity==2){
+                this.moveforward(true,board);
+                this.moveforward(true,board);
+            }
+            if (card.intensity==3){
+                this.moveforward(true,board);
+                this.moveforward(true,board);
+                this.moveforward(true,board);
+            }
+            
+        }
+        if (card.name=="BACKWARDS"){
+            this.moveforward(false,board);
+        }  
+        if (card.name=="RIGHT"){
+            this.turn(1,board);
+        }
+        if (card.name=="LEFT"){
+            this.turn(-1,board);
+        }
+        if (card.name=="UTURN"){
+            this.turn(2,board);
+        }
+
+        
+    }
+    
 
 }  
