@@ -7,6 +7,7 @@ import dtu.logic.models.Position;
 import javafx.stage.Stage;
 import dtu.view.BoardScene;
 import dtu.view.MenuScene;
+import dtu.view.ProgrammingPhaseScene;
 import javafx.scene.Scene;
 
 public class Controller {
@@ -17,6 +18,7 @@ public class Controller {
     // --- Scenes ---
     private MenuScene menuScene;
     private BoardScene boardScene;
+    private ProgrammingPhaseScene programmingPhaseScene;
     // --------------
     private Stage primaryStage;
 
@@ -26,7 +28,9 @@ public class Controller {
     }
 
     public void launch() {
-        this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
+        //this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
+        this.setTheScene(this.getProgrammingPhaseScene(), "Roborally - Programming Phase");
+
     }
 
     public void createPlayer(Color color, String name) {
@@ -64,6 +68,13 @@ public class Controller {
         this.primaryStage.setScene(s);
         primaryStage.setTitle(title);
         this.primaryStage.show();
+    }
+
+    public void setProgrammingPhaseScene(ProgrammingPhaseScene programmingPhaseScene) {
+    }
+
+    public ProgrammingPhaseScene getProgrammingPhaseScene() {
+        return programmingPhaseScene;
     }
 
 }

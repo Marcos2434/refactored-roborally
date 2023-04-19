@@ -106,9 +106,6 @@ public class MenuScene extends Scene {
 		
 		// Tuple<Text,Boolean>[] checkarray = {(r,CheckRed.isSelected())};
 		CheckBox[] checkarray = {CheckRed,CheckBlue,CheckGreen,CheckYellow,CheckOrange,CheckPurple,CheckWhite,CheckBlack};
-		
-	
-
         Button createPlayerButton = new Button();
         createPlayerButton.setText("Start Game");
         createPlayerButton.setOnMouseClicked(new EventHandler<Event>() {

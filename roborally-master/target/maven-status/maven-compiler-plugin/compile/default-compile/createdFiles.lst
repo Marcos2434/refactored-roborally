@@ -36,6 +36,7 @@ dtu/roborally/view/widgets/ControlPanel$9.class
 dtu/logic/models/Cards/Deck.class
 dtu/view/View.class
 dtu/roborally/view/widgets/ControlPanel$3.class
+dtu/view/ProgrammingPhaseScene.class
 dtu/view/BoardScene.class
 dtu/logic/models/Board/Tile.class
 dtu/roborally/view/widgets/ControlPanel$4.class

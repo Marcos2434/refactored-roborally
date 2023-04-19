@@ -15,6 +15,9 @@ public class View extends Application {
 		
 		BoardScene boardScene = new BoardScene(c);
 		c.setBoardScene(boardScene);
+
+		ProgrammingPhaseScene programmingPhaseScene = new ProgrammingPhaseScene(c);
+		c.setProgrammingPhaseScene(programmingPhaseScene);
 		// ---------------------
 
 		c.launch(); // => Launches main menu screen
