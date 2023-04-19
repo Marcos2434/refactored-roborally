@@ -39,7 +39,7 @@ public class BoardScene extends Scene {
             {"T","T","HT","T","T","C 1","T","T","T","T"},
             {"T","T","HT","T","T","T","T","T","T","T"},
             {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","T","T"},
+            {"T","T","HT","T","LT 4","T","T","T","T","T"},
             {"T","T","HT","T","T","T","T","T","C 3","T"},
             {"C 2","T","HT","T","T","T","T","T","T","T"},
             {"T","T","HT","T","T","T","T","T","T","T"},

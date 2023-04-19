@@ -12,6 +12,8 @@ public class TileLazer extends TileWall{
     public TileLazer(TileType Type,Direction dir,Position pos){
         super(Type,dir.getId());
         this.pos = pos;
+        this.image = new Image("tiles/Lazer" + DirID + ".png");
+        redraw();
     }
     public TileLazer(TileType Type,Direction dir,Position pos,boolean test){
         super(Type,dir.getId(),test);
