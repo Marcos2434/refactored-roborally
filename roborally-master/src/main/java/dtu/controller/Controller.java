@@ -26,12 +26,15 @@ public class Controller {
     }
 
     public void launch() {
-        this.setTheScene(this.getBoardScene(), "Roborally - Main Menu");
+        this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
     }
 
     public void createPlayer(Color color, String name) {
         this.p = new Player(new Robot(Color.BLUE,new Position(2,2)),name);
         System.out.println(name+" has chosen color "+color);
+    };
+    public void changeToBoardScene(){
+        this.setTheScene(this.getBoardScene(), "Game!");
     }
 
     public Player getP() {
