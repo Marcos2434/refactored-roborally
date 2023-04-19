@@ -42,41 +42,6 @@ class Tuple<A, B> {
 }
 
 public class View extends Application {
-	void launchBoard(Stage primaryStage)throws Exception{
-		BorderPane menu = new BorderPane();
-
-		String[][] board1 = {
-            {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","WT 1","WT 4","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","T","C 1","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","C 3","T"},
-            {"C 2","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","T","T"},
-            //Start Field
-            {"T","T","T","T","WT 1","WT 1","T","T","T","T"},
-            {"T","S","WT 4","T","S","S","T","WT 2","S","T"},
-            {"T","T","T","S","T","T","S","T","T","T"},
-        };
-
-        Board board = new Board(board1);
-		Robot robot = new Robot(Color.BLUE, new Position(3, 12), board);
-		
-		ControlPanel cp = new ControlPanel(board, robot);
-		menu.setCenter(board);
-		menu.setBottom(cp);
-		
-		
-		Scene s = new Scene(menu);
-		
-		primaryStage.setScene(s);
-		primaryStage.setTitle("");
-		primaryStage.show();
-	}
-
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		Controller c = new Controller(primaryStage);
@@ -84,6 +49,9 @@ public class View extends Application {
 		// --- Define Scenes ---
 		MenuScene menuScene = new MenuScene(c);
 		c.setMenuScene(menuScene);
+		
+		BoardScene boardScene = new BoardScene(c);
+		c.setBoardScene(boardScene);
 		// ---------------------
 
 		c.launch(); // => Launches main menu screen

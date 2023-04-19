@@ -6,7 +6,7 @@ import dtu.logic.models.Robot.Robot;
 import dtu.logic.models.Color;
 import dtu.logic.models.Position;
 import javafx.stage.Stage;
-
+import dtu.view.BoardScene;
 import dtu.view.MenuScene;
 import javafx.scene.Scene;
 
@@ -17,6 +17,7 @@ public class Controller {
 
     // --- Scenes ---
     private MenuScene menuScene;
+    private BoardScene boardScene;
     // --------------
     private Stage primaryStage;
 
@@ -26,10 +27,10 @@ public class Controller {
     }
 
     public void launch() {
-        this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
+        this.setTheScene(this.getBoardScene(), "Roborally - Main Menu");
     }
 
-    public void createPlayer(Color color,String name) {
+    public void createPlayer(Color color, String name) {
         this.p = new Player(new Robot(Color.BLUE,new Position(2,2)),name);
         System.out.println(name+" has chosen color "+color);
     }
@@ -50,6 +51,14 @@ public class Controller {
         this.primaryStage.setScene(s);
         primaryStage.setTitle("Roborally - v. 0.1");
         this.primaryStage.show();
+    }
+
+    public BoardScene getBoardScene() {
+        return boardScene;
+    }
+
+    public void setBoardScene(BoardScene boardScene) {
+        this.boardScene = boardScene;
     }
 
     public void setTheScene(Scene s, String title) {
