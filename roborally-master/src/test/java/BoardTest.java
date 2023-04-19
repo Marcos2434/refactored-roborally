@@ -30,7 +30,7 @@ public class BoardTest {
         this.pos2 = new Position(2, 4);
         this.pos3 = new Position(4,-1);
         
-
+//
         String[][] board1 = {   
             {"T","T","HT","T","T","T","T","T","T","T"},
             {"T","T","HT","T","WT 1","WT 4","T","T","T","T"},

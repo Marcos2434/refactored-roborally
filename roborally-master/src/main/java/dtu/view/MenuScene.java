@@ -161,7 +161,9 @@ public class MenuScene extends Scene {
 											black.setText("BLACK");
 										}
 										c.createPlayer((Color.BLACK), black.getText());
+										
 									}
+									c.changeToBoardScene();
 								}
 																
 								// this.c.createPlayer(colorChoice.getValue().toString());
