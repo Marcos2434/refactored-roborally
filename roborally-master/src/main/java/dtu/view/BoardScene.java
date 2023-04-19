@@ -28,6 +28,7 @@ public class BoardScene extends Scene {
         this.initialize();
         this.c = c;
     }
+    
 
     private void initialize() {
         BorderPane boardPane = (BorderPane) this.getRoot();

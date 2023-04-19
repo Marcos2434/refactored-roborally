@@ -13,7 +13,6 @@ dtu\view\RobotViewer.class
 dtu\roborally\view\widgets\ControlPanel$4.class
 dtu\logic\models\Rotation.class
 dtu\logic\models\Board\TileFactory.class
-dtu\logic\models\Board\TileLazer.class
 dtu\logic\models\Robot\Robot.class
 dtu\roborally\view\widgets\Tile.class
 dtu\logic\models\Robot\Lazer.class
