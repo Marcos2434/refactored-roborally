@@ -26,7 +26,7 @@ public class Controller {
     }
 
     public void launch() {
-        this.setTheScene(this.getBoardScene(), "Roborally - Main Menu");
+        this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
     }
 
     public void createPlayer(Color color, String name) {
