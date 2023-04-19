@@ -8,7 +8,8 @@ public enum TileType {
 	RADIATION("tiles/radiation.png"),
 	WALL("tiles/wall1.png"),
 	START("tiles/start.png"),
-	CHECKPOINT("tiles/checkpoint1.png");
+	CHECKPOINT("tiles/checkpoint1.png"),
+	LAZER("tiles/checkpoint1.png");
 	
 	private String pictureFile;
 	

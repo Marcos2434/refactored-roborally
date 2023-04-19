@@ -42,6 +42,20 @@ public class Board extends GridPane{
             }
         }
     }
+
+    public void fireLazers(){
+        for (int i=0; i<13; i++){
+            for (int j=0; j<10; j++){
+                Tile tile = getTileAt(new Position(i,j));
+                if (tile instanceof TileLazer){
+                    TileLazer TL = (TileLazer)tile;
+                    TL.FIRE(this);
+                }
+
+            }
+        }
+    }
+
     public void initPlayers(){
         players = new Player[4];
         nextPlayerIdx = 0;
