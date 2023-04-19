@@ -235,22 +235,23 @@ public class View extends Application {
             }
           }
         }
-			);
+		);
 
 
 		menu.setLeft(RGB);
         menu.setBottom(createPlayerButton);
 
 
-
-		
-		
 		Scene s = new Scene(menu);
 		BorderPane cards = new BorderPane();
 		Scene s1 = new Scene(cards);
 		primaryStage.setScene(s);
 		primaryStage.setTitle("RoboRally - v. 0.1 - Papers, please");
 		primaryStage.show();
+
+
+		// Show game screen (board)
+		
 
 	}
 	
