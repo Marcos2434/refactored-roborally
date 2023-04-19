@@ -71,6 +71,11 @@ public class Board extends GridPane{
             nextPlayerIdx++;
         }
     }
+    public void moveRobot(Robot robot,Position pos){
+        getTileAt(robot.getPos()).unOccupy();
+        robot.setPos(pos);
+        getTileAt(robot.getPos()).Occupy(robot.getImage(),robot.getDirID());
+    }
     public void removePlayer(Player player){
         for (int i = 0; i < players.length;i++){
             if (players[i].getName().equals(player.getName())){

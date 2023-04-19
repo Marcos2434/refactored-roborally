@@ -42,9 +42,9 @@
 				<version>0.0.5</version>
 				<configuration>
 					<!-- Marcos's login panel -->
-					<!-- <mainClass>dtu.view.View</mainClass> -->
+					<mainClass>dtu.view.View</mainClass>
 					<!-- Adam's board -->
-					<mainClass>dtu.Roborally</mainClass>
+					<!--<mainClass>dtu.Roborally</mainClass>-->
 				</configuration>
 			</plugin>
 		</plugins>
