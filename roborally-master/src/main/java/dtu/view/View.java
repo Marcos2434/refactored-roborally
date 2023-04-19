@@ -73,42 +73,23 @@ public class View extends Application {
 		Scene s = new Scene(menu);
 		
 		primaryStage.setScene(s);
-		primaryStage.setTitle("Tylko jedno w głowie mam");
+		primaryStage.setTitle("");
 		primaryStage.show();
 	}
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		Controller c = new Controller(primaryStage);
 		
-		
-		// Create controller
-		Controller c = new Controller();
-		// Launch controller
-		c.launch(); // create board... etc.
-		
-		// Ex. Tell controller to move robot
-		
+		// --- Define Scenes ---
 		MenuScene menuScene = new MenuScene(c);
 		c.setMenuScene(menuScene);
-		
+		// ---------------------
 
-
-
-		primaryStage.setScene(c.getMenuScene());
-		primaryStage.setTitle("RoboRally - v. 0.1");
-		primaryStage.show();
-
-
-		// Show game screen (board)
-
-
+		c.launch(); // => Launches main menu screen
 	}
 	
-
-	
-
 	public static void main(String[] args) {
-		// Launch GUI
-		launch(args);
+		launch(args); // Launch GUI
 	}
 }
