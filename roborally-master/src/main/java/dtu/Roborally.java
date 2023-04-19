@@ -90,7 +90,9 @@ public class Roborally extends Application {
         // Robot robot6 = new Robot(Color.YELLOW, startPositions[5], board);
         
 
-        
+        ControlPanel cp = new ControlPanel(board, robot2);
+		container.setCenter(board);
+		container.setBottom(cp);
 
 		
 		
