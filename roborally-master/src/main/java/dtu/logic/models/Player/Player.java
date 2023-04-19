@@ -7,6 +7,7 @@ import dtu.logic.models.Color;
 import dtu.logic.models.Cards.Deck;
 import dtu.logic.models.Cards.ProgramCard;
 import dtu.logic.models.Robot.Robot;
+import java.util.Scanner;
 
 public class Player {
     private String name;
@@ -47,7 +48,7 @@ public class Player {
     public void chooseProgrammingCards(Integer numberOfCards) {
         // Choose from the hand
         List<ProgramCard> registerCards = hand.subList(0, numberOfCards);
-
+        
         // add to robot register
         robot.addCardsToRegister(registerCards);
         

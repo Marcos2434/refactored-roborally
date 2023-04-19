@@ -9,7 +9,8 @@ public enum TileType {
 	WALL("tiles/wall1.png"),
 	START("tiles/start.png"),
 	CHECKPOINT("tiles/checkpoint1.png"),
-	LAZER("tiles/checkpoint1.png");
+	LAZER("tiles/Lazer1.png"),
+	BELT("tiles/Lazer1.png");
 	
 	private String pictureFile;
 	

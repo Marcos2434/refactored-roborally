@@ -19,9 +19,13 @@ public class TileFactory {
         }
 
         else if (tiles[0].trim().equals("LT")){ 
-            System.out.println("Created lazer tile");
+           
             return new TileLazer(TileType.LAZER, Direction.getDirById(Integer.parseInt(tiles[1])),new Position(col,row));
             
+        }
+        else if (tiles[0].trim().equals("BT")){ 
+            
+            return new TileBelt(TileType.BELT, Direction.getDirById(Integer.parseInt(tiles[1])),Integer.parseInt(tiles[2]));
         }
          
         else if (tiles[0].trim().equals("S")){ 
@@ -40,8 +44,7 @@ public class TileFactory {
     }
     public static Tile createtile(String T, int col, int row, Boolean test){
         String[] tiles = T.split(" ");
-        
-        
+           
         if  (tiles[0].equals("HT")){
             
             return new TileHole(TileType.HOLE);
@@ -55,6 +58,11 @@ public class TileFactory {
         else if (tiles[0].trim().equals("LT")){ 
             
             return new TileLazer(TileType.LAZER, Direction.getDirById(Integer.parseInt(tiles[1])),new Position(col,row),test);
+        }
+
+        else if (tiles[0].trim().equals("BT")){ 
+            
+            return new TileBelt(TileType.BELT, Direction.getDirById(Integer.parseInt(tiles[1])),Integer.parseInt(tiles[2]),test);
         }
          
         else if (tiles[0].trim().equals("S")){ 

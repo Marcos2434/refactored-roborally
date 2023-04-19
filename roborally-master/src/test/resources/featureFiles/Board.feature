@@ -56,3 +56,9 @@ Feature: Boardfunctions
         Then The robot takes damge
         When A robot tries to move trough the wall
         Then It is unable to
+    
+    @tag11
+        Scenario: As a BeltTile, if a player is placed on top of me, want to move the robot
+        Given A Board and four players
+        When A robot is placed on the BeltTile
+        Then The robot is pushed in the direction of the belt.
