@@ -74,6 +74,7 @@ public class Controller {
     }
 
     public void setProgrammingPhaseScene(ProgrammingPhaseScene programmingPhaseScene) {
+        this.programmingPhaseScene = programmingPhaseScene;
     }
 
     public ProgrammingPhaseScene getProgrammingPhaseScene() {

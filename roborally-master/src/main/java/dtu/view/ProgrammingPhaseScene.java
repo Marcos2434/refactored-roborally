@@ -24,15 +24,62 @@ public class ProgrammingPhaseScene extends Scene {
         this.initialize();
         this.c = c;
     }
-private void initialize(){
-    BorderPane progBorderPane = (BorderPane) this.getRoot();
+    private void initialize(){
+        BorderPane progBorderPane = (BorderPane) this.getRoot();
 
-    progBorderPane.setPrefSize(500, 500);
+        progBorderPane.setPrefSize(500, 500);
 
 
-    //Create the template for view 
-    VBox vbox1 = new VBox()
+        //Create the template for view 
+        
+    
 
-}
 
+
+        Text handTitle = new Text("HAND");
+        Text card1 = new Text("First Card");
+        CheckBox CheckCard1 = new CheckBox("Is card1 used");
+        VBox vbox1 = new VBox(card1, CheckCard1);
+        Text card2 = new Text("Second Card");
+        CheckBox CheckCard2 = new CheckBox("Is card2 used");
+        VBox vbox2 = new VBox(card2, CheckCard2);
+
+
+        VBox Hand = new VBox(handTitle, vbox1, vbox2);
+        Hand.setPrefSize(125, 200);
+
+        
+
+        
+        // Text card10 = new VBox("First Card");
+        // CheckBox CheckCard1 = new CheckBox("Is card1 used");
+        
+
+    //Testing drag and dropping 
+    final Text source = new Text(50, 100, "DRAG ME");
+    final Text target = new Text(300, 100, "DROP HERE");
+
+
+    //Gesture 
+    source.setOnDragEntered(new EventHandler<MouseEvent>() {
+    public void handle(MouseEvent event) {
+        /* drag was detected, start a drag-and-drop gesture*/
+        /* allow any transfer mode */
+        Dragboard db = source.startDragAndDrop(TransferMode.ANY);
+        
+        /* Put a string on a dragboard */
+        ClipboardContent content = new ClipboardContent();
+        content.putString(source.getText());
+        db.setContent(content);
+        
+        event.consume();
+    }
+});
+
+
+        
+
+        
+        progBorderPane.setRight(Hand);
+    }   
 }
