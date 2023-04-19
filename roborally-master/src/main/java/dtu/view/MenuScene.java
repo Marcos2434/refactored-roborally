@@ -174,7 +174,7 @@ public class MenuScene extends Scene {
           }
         }
 		);
-
+			
 
 		menu.setLeft(RGB);
         menu.setBottom(createPlayerButton);
