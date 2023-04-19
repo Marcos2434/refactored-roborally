@@ -3,6 +3,7 @@ import dtu.logic.models.Direction;
 import dtu.logic.models.Position;
 import dtu.logic.models.Robot.Robot;
 import dtu.logic.models.Robot.Lazer;
+import javafx.scene.image.Image;
 public class TileLazer extends TileWall{
     private String name = "LT";
     private Position pos;
@@ -12,7 +13,7 @@ public class TileLazer extends TileWall{
     public TileLazer(TileType Type,Direction dir,Position pos){
         super(Type,dir.getId());
         this.pos = pos;
-        this.image = new Image("tiles/Lazer" + DirID + ".png");
+        this.image = new Image("tiles/Lazer" + dir.getId() + ".png");
         redraw();
     }
     public TileLazer(TileType Type,Direction dir,Position pos,boolean test){
