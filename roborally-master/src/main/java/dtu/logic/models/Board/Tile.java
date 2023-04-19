@@ -12,12 +12,12 @@ public class Tile extends Canvas{
     public static final int TILE_SIZE = 66;
 
     private String name = "T";
-     protected TileType type;
-   	protected boolean containsRobot;
+    protected TileType type;
     protected Direction direction;
     protected Image image;
 	protected Image robotImage;
     protected int robotDirection;
+    protected Boolean Ocupied = false;
 
     public Tile(TileType type) {
 		super(TILE_SIZE, TILE_SIZE);
@@ -34,14 +34,14 @@ public class Tile extends Canvas{
 		GraphicsContext gc = getGraphicsContext2D();
 		gc.drawImage(image, 0, 0);
 		
-        if (containsRobot) {
+        if (Ocupied) {
         	gc.save();
             gc.transform(new Affine(new Rotate(90*(robotDirection-1), 33, 33)));
 			gc.drawImage(robotImage, 0, 0);
 			gc.restore();
         }
 	}
-private Boolean Ocupied = false;
+
     // effect method for tiles, this normal tile does nothing()
     public void effect(Robot robot){
     ;
@@ -52,14 +52,14 @@ private Boolean Ocupied = false;
     }
 
     public void Occupy(Image robotImage, int rD){
-        this.containsRobot = true;
+        this.Ocupied = true;
         this.robotImage = robotImage;
         this.robotDirection = rD;
         redraw();
     }
 
     public void unOccupy(){
-        this.containsRobot = false;
+        this.Ocupied = false;
         this.robotImage = null;
         this.robotDirection = -1;
         redraw();

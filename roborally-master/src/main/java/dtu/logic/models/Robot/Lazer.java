@@ -27,21 +27,21 @@ public class Lazer {
         return this.Dir;
     }
     public Position getPosAhead(){
-        if (this.Dir == Direction.UP){return new Position(this.pos.getX()-1, this.pos.getY());}
-        else if (this.Dir == Direction.RIGHT){return new Position(this.pos.getX(), this.pos.getY()+1);}
-        else if (this.Dir == Direction.DOWN){return new Position(this.pos.getX()+1, this.pos.getY());}
-        else if (this.Dir == Direction.LEFT){return new Position(this.pos.getX(), this.pos.getY()-1);}
+        if (this.Dir == Direction.UP){return new Position(this.pos.getColumn()-1, this.pos.getRow());}
+        else if (this.Dir == Direction.RIGHT){return new Position(this.pos.getColumn(), this.pos.getRow()+1);}
+        else if (this.Dir == Direction.DOWN){return new Position(this.pos.getColumn()+1, this.pos.getRow());}
+        else if (this.Dir == Direction.LEFT){return new Position(this.pos.getColumn(), this.pos.getRow()-1);}
         else {return null;}
     }
     public boolean moveTillHit(Board board){
         for (int i = 0; i <=13;i++){
-
+            
             if (board.allowmove(this)){
                 // move
-                if (this.Dir.getId() == 1){pos.addX(-1);}
-                else if (this.Dir.getId()  == 2){pos.addY(1);}
-                else if (this.Dir.getId()  == 3){pos.addX(1);}
-                else if (this.Dir.getId()  == 4){pos.addY(-1);}
+                if (this.Dir.getId() == 1){pos.addY(-1);}
+                else if (this.Dir.getId()  == 2){pos.addX(1);}
+                else if (this.Dir.getId()  == 3){pos.addY(1);}
+                else if (this.Dir.getId()  == 4){pos.addX(-1);}
                 //Move other robot out of the way first, if there is one
                 
                 if (board.getTileAt(getPos())!=null){
@@ -54,6 +54,7 @@ public class Lazer {
             }
             else{return false;}
         }
+        
         return false;    
     }
 }

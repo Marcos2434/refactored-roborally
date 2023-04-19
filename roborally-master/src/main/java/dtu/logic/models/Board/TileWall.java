@@ -15,7 +15,7 @@ public class TileWall extends Tile{
 		GraphicsContext gc = getGraphicsContext2D();
 		gc.drawImage(image, 0, 0);
 		
-        if (containsRobot) {
+        if (Ocupied) {
         	gc.save();
         	gc.transform(new Affine(new Rotate(90*(robotDirection-1), 33, 33)));
 			gc.drawImage(robotImage, 0, 0);

@@ -29,6 +29,7 @@ import dtu.logic.models.Color;
 import dtu.logic.models.Position;
 
 import java.io.IOException;
+
 //import dtu.logic.Main;
 class Tuple<A, B> {
     private A first;
@@ -41,7 +42,6 @@ class Tuple<A, B> {
 }
 
 public class View extends Application {
-
 	void launchBoard(Stage primaryStage)throws Exception{
 		BorderPane menu = new BorderPane();
 
@@ -241,10 +241,13 @@ public class View extends Application {
 		menu.setLeft(RGB);
         menu.setBottom(createPlayerButton);
 
+
+
 		
 		
 		Scene s = new Scene(menu);
-		
+		BorderPane cards = new BorderPane();
+		Scene s1 = new Scene(cards);
 		primaryStage.setScene(s);
 		primaryStage.setTitle("RoboRally - v. 0.1 - Papers, please");
 		primaryStage.show();

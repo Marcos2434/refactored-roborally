@@ -3,7 +3,7 @@ package dtu.logic.models.Board;
 import dtu.logic.models.Position;
 
 public class TileFactory {
-    public static Tile createtile(String T, int X, int Y){
+    public static Tile createtile(String T, int col, int row){
         String[] tiles = T.split(" ");
         
         
@@ -26,13 +26,13 @@ public class TileFactory {
 
         else if (tiles[0].trim().equals("C")){ 
             
-            return new TileCheckpoint(TileType.CHECKPOINT, Integer.parseInt(tiles[1]), new Position(X, Y));
+            return new TileCheckpoint(TileType.CHECKPOINT, Integer.parseInt(tiles[1]), new Position(col, row));
             
         }
 
         else{return new Tile(TileType.FLOOR);}
     }
-    public static Tile createtile(String T, int X, int Y, Boolean test){
+    public static Tile createtile(String T, int col, int row, Boolean test){
         String[] tiles = T.split(" ");
         
         
@@ -55,7 +55,7 @@ public class TileFactory {
 
         else if (tiles[0].trim().equals("C")){ 
             
-            return new TileCheckpoint(TileType.CHECKPOINT, Integer.parseInt(tiles[1]), new Position(X, Y));
+            return new TileCheckpoint(TileType.CHECKPOINT, Integer.parseInt(tiles[1]), new Position(col, row));
             
         }
 

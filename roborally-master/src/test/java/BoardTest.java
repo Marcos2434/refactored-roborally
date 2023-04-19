@@ -27,8 +27,9 @@ public class BoardTest {
     public void a_board_can_be_created() {
         robot = new Robot(Color.BLUE,new Position(5,5));
         this.pos1 = new Position(4,4);
-        this.pos2 = new Position(2, 5);
-        this.pos3 = new Position(-1,4);
+        this.pos2 = new Position(2, 4);
+        this.pos3 = new Position(4,-1);
+        
 
         String[][] board1 = {   
             {"T","T","HT","T","T","T","T","T","T","T"},
@@ -66,8 +67,8 @@ public class BoardTest {
     public void the_robot_dies() {
         assertEquals(2, robot.getLives());
         assertEquals(0, robot.getDamageTaken());
-        assertEquals(5, robot.getPos().getX());
-        assertEquals(5, robot.getPos().getY());
+        assertEquals(5, robot.getPos().getColumn());
+        assertEquals(5, robot.getPos().getRow());
 }
     @Then("Show me a wall tile")
     public void show_me_a_wall_tile() {
@@ -78,15 +79,16 @@ public class BoardTest {
     }
 
     // wall interactions
+
     @Then("the robot tries to move throug a wall and can't move")
     public void the_robot_tries_to_move_throug_a_wall_and_can_t_move() {
     robot.setPos(new Position(4, 1));
 
     robot.moveforward(true,board);
-    assertEquals(1,robot.getPos().getX());
+    assertEquals(1,robot.getPos().getRow());
     robot.turn(1, board);
     robot.moveforward(true,board);
-    assertEquals(4,robot.getPos().getY());
+    assertEquals(4,robot.getPos().getColumn());
 
 }
     //player list in Board
