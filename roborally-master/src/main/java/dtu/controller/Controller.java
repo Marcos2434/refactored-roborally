@@ -1,6 +1,5 @@
 package dtu.controller;
 
-import dtu.logic.models.Board.*;
 import dtu.logic.models.Player.*;
 import dtu.logic.models.Robot.Robot;
 import dtu.logic.models.Color;
