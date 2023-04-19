@@ -1,14 +1,6 @@
 package dtu.view;
 
 import javafx.scene.layout.BorderPane;
-import javafx.scene.control.Button;
-import javafx.scene.layout.VBox;
-import javafx.scene.control.CheckBox;
-import javafx.scene.layout.HBox;
-import javafx.scene.text.Text;
-import javafx.event.Event;
-import javafx.event.EventHandler;
-import javafx.scene.control.TextField;
 import dtu.controller.Controller;
 import dtu.logic.models.Position;
 import dtu.logic.models.Board.Board;
@@ -16,6 +8,16 @@ import dtu.logic.models.Robot.Robot;
 import dtu.roborally.view.widgets.ControlPanel;
 import javafx.scene.Scene;
 import dtu.logic.models.Color;
+
+class Tuple<A, B> {
+    private A first;
+    private B second;
+
+    public Tuple(A first, B second) {
+        this.first = first;
+        this.second = second;
+    }
+}
 
 public class BoardScene extends Scene {
 
@@ -41,7 +43,7 @@ public class BoardScene extends Scene {
             {"T","T","HT","T","T","T","T","T","C 3","T"},
             {"C 2","T","HT","T","T","T","T","T","T","T"},
             {"T","T","HT","T","T","T","T","T","T","T"},
-            //Start Field
+            // Start Field
             {"T","T","T","T","WT 1","WT 1","T","T","T","T"},
             {"T","S","WT 4","T","S","S","T","WT 2","S","T"},
             {"T","T","T","S","T","T","S","T","T","T"},
