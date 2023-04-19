@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import dtu.view.BoardScene;
 import dtu.view.MenuScene;
 import dtu.view.ProgrammingPhaseScene;
+import dtu.view.ProgrammingPhaseSceneSimple;
 import javafx.scene.Scene;
 
 public class Controller {
@@ -19,6 +20,7 @@ public class Controller {
     private MenuScene menuScene;
     private BoardScene boardScene;
     private ProgrammingPhaseScene programmingPhaseScene;
+    private ProgrammingPhaseSceneSimple programmingPhaseSceneSimple;
     // --------------
     private Stage primaryStage;
 
@@ -29,7 +31,9 @@ public class Controller {
 
     public void launch() {
         //this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
-        this.setTheScene(this.getProgrammingPhaseScene(), "Roborally - Programming Phase");
+
+        // this.setTheScene(this.getProgrammingPhaseScene(), "Roborally - Programming Phase"); //for natalia
+       this.setTheScene(this.getProgrammingPhaseSceneSimple(), "Roborally - Programming Phase"); //for oli/gleb
 
     }
 
@@ -79,6 +83,14 @@ public class Controller {
 
     public ProgrammingPhaseScene getProgrammingPhaseScene() {
         return programmingPhaseScene;
+    }
+
+    public void setProgrammingPhaseSceneSimple(ProgrammingPhaseSceneSimple programmingPhaseSceneSimple) {
+        this.programmingPhaseSceneSimple = programmingPhaseSceneSimple;
+    }
+
+    public ProgrammingPhaseSceneSimple getProgrammingPhaseSceneSimple() {
+        return programmingPhaseSceneSimple;
     }
 
 }

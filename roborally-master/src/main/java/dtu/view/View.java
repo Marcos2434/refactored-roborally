@@ -18,6 +18,10 @@ public class View extends Application {
 
 		ProgrammingPhaseScene programmingPhaseScene = new ProgrammingPhaseScene(c);
 		c.setProgrammingPhaseScene(programmingPhaseScene);
+
+		ProgrammingPhaseSceneSimple programmingPhaseSceneSimple = new ProgrammingPhaseSceneSimple(c);
+		c.setProgrammingPhaseSceneSimple(programmingPhaseSceneSimple);
+
 		// ---------------------
 
 		c.launch(); // => Launches main menu screen

@@ -36,9 +36,9 @@ public class Player {
 
     public void drawProgrammingCards() {
         for (int i = 0; i < 9 - this.robot.getDamageTaken(); i++) {
-            String name = ((deck.cards).get(i)).name;
-     
-            hand.add(new ProgramCard(name, 3));
+            //String name = ((deck.cards).get(i)).name;
+            hand.add(deck.cards.get(i));
+            //hand.add(new ProgramCard(name, 3));
         }
     }
 

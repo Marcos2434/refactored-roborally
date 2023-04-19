@@ -3,10 +3,12 @@ package dtu.logic.models.Cards;
 public class ProgramCard extends Card {
     public int intensity;
     public String name; 
+    public String imagePath;
 
     public ProgramCard(String name, int intensity) {
         this.intensity = intensity;
         this.name = name;
+        
      }
 
     enum AdditionalProgramCards{
