@@ -46,8 +46,6 @@ public class Player {
 
     public void chooseProgrammingCards(Integer numberOfCards) {
         // Choose from the hand
-
-
         List<ProgramCard> registerCards = hand.subList(0, numberOfCards);
 
         // add to robot register

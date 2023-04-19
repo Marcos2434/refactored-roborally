@@ -4,12 +4,7 @@ import java.util.Collections;
 
 public class Deck {
     public ArrayList<ProgramCard> cards = new ArrayList<ProgramCard>();
-    
-    // public Deck(){
-    //     for(int i=0; i<20; i++)
-    //     cards.add(new Card());
-    // }
-
+  
     public Deck(){
         for(int i=0; i<5; i++)
         cards.add(MovementCard.createCard("LEFT", -1));
