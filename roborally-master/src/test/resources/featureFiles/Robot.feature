@@ -56,5 +56,9 @@ Feature: Robot Selection
         Then both robots take dmg.
         
        
-        
+    @tag11 
+    Scenario: As a robot I want to move according to the description on a card. 
+        Given A robot is being created with a color and a checkpoint
+        When The robot recieves a card 
+        Then The robot moves according to the card desciription
 

@@ -3,6 +3,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
+
 import org.junit.runner.RunWith;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -13,6 +15,9 @@ import io.cucumber.java.en.Then;
 
 import dtu.logic.models.*;
 import dtu.logic.models.Board.Board;
+import dtu.logic.models.Cards.Card;
+import dtu.logic.models.Cards.Deck;
+import dtu.logic.models.Cards.ProgramCard;
 import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.*;
 public class RobotTest {
@@ -33,6 +38,7 @@ public class RobotTest {
         {"T","T","HT","T","T","T","T","T","T","T"},
     };
     Board board = new Board(board1, true);
+    Deck deck = new Deck();
     // initiats a robot with everything needed, change this when making a
     // new test that requires a new thing so that we know every test works properly with complicated robots as well.
     @Given("A robot being created with a color and a checkpoint")
@@ -208,4 +214,37 @@ public class RobotTest {
         assertEquals(0,robot1.getDamageTaken());
         assertEquals(1,robot2.getDamageTaken());
     }
+
+
+    @Given("A robot is being created with a color and a checkpoint")
+    public void a_robot_is_being_created_with_a_color_and_a_checkpoint() {
+        robot = new Robot(Color.BLUE,new Position(5,5));
+        robot.setDir(Direction.UP);
+    }  
+    @When("The robot recieves a card")
+    public void the_robot_recieves_a_card() {
+        Deck deck = new Deck();
+        ProgramCard card = deck.cards.get(21); //Checks move forward 
+        robot.move(board, card);
+        
+
+        ProgramCard card3 = deck.cards.get(33); //Checks backwards  
+        robot.move(board, card3);
+
+        ProgramCard card1 = deck.cards.get(12); //Check U turn 
+        robot.move(board, card1);
+        
+        ProgramCard card2 = deck.cards.get(7); //Checks Right turn 
+        robot.move(board, card2);
+
+    }
+    @Then("The robot moves according to the card desciription")
+    public void the_robot_moves_according_to_the_card_desciription() {
+        assertEquals(4,robot.getPos().getRow()); //Checks move forward
+        // assertEquals(Direction.RIGHT, robot.getDirection());
+        assertEquals(Direction.LEFT, robot.getDirection()); //final direction
+
+    }
 }
+
+//heeeey

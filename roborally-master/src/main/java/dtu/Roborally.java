@@ -105,8 +105,6 @@ public class Roborally extends Application {
 	}
 
 	public static void main(String[] args) {
-
-
 		// Launch GUI
 		launch(args);
 	}
