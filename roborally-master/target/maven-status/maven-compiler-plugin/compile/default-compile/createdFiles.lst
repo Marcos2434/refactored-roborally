@@ -2,6 +2,11 @@ dtu/logic/models/Cards/MovementCard.class
 dtu/logic/models/Board/TileStart.class
 dtu/logic/models/Cards/Card.class
 dtu/Roborally.class
+dtu/logic/models/Board/TileHole.class
+dtu/roborally/view/widgets/ControlPanel$9.class
+dtu/logic/models/Cards/Deck.class
+dtu/view/View.class
+dtu/view/View$1.class
 dtu/roborally/view/widgets/ControlPanel$7.class
 dtu/roborally/view/widgets/Board.class
 dtu/logic/models/Cards/MovementCard$CardName.class
@@ -10,8 +15,10 @@ dtu/roborally/view/TileType.class
 dtu/view/Tuple.class
 dtu/logic/models/Player/Player.class
 dtu/view/RobotViewer.class
+dtu/view/MenuScene.class
 dtu/logic/models/Position.class
 dtu/logic/models/Robot/RobotObserver.class
+dtu/logic/models/Board/Tile.class
 dtu/logic/models/Cards/ProgramCard.class
 dtu/roborally/view/widgets/ControlPanel$1.class
 dtu/roborally/view/CardinalPoints.class
