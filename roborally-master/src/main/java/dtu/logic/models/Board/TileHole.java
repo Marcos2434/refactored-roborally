@@ -9,9 +9,10 @@ public class TileHole extends Tile{
 	}
 
     @Override
-    public void effect(Robot robot) {
-        robot.Death();
+    public void effect(Robot robot,Board board) {
+        robot.Death(board);
     }
+
     @Override
     public String getname(){
     

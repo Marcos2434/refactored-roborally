@@ -127,8 +127,8 @@ public class Board extends GridPane{
             if (robot.getDirID() == WT.getDirID()){return false;}   
         }
         
-        if (getTileAt(robot.getPosAhead()) instanceof TileWall){
-            TileWall WT = (TileWall) getTileAt(robot.getPosAhead());
+        if (getTileAt(robot.getPosInDir(robot.getdir())) instanceof TileWall){
+            TileWall WT = (TileWall) getTileAt(robot.getPosInDir(robot.getdir()));
             if (Math.abs(robot.getDirID() - WT.getDirID()) == 2){return false;}
             else{return true;}
         }
@@ -139,11 +139,11 @@ public class Board extends GridPane{
     public boolean allowmove(Lazer lazer){
         if (getTileAt(lazer.getPos()) instanceof TileWall){
             TileWall WT = (TileWall) getTileAt(lazer.getPos());
-            if (lazer.getDir().getId() == WT.getDirID()){return false;}   
+            if (lazer.getdir().getId() == WT.getDirID()){return false;}   
         }
-        if (getTileAt(lazer.getPosAhead()) instanceof TileWall){
-            TileWall WT = (TileWall) getTileAt(lazer.getPosAhead());
-            if (Math.abs(lazer.getDir().getId() - WT.getDirID()) == 2){return false;}
+        if (getTileAt(lazer.getPosInDir(lazer.getdir())) instanceof TileWall){
+            TileWall WT = (TileWall) getTileAt(lazer.getPosInDir(lazer.getdir()));
+            if (Math.abs(lazer.getdir().getId() - WT.getDirID()) == 2){return false;}
             else{return true;}
         }
         else {return true;} 

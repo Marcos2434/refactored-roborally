@@ -61,4 +61,11 @@ Feature: Robot Selection
         Given A robot is being created with a color and a checkpoint
         When The robot recieves a card 
         Then The robot moves according to the card desciription
+    
+    @tag12 
+        Scenario:   As a robot, if a robot moves and pushes another robot, but there are robots behind this robot,
+                    the other robots move too.
+            Given Four robots in a row
+            When when a robot in the end moves
+            Then All the robots are pushed
 
