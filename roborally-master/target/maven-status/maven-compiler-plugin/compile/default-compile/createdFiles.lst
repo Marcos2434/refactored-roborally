@@ -5,6 +5,7 @@ dtu\logic\models\Cards\Deck.class
 dtu\logic\models\Position.class
 dtu\controller\Controller.class
 dtu\roborally\view\widgets\ControlPanel$3.class
+dtu\logic\models\Board\TileBelt.class
 dtu\view\MenuScene.class
 dtu\logic\models\Board\TileHole.class
 dtu\view\Tuple.class
