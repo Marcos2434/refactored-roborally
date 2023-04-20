@@ -272,7 +272,7 @@ public class RobotTest {
     }
     @When("when a robot in the end moves")
     public void when_a_robot_in_the_end_moves() {
-        System.out.println("___________");
+        
         robot4.moveforward(true,board);
     }
     @Then("All the robots are pushed")
@@ -286,4 +286,3 @@ public class RobotTest {
 }
 }
 
-//heeeey
