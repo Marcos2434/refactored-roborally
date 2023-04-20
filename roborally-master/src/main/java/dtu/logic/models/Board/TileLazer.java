@@ -28,7 +28,7 @@ public class TileLazer extends TileWall{
         if (lazer.moveTillHit(board) == true){
             
             Robot hitRob = board.getRobotAt(lazer.getPos());
-            hitRob.takeDmg();
+            hitRob.takeDmg(board);
         }
     }
 }

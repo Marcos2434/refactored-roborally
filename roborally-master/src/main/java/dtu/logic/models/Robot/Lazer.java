@@ -25,7 +25,7 @@ public class Lazer {
         this.Dir = dir;
     }
 
-    public Direction getDir(){
+    public Direction getdir(){
         return this.Dir;
     }
     public void Uturn(){
@@ -38,11 +38,11 @@ public class Lazer {
             }
         }
     }
-    public Position getPosAhead(){
-        if (this.Dir == Direction.UP){return new Position(this.pos.getColumn()-1, this.pos.getRow());}
-        else if (this.Dir == Direction.RIGHT){return new Position(this.pos.getColumn(), this.pos.getRow()+1);}
-        else if (this.Dir == Direction.DOWN){return new Position(this.pos.getColumn()+1, this.pos.getRow());}
-        else if (this.Dir == Direction.LEFT){return new Position(this.pos.getColumn(), this.pos.getRow()-1);}
+    public Position getPosInDir(Direction dir){
+        if (dir.getId() == 1){return new Position(this.pos.getColumn(), this.pos.getRow()-1);}
+        else if (dir.getId() == 2){return new Position(this.pos.getColumn()+1, this.pos.getRow());}
+        else if (dir.getId() == 3){return new Position(this.pos.getColumn(), this.pos.getRow()+1);}
+        else if (dir.getId() == 4){return new Position(this.pos.getColumn()-1, this.pos.getRow());}
         else {return null;}
     }
     public boolean moveTillHit(Board board){
