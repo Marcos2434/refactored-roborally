@@ -63,9 +63,34 @@ Feature: Robot Selection
         Then The robot moves according to the card desciription
     
     @tag12 
-        Scenario:   As a robot, if a robot moves and pushes another robot, but there are robots behind this robot,
-                    the other robots move too.
-            Given Four robots in a row
-            When when a robot in the end moves
-            Then All the robots are pushed
+    Scenario:   As a robot, if a robot moves and pushes another robot, but there are robots behind this robot,
+                the other robots move too.
+        Given Four robots in a row
+        When when a robot in the end moves
+        Then All the robots are pushed
+    
+    @tag13
+    Scenario:   As a robot, when i push more than one robot, they all take damage
+        Given Four robots in a row
+        When when a robot in the end moves
+        Then All robots take damage
+
+    @tag14 
+    Scenario: As a robot, when trying to push one or more robots, but the last robot is unable to move because of a wall,
+             no movement is done
+        Given Four robots in a row 
+        When when the robot opposite the wall moves into the row of robots
+        Then Noone moves
+    
+    @tag15
+        Scenario: As a robot, when trying to push one or more robots, but the last robot is unable to move because of a wall,
+             All robots except for the one trying to move takes damage
+        Given Four robots in a row 
+        When when the robot opposite the wall moves into the row of robots
+        Then Three robots take damage
+
+    
+
+    
+    
 

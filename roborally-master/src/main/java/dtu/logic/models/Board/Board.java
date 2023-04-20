@@ -5,6 +5,7 @@ import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.Lazer;
 import dtu.logic.models.Robot.Robot;
 import javafx.scene.layout.GridPane;
+import dtu.logic.models.Direction;
 
 public class Board extends GridPane{
 
@@ -121,18 +122,30 @@ public class Board extends GridPane{
         return nextPlayerIdx;
     }
     // check if a robot is allowed a move:
-    public boolean allowmove(Robot robot){
-        if (getTileAt(robot.getPos()) instanceof TileWall){
-            TileWall WT = (TileWall) getTileAt(robot.getPos());
-            if (robot.getDirID() == WT.getDirID()){return false;}   
-        }
+    public boolean allowmove(Robot robot,Direction dir){
         
-        if (getTileAt(robot.getPosInDir(robot.getdir())) instanceof TileWall){
-            TileWall WT = (TileWall) getTileAt(robot.getPosInDir(robot.getdir()));
-            if (Math.abs(robot.getDirID() - WT.getDirID()) == 2){return false;}
-            else{return true;}
+        Position toPos = robot.getPosInDir(dir);
+        
+        if (toPos.getRow()>=0 && toPos.getColumn()>=0 && toPos.getColumn()<10 && toPos.getRow()<13){
+                
+                if (getTileAt(robot.getPos()) instanceof TileWall){
+                    TileWall WT = (TileWall) getTileAt(robot.getPos());
+                    if (dir.getId() == WT.getDirID()){return false;} 
+                    
+                }
+               
+                if (getTileAt(toPos) instanceof TileWall){
+                    TileWall WT = (TileWall) getTileAt(toPos);
+
+                    if (Math.abs(dir.getId() - WT.getDirID()) == 2){return false;} 
+                    else{return true;}  
+                }
+        
+                if (getTileAt(toPos).isOcupied()){getRobotAt(toPos).takeDmg(this);
+                                                  return allowmove(getRobotAt(toPos),dir);}
+                else{return true;}  
         }
-        else {return true;} 
+        else{return true;} 
     }
 
     //@Overload
