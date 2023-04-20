@@ -86,13 +86,18 @@ public class BoardTest {
 
     @Then("the robot tries to move throug a wall and can't move")
     public void the_robot_tries_to_move_throug_a_wall_and_can_t_move() {
-    robot.setPos(new Position(4, 1));
+    
+    board.moveRobot(robot,new Position(4, 1));
 
     robot.moveforward(true,board);
     assertEquals(1,robot.getPos().getRow());
     robot.turn(1, board);
+
+    
     robot.moveforward(true,board);
+    
     assertEquals(4,robot.getPos().getColumn());
+    
 
 }
     //player list in Board

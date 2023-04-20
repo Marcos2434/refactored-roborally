@@ -118,8 +118,8 @@ public class Robot {
         else {d = -1;}
         //Update old tile
         board.getTileAt(pos).unOccupy();
-
-        if (board.allowmove(this)){
+        
+        if (board.allowmove(this,getdir())){
             //Move other robot out of the way first, if there is one
             if (board.getTileAt(getPosInDir(getdir()))!=null){
                 if (board.getTileAt(getPosInDir(getdir())).isOcupied()){
@@ -172,6 +172,7 @@ public class Robot {
     }
     // interaction with other robots
     public void Push(Robot robot,Board board){
+
         board.getTileAt(robot.getPos()).unOccupy();
         
         if (board.getTileAt(robot.getPosInDir(Direction.getDirById(this.DirID))).isOcupied()){
@@ -184,7 +185,7 @@ public class Robot {
         
         if (robot.pos.getRow() < 0 || robot.pos.getRow() > 13 ||
             robot.pos.getColumn() < 0 || robot.pos.getColumn()>10){Death(board);}
-        else{robot.takeDmg(board);}
+        
 
         board.getTileAt(robot.getPos()).Occupy(image, DirID);  
     } 
