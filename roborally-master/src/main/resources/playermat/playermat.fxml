@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="214.0" prefWidth="330.0" style="-fx-background-image: url('file:/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/resources/playermat/playermat.png');" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="194.0" prefWidth="191.0">
+         <children>
+            <HBox prefHeight="54.0">
+               <children>
+                  <Label prefHeight="54.0" prefWidth="188.0" text="Komv">
+                     <font>
+                        <Font name="PORTAL" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="54.0" prefWidth="103.0" text="BLUE" textFill="#0051b5">
+                     <font>
+                        <Font name="PORTAL" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="42.0" prefWidth="179.0" spacing="5.0">
+               <children>
+                  <ImageView fitHeight="42.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+                     <image>
+                        <Image url="@cardback.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="42.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+                     <image>
+                        <Image url="@cardback.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="42.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+                     <image>
+                        <Image url="@cardback.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="42.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+                     <image>
+                        <Image url="@cardback.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="42.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+                     <image>
+                        <Image url="@cardback.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox prefHeight="59.0" prefWidth="204.0">
+               <children>
+                  <Label prefHeight="59.0" prefWidth="80.0" text="Lives: 3" textFill="WHITE">
+                     <font>
+                        <Font name="PORTAL" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="102.0" prefWidth="90.0" text="Checkpoint: 0" textFill="WHITE">
+                     <font>
+                        <Font name="PORTAL" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Label prefHeight="59.0" text="Damage: 0" textFill="WHITE">
+               <font>
+                  <Font name="PORTAL" size="20.0" />
+               </font>
+            </Label>
+         </children>
+         <HBox.margin>
+            <Insets left="20.0" />
+         </HBox.margin>
+      </VBox>
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Cards/AgainCard.png" />
+         </image>
+         <HBox.margin>
+            <Insets right="10.0" top="31.0" />
+         </HBox.margin>
+      </ImageView>
+   </children>
+</HBox>

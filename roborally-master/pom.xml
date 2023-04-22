@@ -44,7 +44,8 @@
 					<!-- Marcos's login panel -->
 					<mainClass>dtu.view.View</mainClass>
 					<!-- Adam's board -->
-					<!--<mainClass>dtu.Roborally</mainClass>-->
+					<!-- <mainClass>dtu.Roborally</mainClass> -->
+					<!-- <mainClass>dtu.view.Playermat</mainClass> -->
 				</configuration>
 			</plugin>
 		</plugins>

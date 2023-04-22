@@ -1,6 +1,7 @@
 package dtu.view;
 
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import dtu.controller.Controller;
 import dtu.logic.models.Position;
 import dtu.logic.models.Board.Board;
@@ -53,7 +54,11 @@ public class BoardScene extends Scene {
 
         Board board = new Board(board1);
 		Robot robot = new Robot(Color.BLUE, new Position(3, 12), board);
-		
+
+
+
+		//HBox playermats = new HBox();
+
 		ControlPanel cp = new ControlPanel(board, robot);
 		boardPane.setCenter(board);
 		boardPane.setBottom(cp);
