@@ -50,8 +50,8 @@ public class Roborally extends Application {
         };
 
         Board board = new Board(board1);
-        Robot robot2 = new Robot(Color.BLUE, new Position(5, 8), board);
-        Robot robot1 = new Robot(Color.RED, new Position(5, 0), board);
+        Robot robot2 = new Robot(Color.BLUE, new Position(5, 8));
+        Robot robot1 = new Robot(Color.RED, new Position(5, 0));
 
         robot1.setDir(Direction.UP);
         robot2.setDir(Direction.DOWN);

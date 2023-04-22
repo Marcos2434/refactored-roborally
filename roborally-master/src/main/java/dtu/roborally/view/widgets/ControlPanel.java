@@ -124,7 +124,7 @@ public class ControlPanel extends GridPane {
 		rekt.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				robot.Death();
+				robot.Death(board);
 			}
 		});
 	}

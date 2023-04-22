@@ -49,4 +49,36 @@ Feature: Boardfunctions
         When the robots move
         Then The robots position is still the same in playerlist
 
+    @tag10
+        Scenario: As a Lazertile i want to be a walltile that can shoot a lazer.
+        Given A Board and four players
+        When A robot is placed to be hit by the lazer tile
+        Then The robot takes damge
+        When A robot tries to move trough the wall
+        Then It is unable to
     
+    @tag11
+        Scenario: As a BeltTile, if a player is placed on top of me, want to move the robot
+        Given A Board and four players
+        When A robot is placed on the BeltTile
+        Then The robot is pushed in the direction of the belt.
+    
+    @tag12
+        Scenario: As a BeltTile with intensity 2, if a player is placed on top of me but the next tile is not a belt tile, 
+                i cant push him two spots.
+        Given A Board and four players
+        When A robot is placed on the BeltTile with intensity two where the tile after is no a belt tile
+        Then The robot is pushed one space 
+    
+    @tag13 
+        Scenario: As a beltTile with intensity 2, I move a player two sapces when there is a Belttile on the next space
+        Given A Board and four players
+        When A robot is placed on the BeltTile with intensity two where the tile after is a belt tile
+        Then The robot is pushed two space 
+
+    @tag14
+        Scenario: As a beltTile with intensity 2, If the next belt has a diferent direction, the second step is in that direction
+        Given A Board and four players
+        When A robot is placed on the BeltTile with intensity two where the tile after is a belt tile with different direction
+        Then The robot is pushed twice in different directions.
+        

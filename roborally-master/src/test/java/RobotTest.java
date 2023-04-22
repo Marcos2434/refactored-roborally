@@ -24,7 +24,7 @@ public class RobotTest {
     Robot robot;
     String[][] board1 = {   
         {"T","T","HT","T","T","T","T","T","T","T"},
-        {"T","T","HT","T","WT 1","WT 4","T","T","T","T"},
+        {"WT 3","T","HT","T","WT 1","WT 4","T","T","T","T"},
         {"T","T","HT","T","T","T","T","T","T","T"},
         {"T","T","HT","T","T","T","T","T","T","T"},
         {"T","T","HT","T","T","T","T","T","T","T"},
@@ -67,7 +67,7 @@ public class RobotTest {
     public void the_robot_recieved_damage(int int1) {
         assertEquals(0,robot.getDamageTaken());
         for (int i=0;i < int1;i++) {
-            robot.takeDmg();
+            robot.takeDmg(board);
         }
         assertEquals(0+int1, robot.getDamageTaken());
     }
@@ -78,7 +78,7 @@ public class RobotTest {
         robot.setPos(new Position(1,2));
         assertEquals(1, robot.getPos().getColumn());
         assertEquals(2, robot.getPos().getRow());
-        for (int i=0; i<int1; i++) {robot.takeDmg();}
+        for (int i=0; i<int1; i++) {robot.takeDmg(board);}
         
 
     }
@@ -93,15 +93,15 @@ public class RobotTest {
     @Then("the robot turns and it can display the direction")
     public void the_robot_turns() {
         robot.turn(0, board); //Test of unambigoius input
-        assertEquals(Direction.UP.getId(), robot.getDirection().getId());
+        assertEquals(Direction.UP.getId(), robot.getdir().getId());
         robot.turn(1, board); //Test of turning right
-        assertEquals(Direction.RIGHT.getId(),robot.getDirection().getId());
+        assertEquals(Direction.RIGHT.getId(),robot.getdir().getId());
         robot.turn(-1, board); // Testing leftturn
-        assertEquals(Direction.UP.getId(), robot.getDirection().getId());
+        assertEquals(Direction.UP.getId(), robot.getdir().getId());
         robot.turn(5, board); //testing full rotation to the right
-        assertEquals(Direction.RIGHT.getId(),robot.getDirection().getId());
+        assertEquals(Direction.RIGHT.getId(),robot.getdir().getId());
         robot.turn(-5, board); //testing full rotation to the right
-        assertEquals(Direction.UP.getId(),robot.getDirection().getId());
+        assertEquals(Direction.UP.getId(),robot.getdir().getId());
     }
     // Check of movement
     @Then("It turns to the right and moves forward and backwards {int} times")
@@ -144,7 +144,7 @@ public class RobotTest {
     public void a_robot_moves_over_the_edge() { 
     //Moves over the left edge
     robot.setPos(new Position(0,0));
-    robot.takeDmg();
+    robot.takeDmg(board);
     robot.turn(-1, board);
     robot.moveforward(true,board);
     
@@ -155,8 +155,8 @@ public class RobotTest {
     Robot robot2;
     @Given("Two robots being created")
     public void two_robots_being_created() {
-        robot1 = new Robot(Color.BLUE,new Position(5,5), board); 
-        robot2 = new Robot(Color.RED,new Position(5,4), board);
+        robot1 = new Robot(Color.BLUE,new Position(5,5)); 
+        robot2 = new Robot(Color.RED,new Position(5,4));
         player1 = new Player(robot1,"Casper");
         player2 = new Player(robot2,"Marcos");
         board.getTileAt(robot1.getPos()).Occupy(robot1.getImage(), robot1.getDirID());
@@ -242,9 +242,74 @@ public class RobotTest {
     public void the_robot_moves_according_to_the_card_desciription() {
         assertEquals(4,robot.getPos().getRow()); //Checks move forward
         // assertEquals(Direction.RIGHT, robot.getDirection());
-        assertEquals(Direction.LEFT, robot.getDirection()); //final direction
+        assertEquals(Direction.LEFT, robot.getdir()); //final direction
 
     }
+    Player player3; 
+    Player player4;
+    Robot robot3;
+    Robot robot4;
+    @Given("Four robots in a row")
+    public void four_robots_in_a_row() {
+        robot1 = new Robot(Color.BLUE,new Position(0,5)); 
+        robot2 = new Robot(Color.RED,new Position(0,4));
+        robot3 = new Robot(Color.GREEN,new Position(0,3)); 
+        robot4 = new Robot(Color.BLACK,new Position(0,2));
+        robot4.turn(2,board);
+        player1 = new Player(robot1,"Casper");
+        player2 = new Player(robot2,"Marcos");
+        player3 = new Player(robot3,"Casper2");
+        player4 = new Player(robot4,"Marcos2");
+        board.getTileAt(robot1.getPos()).Occupy(robot1.getImage(), robot1.getDirID());
+        board.getTileAt(robot2.getPos()).Occupy(robot2.getImage(), robot2.getDirID());
+        board.getTileAt(robot3.getPos()).Occupy(robot3.getImage(), robot3.getDirID());
+        board.getTileAt(robot4.getPos()).Occupy(robot4.getImage(), robot4.getDirID());
+        board.initPlayers();
+        board.addPlayer(player1);
+        board.addPlayer(player2);
+        board.addPlayer(player3);
+        board.addPlayer(player4);
+    }
+    @When("when a robot in the end moves")
+    public void when_a_robot_in_the_end_moves() {
+        
+        robot4.moveforward(true,board);
+    }
+    @Then("All the robots are pushed")
+    public void all_the_robots_are_pushed() {
+        assertEquals(6, robot1.getPos().getRow());
+        assertEquals(5, robot2.getPos().getRow());
+        assertEquals(4, robot3.getPos().getRow());
+        assertEquals(3, robot4.getPos().getRow());
+        
+        
+}
+    @Then("All robots take damage")
+    public void all_robots_take_damage() {
+        assertEquals(1,robot1.getDamageTaken());
+        assertEquals(1,robot2.getDamageTaken());
+        assertEquals(1,robot3.getDamageTaken());
+        assertEquals(0,robot4.getDamageTaken());
+}
+    @When("when the robot opposite the wall moves into the row of robots")
+    public void when_the_robot_opposite_the_wall_moves_into_the_row_of_robots() {
+        
+        robot1.moveforward(true,board);
+    }
+    @Then("Noone moves")
+    public void noone_moves() {
+        assertEquals(5, robot1.getPos().getRow());
+        assertEquals(4, robot2.getPos().getRow());
+        assertEquals(3, robot3.getPos().getRow());
+        assertEquals(2, robot4.getPos().getRow());
+        
+}
+    @Then("Three robots take damage")
+    public void three_robots_take_damage() {
+        assertEquals(0,robot1.getDamageTaken());
+        assertEquals(1,robot2.getDamageTaken());
+        assertEquals(1,robot3.getDamageTaken());
+        assertEquals(1,robot4.getDamageTaken());
+}
 }
 
-//heeeey

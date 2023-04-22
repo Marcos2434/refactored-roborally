@@ -43,7 +43,7 @@ public class Tile extends Canvas{
 	}
 
     // effect method for tiles, this normal tile does nothing()
-    public void effect(Robot robot){
+    public void effect(Robot robot,Board board){
     ;
     }
 

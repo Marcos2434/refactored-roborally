@@ -61,7 +61,11 @@ public class BoardTest {
     @When("the robot steps on a holetile")
     public void the_robot_steps_on_a_holetile() {
         robot.setPos(new Position(2, 0));
-        board.getTileAt(robot.getPos()).effect(robot);
+        if (board.getTileAt(robot.getPos()) instanceof TileHole){
+            TileHole TH = (TileHole)board.getTileAt(robot.getPos());
+           
+            TH.effect(robot,board);
+        }
 }
     @Then("The robot Dies")
     public void the_robot_dies() {
@@ -82,13 +86,18 @@ public class BoardTest {
 
     @Then("the robot tries to move throug a wall and can't move")
     public void the_robot_tries_to_move_throug_a_wall_and_can_t_move() {
-    robot.setPos(new Position(4, 1));
+    
+    board.moveRobot(robot,new Position(4, 1));
 
     robot.moveforward(true,board);
     assertEquals(1,robot.getPos().getRow());
     robot.turn(1, board);
+
+    
     robot.moveforward(true,board);
+    
     assertEquals(4,robot.getPos().getColumn());
+    
 
 }
     //player list in Board
@@ -103,19 +112,19 @@ public class BoardTest {
     @Given("A Board and four players")
     public void a_board_and_four_players() {
         String[][] board1 = {   
+            {"BT 3 2","T","HT","T","T","T","T","T","T","T"},
+            {"BT 3 2","T","HT","T","WT 1","WT 4","T","T","T","T"},
             {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","WT 1","WT 4","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","T","T"},};
+            {"T","T","T","T","T","T","T","T","T","T"},
+            {"T","T","BT 3 1","T","T","T","T","T","T","T"},
+            {"T","T","T","T","T","T","T","T","T","T"},
+            {"T","T","T","T","T","T","T","T","T","T"},
+            {"T","LT 4","T","T","T","T","BT 1 2","T","T","T"},
+            {"T","T","T","T","T","T","T","T","T","T"},
+            {"T","T","T","T","T","T","T","T","T","T"},
+            {"BT 2 2","BT 1 2","T","T","T","T","T","T","T","T"},
+            {"T","T","T","T","T","T","T","T","T","T"},
+            {"T","T","T","T","T","T","T","T","T","T"},};
         this.board = new Board(board1, true);
         robot1 = new Robot(Color.BLUE,new Position(3,3));
         robot2 = new Robot(Color.GREEN,new Position(3,3));
@@ -158,4 +167,82 @@ public class BoardTest {
     public void the_robots_position_is_still_the_same_in_playerlist() {
         assertTrue(board.getPlayers()[0].getRobot().getPos().equals(robot1.getPos()));
 }
+    @When("A robot is placed to be hit by the lazer tile")
+    public void a_robot_is_placed_to_be_hit_by_the_lazer_tile() {
+        board.addPlayer(player1);
+        board.moveRobot(robot1,new Position(7,7));
+
+        
+        board.fireLazers(); 
+        
+    }
+    @Then("The robot takes damge")
+    public void the_robot_takes_damge() {
+        assertEquals(1, robot1.getDamageTaken());
+    }
+    @When("A robot tries to move trough the wall")
+    public void a_robot_tries_to_move_trough_the_wall() {
+        
+        board.moveRobot(robot1,new Position(0,7));
+        robot1.turn(1,board);
+        robot1.moveforward(true,board);
+    }
+    @Then("It is unable to")
+    public void it_is_unable_to() {
+        assertEquals(0,robot1.getPos().getColumn());
 }
+    @When("A robot is placed on the BeltTile")
+    public void a_robot_is_placed_on_the_belt_tile() {
+        board.moveRobot(robot1,new Position(2,4));
+        Tile tile =  board.getTileAt(robot1.getPos());
+        if (tile instanceof TileBelt){
+            TileBelt BT = (TileBelt) tile;
+            BT.effect(robot1,board);
+        }
+        
+    }
+    @Then("The robot is pushed in the direction of the belt.")
+    public void the_robot_is_pushed_in_the_direction_of_the_belt() {
+        assertEquals(5,robot1.getPos().getRow());
+}
+    @When("A robot is placed on the BeltTile with intensity two where the tile after is no a belt tile")
+    public void a_robot_is_placed_on_the_belt_tile_with_intensity_two_where_the_tile_after_is_no_a_belt_tile() {
+        board.moveRobot(robot1,new Position(6,7));
+        if (board.getTileAt(robot1.getPos()) instanceof TileBelt){
+            TileBelt tileBelt = (TileBelt)board.getTileAt(robot1.getPos());
+            tileBelt.effect(robot1,board);
+        }
+        
+    }
+    @Then("The robot is pushed one space")
+    public void the_robot_is_pushed_one_space() {
+        assertEquals(6,robot1.getPos().getRow());
+}
+    @When("A robot is placed on the BeltTile with intensity two where the tile after is a belt tile")
+    public void a_robot_is_placed_on_the_belt_tile_with_intensity_two_where_the_tile_after_is_a_belt_tile() {
+        board.moveRobot(robot1,new Position(0,0));
+        if (board.getTileAt(robot1.getPos()) instanceof TileBelt){
+            TileBelt tileBelt = (TileBelt)board.getTileAt(robot1.getPos());
+            tileBelt.effect(robot1,board);
+        }
+    }
+    @Then("The robot is pushed two space")
+    public void the_robot_is_pushed_two_space() {
+        assertEquals(2,robot1.getPos().getRow());
+}
+    @When("A robot is placed on the BeltTile with intensity two where the tile after is a belt tile with different direction")
+    public void a_robot_is_placed_on_the_belt_tile_with_intensity_two_where_the_tile_after_is_a_belt_tile_with_different_direction() {
+        board.moveRobot(robot1,new Position(0,10));
+        if (board.getTileAt(robot1.getPos()) instanceof TileBelt){
+            TileBelt tileBelt = (TileBelt)board.getTileAt(robot1.getPos());
+            tileBelt.effect(robot1,board);
+        }
+    }
+    @Then("The robot is pushed twice in different directions.")
+    public void the_robot_is_pushed_twice_in_different_directions() {
+        assertEquals(9,robot1.getPos().getRow());
+        assertEquals(1,robot1.getPos().getColumn());
+}
+}
+
+
