@@ -141,8 +141,6 @@ public class Robot {
         board.getTileAt(pos).Occupy(image, DirID);
     }
 
-     
- 
     // Damage and live control
     public void Death(Board board){
         if (this.pos.getRow() > 0 && this.pos.getRow() < 13 &&
