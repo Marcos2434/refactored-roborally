@@ -65,7 +65,18 @@ public class Board extends GridPane{
     public Tile[][] getGrid() {
         return this.grid;
     }
+    public void RunAllEffects(){
+        
+        for (int i = 0; i < 10; i++){
+            for (int j = 0; j < 13; j++){
+                if (getTileAt(new Position(i,j)).isOcupied()){
+                    
+                    getTileAt(new Position(i,j)).effect(getRobotAt(new Position(i,j)),this);
+                }
+            }
+        }
 
+    }
     public void addPlayer(Player player){
         boolean allowed = true;
 
@@ -164,13 +175,14 @@ public class Board extends GridPane{
 
 
     public Robot getRobotAt(Position pos){
-        if (pos.getRow()>=0 && pos.getColumn()>=0 && pos.getColumn()<13 && pos.getRow()<10 && getTileAt(pos).isOcupied() == true){
+        
+        if (pos.getRow()>=0 && pos.getColumn()>=0 && pos.getColumn()<10 && pos.getRow()<13){
             
             for (int i=0; i<nextPlayerIdx; i++){
-                if (players[i].getRobot().getPos().getColumn() == pos.getColumn() && players[i].getRobot().getPos().getRow() == pos.getRow()){
+                if (players[i].getRobot().getPos().equals(pos)){
                     return players[i].getRobot();
                 }
-                else{;}
+                
             }
             return null;
 

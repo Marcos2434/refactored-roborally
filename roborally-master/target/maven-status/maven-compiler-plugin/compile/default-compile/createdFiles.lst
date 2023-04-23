@@ -41,7 +41,6 @@ dtu\Roborally.class
 dtu\logic\models\Board\TileCheckpoint.class
 dtu\logic\models\Cards\Card.class
 dtu\view\View.class
-dtu\logic\models\Robot\MoveableObj.class
 dtu\roborally\view\widgets\ControlPanel.class
 dtu\roborally\view\widgets\ControlPanel$1.class
 dtu\logic\models\Board\Board.class
