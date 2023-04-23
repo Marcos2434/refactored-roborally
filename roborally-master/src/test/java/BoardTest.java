@@ -124,7 +124,7 @@ public class BoardTest {
             {"T","T","T","T","T","T","T","T","T","T"},
             {"BT 2 2","BT 1 2","T","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"},
-            {"T","T","T","T","T","T","T","T","T","T"},};
+            {"T","T","T","T","T","T","T","T","T","T"}};
         this.board = new Board(board1, true);
         robot1 = new Robot(Color.BLUE,new Position(3,3));
         robot2 = new Robot(Color.GREEN,new Position(3,3));
@@ -242,7 +242,66 @@ public class BoardTest {
     public void the_robot_is_pushed_twice_in_different_directions() {
         assertEquals(9,robot1.getPos().getRow());
         assertEquals(1,robot1.getPos().getColumn());
+    }
+    @Given("A Board and four players with different starting points")
+    public void a_board_and_four_players_with_different_starting_points() {
+        String[][] board1 = {   
+            {"BT 3 2","T","HT","T","T","T","T","T","T","T"},
+            {"BT 3 2","T","HT","T","WT 1","WT 4","T","T","T","T"},
+            {"T","T","HT","T","T","T","T","T","T","T"},
+            {"T","T","T","T","T","T","T","T","T","T"},
+            {"T","T","BT 3 1","T","T","T","T","T","T","T"},
+            {"T","T","T","T","T","T","T","T","T","T"},
+            {"T","T","T","T","T","T","T","T","T","T"},
+            {"T","LT 4","T","T","T","T","BT 1 2","T","T","T"},
+            {"T","T","T","T","T","T","T","T","T","T"},
+            {"T","T","T","T","T","T","T","T","T","T"},
+            {"BT 2 2","BT 1 2","T","T","T","T","T","T","T","T"},
+            {"T","T","T","T","T","T","T","T","T","T"},
+            {"T","T","T","T","T","T","T","T","T","T"}};
+        this.board = new Board(board1, true);
+        robot1 = new Robot(Color.BLUE,new Position(0,5));
+        robot2 = new Robot(Color.GREEN,new Position(1,5));
+        robot3 = new Robot(Color.BLACK,new Position(2,5));
+        robot4 = new Robot(Color.RED,new Position(3,5));
+        player1 = new Player(robot1,"Casper1");
+        player2 = new Player(robot2,"Casper2");
+        player3 = new Player(robot3,"Casper3");
+        player4 = new Player(robot4,"Casper4");
+        board.initPlayers();
 }
+    @When("robots are placed on tiles and allTileEffect is called")
+    public void four_robots_are_placed_on_tiles_and_all_tile_effect_is_called() {
+        board.addPlayer(player1);
+        board.addPlayer(player2);
+        board.addPlayer(player3);
+        board.addPlayer(player4);
+        board.moveRobot(robot1, new Position(2,2));
+        board.moveRobot(robot2, new Position(0,10));
+        board.moveRobot(robot3, new Position(2,4));
+               
+        board.RunAllEffects();
+    }
+    @Then("Each robot is effected accordingly")
+    public void each_robot_is_effected_accordingly() {
+        
+        assertTrue(robot1.getPos().equals(new Position(0,5)));
+        assertTrue(robot2.getPos().equals(new Position(1,9)));
+        assertTrue(robot3.getPos().equals(new Position(2,5)));
+    }
+    
+    /*@When("The board is activated")
+    public void the_board_is_activated() {
+        board.moveRobot(player1.getRobot(),new Position(2,8));
+        board.moveRobot(player1.getRobot(),new Position(8,8));
+        board.addPlayer(player1);
+        board.addPlayer(player2);
+
+    }
+    @Then("The Robots follow the register sequence")
+    public void the_robots_follow_the_register_sequence() {
+        
+}*/
 }
 
 

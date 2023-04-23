@@ -20,6 +20,7 @@ public class TileLazer extends TileWall{
         super(Type,dir.getId(),test);
         this.pos = pos;
     }
+    public void effect(Robot robot,Board board){;}
 
     public void FIRE(Board board){
         
