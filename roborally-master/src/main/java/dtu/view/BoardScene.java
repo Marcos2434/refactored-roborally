@@ -25,8 +25,8 @@ public class BoardScene extends Scene {
 
     public BoardScene(Controller c) {
         super(new BorderPane());
-        this.initialize();
         this.c = c;
+        this.initialize();
     }
     
 
@@ -51,11 +51,14 @@ public class BoardScene extends Scene {
         };
         
 
-        Board board = new Board(board1);
-		Robot robot = new Robot(Color.BLUE, new Position(3, 12));
+        
+        Board b = new Board(board1);
+        
+        c.setBoard(b);
 		
-		ControlPanel cp = new ControlPanel(board, robot);
-		boardPane.setCenter(board);
+
+		ControlPanel cp = new ControlPanel(b);
+		boardPane.setCenter(b);
 		boardPane.setBottom(cp);
     }
 }
