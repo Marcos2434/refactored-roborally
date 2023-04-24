@@ -31,10 +31,14 @@ public class Controller {
 
     public void createPlayer(Color color, String name) {
         this.p = new Player(new Robot(Color.BLUE,new Position(2,2)),name);
-        System.out.println(name+" has chosen color "+color);
+        System.out.println(name + " has chosen color "+color);
     };
+
     public void changeToBoardScene(){
         this.setTheScene(this.getBoardScene(), "Roborally!");
+
+        this.startGame();
+
     }
 
     public Player getP() {
@@ -69,4 +73,9 @@ public class Controller {
         this.primaryStage.show();
     }
 
+
+
+    private void startGame() {
+        // spawn players
+    }
 }
