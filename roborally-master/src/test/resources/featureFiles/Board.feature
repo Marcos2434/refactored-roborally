@@ -89,10 +89,15 @@ Feature: Boardfunctions
         Then Each robot is effected accordingly
 
 
-    #@tag16 
-      #  Scenario: As the board, i want to be able to activate the players robots registers one by one.
-      #  Given A Board and four players with different starting points
-      #  When The board is activated
-       # Then The Robots follow the register sequence
-
+    @tag16 
+        Scenario: As the board, i want to be able to activate the players robots registers one by one.
+        Given A clean board and 2 players 
+        When The board activates the registers
+        Then The Robots follow the register sequence
+    
+    @tag17
+        Scenario: As the board When activating all registers, robots push eachother, and deal damage with lazers
+        Given A clean board and 2 players 
+        When The board activates the registers in a way that makes them push eachother
+        Then The robots respond accordingly
         

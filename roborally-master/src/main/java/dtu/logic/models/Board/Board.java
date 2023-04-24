@@ -44,7 +44,7 @@ public class Board extends GridPane{
         }
     }
 
-    public void fireLazers(){
+    public void fireboardLazers(){
         for (int i=0; i<13; i++){
             for (int j=0; j<10; j++){
                 Tile tile = getTileAt(new Position(i,j));
@@ -65,8 +65,22 @@ public class Board extends GridPane{
     public Tile[][] getGrid() {
         return this.grid;
     }
+
+    public void runAllRegisters(){
+        for (int i=0; i<5;i++){
+            for (int j=0; j<nextPlayerIdx; j++){
+                Robot r = players[j].getRobot();
+                r.moveByCard(this, r.getRegister()[i]);
+                
+            }
+            
+            RunAllEffects();
+            fireRobotLazers();
+            fireboardLazers();
+
+        }
+    }
     public void RunAllEffects(){
-        
         for (int i = 0; i < 10; i++){
             for (int j = 0; j < 13; j++){
                 if (getTileAt(new Position(i,j)).isOcupied()){
@@ -75,7 +89,11 @@ public class Board extends GridPane{
                 }
             }
         }
-
+    }
+    public void fireRobotLazers(){
+        for (int i = 0; i <nextPlayerIdx; i++){
+            players[i].getRobot().FIRE(this);
+        }
     }
     public void addPlayer(Player player){
         boolean allowed = true;
