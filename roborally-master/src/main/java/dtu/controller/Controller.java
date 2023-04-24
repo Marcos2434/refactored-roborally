@@ -32,8 +32,8 @@ public class Controller {
     public void launch() {
         //this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
 
-        // this.setTheScene(this.getProgrammingPhaseScene(), "Roborally - Programming Phase"); //for natalia
-       this.setTheScene(this.getProgrammingPhaseSceneSimple(), "Roborally - Programming Phase"); //for oli/gleb
+        this.setTheScene(this.getProgrammingPhaseScene(), "Roborally - Programming Phase"); //for natalia
+        // this.setTheScene(this.getProgrammingPhaseSceneSimple(), "Roborally - Programming Phase"); //for oli/gleb
 
     }
 
