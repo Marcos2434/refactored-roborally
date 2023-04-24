@@ -6,7 +6,7 @@ import dtu.logic.models.Direction;
 import dtu.logic.models.Position;
 import dtu.logic.models.Board.Board;
 import dtu.logic.models.Board.Tile;
-import dtu.logic.models.Cards.Card;
+
 import dtu.logic.models.Cards.ProgramCard;
 import javafx.scene.image.Image;
 import java.util.ArrayList;
@@ -21,10 +21,17 @@ public class Robot {
     private Position checkpoint;
 
     private int DirID;
+    private ProgramCard LastMove = null;
 
-    public ArrayList<ProgramCard> register = new ArrayList<ProgramCard>(); 
+    public ProgramCard[] register = new ProgramCard[5];
     private List<RobotObserver> observers = new ArrayList<RobotObserver>();
 
+    public void setLastMove(ProgramCard card){
+        this.LastMove = card;
+    }
+    public ProgramCard getLastMove(){
+        return this.LastMove;
+    }
     public void notify(Position pos) {
         for (RobotObserver observer : observers) {
             observer.updateCoords(pos);
@@ -114,16 +121,21 @@ public class Robot {
 
     public void moveforward(Boolean forward,Board board){
         int d;
-        if (forward){d = 1;}
-        else {d = -1;}
+        Direction MoveDir;
+        if (forward){MoveDir = getdir();
+                        d = 1;}
+        else {  turn(2,board);
+                MoveDir = getdir();
+                turn(2,board); 
+                d = -1;}
         //Update old tile
         board.getTileAt(pos).unOccupy();
         
-        if (board.allowmove(this,getdir())){
+        if (board.allowmove(this,MoveDir)){
             //Move other robot out of the way first, if there is one
-            if (board.getTileAt(getPosInDir(getdir()))!=null){
-                if (board.getTileAt(getPosInDir(getdir())).isOcupied()){
-                    Robot r = board.getRobotAt(getPosInDir(getdir()));
+            if (board.getTileAt(getPosInDir(MoveDir))!=null){
+                if (board.getTileAt(getPosInDir(MoveDir)).isOcupied()){
+                    Robot r = board.getRobotAt(getPosInDir(MoveDir));
                     Push(r,board);
                 }
             }
@@ -199,14 +211,19 @@ public class Robot {
         }
     }
     //Register handeling
-    public void addCardsToRegister(List<ProgramCard> cards) {
-        for (ProgramCard c : cards) {
-            this.register.add(c);
+   
+    public void setRegister(List<ProgramCard> cards) {
+        if (!(cards.size() > 5)){
+            for (int i=0; i<cards.size(); i++){
+                this.register[i]=(cards.get(i));
+            }
         }
+        else{System.out.println("Too many cards!!!!!!!!!");}
     }
 
-    public ProgramCard getProgramCardAt(int i) {
-        return this.register.get(i);
+
+    public ProgramCard[] getRegister() {
+        return this.register;
     }
 
     public void setPos(int x, int y){
@@ -226,37 +243,10 @@ public class Robot {
         return this.color.toString();
     }
 
-    public void move(Board board, ProgramCard card){
-        if (card.name=="FORWARDS"){
-            if (card.intensity==1){
-                this.moveforward(true,board);
-            }
-            if (card.intensity==2){
-                this.moveforward(true,board);
-                this.moveforward(true,board);
-            }
-            if (card.intensity==3){
-                this.moveforward(true,board);
-                this.moveforward(true,board);
-                this.moveforward(true,board);
-            }
-            
-        }
-        if (card.name=="BACKWARDS"){
-            this.moveforward(false,board);
-        }  
-        if (card.name=="RIGHT"){
-            this.turn(1,board);
-        }
-        if (card.name=="LEFT"){
-            this.turn(-1,board);
-        }
-        if (card.name=="UTURN"){
-            this.turn(2,board);
-        }
-
+    public void moveByCard(Board board, ProgramCard card){
         
-    }
-    
+    card.effect(this,board);
+    this.LastMove = card;
 
-}  
+    }  
+}   
