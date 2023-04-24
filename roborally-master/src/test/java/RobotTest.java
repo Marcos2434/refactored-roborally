@@ -44,7 +44,7 @@ public class RobotTest {
     @Given("A robot being created with a color and a checkpoint")
     public void a_robot_being_created_with_a_color() {
         
-        robot = new Robot(Color.BLUE,new Position(5,5));  
+        robot = new Robot(RobotColor.BLUE,new Position(5,5));  
        
     }
     // a robot has 3 lives when created.
@@ -155,8 +155,8 @@ public class RobotTest {
     Robot robot2;
     @Given("Two robots being created")
     public void two_robots_being_created() {
-        robot1 = new Robot(Color.BLUE,new Position(5,5), board); 
-        robot2 = new Robot(Color.RED,new Position(5,4), board);
+        robot1 = new Robot(RobotColor.BLUE,new Position(5,5), board); 
+        robot2 = new Robot(RobotColor.RED,new Position(5,4), board);
         player1 = new Player(robot1,"Casper");
         player2 = new Player(robot2,"Marcos");
         board.getTileAt(robot1.getPos()).Occupy(robot1.getImage(), robot1.getDirID());
@@ -218,7 +218,7 @@ public class RobotTest {
 
     @Given("A robot is being created with a color and a checkpoint")
     public void a_robot_is_being_created_with_a_color_and_a_checkpoint() {
-        robot = new Robot(Color.BLUE,new Position(5,5));
+        robot = new Robot(RobotColor.BLUE,new Position(5,5));
         robot.setDir(Direction.UP);
     }  
     @When("The robot recieves a card")

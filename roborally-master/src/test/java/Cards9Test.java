@@ -31,7 +31,7 @@ public class Cards9Test {
         // Write code here that turns the phrase above into concrete actions
         @Given("A player is created with a chosen color for the robot and a deck is generated")
         public void a_player_is_created_with_a_chosen_color_for_the_robot_and_a_deck_is_generated() {
-            Robot robot = new Robot(Color.RED,new dtu.logic.models.Position(0, 0));
+            Robot robot = new Robot(RobotColor.RED,new dtu.logic.models.Position(0, 0));
             testPlayer = new Player(robot,"Casper");
             testPlayer.GenerateDeck();
         }

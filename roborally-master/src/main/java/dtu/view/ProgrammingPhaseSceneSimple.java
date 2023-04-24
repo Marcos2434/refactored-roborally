@@ -15,8 +15,8 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.TextField;
-import dtu.logic.models.Color;
 import dtu.logic.models.Position;
+import dtu.logic.models.RobotColor;
 import dtu.logic.models.Cards.Deck;
 import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.Robot;
@@ -45,7 +45,7 @@ public class ProgrammingPhaseSceneSimple extends Scene {
     
     public ProgrammingPhaseSceneSimple (Controller c) {
         super(new BorderPane());
-        this.robot1 = new Robot(Color.BLUE,new Position(2,2));
+        this.robot1 = new Robot(RobotColor.BLUE,new Position(2,2));
         this.player1 = new Player(robot1,"Player1");
         player1.GenerateDeck();
         this.deck = player1.getDeck();

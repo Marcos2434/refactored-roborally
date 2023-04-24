@@ -11,7 +11,7 @@ import javafx.scene.layout.BorderPane;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
-
+import dtu.logic.models.RobotColor;
 import dtu.logic.models.*;
 import dtu.logic.models.Board.*;
 import dtu.logic.models.Player.Player;
@@ -25,7 +25,7 @@ public class BoardTest {
     //test creation of Board
     @Given("A layout, a board is created. And a position is created")
     public void a_board_can_be_created() {
-        robot = new Robot(Color.BLUE,new Position(5,5));
+        robot = new Robot(RobotColor.BLUE,new Position(5,5));
         this.pos1 = new Position(4,4);
         this.pos2 = new Position(2, 4);
         this.pos3 = new Position(4,-1);
@@ -117,10 +117,10 @@ public class BoardTest {
             {"T","T","HT","T","T","T","T","T","T","T"},
             {"T","T","HT","T","T","T","T","T","T","T"},};
         this.board = new Board(board1, true);
-        robot1 = new Robot(Color.BLUE,new Position(3,3));
-        robot2 = new Robot(Color.GREEN,new Position(3,3));
-        robot3 = new Robot(Color.BLUE,new Position(5,3));
-        robot4 = new Robot(Color.RED,new Position(5,3));
+        robot1 = new Robot(RobotColor.BLUE,new Position(3,3));
+        robot2 = new Robot(RobotColor.GREEN,new Position(3,3));
+        robot3 = new Robot(RobotColor.BLUE,new Position(5,3));
+        robot4 = new Robot(RobotColor.RED,new Position(5,3));
         player1 = new Player(robot1,"Casper1");
         player2 = new Player(robot2,"Casper2");
         player3 = new Player(robot3,"Casper3");
@@ -141,8 +141,8 @@ public class BoardTest {
         board.addPlayer(player2);
         assertNull(board.getPlayers()[1]);
 }
-    @Then("Add the player is not added if they have the same Color")
-    public void add_the_player_is_not_added_if_they_have_the_same_color() {
+    @Then("Add the player is not added if they have the same RobotColor")
+    public void add_the_player_is_not_added_if_they_have_the_same_Robotcolor() {
         board.addPlayer(player1);
         board.addPlayer(player3);
         assertNull(board.getPlayers()[1]);

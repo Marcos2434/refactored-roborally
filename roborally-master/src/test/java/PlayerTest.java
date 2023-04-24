@@ -18,7 +18,7 @@ public class PlayerTest {
     
     @Given("A player is created with a chosen color for the robot")
     public void a_player_is_created() {
-        Robot robot = new Robot(Color.RED,new Position(2,2));
+        Robot robot = new Robot(RobotColor.RED,new Position(2,2));
         testPlayer = new Player(robot,"Casper");
     }
     @Then("A robot is assigned to the player")

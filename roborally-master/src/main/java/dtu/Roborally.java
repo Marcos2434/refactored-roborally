@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Arrays;
 
-import dtu.logic.models.Color;
 import dtu.logic.models.Direction;
 import dtu.logic.models.Position;
+import dtu.logic.models.RobotColor;
 //import dtu.roborally.view.CardinalPoints;
 import dtu.logic.models.Board.Board;
 import dtu.logic.models.Robot.Robot;
@@ -50,8 +50,8 @@ public class Roborally extends Application {
         };
 
         Board board = new Board(board1);
-        Robot robot2 = new Robot(Color.BLUE, new Position(5, 8), board);
-        Robot robot1 = new Robot(Color.RED, new Position(5, 0), board);
+        Robot robot2 = new Robot(RobotColor.BLUE, new Position(5, 8), board);
+        Robot robot1 = new Robot(RobotColor.RED, new Position(5, 0), board);
 
         robot1.setDir(Direction.UP);
         robot2.setDir(Direction.DOWN);

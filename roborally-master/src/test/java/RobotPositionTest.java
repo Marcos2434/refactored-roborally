@@ -20,7 +20,7 @@ public class RobotPositionTest {
     @Given("A player is created with a chosen color")
     public void a_player_is_createdCopy() {
         // Write code here that turns the phrase above into concrete actions
-        Robot robot = new Robot(Color.RED,new Position(2,2));
+        Robot robot = new Robot(RobotColor.RED,new Position(2,2));
         testPlayer = new Player(robot,"Casper");
     }
     @And("A robot is assigned to player")

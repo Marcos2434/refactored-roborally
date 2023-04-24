@@ -1,6 +1,6 @@
 package dtu.logic.models;
 
-public enum Color {
+public enum RobotColor {
     
     // 8 DIFFERENT COLORS for the robots
     RED("colors/red.png"),
@@ -14,7 +14,7 @@ public enum Color {
 
     private String pictureFile;
     
-	private Color(String pictureFile) {
+	private RobotColor(String pictureFile) {
 		this.pictureFile = pictureFile;
 	}
 

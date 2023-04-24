@@ -2,8 +2,8 @@ package dtu.controller;
 
 import dtu.logic.models.Player.*;
 import dtu.logic.models.Robot.Robot;
-import dtu.logic.models.Color;
 import dtu.logic.models.Position;
+import dtu.logic.models.RobotColor;
 import javafx.stage.Stage;
 import dtu.view.BoardScene;
 import dtu.view.MenuScene;
@@ -37,8 +37,8 @@ public class Controller {
 
     }
 
-    public void createPlayer(Color color, String name) {
-        this.p = new Player(new Robot(Color.BLUE,new Position(2,2)),name);
+    public void createPlayer(RobotColor color, String name) {
+        this.p = new Player(new Robot(RobotColor.BLUE,new Position(2,2)),name);
         System.out.println(name+" has chosen color "+color);
     };
     public void changeToBoardScene(){

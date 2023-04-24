@@ -1,6 +1,7 @@
 package dtu.view;
 
 import dtu.controller.Controller;
+import dtu.logic.models.RobotColor;
 import javafx.scene.Scene;
 
 import javafx.scene.layout.BorderPane;
@@ -12,7 +13,7 @@ import javafx.scene.text.Text;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.TextField;
-import dtu.logic.models.Color;
+
 
 public class MenuScene extends Scene {
 
@@ -118,57 +119,57 @@ public class MenuScene extends Scene {
 										if (red.getText().isEmpty()){
 											red.setText("RED");
 										}
-										c.createPlayer((Color.RED), red.getText());
+										c.createPlayer((RobotColor.RED), red.getText());
 									}
 									if (checkarray[i].getText().contains("blue")){
 										if (blue.getText().isEmpty()){
 											blue.setText("BLUE");
 										}
-										c.createPlayer((Color.BLUE), blue.getText());
+										c.createPlayer((RobotColor.BLUE), blue.getText());
 									}
 									if (checkarray[i].getText().contains("green")){
 										if (green.getText().isEmpty()){
 											green.setText("GREEN");
 										}
-										c.createPlayer((Color.GREEN), green.getText());
+										c.createPlayer((RobotColor.GREEN), green.getText());
 									}
 									if (checkarray[i].getText().contains("yellow")){
 										if (yellow.getText().isEmpty()){
 											yellow.setText("YELLOW");
 										}
-										c.createPlayer((Color.YELLOW), yellow.getText());
+										c.createPlayer((RobotColor.YELLOW), yellow.getText());
 									}
 									if (checkarray[i].getText().contains("orange")){
 										if (orange.getText().isEmpty()){
 											orange.setText("ORANGE");
 										}
-										c.createPlayer((Color.ORANGE), orange.getText());
+										c.createPlayer((RobotColor.ORANGE), orange.getText());
 									}
 									if (checkarray[i].getText().contains("purple")){
 										if (purple.getText().isEmpty()){
 											purple.setText("PURPLE");
 										}
-										c.createPlayer((Color.PURPLE), purple.getText());
+										c.createPlayer((RobotColor.PURPLE), purple.getText());
 									}
 									if (checkarray[i].getText().contains("white")){
 										if (white.getText().isEmpty()){
 											white.setText("WHITE");
 										}
-										c.createPlayer((Color.WHITE), white.getText());
+										c.createPlayer((RobotColor.WHITE), white.getText());
 									}
 									if (checkarray[i].getText().contains("black")){
 										if (black.getText().isEmpty()){
 											black.setText("BLACK");
 										}
-										c.createPlayer((Color.BLACK), black.getText());
+										c.createPlayer((RobotColor.BLACK), black.getText());
 										
 									}
 									c.changeToBoardScene();
 								}
 																
-								// this.c.createPlayer(colorChoice.getValue().toString());
+								// this.c.createPlayer(RobotcolorChoice.getValue().toString());
                 // this.c.getP().getRobot().registerObserver(rv);
-                // System.out.println("Player created:" + colorChoice.getValue().toString());
+                // System.out.println("Player created:" + RobotcolorChoice.getValue().toString());
             }
           }
         }

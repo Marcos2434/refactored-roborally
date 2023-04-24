@@ -55,7 +55,7 @@ public class Board extends GridPane{
         boolean allowed = true;
 
         for (int j = 0; j < nextPlayerIdx; j++){
-            if (players[j].getRobot().getColor()  ==  (player.getRobot().getColor())){
+            if (players[j].getRobot().getRobotColor()  ==  (player.getRobot().getRobotColor())){
                 allowed = false;
                
             }
