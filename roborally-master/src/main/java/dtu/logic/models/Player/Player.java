@@ -51,7 +51,7 @@ public class Player {
         List<ProgramCard> registerCards = hand.subList(0, numberOfCards);
         
         // add to robot register
-        robot.addCardsToRegister(registerCards);
+        robot.setRegister(registerCards);
         
     }
 
