@@ -15,7 +15,7 @@ import io.cucumber.java.en.Then;
 
 import dtu.logic.models.*;
 import dtu.logic.models.Board.Board;
-import dtu.logic.models.Cards.Card;
+
 import dtu.logic.models.Cards.Deck;
 import dtu.logic.models.Cards.ProgramCard;
 import dtu.logic.models.Player.Player;
@@ -225,17 +225,17 @@ public class RobotTest {
     public void the_robot_recieves_a_card() {
         Deck deck = new Deck();
         ProgramCard card = deck.cards.get(21); //Checks move forward 
-        robot.move(board, card);
+        robot.moveByCard(board, card);
         
 
         ProgramCard card3 = deck.cards.get(33); //Checks backwards  
-        robot.move(board, card3);
-
+        robot.moveByCard(board, card3);
+        
         ProgramCard card1 = deck.cards.get(12); //Check U turn 
-        robot.move(board, card1);
+        robot.moveByCard(board, card1);
         
         ProgramCard card2 = deck.cards.get(7); //Checks Right turn 
-        robot.move(board, card2);
+        robot.moveByCard(board, card2);
 
     }
     @Then("The robot moves according to the card desciription")
