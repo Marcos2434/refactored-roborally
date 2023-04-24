@@ -34,7 +34,7 @@ public class Controller {
         System.out.println(name+" has chosen color "+color);
     };
     public void changeToBoardScene(){
-        this.setTheScene(this.getBoardScene(), "Game!");
+        this.setTheScene(this.getBoardScene(), "Roborally!");
     }
 
     public Player getP() {
