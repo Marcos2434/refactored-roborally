@@ -23,7 +23,8 @@ public class Robot {
     private int DirID;
     private ProgramCard LastMove = null;
 
-    public ProgramCard[] register = new ProgramCard[5];
+    public List<ProgramCard> register = new ArrayList<ProgramCard>(5);
+    
     private List<RobotObserver> observers = new ArrayList<RobotObserver>();
 
     public void setLastMove(ProgramCard card){
@@ -40,6 +41,7 @@ public class Robot {
     public Image getImage(){
         return image;
     }
+    
     public void registerObserver(RobotObserver observer) {
         observers.add(observer);
     }
@@ -48,16 +50,9 @@ public class Robot {
         this.Robotcolor = Robotcolor;
         this.DirID = 1;
         this.pos = position;
-        this.checkpoint = position;
+        this.checkpoint = new Position(position.getColumn(), position.getRow());
         this.image = new Image(getClass().getClassLoader().getResourceAsStream(this.Robotcolor.getPictureFile()));  
-    }
-    public Robot(RobotColor Robotcolor,Position position, Board board) {
-        this.Robotcolor = Robotcolor;
-        this.DirID = 1;
-        this.pos = position;
-        this.checkpoint = position;
-        this.image = new Image(getClass().getClassLoader().getResourceAsStream(this.Robotcolor.getPictureFile()));
-        board.getTileAt(pos).Occupy(image, DirID);    
+        
     }
     // Position and movement
     public void setPos(Position pos) {
@@ -128,6 +123,7 @@ public class Robot {
     }
 
     public void moveforward(Boolean forward,Board board){
+        
         int d;
         Direction MoveDir;
         if (forward){MoveDir = getdir();
@@ -138,7 +134,7 @@ public class Robot {
                 d = -1;}
         //Update old tile
         board.getTileAt(pos).unOccupy();
-        
+       
         if (board.allowmove(this,MoveDir)){
             //Move other robot out of the way first, if there is one
             if (board.getTileAt(getPosInDir(MoveDir))!=null){
@@ -147,26 +143,30 @@ public class Robot {
                     Push(r,board);
                 }
             }
+           
             // move
             if (this.DirID == 1){pos.addY(-d);}
             else if (this.DirID == 2){pos.addX(d);}
             else if (this.DirID == 3){pos.addY(d);}
             else if (this.DirID == 4){pos.addX(-d);} 
         }
+        
         // check if over the edge
-        if (this.pos.getRow() < 0 || this.pos.getRow() > 13 ||
-            this.pos.getColumn() < 0 || this.pos.getColumn()>10){Death(board);}
-            
+        if (this.pos.getRow() < 0 || this.pos.getRow() > 12 ||
+        this.pos.getColumn() < 0 || this.pos.getColumn()>9)
+        {Death(board);}
         //update new tile
         board.getTileAt(pos).Occupy(image, DirID);
     }
 
     // Damage and live control
     public void Death(Board board){
-        if (this.pos.getRow() > 0 && this.pos.getRow() < 13 &&
-        this.pos.getColumn() > 0 && this.pos.getColumn()<10){board.getTileAt(pos).unOccupy();}
         
-        this.pos = this.checkpoint;
+        if (this.pos.getRow() > 0 && this.pos.getRow() < 13 &&
+            this.pos.getColumn() > 0 && this.pos.getColumn()<10){
+            board.getTileAt(pos).unOccupy();
+        } 
+        this.pos = new Position(checkpoint.getColumn(),checkpoint.getRow());
         this.lives -=1;
         this.damageTaken = 0;
         board.getTileAt(pos).Occupy(image, DirID);
@@ -218,19 +218,26 @@ public class Robot {
             hitRob.takeDmg(board);
         }
     }
+    public void AddToRegister(ProgramCard card){
+        if (register.size() <5){
+            register.add(card);
+            System.out.println("Card added to register");
+        }
+        else{System.out.println("Register is full,insert is not possible");}
+    }
     //Register handeling
-   
     public void setRegister(List<ProgramCard> cards) {
-        if (!(cards.size() > 5)){
+        this.register = new ArrayList<ProgramCard>();
+        if ((cards.size() <= 5)){
             for (int i=0; i<cards.size(); i++){
-                this.register[i]=(cards.get(i));
+                this.register.add(cards.get(i));
             }
         }
         else{System.out.println("Too many cards!!!!!!!!!");}
     }
 
 
-    public ProgramCard[] getRegister() {
+    public List<ProgramCard> getRegister() {
         return this.register;
     }
 

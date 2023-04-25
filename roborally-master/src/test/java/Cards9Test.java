@@ -65,7 +65,7 @@ public class Cards9Test {
         }
         @Then("The player has {int} cards in the register")
         public void the_player_has_cards_in_the_register(Integer int1) {
-            assertEquals(5, testPlayer.getRobot().register.length);
+            assertEquals(5, testPlayer.getRobot().register.size());
             //testPlayer.getRobot().register.size();
         }
 

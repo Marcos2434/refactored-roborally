@@ -1,5 +1,6 @@
 package dtu.roborally.view.widgets;
 
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -8,11 +9,14 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import dtu.logic.models.Board.Board;
 import dtu.logic.models.Robot.Robot;
+import dtu.logic.models.Cards.MovementCards.*;
+import dtu.logic.models.Player.Player;
 
 public class ControlPanel extends GridPane {
 
 	private Board board;
 	private Robot robot;
+	
 	
 	private Button moveF1 = new Button("\u2191");
 	private Button moveF2 = new Button("\u21D1");
@@ -23,27 +27,28 @@ public class ControlPanel extends GridPane {
 	private Button turnL = new Button("\u21B6");
 	private Button turnR = new Button("\u21B7");
 	private Button uTurn = new Button("\u27F2");
-	private Button rekt = new Button("\u2716");
+	private Button Activate = new Button("Activate register");
 	
-	public ControlPanel(Board board) {
+	public ControlPanel(Board board,Robot robot) {
 		this.board = board;
-		// this.robot = robot;
+		this.robot = robot;
+		//this.board.addPlayer(new Player(robot, "Casper"));
 		
 		configure();
-		// addListeners();
+		addListeners();
 	}
 	
 	private void configure() {
-		// add(moveF1, 2, 0);
-		// add(moveF2, 1, 0);
-		// add(moveF3, 3, 0);
-		// add(turnL, 1, 1);
-		// add(uTurn, 2, 1);
-		// add(turnR, 3, 1);
-		// add(moveB1, 2, 2);
-		// add(moveB2, 1, 2);
-		// add(moveB3, 3, 2);
-		// add(rekt, 4, 1);
+		add(moveF1, 2, 0);
+		add(moveF2, 1, 0);
+		add(moveF3, 3, 0);
+		add(turnL, 1, 1);
+		add(uTurn, 2, 1);
+		add(turnR, 3, 1);
+		add(moveB1, 2, 2);
+		add(moveB2, 1, 2);
+		add(moveB3, 3, 2);
+		add(Activate, 4, 1);
 		
 		ColumnConstraints firstCol = new ColumnConstraints();
 		firstCol.setHgrow(Priority.ALWAYS);
@@ -57,74 +62,81 @@ public class ControlPanel extends GridPane {
 		uTurn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				robot.turn(2, board);;
+				robot.AddToRegister(new Uturn());
 			}
 		});
 		
 		moveF1.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				robot.moveforward(true, board);
+				
+				robot.AddToRegister(new Forward(1));
+				
 			}
 		});
 		moveF2.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				for (int i = 0; i < 2; i++){
-				robot.moveforward(true, board);
-				}
+				robot.AddToRegister(new Forward(2));
 			}
 		});
 		moveF3.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				for (int i = 0; i < 3; i++){
-					robot.moveforward(true, board);
-					}
+				robot.AddToRegister(new Forward(3));
 			}
 		});
 		
 		moveB1.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				robot.moveforward(false, board);
+				robot.AddToRegister(new Backwards(1));
 			}
 		});
 		moveB2.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				for (int i = 0; i < 2; i++){
-				robot.moveforward(false, board);
-				}
+				robot.AddToRegister(new Forward(2));
 			}
 		});
 		moveB3.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				for (int i = 0; i < 3; i++){
-					robot.moveforward(false, board);
-					}
+				robot.AddToRegister(new Forward(3));
 			}
 		});
 		
 		turnL.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				robot.turn(-1, board);
+				robot.AddToRegister(new TurnLeft(1));
 			}
 		});
 		
 		turnR.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				robot.turn(1, board);;
+				robot.AddToRegister(new TurnRight(1));
 			}
 		});
 
-		rekt.setOnAction(new EventHandler<ActionEvent>() {
+		Activate.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				robot.Death(board);
+				if (robot.register.size() > 0) {
+					Task<Void> task = new Task<Void>() {
+						@Override
+						protected Void call() throws Exception {
+							board.runAllRegisters();
+							return null;
+						}
+					};
+					new Thread(task).start();}
+				else{
+					System.out.println("Register is empty");
+				}
+				
+				
 			}
 		});
 	}
