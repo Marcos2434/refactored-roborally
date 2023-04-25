@@ -31,24 +31,24 @@ public class TileBelt extends Tile{
     public Direction getdir(){
         return dir;
     }
-    public void effect(Robot robot,Board board){
+    public void effect(Robot robot, BoardController boardController){
         
-        board.getTileAt(robot.getPos()).unOccupy();
+        boardController.getTileAt(robot.getPos()).unOccupy();
         System.out.println("before 2");
         if (intensity == 2){
             System.out.println("in 2");
-            if (board.getTileAt(robot.getPos()) instanceof TileBelt){
+            if (boardController.getTileAt(robot.getPos()) instanceof TileBelt){
                 System.out.println("in instance 1");
-                TileBelt currtile = (TileBelt)board.getTileAt(robot.getPos());
+                TileBelt currtile = (TileBelt)boardController.getTileAt(robot.getPos());
                 pushRobot(robot,currtile.getdir());
-                board.getTileAt(robot.getPos()).Occupy(robot.getImage(), robot.getdir().getId()); 
+                boardController.getTileAt(robot.getPos()).Occupy(robot.getImage(), robot.getdir().getId()); 
                 try{Thread.sleep(500);}
                 catch(Exception e){System.out.println(e);}
 
-                if (board.getTileAt(robot.getPos()) instanceof TileBelt){
+                if (boardController.getTileAt(robot.getPos()) instanceof TileBelt){
                     System.out.println("in instance 2");
-                    TileBelt nextTileBelt = (TileBelt) board.getTileAt(robot.getPos());
-                    board.getTileAt(robot.getPos()).unOccupy();
+                    TileBelt nextTileBelt = (TileBelt) boardController.getTileAt(robot.getPos());
+                    boardController.getTileAt(robot.getPos()).unOccupy();
                     pushRobot(robot,nextTileBelt.getdir());
                 }
             }
