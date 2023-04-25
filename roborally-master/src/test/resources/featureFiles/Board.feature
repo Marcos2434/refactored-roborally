@@ -81,4 +81,29 @@ Feature: Boardfunctions
         Given A Board and four players
         When A robot is placed on the BeltTile with intensity two where the tile after is a belt tile with different direction
         Then The robot is pushed twice in different directions.
+
+    @tag15
+        Scenario: A board can run and apply the effectfunctions of all tiles on the Board
+        Given A Board and four players with different starting points
+        When robots are placed on tiles and allTileEffect is called
+        Then Each robot is effected accordingly
+
+
+    @tag16 
+        Scenario: As the board, i want to be able to activate the players robots registers one by one.
+        Given A clean board and 2 players 
+        When The board activates the registers
+        Then The Robots follow the register sequence
+    
+    @tag17
+        Scenario: As the board When activating all registers, robots push eachother, and deal damage with lazers
+        Given A clean board and 2 players 
+        When The board activates the registers in a way that makes them push eachother
+        Then The robots respond accordingly
+    
+    @tag18
+        Scenario: As the board When activating all registers, I want to activate all Tiles after each round.
+        Given A Board and four players with different starting points
+        When The board activates the registers in a way that makes them walk on top of tiles with effects 
+        Then The robots are affected acordingly.
         

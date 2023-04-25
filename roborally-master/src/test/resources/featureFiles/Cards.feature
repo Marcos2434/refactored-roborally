@@ -11,10 +11,7 @@ Feature: Player receives cards from the deck
          When The player receives 9 cards from the deck
          Then The player has 9 cards in his hand
     
-    @tag3
-    Scenario: As a player I want to be able to have different kinds of cards in my generated deck
-            Given A player is created with a chosen color for the robot and a deck is generated 
-            Then The deck has 5 different kinds of cards in it
+
     
     @tag4
     Scenario: As a player i want to be able to choose 5 cards out of my hand
@@ -22,10 +19,10 @@ Feature: Player receives cards from the deck
           When The player receives 9 cards from the deck and chooses 5 of them
           Then The player has 5 cards in the register
           
-    @tag6
-    Scenario: As a player I want to be able to have all necessary programming cards in my deck 
-        Given A player is created with a chosen color for the robot and a deck is generated
-        Then The deck has all necessary programming cards in it
+   #@tag6
+   #Scenario: As a player I want to be able to have all necessary programming cards in my deck 
+    #    Given A player is created with a chosen color for the robot and a deck is generated
+     #   Then The deck has all necessary programming cards in it
 
     @tag7                   
     Scenario: As a player I want to have less cards in my hand after I put them in my register

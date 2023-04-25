@@ -32,6 +32,7 @@ public class TileBelt extends Tile{
         return dir;
     }
     public void effect(Robot robot,Board board){
+        
         board.getTileAt(robot.getPos()).unOccupy();
        
         if (intensity == 2){

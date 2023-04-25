@@ -44,7 +44,7 @@ public class Board extends GridPane{
         }
     }
 
-    public void fireLazers(){
+    public void fireboardLazers(){
         for (int i=0; i<13; i++){
             for (int j=0; j<10; j++){
                 Tile tile = getTileAt(new Position(i,j));
@@ -66,6 +66,35 @@ public class Board extends GridPane{
         return this.grid;
     }
 
+    public void runAllRegisters(){
+        for (int i=0; i<5;i++){
+            for (int j=0; j<nextPlayerIdx; j++){
+                Robot r = players[j].getRobot();
+                r.moveByCard(this, r.getRegister()[i]);
+               
+            }
+            
+            RunAllEffects();
+            fireRobotLazers();
+            fireboardLazers();
+
+        }
+    }
+    public void RunAllEffects(){
+        for (int i = 0; i < 10; i++){
+            for (int j = 0; j < 13; j++){
+                if (getTileAt(new Position(i,j)).isOcupied()){
+                    
+                    getTileAt(new Position(i,j)).effect(getRobotAt(new Position(i,j)),this);
+                }
+            }
+        }
+    }
+    public void fireRobotLazers(){
+        for (int i = 0; i <nextPlayerIdx; i++){
+            players[i].getRobot().FIRE(this);
+        }
+    }
     public void addPlayer(Player player){
         boolean allowed = true;
 
@@ -164,13 +193,14 @@ public class Board extends GridPane{
 
 
     public Robot getRobotAt(Position pos){
-        if (pos.getRow()>=0 && pos.getColumn()>=0 && pos.getColumn()<13 && pos.getRow()<10 && getTileAt(pos).isOcupied() == true){
+        
+        if (pos.getRow()>=0 && pos.getColumn()>=0 && pos.getColumn()<10 && pos.getRow()<13){
             
             for (int i=0; i<nextPlayerIdx; i++){
-                if (players[i].getRobot().getPos().getColumn() == pos.getColumn() && players[i].getRobot().getPos().getRow() == pos.getRow()){
+                if (players[i].getRobot().getPos().equals(pos)){
                     return players[i].getRobot();
                 }
-                else{;}
+                
             }
             return null;
 
