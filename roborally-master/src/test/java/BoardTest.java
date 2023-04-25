@@ -267,10 +267,10 @@ public class BoardTest {
             {"T","T","T","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"}};
         this.board = new Board(board1, true);
-        robot1 = new Robot(Color.BLUE,new Position(0,5));
-        robot2 = new Robot(Color.GREEN,new Position(1,5));
-        robot3 = new Robot(Color.BLACK,new Position(2,5));
-        robot4 = new Robot(Color.RED,new Position(3,5));
+        robot1 = new Robot(RobotColor.BLUE,new Position(0,5));
+        robot2 = new Robot(RobotColor.GREEN,new Position(1,5));
+        robot3 = new Robot(RobotColor.BLACK,new Position(2,5));
+        robot4 = new Robot(RobotColor.RED,new Position(3,5));
         player1 = new Player(robot1,"Casper1");
         player2 = new Player(robot2,"Casper2");
         player3 = new Player(robot3,"Casper3");
@@ -314,8 +314,8 @@ public class BoardTest {
             {"T","T","T","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"}};
         this.board = new Board(board1, true);
-        robot1 = new Robot(Color.BLUE,new Position(0,5));
-        robot2 = new Robot(Color.GREEN,new Position(1,5));
+        robot1 = new Robot(RobotColor.BLUE,new Position(0,5));
+        robot2 = new Robot(RobotColor.GREEN,new Position(1,5));
         
         player1 = new Player(robot1,"Casper1");
         player2 = new Player(robot2,"Casper2");

@@ -19,8 +19,8 @@ public class View extends Application {
 		ProgrammingPhaseScene programmingPhaseScene = new ProgrammingPhaseScene(c);
 		c.setProgrammingPhaseScene(programmingPhaseScene);
 
-		ProgrammingPhaseSceneSimple programmingPhaseSceneSimple = new ProgrammingPhaseSceneSimple(c);
-		c.setProgrammingPhaseSceneSimple(programmingPhaseSceneSimple);
+		// ProgrammingPhaseSceneSimple programmingPhaseSceneSimple = new ProgrammingPhaseSceneSimple(c);
+		// c.setProgrammingPhaseSceneSimple(programmingPhaseSceneSimple);
 
 		// ---------------------
 

@@ -155,8 +155,8 @@ public class RobotTest {
     Robot robot2;
     @Given("Two robots being created")
     public void two_robots_being_created() {
-        robot1 = new Robot(RobotColor.BLUE,new Position(5,5), board); 
-        robot2 = new Robot(RobotColor.RED,new Position(5,4), board);
+        robot1 = new Robot(RobotColor.BLUE,new Position(5,5)); 
+        robot2 = new Robot(RobotColor.RED,new Position(5,4));
         player1 = new Player(robot1,"Casper");
         player2 = new Player(robot2,"Marcos");
         board.getTileAt(robot1.getPos()).Occupy(robot1.getImage(), robot1.getDirID());

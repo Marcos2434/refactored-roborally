@@ -97,7 +97,7 @@ public class ProgrammingPhaseScene extends Scene {
         // //Image stream2 = new Image (ProgrammingPhaseScene.class.getClassLoader().getResourceAsStream(player1.getHand().get(1).imagePath)); //new FileInputStream("file:src/main/resources/Cards/left_turn.png"));
         // ImageView imageView2 = new ImageView(stream2);
         // imageView2.setFitHeight(150);
-        // imageView2.setFitWidth(100);
+        // imageView// etFitWidth(100);
         
 
 
@@ -106,9 +106,8 @@ public class ProgrammingPhaseScene extends Scene {
 
         // VBox Hand = new VBox(handTitle, card1);
 
-        mainGrid.setPrefSize(1000, 1000);
-
-        // mainGrid.setRight(label);
+  
+        // l);
         // mainGrid.setLeft(label);
         // mainGrid.(imageView1);
         // mainGrid(imageView2);

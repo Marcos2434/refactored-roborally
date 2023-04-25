@@ -85,8 +85,8 @@ public class Board extends GridPane {
                     r.setRegister(new ArrayList<ProgramCard>());
                 }
 
-                try{Thread.sleep(1000);}
-                catch(Exception e){System.out.println(e);}
+                //try{Thread.sleep(1000);}
+                //catch(Exception e){System.out.println(e);}
             }
             
             

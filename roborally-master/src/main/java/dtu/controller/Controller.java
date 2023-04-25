@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import dtu.view.BoardScene;
 import dtu.view.MenuScene;
 import dtu.view.ProgrammingPhaseScene;
-import dtu.view.ProgrammingPhaseSceneSimple;
+// import dtu.view.ProgrammingPhaseSceneSimple;
 import javafx.scene.Scene;
 
 import dtu.logic.models.Board.TileType;
@@ -28,7 +28,7 @@ public class Controller {
     private MenuScene menuScene;
     private BoardScene boardScene;
     private ProgrammingPhaseScene programmingPhaseScene;
-    private ProgrammingPhaseSceneSimple programmingPhaseSceneSimple;
+    // private ProgrammingPhaseSceneSimple programmingPhaseSceneSimple;
     // --------------
     private Stage primaryStage;
 
@@ -42,9 +42,9 @@ public class Controller {
     }
 
     public void launch() {
-        //this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
+        this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
 
-        this.setTheScene(this.getProgrammingPhaseScene(), "Roborally - Programming Phase"); //for natalia
+        //this.setTheScene(this.getProgrammingPhaseScene(), "Roborally - Programming Phase"); //for natalia
         // this.setTheScene(this.getProgrammingPhaseSceneSimple(), "Roborally - Programming Phase"); //for oli/gleb
 
     }
@@ -103,13 +103,13 @@ public class Controller {
         return programmingPhaseScene;
     }
 
-    public void setProgrammingPhaseSceneSimple(ProgrammingPhaseSceneSimple programmingPhaseSceneSimple) {
-        this.programmingPhaseSceneSimple = programmingPhaseSceneSimple;
-    }
+    // public void setProgrammingPhaseSceneSimple(ProgrammingPhaseSceneSimple programmingPhaseSceneSimple) {
+    //     this.programmingPhaseSceneSimple = programmingPhaseSceneSimple;
+    // }
 
-    public ProgrammingPhaseSceneSimple getProgrammingPhaseSceneSimple() {
-        return programmingPhaseSceneSimple;
-    }
+    // public ProgrammingPhaseSceneSimple getProgrammingPhaseSceneSimple() {
+    //     return programmingPhaseSceneSimple;
+    // }
 
 
 
