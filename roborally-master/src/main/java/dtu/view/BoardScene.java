@@ -44,29 +44,36 @@ public class BoardScene extends Scene {
     BorderPane boardPane;
     Controller c;
     HBox leftSide = new HBox();
+    ArrayList<Playermat> pMats = new ArrayList<>();
+    VBox playersUIright = new VBox();
+    VBox playersUIleft = new VBox();
 
     public void setPlayermats(ArrayList<Player> players){
-        VBox playersUIright = new VBox();
-        VBox playersUIleft = new VBox();
         if (players.size() <= 4){
             for (int i = 0; i < players.size(); i++){
                 Playermat p1 = new Playermat(players.get(i));
                 playersUIright.getChildren().add(p1);
+                pMats.add(p1);
             }
             boardPane.setRight(playersUIright);
-        } else {
+        } 
+        
+        else {
             for (int i = 0; i < 4; i++){
                 Playermat p1 = new Playermat(players.get(i));
                 playersUIright.getChildren().add(p1);
+                pMats.add(p1);
             }
             boardPane.setRight(playersUIright);
             for (int i = 4; i < players.size(); i++){
                 Playermat p1 = new Playermat(players.get(i));
                 playersUIleft.getChildren().add(p1);
+                pMats.add(p1);
             }
-            leftSide.getChildren().add(playersUIleft);
+            boardPane.setLeft(playersUIleft);
         }
-        
+        // boardPane.setRight(playersUIright);
+        // leftSide.getChildren().add(playersUIleft);
 
     }
 
@@ -102,7 +109,7 @@ public class BoardScene extends Scene {
 
         Board board = new Board(board1);
 		Robot robot = new Robot(RobotColor.BLUE, new Position(3, 10));
-        
+
         c.setBoard(board);
 
         try {board.initPlayers();
@@ -119,7 +126,7 @@ public class BoardScene extends Scene {
 		ControlPanel cp = new ControlPanel(board, robot);
         //cp.addplayer(new Player(cp.getrobot(),"Casper"));
 		boardPane.setCenter(board);
-        leftSide.getChildren().add(cp);
+        // leftSide.getChildren().add(cp);
 
         ArrayList<Player> players = new ArrayList<>();
         players.add(new Player(robot, "Komv"));
@@ -132,6 +139,6 @@ public class BoardScene extends Scene {
         players.add(new Player(robot, "GT"));
         setPlayermats(players);
 
-		boardPane.setLeft(leftSide);
+		boardPane.setBottom(cp);
     }
 }

@@ -243,5 +243,17 @@ public class Board extends GridPane {
             return null;
         }
     }
+
+    public ArrayList<Position> getStartFields(){
+        ArrayList<Position> startFields = new ArrayList<>();
+        for (int row = 0; row < 13; row++) { 
+            for (int col = 0; col < 10; col++) {
+                if (this.grid[row][col].type == TileType.START){
+                    startFields.add(new Position(col, row));
+                }
+            }
+        }
+        return startFields;
+    }   
 }
 

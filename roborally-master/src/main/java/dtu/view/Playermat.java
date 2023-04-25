@@ -70,6 +70,10 @@ public class Playermat extends StackPane{
         damage.setText("Damage: " + String.valueOf(player.getRobot().getDamageTaken()));
     }
 
+    public String getPName(){
+        return player.getName();
+    }
+
     public Playermat(Player player){
 
         this.player = player;

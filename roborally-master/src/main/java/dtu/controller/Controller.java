@@ -51,20 +51,31 @@ public class Controller {
 
     public void setBoard(Board board) {
         this.board = board;
+        this.availableBoardSpawns = this.board.getStartFields();
     }
 
     public Board getBoard() {
         return board;
     }
 
+    private Position randomSpawn(){
+        int randID = (int)(Math.random() * availableBoardSpawns.size()-1);
+        Position randPos = availableBoardSpawns.get(randID);
+        availableBoardSpawns.remove(randID);
+        return randPos;
+
+    }
+
     public void createPlayer(RobotColor color, String name) {
+        this.players.add(new Player(new Robot(color, randomSpawn()), name));
         // this.players.add(new Player(new Robot(color, new Position(2, 2)),name));
         System.out.println(name + " has chosen color " + color);
     };
 
     public void changeToBoardScene(){
+        // this.boardScene.setPlayermats(players);
         this.setTheScene(this.getBoardScene(), "Roborally!");
-        this.startGame();
+        // this.startGame();
     }
 
     public void setMenuScene(MenuScene s) {
@@ -101,6 +112,10 @@ public class Controller {
 
     public ProgrammingPhaseScene getProgrammingPhaseScene() {
         return programmingPhaseScene;
+    }
+
+    public ArrayList<Player> getPlayers(){
+        return players;
     }
 
     // public void setProgrammingPhaseSceneSimple(ProgrammingPhaseSceneSimple programmingPhaseSceneSimple) {
