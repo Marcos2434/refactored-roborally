@@ -18,6 +18,7 @@ import dtu.logic.models.Board.Board;
 
 import dtu.logic.models.Cards.Deck;
 import dtu.logic.models.Cards.ProgramCard;
+import dtu.logic.models.Cards.MovementCards.Forward;
 import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.*;
 public class RobotTest {
@@ -146,7 +147,7 @@ public class RobotTest {
     robot.setPos(new Position(0,0));
     robot.takeDmg(board);
     robot.turn(-1, board);
-    robot.moveforward(true,board);
+    robot.moveByCard(board, new Forward(1));
     
 }
     Player player1; 
@@ -180,10 +181,10 @@ public class RobotTest {
 
     @Then("i move. The Tile behind me is not ocupied and the tile i moved to is.")
     public void i_move_the_tile_behind_me_is_not_ocupied_and_the_tile_i_moved_to_is() {
-        robot.moveforward(true, board);
+        robot.moveByCard(board,new Forward(1));
         assertTrue(board.getTileAt(new Position(robot.getPos().getColumn(),robot.getPos().getRow())).isOcupied());
         assertFalse(board.getTileAt(new Position(robot.getPos().getColumn()+1,robot.getPos().getRow())).isOcupied());
-        robot.moveforward(true, board);
+        robot.moveByCard(board,new Forward(1));
         assertTrue(board.getTileAt(new Position(robot.getPos().getColumn(),robot.getPos().getRow())).isOcupied());
         assertFalse(board.getTileAt(new Position(robot.getPos().getColumn()+1,robot.getPos().getRow())).isOcupied());
 }

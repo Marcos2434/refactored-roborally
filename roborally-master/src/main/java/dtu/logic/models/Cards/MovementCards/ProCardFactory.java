@@ -3,7 +3,7 @@ package dtu.logic.models.Cards.MovementCards;
 import dtu.logic.models.Cards.ProgramCard;
 
 public class ProCardFactory {
-    public static ProgramCard createProgramCard(ProCardTypes type,int intensity, String imagePath){
+    public static ProgramCard createProgramCard(ProCardTypes type,int intensity){
         if (type == ProCardTypes.TURNLEFT){
             return new TurnLeft(intensity);
         }
