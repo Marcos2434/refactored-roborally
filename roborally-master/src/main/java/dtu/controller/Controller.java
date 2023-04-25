@@ -2,23 +2,33 @@ package dtu.controller;
 
 import dtu.logic.models.Player.*;
 import dtu.logic.models.Robot.Robot;
+
+import java.util.ArrayList;
+
 import dtu.logic.models.Color;
 import dtu.logic.models.Position;
+import dtu.logic.models.Board.Board;
 import javafx.stage.Stage;
 import dtu.view.BoardScene;
 import dtu.view.MenuScene;
 import javafx.scene.Scene;
 
+import dtu.logic.models.Board.TileType;
+import dtu.logic.models.Board.TileStart;
+
 public class Controller {
 
-    private Player p;
-    
+    private ArrayList<Player> players = new ArrayList<Player>();
 
     // --- Scenes ---
     private MenuScene menuScene;
     private BoardScene boardScene;
     // --------------
     private Stage primaryStage;
+
+    private Board board;
+    ArrayList<Position> availableBoardSpawns = new ArrayList<Position>();
+
 
 
     public Controller(Stage primaryStage) {
@@ -29,17 +39,22 @@ public class Controller {
         this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
     }
 
-    public void createPlayer(Color color, String name) {
-        this.p = new Player(new Robot(Color.BLUE,new Position(2,2)),name);
-        System.out.println(name+" has chosen color "+color);
-    };
-    public void changeToBoardScene(){
-        boardScene.setPlayermats();
-        this.setTheScene(this.getBoardScene(), "Roborally!");
+    public void setBoard(Board board) {
+        this.board = board;
     }
 
-    public Player getP() {
-        return p;
+    public Board getBoard() {
+        return board;
+    }
+
+    public void createPlayer(Color color, String name) {
+        // this.players.add(new Player(new Robot(color, new Position(2, 2)),name));
+        System.out.println(name + " has chosen color " + color);
+    };
+
+    public void changeToBoardScene(){
+        this.setTheScene(this.getBoardScene(), "Roborally!");
+        this.startGame();
     }
 
     public void setMenuScene(MenuScene s) {
@@ -70,4 +85,18 @@ public class Controller {
         this.primaryStage.show();
     }
 
+
+
+    private void startGame() {
+        Board b = this.getBoard();
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 13; j++) {
+                if (this.getBoard().getTileAt(new Position(i,j)).equals(new TileStart(TileType.START))) {
+                    this.availableBoardSpawns.add(new Position(i, j));                            
+                }
+            }
+        }
+  
+
+    }
 }

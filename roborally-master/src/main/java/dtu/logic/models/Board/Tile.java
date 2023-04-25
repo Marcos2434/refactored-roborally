@@ -29,12 +29,26 @@ public class Tile extends Canvas{
 
     public Tile(int tileSize, int tileSize2) {
     }
-
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Tile) {
+            Tile t = (Tile) obj;
+            return this.type == t.getType();
+        }
+        return false;
+    }
+    
+    public TileType getType() {
+        return this.type;
+    }
+        
     protected void redraw() {
 		GraphicsContext gc = getGraphicsContext2D();
 		gc.drawImage(image, 0, 0);
 		
         if (Ocupied) {
+            System.out.println("Redraw");
         	gc.save();
             gc.transform(new Affine(new Rotate(90*(robotDirection-1), 33, 33)));
 			gc.drawImage(robotImage, 0, 0);
@@ -53,9 +67,11 @@ public class Tile extends Canvas{
 
     public void Occupy(Image robotImage, int rD){
         this.Ocupied = true;
+        System.out.println("Occupy");
         this.robotImage = robotImage;
         this.robotDirection = rD;
         redraw();
+        
     }
 
     public void unOccupy(){

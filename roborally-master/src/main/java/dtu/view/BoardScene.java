@@ -3,6 +3,9 @@ package dtu.view;
 import java.io.IOException;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+
+import java.lang.reflect.InvocationTargetException;
+
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -47,8 +50,8 @@ public class BoardScene extends Scene {
 
     public BoardScene(Controller c) throws IOException {
         super(new BorderPane());
-        this.initialize();
         this.c = c;
+        this.initialize();
     }
     
 
@@ -63,7 +66,7 @@ public class BoardScene extends Scene {
             {"T","T","HT","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","C 1","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"},
-            {"T","T","BT 2 1","BT 2 1","BT 2 1","HT","T","T","T","T"},
+            {"T","T","BT 2 1","BT 2 1","BT 2 1","BT 2 1","BT 2 1","T","T","T"},
             {"T","T","BT 1 1","BT 4 1","LT 4","T","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","C 3","T"},
             {"C 2","T","HT","BT 1 2","BT 4 2","T","T","T","T","T"},
@@ -76,25 +79,19 @@ public class BoardScene extends Scene {
         
 
         Board board = new Board(board1);
-		Robot robot = new Robot(Color.BLUE, new Position(3, 12));
-		// Pane p1 = FXMLLoader.load(getClass().getClassLoader().getResource("playermat/playermat.fxml"));
-        // Pane p2 = FXMLLoader.load(getClass().getClassLoader().getResource("playermat/playermat.fxml"));
-        // Pane p3 = FXMLLoader.load(getClass().getClassLoader().getResource("playermat/playermat.fxml"));
-        // Pane p4 = FXMLLoader.load(getClass().getClassLoader().getResource("playermat/playermat.fxml"));
-
-
-        // StackPane p1 = new StackPane();
-        // Image backgroundpic = new Image("playermat/playermat.png");
-        // ImageView background = new ImageView(backgroundpic);
-        // Label pName = new Label("Komv");
-        // p1.getChildren().addAll(background, pName);
-
-
-		ControlPanel cp = new ControlPanel(board, robot);
-		boardPane.setCenter(board);
-		boardPane.setBottom(cp);
-
-
+		Robot robot = new Robot(Color.BLUE, new Position(3, 10));
         
+        c.setBoard(board);
+
+        try {board.initPlayers();
+            board.addPlayer(new Player(robot,"Casper"));
+        }
+        catch (Exception ex) { ex.getCause(); }
+        board.moveRobot(robot,new Position(3, 10));
+		
+		ControlPanel cp = new ControlPanel(board, robot);
+        //cp.addplayer(new Player(cp.getrobot(),"Casper"));
+		boardPane.setCenter(board);
+		boardPane.setLeft(cp);
     }
 }
