@@ -23,6 +23,7 @@ import javafx.scene.image.ImageView;
 import dtu.logic.models.Color;
 
 
+
 class Tuple<A, B> {
     private A first;
     private B second;
@@ -34,8 +35,15 @@ class Tuple<A, B> {
 }
 
 public class BoardScene extends Scene {
-
+    
+    BorderPane boardPane;
     Controller c;
+
+    public void setPlayermats(){
+        Playermat p1 = new Playermat(c.getP());
+        VBox playersUI = new VBox(p1);
+        boardPane.setRight(playersUI);
+    }
 
     public BoardScene(Controller c) throws IOException {
         super(new BorderPane());
@@ -45,7 +53,7 @@ public class BoardScene extends Scene {
     
 
     private void initialize() throws IOException {
-        BorderPane boardPane = (BorderPane) this.getRoot();
+        boardPane = (BorderPane) this.getRoot();
 
 
 
@@ -74,19 +82,18 @@ public class BoardScene extends Scene {
         // Pane p3 = FXMLLoader.load(getClass().getClassLoader().getResource("playermat/playermat.fxml"));
         // Pane p4 = FXMLLoader.load(getClass().getClassLoader().getResource("playermat/playermat.fxml"));
 
-        Playermat p1 = new Playermat(new Player(robot, "Egle"));
 
         // StackPane p1 = new StackPane();
         // Image backgroundpic = new Image("playermat/playermat.png");
         // ImageView background = new ImageView(backgroundpic);
         // Label pName = new Label("Komv");
         // p1.getChildren().addAll(background, pName);
-        VBox playersUI = new VBox(p1);
+
 
 		ControlPanel cp = new ControlPanel(board, robot);
 		boardPane.setCenter(board);
 		boardPane.setBottom(cp);
-        boardPane.setRight(playersUI);
+
 
         
     }

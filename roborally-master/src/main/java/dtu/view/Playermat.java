@@ -25,7 +25,9 @@ import javafx.stage.Stage;
 
 
 public class Playermat extends StackPane{
-    
+
+    Player player;
+        
     public static final int width = 330;
     public static final int height = 214;
 
@@ -34,7 +36,8 @@ public class Playermat extends StackPane{
     private Label lives;
     private Label damage;
     private Label chPoint;
-
+    private HBox cardsHbox;
+    
     private Image backgroundpic = new Image("playermat/playermat.png");
     private ImageView background = new ImageView(backgroundpic);
 
@@ -44,15 +47,33 @@ public class Playermat extends StackPane{
     private Image ActiveCardPic = new Image("Cards/AgainCard.png");
     private ImageView ActiveCard;
 
+    
 
+
+    public void setRegister(){
+        cardsHbox.getChildren().clear();
+        for (int i = 0; i < player.getHand().size(); i++) {
+            ImageView cb = new ImageView(cardbackpic);
+            cardsHbox.getChildren().add(cb);
+        }
+    }
+
+    public void updateInfos(){
+        lives.setText("Lives: " + String.valueOf(player.getRobot().getLives()) + "   ");
+        damage.setText("Damage: " + String.valueOf(player.getRobot().getDamageTaken()));
+        chPoint.setText("Checkpoint: " + player.getRobot().getChPointName());
+    }
 
     public Playermat(Player player){
+
+        this.player = player;
 
         pName = new Label(player.getName());
         pName.prefHeight(54);
         pName.prefWidth(191);
         pName.setStyle("prefHeight= 54.0; prefWidth= 188.0");
         color = new Label("BLUE");
+        color.setStyle("-fx-padding: 0 0 0 10;");
         HBox playerinfo = new HBox(pName, color);
 
         HBox cardsHbox = new HBox();
@@ -62,7 +83,7 @@ public class Playermat extends StackPane{
         }
 
         lives = new Label("Lives: " + String.valueOf(player.getRobot().getLives()) + "   ");
-        chPoint = new Label("Checkpoint: Start");
+        chPoint = new Label("Checkpoint: " + player.getRobot().getChPointName());
 
         HBox playerinfo2 = new HBox(lives, chPoint);
 
@@ -70,13 +91,14 @@ public class Playermat extends StackPane{
         VBox vbox = new VBox(playerinfo, cardsHbox, playerinfo2, damage);
         vbox.prefHeight(height);
         vbox.prefWidth(210);
-        vbox.setStyle("-fx-padding: 0 0 0 20;");;
+        vbox.setStyle("-fx-padding: 0 0 0 20;");
 
         ActiveCard = new ImageView(ActiveCardPic);
         
         HBox hbox1 = new HBox(vbox, ActiveCard);
         hbox1.prefHeight(height);
         hbox1.prefWidth(width);
+        hbox1.setStyle("-fx-padding: 15 0 0 0;");
 
         super.getChildren().addAll(background, hbox1);
     }

@@ -34,6 +34,7 @@ public class Controller {
         System.out.println(name+" has chosen color "+color);
     };
     public void changeToBoardScene(){
+        boardScene.setPlayermats();
         this.setTheScene(this.getBoardScene(), "Roborally!");
     }
 
@@ -51,7 +52,7 @@ public class Controller {
 
     public void setTheScene(Scene s) {
         this.primaryStage.setScene(s);
-        primaryStage.setTitle("Roborally - v. 0.1");
+        primaryStage.setTitle("Roborally - 0.5 - Playermat update");
         this.primaryStage.show();
     }
 
