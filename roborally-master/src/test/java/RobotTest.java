@@ -18,6 +18,7 @@ import dtu.logic.models.Board.Board;
 
 import dtu.logic.models.Cards.Deck;
 import dtu.logic.models.Cards.ProgramCard;
+import dtu.logic.models.Cards.MovementCards.Forward;
 import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.*;
 public class RobotTest {
@@ -44,7 +45,7 @@ public class RobotTest {
     @Given("A robot being created with a color and a checkpoint")
     public void a_robot_being_created_with_a_color() {
         
-        robot = new Robot(Color.BLUE,new Position(5,5));  
+        robot = new Robot(RobotColor.BLUE,new Position(5,5));  
        
     }
     // a robot has 3 lives when created.
@@ -146,7 +147,7 @@ public class RobotTest {
     robot.setPos(new Position(0,0));
     robot.takeDmg(board);
     robot.turn(-1, board);
-    robot.moveforward(true,board);
+    robot.moveByCard(board, new Forward(1));
     
 }
     Player player1; 
@@ -155,8 +156,8 @@ public class RobotTest {
     Robot robot2;
     @Given("Two robots being created")
     public void two_robots_being_created() {
-        robot1 = new Robot(Color.BLUE,new Position(5,5)); 
-        robot2 = new Robot(Color.RED,new Position(5,4));
+        robot1 = new Robot(RobotColor.BLUE,new Position(5,5)); 
+        robot2 = new Robot(RobotColor.RED,new Position(5,4));
         player1 = new Player(robot1,"Casper");
         player2 = new Player(robot2,"Marcos");
         board.getTileAt(robot1.getPos()).Occupy(robot1.getImage(), robot1.getDirID());
@@ -180,10 +181,10 @@ public class RobotTest {
 
     @Then("i move. The Tile behind me is not ocupied and the tile i moved to is.")
     public void i_move_the_tile_behind_me_is_not_ocupied_and_the_tile_i_moved_to_is() {
-        robot.moveforward(true, board);
+        robot.moveByCard(board,new Forward(1));
         assertTrue(board.getTileAt(new Position(robot.getPos().getColumn(),robot.getPos().getRow())).isOcupied());
         assertFalse(board.getTileAt(new Position(robot.getPos().getColumn()+1,robot.getPos().getRow())).isOcupied());
-        robot.moveforward(true, board);
+        robot.moveByCard(board,new Forward(1));
         assertTrue(board.getTileAt(new Position(robot.getPos().getColumn(),robot.getPos().getRow())).isOcupied());
         assertFalse(board.getTileAt(new Position(robot.getPos().getColumn()+1,robot.getPos().getRow())).isOcupied());
 }
@@ -218,7 +219,7 @@ public class RobotTest {
 
     @Given("A robot is being created with a color and a checkpoint")
     public void a_robot_is_being_created_with_a_color_and_a_checkpoint() {
-        robot = new Robot(Color.BLUE,new Position(5,5));
+        robot = new Robot(RobotColor.BLUE,new Position(5,5));
         robot.setDir(Direction.UP);
     }  
     @When("The robot recieves a card")
@@ -255,10 +256,10 @@ public class RobotTest {
     Robot robot4;
     @Given("Four robots in a row")
     public void four_robots_in_a_row() {
-        robot1 = new Robot(Color.BLUE,new Position(0,5)); 
-        robot2 = new Robot(Color.RED,new Position(0,4));
-        robot3 = new Robot(Color.GREEN,new Position(0,3)); 
-        robot4 = new Robot(Color.BLACK,new Position(0,2));
+        robot1 = new Robot(RobotColor.BLUE,new Position(0,5)); 
+        robot2 = new Robot(RobotColor.RED,new Position(0,4));
+        robot3 = new Robot(RobotColor.GREEN,new Position(0,3)); 
+        robot4 = new Robot(RobotColor.BLACK,new Position(0,2));
         robot4.turn(2,board);
         player1 = new Player(robot1,"Casper");
         player2 = new Player(robot2,"Marcos");

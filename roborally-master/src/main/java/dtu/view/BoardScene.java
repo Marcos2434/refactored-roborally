@@ -25,7 +25,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import dtu.logic.models.Color;
+import dtu.logic.models.RobotColor;
 
 
 
@@ -101,7 +101,7 @@ public class BoardScene extends Scene {
         
 
         Board board = new Board(board1);
-		Robot robot = new Robot(Color.BLUE, new Position(3, 10));
+		Robot robot = new Robot(RobotColor.BLUE, new Position(3, 10));
         
         c.setBoard(board);
 

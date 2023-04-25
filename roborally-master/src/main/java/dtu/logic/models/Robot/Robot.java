@@ -1,7 +1,7 @@
 package dtu.logic.models.Robot;
 import java.util.List;
 
-import dtu.logic.models.Color;
+import dtu.logic.models.RobotColor;
 import dtu.logic.models.Direction;
 import dtu.logic.models.Position;
 import dtu.logic.models.Board.Board;
@@ -12,11 +12,11 @@ import javafx.scene.image.Image;
 import java.util.ArrayList;
 
 public class Robot {
-    private Color color;
+    private RobotColor Robotcolor;
     private Image image;
     private int damageTaken = 0;
     private int lives = 3;
-
+    private int checkpointCount = 0;
     private Position pos = new Position(0,0);
     private Position checkpoint;
 
@@ -26,6 +26,14 @@ public class Robot {
     public List<ProgramCard> register = new ArrayList<ProgramCard>(5);
     
     private List<RobotObserver> observers = new ArrayList<RobotObserver>();
+
+    public int getcheckpointCount(){
+        return this.checkpointCount;
+    }
+
+    public void CheckpointReached(){
+        this.checkpointCount +=1;
+    }
 
     public void setLastMove(ProgramCard card){
         this.LastMove = card;
@@ -46,12 +54,12 @@ public class Robot {
         observers.add(observer);
     }
     
-    public Robot(Color color, Position position) {
-        this.color = color;
+    public Robot(RobotColor Robotcolor,Position position) {
+        this.Robotcolor = Robotcolor;
         this.DirID = 1;
         this.pos = position;
         this.checkpoint = new Position(position.getColumn(), position.getRow());
-        this.image = new Image(getClass().getClassLoader().getResourceAsStream(this.color.getPictureFile()));  
+        this.image = new Image(getClass().getClassLoader().getResourceAsStream(this.Robotcolor.getPictureFile()));  
         
     }
     // Position and movement
@@ -63,8 +71,8 @@ public class Robot {
         return(pos);
     }
 
-    public Color getColor() {
-        return color;
+    public RobotColor getRobotColor() {
+        return Robotcolor;
     }
 
     public int getX() {
@@ -130,7 +138,7 @@ public class Robot {
         if (forward){MoveDir = getdir();
                         d = 1;}
         else {  turn(2,board);
-                MoveDir = getdir();
+                MoveDir = Direction.getDirById(getdir().getId());
                 turn(2,board); 
                 d = -1;}
         //Update old tile
@@ -152,12 +160,8 @@ public class Robot {
             else if (this.DirID == 4){pos.addX(-d);} 
         }
         
-        // check if over the edge
-        if (this.pos.getRow() < 0 || this.pos.getRow() > 12 ||
-        this.pos.getColumn() < 0 || this.pos.getColumn()>9)
-        {Death(board);}
-        //update new tile
-        board.getTileAt(pos).Occupy(image, DirID);
+        
+        
     }
 
     // Damage and live control
@@ -256,7 +260,7 @@ public class Robot {
 
     @Override
     public String toString() {
-        return this.color.toString();
+        return this.Robotcolor.toString();
     }
 
     public void moveByCard(Board board, ProgramCard card){

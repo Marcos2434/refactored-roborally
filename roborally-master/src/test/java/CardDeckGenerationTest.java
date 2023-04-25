@@ -19,7 +19,7 @@ public class CardDeckGenerationTest {
     Deck deck;
     @Given("A player is created")
     public void a_player_is_created() {
-        Robot robot = new Robot(Color.RED,new Position(5,5));
+        Robot robot = new Robot(RobotColor.RED,new Position(5,5));
         testPlayer = new Player(robot,"Casper");
     }
 
