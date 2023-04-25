@@ -4,6 +4,12 @@ import dtu.logic.models.Player.*;
 import dtu.logic.models.Robot.Robot;
 import dtu.logic.models.Position;
 import dtu.logic.models.RobotColor;
+
+import java.util.ArrayList;
+
+import dtu.logic.models.RobotColor;
+import dtu.logic.models.Position;
+import dtu.logic.models.Board.Board;
 import javafx.stage.Stage;
 import dtu.view.BoardScene;
 import dtu.view.MenuScene;
@@ -11,10 +17,12 @@ import dtu.view.ProgrammingPhaseScene;
 import dtu.view.ProgrammingPhaseSceneSimple;
 import javafx.scene.Scene;
 
+import dtu.logic.models.Board.TileType;
+import dtu.logic.models.Board.TileStart;
+
 public class Controller {
 
-    private Player p;
-    
+    private ArrayList<Player> players = new ArrayList<Player>();
 
     // --- Scenes ---
     private MenuScene menuScene;
@@ -23,6 +31,10 @@ public class Controller {
     private ProgrammingPhaseSceneSimple programmingPhaseSceneSimple;
     // --------------
     private Stage primaryStage;
+
+    private Board board;
+    ArrayList<Position> availableBoardSpawns = new ArrayList<Position>();
+
 
 
     public Controller(Stage primaryStage) {
@@ -37,16 +49,21 @@ public class Controller {
 
     }
 
-    public void createPlayer(RobotColor color, String name) {
-        this.p = new Player(new Robot(RobotColor.BLUE,new Position(2,2)),name);
-        System.out.println(name+" has chosen color "+color);
-    };
-    public void changeToBoardScene(){
-        this.setTheScene(this.getBoardScene(), "Game!");
+
+
+    public Board getBoard() {
+        return board;
     }
 
-    public Player getP() {
-        return p;
+    public void createPlayer(RobotColor color, String name) {
+        // this.players.add(new Player(new Robot(color, new Position(2, 2)),name));
+        System.out.println(name + " has chosen color " + color);
+    };
+
+    public void changeToBoardScene(){
+        this.setTheScene(this.getBoardScene(), "Roborally!");
+
+        this.startGame();
     }
 
     public void setMenuScene(MenuScene s) {
@@ -93,4 +110,24 @@ public class Controller {
         return programmingPhaseSceneSimple;
     }
 
+
+
+    private void startGame() {
+        // Board b = this.getBoard();
+        // for (int i = 0; i < 10; i++) {
+        //     for (int j = 0; j < 14; j++) {
+        //         if (this.getBoard().getTileAt(new Position(i,j)).equals(new TileStart(TileType.START))) {
+        //             this.availableBoardSpawns.add(new Position(i, j));                 
+        //             System.out.println(i);
+        //             System.out.println(j);                
+        //         }
+        //     }
+        // }
+        // spawn players
+        // for (int i = 0; i < this.players.size(); i++) {
+        //     this.players.get(i).getRobot().setPosition(this.availableBoardSpawns.get(i));
+        //     this.getBoard().setTileAt(this.players.get(i).getRobot().getPosition(), this.players.get(i).getRobot().getColor());
+        // }
+
+    }
 }

@@ -5,13 +5,15 @@ import java.util.List;
 
 import dtu.logic.models.RobotColor;
 import dtu.logic.models.Cards.Deck;
+
 import dtu.logic.models.Cards.ProgramCard;
 import dtu.logic.models.Robot.Robot;
+import java.util.Scanner;
 
 public class Player {
     private String name;
     private Robot robot;
-    private Deck deck;
+    private Deck deck = new Deck();
     private ArrayList<ProgramCard> hand = new ArrayList<ProgramCard>();
     
     public Player(Robot robot,String name) {
@@ -35,6 +37,7 @@ public class Player {
     
 
     public void drawProgrammingCards() {
+        deck.shuffleDeck();
         for (int i = 0; i < 9 - this.robot.getDamageTaken(); i++) {
             //String name = ((deck.cards).get(i)).name;
             hand.add(deck.cards.get(i));
@@ -47,9 +50,9 @@ public class Player {
     public void chooseProgrammingCards(Integer numberOfCards) {
         // Choose from the hand
         List<ProgramCard> registerCards = hand.subList(0, numberOfCards);
-
+        
         // add to robot register
-        robot.addCardsToRegister(registerCards);
+        robot.setRegister(registerCards);
         
     }
 

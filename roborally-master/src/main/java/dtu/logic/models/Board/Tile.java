@@ -29,7 +29,20 @@ public class Tile extends Canvas{
 
     public Tile(int tileSize, int tileSize2) {
     }
-
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Tile) {
+            Tile t = (Tile) obj;
+            return this.type == t.getType();
+        }
+        return false;
+    }
+    
+    public TileType getType() {
+        return this.type;
+    }
+        
     protected void redraw() {
 		GraphicsContext gc = getGraphicsContext2D();
 		gc.drawImage(image, 0, 0);
@@ -43,7 +56,7 @@ public class Tile extends Canvas{
 	}
 
     // effect method for tiles, this normal tile does nothing()
-    public void effect(Robot robot){
+    public void effect(Robot robot,Board board){
     ;
     }
 

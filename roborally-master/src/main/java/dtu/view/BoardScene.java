@@ -25,8 +25,8 @@ public class BoardScene extends Scene {
 
     public BoardScene(Controller c) {
         super(new BorderPane());
-        this.initialize();
         this.c = c;
+        this.initialize();
     }
     
 
@@ -37,12 +37,12 @@ public class BoardScene extends Scene {
             {"T","T","HT","T","T","T","T","T","T","T"},
             {"T","T","HT","T","WT 1","WT 4","T","T","T","T"},
             {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","T","C 1","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","C 3","T"},
-            {"C 2","T","HT","T","T","T","T","T","T","T"},
+            {"T","T","T","T","T","C 1","T","T","T","T"},
+            {"T","T","T","T","T","T","T","T","T","T"},
+            {"T","T","BT 2 1","BT 2 1","BT 2 1","HT","T","T","T","T"},
+            {"T","T","BT 1 1","BT 4 1","LT 4","T","T","T","T","T"},
+            {"T","T","T","T","T","T","T","T","C 3","T"},
+            {"C 2","T","HT","BT 1 2","BT 4 2","T","T","T","T","T"},
             {"T","T","HT","T","T","T","T","T","T","T"},
             // Start Field
             {"T","T","T","T","WT 1","WT 1","T","T","T","T"},
@@ -54,7 +54,8 @@ public class BoardScene extends Scene {
         Board board = new Board(board1);
 		Robot robot = new Robot(RobotColor.BLUE, new Position(3, 12), board);
 		
-		ControlPanel cp = new ControlPanel(board, robot);
+
+		ControlPanel cp = new ControlPanel(board);
 		boardPane.setCenter(board);
 		boardPane.setBottom(cp);
     }

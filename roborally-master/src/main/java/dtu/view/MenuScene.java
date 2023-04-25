@@ -21,8 +21,8 @@ public class MenuScene extends Scene {
 
     public MenuScene(Controller c) {
         super(new BorderPane());
-        this.initialize();
         this.c = c;
+        this.initialize();
     }
 
     private void initialize() {
@@ -112,7 +112,7 @@ public class MenuScene extends Scene {
         createPlayerButton.setOnMouseClicked(new EventHandler<Event>() {
             @Override
             public void handle(Event event) {
-							//For loop going through all checkboxes
+							// For loop going through all checkboxes
 							for(int i = 0; i < checkarray.length; i++){
 								if (checkarray[i].isSelected()){
 									if (checkarray[i].getText().contains("red")){

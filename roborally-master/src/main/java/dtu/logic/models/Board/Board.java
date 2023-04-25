@@ -5,8 +5,9 @@ import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.Lazer;
 import dtu.logic.models.Robot.Robot;
 import javafx.scene.layout.GridPane;
+import dtu.logic.models.Direction;
 
-public class Board extends GridPane{
+public class Board extends GridPane {
 
     private Tile[][] grid = new Tile[13][10];
     private Player[] players;
@@ -42,6 +43,20 @@ public class Board extends GridPane{
             }
         }
     }
+
+    public void fireboardLazers(){
+        for (int i=0; i<13; i++){
+            for (int j=0; j<10; j++){
+                Tile tile = getTileAt(new Position(i,j));
+                if (tile instanceof TileLazer){
+                    TileLazer TL = (TileLazer)tile;
+                    TL.FIRE(this);
+                }
+
+            }
+        }
+    }
+
     public void initPlayers(){
         players = new Player[4];
         nextPlayerIdx = 0;
@@ -51,6 +66,35 @@ public class Board extends GridPane{
         return this.grid;
     }
 
+    public void runAllRegisters(){
+        for (int i=0; i<5;i++){
+            for (int j=0; j<nextPlayerIdx; j++){
+                Robot r = players[j].getRobot();
+                r.moveByCard(this, r.getRegister()[i]);
+               
+            }
+            
+            RunAllEffects();
+            fireRobotLazers();
+            fireboardLazers();
+
+        }
+    }
+    public void RunAllEffects(){
+        for (int i = 0; i < 10; i++){
+            for (int j = 0; j < 13; j++){
+                if (getTileAt(new Position(i,j)).isOcupied()){
+                    
+                    getTileAt(new Position(i,j)).effect(getRobotAt(new Position(i,j)),this);
+                }
+            }
+        }
+    }
+    public void fireRobotLazers(){
+        for (int i = 0; i <nextPlayerIdx; i++){
+            players[i].getRobot().FIRE(this);
+        }
+    }
     public void addPlayer(Player player){
         boolean allowed = true;
 
@@ -107,29 +151,41 @@ public class Board extends GridPane{
         return nextPlayerIdx;
     }
     // check if a robot is allowed a move:
-    public boolean allowmove(Robot robot){
-        if (getTileAt(robot.getPos()) instanceof TileWall){
-            TileWall WT = (TileWall) getTileAt(robot.getPos());
-            if (robot.getDirID() == WT.getDirID()){return false;}   
-        }
+    public boolean allowmove(Robot robot,Direction dir){
         
-        if (getTileAt(robot.getPosAhead()) instanceof TileWall){
-            TileWall WT = (TileWall) getTileAt(robot.getPosAhead());
-            if (Math.abs(robot.getDirID() - WT.getDirID()) == 2){return false;}
-            else{return true;}
+        Position toPos = robot.getPosInDir(dir);
+        
+        if (toPos.getRow()>=0 && toPos.getColumn()>=0 && toPos.getColumn()<10 && toPos.getRow()<13){
+                
+                if (getTileAt(robot.getPos()) instanceof TileWall){
+                    TileWall WT = (TileWall) getTileAt(robot.getPos());
+                    if (dir.getId() == WT.getDirID()){return false;} 
+                    
+                }
+               
+                if (getTileAt(toPos) instanceof TileWall){
+                    TileWall WT = (TileWall) getTileAt(toPos);
+
+                    if (Math.abs(dir.getId() - WT.getDirID()) == 2){return false;} 
+                    else{return true;}  
+                }
+        
+                if (getTileAt(toPos).isOcupied()){getRobotAt(toPos).takeDmg(this);
+                                                  return allowmove(getRobotAt(toPos),dir);}
+                else{return true;}  
         }
-        else {return true;} 
+        else{return true;} 
     }
 
     //@Overload
     public boolean allowmove(Lazer lazer){
         if (getTileAt(lazer.getPos()) instanceof TileWall){
             TileWall WT = (TileWall) getTileAt(lazer.getPos());
-            if (lazer.getDir().getId() == WT.getDirID()){return false;}   
+            if (lazer.getdir().getId() == WT.getDirID()){return false;}   
         }
-        if (getTileAt(lazer.getPosAhead()) instanceof TileWall){
-            TileWall WT = (TileWall) getTileAt(lazer.getPosAhead());
-            if (Math.abs(lazer.getDir().getId() - WT.getDirID()) == 2){return false;}
+        if (getTileAt(lazer.getPosInDir(lazer.getdir())) instanceof TileWall){
+            TileWall WT = (TileWall) getTileAt(lazer.getPosInDir(lazer.getdir()));
+            if (Math.abs(lazer.getdir().getId() - WT.getDirID()) == 2){return false;}
             else{return true;}
         }
         else {return true;} 
@@ -137,13 +193,14 @@ public class Board extends GridPane{
 
 
     public Robot getRobotAt(Position pos){
-        if (pos.getRow()>=0 && pos.getColumn()>=0 && pos.getColumn()<13 && pos.getRow()<10 && getTileAt(pos).isOcupied() == true){
+        
+        if (pos.getRow()>=0 && pos.getColumn()>=0 && pos.getColumn()<10 && pos.getRow()<13){
             
             for (int i=0; i<nextPlayerIdx; i++){
-                if (players[i].getRobot().getPos().getColumn() == pos.getColumn() && players[i].getRobot().getPos().getRow() == pos.getRow()){
+                if (players[i].getRobot().getPos().equals(pos)){
                     return players[i].getRobot();
                 }
-                else{;}
+                
             }
             return null;
 

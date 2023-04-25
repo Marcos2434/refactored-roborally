@@ -25,25 +25,25 @@ public class ControlPanel extends GridPane {
 	private Button uTurn = new Button("\u27F2");
 	private Button rekt = new Button("\u2716");
 	
-	public ControlPanel(Board board, Robot robot) {
+	public ControlPanel(Board board) {
 		this.board = board;
-		this.robot = robot;
+		// this.robot = robot;
 		
 		configure();
-		addListeners();
+		// addListeners();
 	}
 	
 	private void configure() {
-		add(moveF1, 2, 0);
-		add(moveF2, 1, 0);
-		add(moveF3, 3, 0);
-		add(turnL, 1, 1);
-		add(uTurn, 2, 1);
-		add(turnR, 3, 1);
-		add(moveB1, 2, 2);
-		add(moveB2, 1, 2);
-		add(moveB3, 3, 2);
-		add(rekt, 4, 1);
+		// add(moveF1, 2, 0);
+		// add(moveF2, 1, 0);
+		// add(moveF3, 3, 0);
+		// add(turnL, 1, 1);
+		// add(uTurn, 2, 1);
+		// add(turnR, 3, 1);
+		// add(moveB1, 2, 2);
+		// add(moveB2, 1, 2);
+		// add(moveB3, 3, 2);
+		// add(rekt, 4, 1);
 		
 		ColumnConstraints firstCol = new ColumnConstraints();
 		firstCol.setHgrow(Priority.ALWAYS);
@@ -124,7 +124,7 @@ public class ControlPanel extends GridPane {
 		rekt.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				robot.Death();
+				robot.Death(board);
 			}
 		});
 	}
