@@ -1,104 +1,105 @@
 package dtu.view;
 
+import java.io.IOException;
+import java.util.logging.Logger;
+
 import dtu.logic.models.Player.Player;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.RowConstraints;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-class smolCard extends Canvas{
-    private static final int W_SIZE = 30;
-    private static final int H_SIZE = 42;
 
-    public smolCard(){
+public class Playermat extends StackPane{
+    
+    public static final int width = 330;
+    public static final int height = 214;
 
+    private Label pName;
+    private Label color;
+    private Label lives;
+    private Label damage;
+    private Label chPoint;
+
+    private Image backgroundpic = new Image("playermat/playermat.png");
+    private ImageView background = new ImageView(backgroundpic);
+
+    private Image cardbackpic = new Image("playermat/cardback.png");
+    private ImageView cardback = new ImageView(cardbackpic);
+
+    private Image ActiveCardPic = new Image("Cards/AgainCard.png");
+    private ImageView ActiveCard;
+
+
+
+    public Playermat(Player player){
+
+        pName = new Label(player.getName());
+        pName.prefHeight(54);
+        pName.prefWidth(191);
+        pName.setStyle("prefHeight= 54.0; prefWidth= 188.0");
+        color = new Label("BLUE");
+        HBox playerinfo = new HBox(pName, color);
+
+        HBox cardsHbox = new HBox();
+        for (int i = 0; i < 5; i++) {
+            ImageView cb = new ImageView(cardbackpic);
+            cardsHbox.getChildren().add(cb);
+        }
+
+        lives = new Label("Lives: " + String.valueOf(player.getRobot().getLives()) + "   ");
+        chPoint = new Label("Checkpoint: Start");
+
+        HBox playerinfo2 = new HBox(lives, chPoint);
+
+        damage = new Label("Damage: " + String.valueOf(player.getRobot().getDamageTaken()));
+        VBox vbox = new VBox(playerinfo, cardsHbox, playerinfo2, damage);
+        vbox.prefHeight(height);
+        vbox.prefWidth(210);
+        vbox.setStyle("-fx-padding: 0 0 0 20;");;
+
+        ActiveCard = new ImageView(ActiveCardPic);
+        
+        HBox hbox1 = new HBox(vbox, ActiveCard);
+        hbox1.prefHeight(height);
+        hbox1.prefWidth(width);
+
+        super.getChildren().addAll(background, hbox1);
     }
-}
 
-class Background extends Canvas{
-    static final int W_SIZE = 330;
-    static final int H_SIZE = 214;
-    private Image image = new Image("playermat/playermat.png");
+    
+    // @Override
+    // public void start(Stage primaryStage) throws Exception {
+    //     try{
+    //     Pane root = FXMLLoader.load(getClass().getClassLoader().getResource("playermat/playermat.fxml"));
+    //     //BorderPane root = new BorderPane();
+    //     Scene scene = new Scene(root);
 
-    public Background(){
-        super(W_SIZE, H_SIZE);
-        redraw();
-    }
-
-    private void redraw(){
-        GraphicsContext gc = getGraphicsContext2D();
-        gc.drawImage(image, 0, 0);
-    }
-}
-
-
-
-
-public class Playermat extends Application {
-    private String pName = "Komv";
-    private int rLives = 3;
-    private int actCheckpoint = 0;
-    private int dmgPoints = 0;
-
-    // public void Playermat(Player player){
-
+    //     primaryStage.setTitle("A rohadás öljön meg");
+    //     primaryStage.setScene(scene);
+    //     primaryStage.show();
+    //     }
+    //     catch(Exception ex) {
+    //         ex.printStackTrace();
+    //     }
     // }
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        BorderPane root = new BorderPane();
-        Background bck = new Background();
-
-        GridPane grid = new GridPane();
-        grid.setGridLinesVisible(true);
-
-        Label name = new Label(pName);
-        Label lives = new Label("Lives: "+rLives);
-        Label chpLabel = new Label("Checkpoint: " + actCheckpoint);
-        Label damage = new Label("Damage: "+dmgPoints);
-        Label card = new Label("active card");
-
-        grid.add(name, 0, 0, 5, 1);
-        grid.add(lives, 0, 2, 2, 1);
-        grid.add(chpLabel, 1, 2, 3, 1);
-        grid.add(damage, 0, 3, 5, 1);
-        grid.add(card, 5, 0, 1, 4);
-
-        ColumnConstraints column1 = new ColumnConstraints();
-        ColumnConstraints column2 = new ColumnConstraints();
-        ColumnConstraints column3 = new ColumnConstraints();
-        // RowConstraints row1 = new RowConstraints();
-
-        grid.getColumnConstraints().add(column1);
-        grid.getColumnConstraints().add(column2);
-        grid.getColumnConstraints().add(column3);
-        // grid.getRowConstraints().add(row1);
-
-
-        column1.setPrefWidth(105);
-        column2.setPrefWidth(105);
-        column2.setPrefWidth(120);
-        // row1.setPrefHeight(214);
-
-
-        //root.setCenter(bck);
-        root.setCenter(grid);
-
-        Scene scene = new Scene(root);
-        		
-		primaryStage.setScene(scene);
-		primaryStage.setTitle("Tylko jedno w głowie mam");
-		primaryStage.show();            
-        }
-    public static void main(String[] args) {
-        // Launch GUI
-        launch(args);
-    }
+    // public static void main(String[] args) {
+    //     // Launch GUI
+    //     launch(args);
+    // }
 }

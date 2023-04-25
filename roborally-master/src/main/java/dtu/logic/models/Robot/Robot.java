@@ -68,7 +68,7 @@ public class Robot {
     public void setCheckpoint(Position pos){
         this.checkpoint = pos;
     }
-    public Position getCheckpoint(Position pos){
+    public Position getCheckpoint(){
         return this.checkpoint;
     }
 
