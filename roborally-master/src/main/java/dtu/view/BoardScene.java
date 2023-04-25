@@ -5,6 +5,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -12,6 +13,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.fxml.FXMLLoader;
 import javafx.application.Application;
+import javafx.css.Size;
 import dtu.controller.Controller;
 import dtu.logic.models.Position;
 import dtu.logic.models.Board.Board;
@@ -41,11 +43,31 @@ public class BoardScene extends Scene {
     
     BorderPane boardPane;
     Controller c;
+    HBox leftSide = new HBox();
 
-    public void setPlayermats(Player player){
-        Playermat p1 = new Playermat(player);
-        VBox playersUI = new VBox(p1);
-        boardPane.setRight(playersUI);
+    public void setPlayermats(ArrayList<Player> players){
+        VBox playersUIright = new VBox();
+        VBox playersUIleft = new VBox();
+        if (players.size() <= 4){
+            for (int i = 0; i < players.size(); i++){
+                Playermat p1 = new Playermat(players.get(i));
+                playersUIright.getChildren().add(p1);
+            }
+            boardPane.setRight(playersUIright);
+        } else {
+            for (int i = 0; i < 4; i++){
+                Playermat p1 = new Playermat(players.get(i));
+                playersUIright.getChildren().add(p1);
+            }
+            boardPane.setRight(playersUIright);
+            for (int i = 4; i < players.size(); i++){
+                Playermat p1 = new Playermat(players.get(i));
+                playersUIleft.getChildren().add(p1);
+            }
+            leftSide.getChildren().add(playersUIleft);
+        }
+        
+
     }
 
     public BoardScene(Controller c) throws IOException {
@@ -74,7 +96,7 @@ public class BoardScene extends Scene {
             // Start Field
             {"T","T","T","T","WT 1","WT 1","T","T","T","T"},
             {"T","S","WT 4","T","S","S","T","WT 2","S","T"},
-            {"T","T","T","S","T","T","S","T","T","T"},
+            {"S","T","T","S","T","T","S","T","T","S"},
         };
         
 
@@ -85,13 +107,31 @@ public class BoardScene extends Scene {
 
         try {board.initPlayers();
             board.addPlayer(new Player(robot,"Casper"));
+            
         }
         catch (Exception ex) { ex.getCause(); }
         board.moveRobot(robot,new Position(3, 10));
+
+        robot.takeDmg(board);
+
+
 		
 		ControlPanel cp = new ControlPanel(board, robot);
         //cp.addplayer(new Player(cp.getrobot(),"Casper"));
 		boardPane.setCenter(board);
-		boardPane.setLeft(cp);
+        leftSide.getChildren().add(cp);
+
+        ArrayList<Player> players = new ArrayList<>();
+        players.add(new Player(robot, "Komv"));
+        players.add(new Player(robot, "Egle"));
+        players.add(new Player(robot, "Malév"));
+        players.add(new Player(robot, "GT"));
+        players.add(new Player(robot, "Komv"));
+        players.add(new Player(robot, "Egle"));
+        players.add(new Player(robot, "Malév"));
+        players.add(new Player(robot, "GT"));
+        setPlayermats(players);
+
+		boardPane.setLeft(leftSide);
     }
 }

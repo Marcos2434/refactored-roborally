@@ -58,10 +58,16 @@ public class Playermat extends StackPane{
         }
     }
 
-    public void updateInfos(){
+    public void updateChPInfo(String info){
+        chPoint.setText("Checkpoint: " + info);
+    }
+
+    public void updatelives(){
         lives.setText("Lives: " + String.valueOf(player.getRobot().getLives()) + "   ");
+        
+    }
+    public void updateDamage(){
         damage.setText("Damage: " + String.valueOf(player.getRobot().getDamageTaken()));
-        chPoint.setText("Checkpoint: " + "asd");
     }
 
     public Playermat(Player player){
@@ -82,12 +88,14 @@ public class Playermat extends StackPane{
             cardsHbox.getChildren().add(cb);
         }
 
-        lives = new Label("Lives: " + String.valueOf(player.getRobot().getLives()) + "   ");
-        chPoint = new Label("Checkpoint: " + "asd");
+        lives = new Label();
+        updatelives();
+        chPoint = new Label("Checkpoint: " + "Start");
 
         HBox playerinfo2 = new HBox(lives, chPoint);
 
-        damage = new Label("Damage: " + String.valueOf(player.getRobot().getDamageTaken()));
+        damage = new Label();
+        updateDamage();
         VBox vbox = new VBox(playerinfo, cardsHbox, playerinfo2, damage);
         vbox.prefHeight(height);
         vbox.prefWidth(210);
