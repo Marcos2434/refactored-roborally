@@ -21,10 +21,10 @@ public class BoardController {
     public void fireboardLazers(){
         for (int i=0; i<13; i++){
             for (int j=0; j<10; j++){
-                Tile tile = getTileAt(new Position(i,j));
+                Tile tile = this.getBoard().getTileAt(new Position(i,j));
                 if (tile instanceof TileLazer){
                     TileLazer TL = (TileLazer)tile;
-                    TL.FIRE(this.board);
+                    TL.FIRE(this);
                 }
             }
         }
@@ -42,15 +42,15 @@ public class BoardController {
                 Robot r = players[j].getRobot();
 
                 if (r.getRegister().size() > i){
-                    r.moveByCard(this.board, r.getRegister().get(i));
+                    r.moveByCard(this, r.getRegister().get(i));
                 }
 
                 if (i == 4){
                     r.setRegister(new ArrayList<ProgramCard>());
                 }
 
-                try{Thread.sleep(200);}
-                catch(Exception e){System.out.println(e);}
+                //try{Thread.sleep(200);}
+                //catch(Exception e){System.out.println(e);}
             }
             
             
@@ -78,9 +78,9 @@ public class BoardController {
                     r = 6 - (int)Math.floor(j/2);}
                 else{r = 12 - j/2;}
                */
-                if (getTileAt(new Position(i,j)).isOcupied()){
+                if (this.getBoard().getTileAt(new Position(i,j)).isOcupied()){
                     
-                    getTileAt(new Position(i,j)).effect(getRobotAt(new Position(i,j)), this.board);
+                    this.getBoard().getTileAt(new Position(i,j)).effect(getRobotAt(new Position(i,j)), this);
                 }
                 
             }
@@ -88,7 +88,7 @@ public class BoardController {
     }
     public void fireRobotLazers(){
         for (int i = 0; i <nextPlayerIdx; i++){
-            players[i].getRobot().FIRE(this.board);
+            players[i].getRobot().FIRE(this);
         }
     }
 
@@ -114,10 +114,10 @@ public class BoardController {
         }
     }
     public void moveRobot(Robot robot,Position pos){
-        getTileAt(robot.getPos()).unOccupy();
+        this.board.getTileAt(robot.getPos()).unOccupy();
         robot.setPos(pos);
         robot.setCheckpoint(new Position(pos.getColumn(),pos.getRow()));
-        getTileAt(robot.getPos()).Occupy(robot.getImage(),robot.getDirID());
+        this.board.getTileAt(robot.getPos()).Occupy(robot.getImage(),robot.getDirID());
     }
     public void removePlayer(Player player){
         for (int i = 0; i < players.length;i++){
@@ -135,20 +135,11 @@ public class BoardController {
             }
         }
     }
+
     public Player[] getPlayers(){
         return this.players;
     }
-    public Tile getTileAt(Position pos) {
-        if (pos.getRow()>=0 && pos.getColumn()>=0 && pos.getColumn()<10 && pos.getRow()<13){
-            return this.board.getGrid()[pos.getRow()][pos.getColumn()];
-        }
-        else{
-            return null;
-        }
-    }
-    public int getplayeridx(){
-        return nextPlayerIdx;
-    }
+    
     // check if a robot is allowed a move:
     public boolean allowmove(Robot robot,Direction dir){
         
@@ -156,20 +147,20 @@ public class BoardController {
         
         if (toPos.getRow()>=0 && toPos.getColumn()>=0 && toPos.getColumn()<10 && toPos.getRow()<13){
                 
-                if (getTileAt(robot.getPos()) instanceof TileWall){
-                    TileWall WT = (TileWall) getTileAt(robot.getPos());
+                if (this.board.getTileAt(robot.getPos()) instanceof TileWall){
+                    TileWall WT = (TileWall) this.board.getTileAt(robot.getPos());
                     if (dir.getId() == WT.getDirID()){return false;} 
                     
                 }
                
-                if (getTileAt(toPos) instanceof TileWall){
-                    TileWall WT = (TileWall) getTileAt(toPos);
+                if (this.board.getTileAt(toPos) instanceof TileWall){
+                    TileWall WT = (TileWall) this.board.getTileAt(toPos);
 
                     if (Math.abs(dir.getId() - WT.getDirID()) == 2){return false;} 
                     else{return true;}  
                 }
         
-                if (getTileAt(toPos).isOcupied()){getRobotAt(toPos).takeDmg(this.board);
+                if (this.board.getTileAt(toPos).isOcupied()){getRobotAt(toPos).takeDmg(this);
                                                   return allowmove(getRobotAt(toPos),dir);}
                 else{return true;}  
         }
@@ -178,18 +169,21 @@ public class BoardController {
 
     //@Overload
     public boolean allowmove(Lazer lazer){
-        if (getTileAt(lazer.getPos()) instanceof TileWall){
-            TileWall WT = (TileWall) getTileAt(lazer.getPos());
+        if (this.getBoard().getTileAt(lazer.getPos()) instanceof TileWall){
+            TileWall WT = (TileWall) this.getBoard().getTileAt(lazer.getPos());
             if (lazer.getdir().getId() == WT.getDirID()){return false;}   
         }
-        if (getTileAt(lazer.getPosInDir(lazer.getdir())) instanceof TileWall){
-            TileWall WT = (TileWall) getTileAt(lazer.getPosInDir(lazer.getdir()));
+        if (this.getBoard().getTileAt(lazer.getPosInDir(lazer.getdir())) instanceof TileWall){
+            TileWall WT = (TileWall) this.getBoard().getTileAt(lazer.getPosInDir(lazer.getdir()));
             if (Math.abs(lazer.getdir().getId() - WT.getDirID()) == 2){return false;}
             else{return true;}
         }
         else {return true;} 
     }
 
+    public Board getBoard() {
+        return board;
+    }
 
     public Robot getRobotAt(Position pos){
         

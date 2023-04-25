@@ -1,4 +1,5 @@
 package dtu.logic.models.Board;
+import dtu.logic.models.Position;
 import javafx.scene.layout.GridPane;
 
 public class Board extends GridPane {
@@ -40,6 +41,13 @@ public class Board extends GridPane {
 
     public Tile[][] getGrid() {
         return this.grid;
-    }    
+    }
+
+    public Tile getTileAt(Position pos) {
+        if (pos.getRow()>=0 && pos.getColumn()>=0 && pos.getColumn()<10 && pos.getRow()<13){
+            return this.getGrid()[pos.getRow()][pos.getColumn()];
+        }
+        return null;
+    }
 }
 

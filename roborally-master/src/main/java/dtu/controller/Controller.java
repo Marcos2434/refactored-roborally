@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import dtu.logic.models.RobotColor;
 import dtu.logic.models.Position;
 import dtu.logic.models.Board.Board;
+import dtu.logic.models.Board.BoardController;
 import javafx.stage.Stage;
 import dtu.view.BoardScene;
 import dtu.view.MenuScene;
@@ -33,8 +34,8 @@ public class Controller {
     private Stage primaryStage;
 
     private Board board;
+    private BoardController boardController;
     ArrayList<Position> availableBoardSpawns = new ArrayList<Position>();
-
 
 
     public Controller(Stage primaryStage) {
@@ -51,6 +52,7 @@ public class Controller {
 
     public void setBoard(Board board) {
         this.board = board;
+        this.boardController = new BoardController(board);
     }
 
     public Board getBoard() {
@@ -58,7 +60,7 @@ public class Controller {
     }
 
     public void createPlayer(RobotColor color, String name) {
-        // this.players.add(new Player(new Robot(color, new Position(2, 2)),name));
+        this.players.add(new Player(new Robot(color), name));
         System.out.println(name + " has chosen color " + color);
     };
 
@@ -111,11 +113,13 @@ public class Controller {
     //     return programmingPhaseSceneSimple;
     // }
 
-
+    public BoardController getBoardController() {
+        return boardController;
+    }
 
     private void startGame() {
+
         // Find spawn positions
-        Board b = this.getBoard();
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 13; j++) {
                 if (this.getBoard().getTileAt(new Position(i,j)).equals(new TileStart(TileType.START))) {
@@ -125,17 +129,15 @@ public class Controller {
         }
         
         // Set robot to positions
-        this.board.initPlayers();
+        this.boardController.initPlayers();
         for (int i = 0; i < this.players.size(); i++) {
-            this.players.get(i).getRobot().setPos(this.availableBoardSpawns.get(i));
-            
-            // TODO: temporary?
-            this.board.addPlayer(this.players.get(i));
-            this.board.getTileAt(this.availableBoardSpawns.get(i)).Occupy(
+            this.players.get(i).getRobot().setPos(this.availableBoardSpawns.get(i));            
+            this.boardController.addPlayer(this.players.get(i));
+            this.boardController.getBoard().getTileAt(this.availableBoardSpawns.get(i)).Occupy(
                 this.players.get(i).getRobot().getImage(), this.players.get(i).getRobot().getDirID());;
         }
 
-
+        
         // try {this.board.initPlayers();
         // }
         // catch (Exception ex) { ex.getCause(); }
