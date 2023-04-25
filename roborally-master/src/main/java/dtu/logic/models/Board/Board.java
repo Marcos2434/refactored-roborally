@@ -85,8 +85,8 @@ public class Board extends GridPane {
                     r.setRegister(new ArrayList<ProgramCard>());
                 }
 
-                try{Thread.sleep(1000);}
-                catch(Exception e){System.out.println(e);}
+                //try{Thread.sleep(1000);}
+                //catch(Exception e){System.out.println(e);}
             }
             
             
@@ -132,7 +132,7 @@ public class Board extends GridPane {
         boolean allowed = true;
         
         for (int j = 0; j < nextPlayerIdx; j++){
-            if (players[j].getRobot().getColor()  ==  (player.getRobot().getColor())){
+            if (players[j].getRobot().getRobotColor()  ==  (player.getRobot().getRobotColor())){
                 allowed = false;
                 System.out.println("false1");
             }

@@ -1,7 +1,7 @@
 package dtu.logic.models.Robot;
 import java.util.List;
 
-import dtu.logic.models.Color;
+import dtu.logic.models.RobotColor;
 import dtu.logic.models.Direction;
 import dtu.logic.models.Position;
 import dtu.logic.models.Board.Board;
@@ -12,7 +12,7 @@ import javafx.scene.image.Image;
 import java.util.ArrayList;
 
 public class Robot {
-    private Color color;
+    private RobotColor Robotcolor;
     private Image image;
     private int damageTaken = 0;
     private int lives = 3;
@@ -46,12 +46,12 @@ public class Robot {
         observers.add(observer);
     }
     
-    public Robot(Color color, Position position) {
-        this.color = color;
+    public Robot(RobotColor Robotcolor,Position position) {
+        this.Robotcolor = Robotcolor;
         this.DirID = 1;
         this.pos = position;
         this.checkpoint = new Position(position.getColumn(), position.getRow());
-        this.image = new Image(getClass().getClassLoader().getResourceAsStream(this.color.getPictureFile()));  
+        this.image = new Image(getClass().getClassLoader().getResourceAsStream(this.Robotcolor.getPictureFile()));  
         
     }
     // Position and movement
@@ -63,8 +63,8 @@ public class Robot {
         return(pos);
     }
 
-    public Color getColor() {
-        return color;
+    public RobotColor getRobotColor() {
+        return Robotcolor;
     }
 
     public int getX() {
@@ -255,7 +255,7 @@ public class Robot {
 
     @Override
     public String toString() {
-        return this.color.toString();
+        return this.Robotcolor.toString();
     }
 
     public void moveByCard(Board board, ProgramCard card){
