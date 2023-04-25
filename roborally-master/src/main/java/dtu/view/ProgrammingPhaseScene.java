@@ -83,22 +83,22 @@ public class ProgrammingPhaseScene extends Scene {
         BorderPane mainGrid = (BorderPane) this.getRoot();
         sceneWidth = this.getWidth();
         sceneHeight = this.getHeight();
+
         //Card1
         Image stream = new Image (ProgrammingPhaseScene.class.getClassLoader().getResourceAsStream(player1.getHand().get(0).imagePath)); //new FileInputStream("file:src/main/resources/Cards/left_turn.png")); 
         ImageView imageView1 = new ImageView(stream);  
         imageView1.setFitHeight(150);
         imageView1.setFitWidth(100);
-        imageView1.setLayoutX(300);
-        imageView1.setLayoutY(300);
+        imageView1.setLayoutX(-10);
+        imageView1.setLayoutY(10);
+        
+
         //Card2 
         Image stream2 = new Image (ProgrammingPhaseScene.class.getClassLoader().getResourceAsStream(player1.getHand().get(1).imagePath)); //new FileInputStream("file:src/main/resources/Cards/left_turn.png"));
         ImageView imageView2 = new ImageView(stream2);
         imageView2.setFitHeight(150);
         imageView2.setFitWidth(100);
-        imageView2.setLayoutX(300);
-        imageView2.setLayoutY(300);
-
-
+        
 
 
         // mainGrid.setLeft(imageView1);
@@ -110,25 +110,27 @@ public class ProgrammingPhaseScene extends Scene {
 
         // mainGrid.setRight(label);
         // mainGrid.setLeft(label);
-        mainGrid.setCenter(imageView1);
-        mainGrid.setCenter(imageView2);
+        mainGrid.(imageView1);
+        mainGrid(imageView2);
 
         mainGrid.getChildren().forEach(this::makeDraggable);
         // mainGrid.setRight(Hand);
         //Create a rectangle to represent the drop zone
-        Rectangle frame = new Rectangle(100,150 );
+        Rectangle frame = new Rectangle(100,150);
         frame.setStroke(Color.BLACK);
         frame.setFill(null);
         frame.setLayoutX(10);
         frame.setLayoutY(10);
         mainGrid.setLeft(frame);
 
-        Rectangle frame2 = new Rectangle(100,150 );
+        Rectangle frame2 = new Rectangle(100,150);
         frame2.setStroke(Color.BLACK);
         frame2.setFill(null);
         frame2.setLayoutX(-10);
         frame2.setLayoutY(10);
         mainGrid.setRight(frame2);
+
+
     }
 
     //Bounding box for the cards
@@ -142,9 +144,6 @@ public class ProgrammingPhaseScene extends Scene {
     };
 
 
-    
-
-
     private double startX;
     private double startY;
 
@@ -156,25 +155,20 @@ public class ProgrammingPhaseScene extends Scene {
             startX = e.getSceneX() - node.getTranslateX();
             startY = e.getSceneY() - node.getTranslateY();
         });
-    
             
         node.setOnMouseDragged(e->{
             node.setTranslateX(e.getSceneX() - startX);
             node.setTranslateY(e.getSceneY() - startY);
         });
-        node.setOnMouseReleased(e->{
 
+        node.setOnMouseReleased(e->{
             //go through all boxes and check if we released the mouse inside one of them
             for (int i = 0; i < 5; i++){
                 //if we did, then we set the card to the center of the box
-                if (contains(registerCard1, e.getSceneX(), e.getSceneY()))
-                    
-                    node.setTranslateX(registerCard1.getCenterX() - node.getBoundsInParent().getWidth() / 2);
-                    node.setTranslateY(registerCard1.getCenterY() - node.getBoundsInParent().getHeight() / 2);
-
-
-                    // node.setLayoutX(registerCard1.getCenterX());
-                    // node.setLayoutY(registerCard1.getCenterY());
+                if (contains(registerCard1, e.getSceneX(), e.getSceneY())){
+                    //It set
+                    node.setLayoutX(registerCard1.getCenterX());
+                    node.setLayoutY(registerCard1.getCenterY());
                 }
                 if (contains(registerCard2, e.getSceneX(), e.getSceneY())){
                     node.setLayoutX(registerCard2.getCenterX());
@@ -182,20 +176,10 @@ public class ProgrammingPhaseScene extends Scene {
                     
                 }
                 else {
-                    node.setTranslateX(node.getLayoutX());
-                    node.setTranslateY(node.getLayoutY());
+                    node.setTranslateX(startX);
+                    node.setTranslateY(startY);
                 }
-            
+            }
         });
-        // node.setOnDragOver();
-        // node.setOnDragDropped(e->{
-            
-        // });
-        // System.out.print(event.getX());
-        
-
-        
-        
     }
-
 }
