@@ -40,7 +40,7 @@ public class Controller {
     }
 
     public void setBoard(Board board) {
-        // this.board = board;
+        this.board = board;
     }
 
     public Board getBoard() {
@@ -54,7 +54,6 @@ public class Controller {
 
     public void changeToBoardScene(){
         this.setTheScene(this.getBoardScene(), "Roborally!");
-
         this.startGame();
     }
 
@@ -89,21 +88,15 @@ public class Controller {
 
 
     private void startGame() {
-        // Board b = this.getBoard();
-        // for (int i = 0; i < 10; i++) {
-        //     for (int j = 0; j < 14; j++) {
-        //         if (this.getBoard().getTileAt(new Position(i,j)).equals(new TileStart(TileType.START))) {
-        //             this.availableBoardSpawns.add(new Position(i, j));                 
-        //             System.out.println(i);
-        //             System.out.println(j);                
-        //         }
-        //     }
-        // }
-        // spawn players
-        // for (int i = 0; i < this.players.size(); i++) {
-        //     this.players.get(i).getRobot().setPosition(this.availableBoardSpawns.get(i));
-        //     this.getBoard().setTileAt(this.players.get(i).getRobot().getPosition(), this.players.get(i).getRobot().getColor());
-        // }
+        Board b = this.getBoard();
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 13; j++) {
+                if (this.getBoard().getTileAt(new Position(i,j)).equals(new TileStart(TileType.START))) {
+                    this.availableBoardSpawns.add(new Position(i, j));                            
+                }
+            }
+        }
+  
 
     }
 }
