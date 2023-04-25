@@ -3,7 +3,7 @@ package dtu.logic.models.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-import dtu.logic.models.Color;
+import dtu.logic.models.RobotColor;
 import dtu.logic.models.Cards.Deck;
 
 import dtu.logic.models.Cards.ProgramCard;
@@ -39,8 +39,9 @@ public class Player {
     public void drawProgrammingCards() {
         deck.shuffleDeck();
         for (int i = 0; i < 9 - this.robot.getDamageTaken(); i++) {
-            
-            hand.add(deck.getDeck().get(i));
+            //String name = ((deck.cards).get(i)).name;
+            hand.add(deck.cards.get(i));
+            //hand.add(new ProgramCard(name, 3));
         }
     }
 

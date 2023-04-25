@@ -2,15 +2,19 @@ package dtu.controller;
 
 import dtu.logic.models.Player.*;
 import dtu.logic.models.Robot.Robot;
+import dtu.logic.models.Position;
+import dtu.logic.models.RobotColor;
 
 import java.util.ArrayList;
 
-import dtu.logic.models.Color;
+import dtu.logic.models.RobotColor;
 import dtu.logic.models.Position;
 import dtu.logic.models.Board.Board;
 import javafx.stage.Stage;
 import dtu.view.BoardScene;
 import dtu.view.MenuScene;
+import dtu.view.ProgrammingPhaseScene;
+// import dtu.view.ProgrammingPhaseSceneSimple;
 import javafx.scene.Scene;
 
 import dtu.logic.models.Board.TileType;
@@ -23,6 +27,8 @@ public class Controller {
     // --- Scenes ---
     private MenuScene menuScene;
     private BoardScene boardScene;
+    private ProgrammingPhaseScene programmingPhaseScene;
+    // private ProgrammingPhaseSceneSimple programmingPhaseSceneSimple;
     // --------------
     private Stage primaryStage;
 
@@ -37,6 +43,10 @@ public class Controller {
 
     public void launch() {
         this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
+
+        //this.setTheScene(this.getProgrammingPhaseScene(), "Roborally - Programming Phase"); //for natalia
+        // this.setTheScene(this.getProgrammingPhaseSceneSimple(), "Roborally - Programming Phase"); //for oli/gleb
+
     }
 
     public void setBoard(Board board) {
@@ -47,9 +57,9 @@ public class Controller {
         return board;
     }
 
-    public void createPlayer(Color color, String name) {
-        this.players.add(new Player(new Robot(color), name));
-        System.out.println(name + " has chosen color " + color + "!");
+    public void createPlayer(RobotColor color, String name) {
+        // this.players.add(new Player(new Robot(color, new Position(2, 2)),name));
+        System.out.println(name + " has chosen color " + color);
     };
 
     public void changeToBoardScene(){
@@ -84,6 +94,22 @@ public class Controller {
         primaryStage.setTitle(title);
         this.primaryStage.show();
     }
+
+    public void setProgrammingPhaseScene(ProgrammingPhaseScene programmingPhaseScene) {
+        this.programmingPhaseScene = programmingPhaseScene;
+    }
+
+    public ProgrammingPhaseScene getProgrammingPhaseScene() {
+        return programmingPhaseScene;
+    }
+
+    // public void setProgrammingPhaseSceneSimple(ProgrammingPhaseSceneSimple programmingPhaseSceneSimple) {
+    //     this.programmingPhaseSceneSimple = programmingPhaseSceneSimple;
+    // }
+
+    // public ProgrammingPhaseSceneSimple getProgrammingPhaseSceneSimple() {
+    //     return programmingPhaseSceneSimple;
+    // }
 
 
 
