@@ -46,6 +46,12 @@ public class Robot {
         observers.add(observer);
     }
     
+    public Robot(Color color) {
+        this.color = color;
+        this.DirID = 1;
+        this.image = new Image(getClass().getClassLoader().getResourceAsStream(this.color.getPictureFile()));  
+    }
+
     public Robot(Color color, Position position) {
         this.color = color;
         this.DirID = 1;

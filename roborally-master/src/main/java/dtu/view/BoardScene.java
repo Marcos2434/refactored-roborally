@@ -51,7 +51,7 @@ public class BoardScene extends Scene {
             // Start Field
             {"T","T","T","T","WT 1","WT 1","T","T","T","T"},
             {"T","S","WT 4","T","S","S","T","WT 2","S","T"},
-            {"T","T","T","S","T","T","S","T","T","T"},
+            {"S","T","T","S","T","T","S","T","T","S"},
         };
         
 
@@ -60,11 +60,13 @@ public class BoardScene extends Scene {
         
         c.setBoard(board);
 
-        try {board.initPlayers();
-            board.addPlayer(new Player(robot,"Casper"));
-        }
-        catch (Exception ex) { ex.getCause(); }
-        board.moveRobot(robot,new Position(3, 10));
+        
+
+        // try {board.initPlayers();
+        //     board.addPlayer(new Player(robot,"Casper"));
+        // }
+        // catch (Exception ex) { ex.getCause(); }
+        // board.moveRobot(robot,new Position(3, 10));
 		
 		ControlPanel cp = new ControlPanel(board, robot);
         //cp.addplayer(new Player(cp.getrobot(),"Casper"));

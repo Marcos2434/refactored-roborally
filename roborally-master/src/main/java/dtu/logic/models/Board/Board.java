@@ -63,7 +63,7 @@ public class Board extends GridPane {
     }
 
     public void initPlayers(){
-        players = new Player[4];
+        players = new Player[8];
         nextPlayerIdx = 0;
     }
     

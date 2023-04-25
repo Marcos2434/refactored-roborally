@@ -48,8 +48,8 @@ public class Controller {
     }
 
     public void createPlayer(Color color, String name) {
-        // this.players.add(new Player(new Robot(color, new Position(2, 2)),name));
-        System.out.println(name + " has chosen color " + color);
+        this.players.add(new Player(new Robot(color), name));
+        System.out.println(name + " has chosen color " + color + "!");
     };
 
     public void changeToBoardScene(){
@@ -88,6 +88,7 @@ public class Controller {
 
 
     private void startGame() {
+        // Find spawn positions
         Board b = this.getBoard();
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 13; j++) {
@@ -96,7 +97,23 @@ public class Controller {
                 }
             }
         }
-  
+        
+        // Set robot to positions
+        this.board.initPlayers();
+        for (int i = 0; i < this.players.size(); i++) {
+            this.players.get(i).getRobot().setPos(this.availableBoardSpawns.get(i));
+            
+            // TODO: temporary?
+            this.board.addPlayer(this.players.get(i));
+            this.board.getTileAt(this.availableBoardSpawns.get(i)).Occupy(
+                this.players.get(i).getRobot().getImage(), this.players.get(i).getRobot().getDirID());;
+        }
+
+
+        // try {this.board.initPlayers();
+        // }
+        // catch (Exception ex) { ex.getCause(); }
+        // board.moveRobot(robot, new Position(3, 10));
 
     }
 }
