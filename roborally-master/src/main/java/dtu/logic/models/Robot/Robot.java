@@ -16,7 +16,7 @@ public class Robot {
     private Image image;
     private int damageTaken = 0;
     private int lives = 3;
-
+    private int checkpointCount = 0;
     private Position pos = new Position(0,0);
     private Position checkpoint;
 
@@ -26,6 +26,14 @@ public class Robot {
     public List<ProgramCard> register = new ArrayList<ProgramCard>(5);
     
     private List<RobotObserver> observers = new ArrayList<RobotObserver>();
+
+    public int getcheckpointCount(){
+        return this.checkpointCount;
+    }
+    
+    public void CheckpointReached(){
+        this.checkpointCount +=1;
+    }
 
     public void setLastMove(ProgramCard card){
         this.LastMove = card;
