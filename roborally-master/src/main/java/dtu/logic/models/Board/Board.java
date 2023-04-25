@@ -71,7 +71,7 @@ public class Board extends GridPane {
             for (int j=0; j<nextPlayerIdx; j++){
                 Robot r = players[j].getRobot();
                 r.moveByCard(this, r.getRegister()[i]);
-                
+               
             }
             
             RunAllEffects();

@@ -256,7 +256,7 @@ public class BoardTest {
     @Given("A Board and four players with different starting points")
     public void a_board_and_four_players_with_different_starting_points() {
         String[][] board1 = {   
-            {"BT 3 2","T","HT","T","T","T","T","T","T","T"},
+            {"BT 3 2","½T","HT","","T","T","T","T","T","T"},
             {"BT 3 2","T","HT","T","WT 1","WT 4","T","T","T","T"},
             {"T","T","HT","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"},
@@ -265,7 +265,7 @@ public class BoardTest {
             {"T","T","T","T","T","T","T","T","T","T"},
             {"T","LT 4","T","T","T","T","BT 1 2","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"},
-            {"T","T","T","T","T","T","T","T","T","T"},
+            {"LT 3","T","T","T","T","T","T","T","T","T"},
             {"BT 2 2","BT 1 2","T","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"}};
@@ -302,8 +302,8 @@ public class BoardTest {
     @Given("A clean board and {int} players")
     public void a_clean_board_and_players(Integer int1) {
         String[][] board1 = {   
-            {"T","T","TT","T","T","T","T","T","T","T"},
-            {"T","T","TT","T","T","T","T","T","T","T"},
+            {"T","T","T","T","T","T","T","T","T","T"},
+            {"T","T","T","T","T","T","T","T","T","T"},
             {"T","T","HT","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"},
@@ -372,7 +372,7 @@ public class BoardTest {
         player2.getRobot().setRegister(cards2);
         board.addPlayer(player1);
         board.addPlayer(player2);
-        ;
+        
         board.runAllRegisters();
     }
     @Then("The robots respond accordingly")
@@ -380,9 +380,32 @@ public class BoardTest {
     
     assertEquals(new Position(7,8),player1.getRobot().getPos());
     assertEquals(Direction.RIGHT,player1.getRobot().getdir());
+    assertEquals(8,player1.getRobot().getDamageTaken());
 
     assertEquals(new Position(5,8),player2.getRobot().getPos());
     assertEquals(Direction.LEFT,player2.getRobot().getdir());
+    assertEquals(5,player2.getRobot().getDamageTaken());
+}
+    @When("The board activates the registers in a way that makes them walk on top of tiles with effects")
+    public void the_board_activates_the_registers_in_a_way_that_makes_them_walk_on_top_of_tiles_with_effects() {
+       
+        board.moveRobot(player1.getRobot(),new Position(1,0));
+        List<ProgramCard> cards1 = new ArrayList<ProgramCard>(Arrays.asList(new TurnLeft(1),
+                                                                            new Forward(1),
+                                                                            new Uturn(),
+                                                                            new Forward(2),
+                                                                            new TurnRight(1)));
+        player1.getRobot().setRegister(cards1);
+        board.addPlayer(player1);
+        
+        board.runAllRegisters();
+    }
+    @Then("The robots are affected acordingly.")
+    public void the_robots_are_affected_acordingly() {
+    assertEquals(new Position(0,5),player1.getRobot().getPos());
+    assertEquals(Direction.DOWN,player1.getRobot().getdir());
+    assertEquals(2,player1.getRobot().getDamageTaken());
+    assertEquals(2,player1.getRobot().getLives());
 }
 }
 
