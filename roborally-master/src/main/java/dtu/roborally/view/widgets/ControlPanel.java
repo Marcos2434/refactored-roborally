@@ -96,13 +96,13 @@ public class ControlPanel extends GridPane {
 		moveB2.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				robot.AddToRegister(new Forward(2));
+				robot.AddToRegister(new Backwards(2));
 			}
 		});
 		moveB3.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				robot.AddToRegister(new Forward(3));
+				robot.AddToRegister(new Backwards(3));
 			}
 		});
 		

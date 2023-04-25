@@ -30,7 +30,7 @@ public class Robot {
     public int getcheckpointCount(){
         return this.checkpointCount;
     }
-    
+
     public void CheckpointReached(){
         this.checkpointCount +=1;
     }
@@ -137,7 +137,7 @@ public class Robot {
         if (forward){MoveDir = getdir();
                         d = 1;}
         else {  turn(2,board);
-                MoveDir = getdir();
+                MoveDir = Direction.getDirById(getdir().getId());
                 turn(2,board); 
                 d = -1;}
         //Update old tile
@@ -159,12 +159,8 @@ public class Robot {
             else if (this.DirID == 4){pos.addX(-d);} 
         }
         
-        // check if over the edge
-        if (this.pos.getRow() < 0 || this.pos.getRow() > 12 ||
-        this.pos.getColumn() < 0 || this.pos.getColumn()>9)
-        {Death(board);}
-        //update new tile
-        board.getTileAt(pos).Occupy(image, DirID);
+        
+        
     }
 
     // Damage and live control
