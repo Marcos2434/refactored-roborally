@@ -70,7 +70,7 @@ public class ProgrammingPhaseScene extends Scene {
         this.player1 = new Player(robot1,"Player1");
         player1.GenerateDeck();
         this.deck = player1.getDeck();
-        deck.shuffleDeck(deck.cards);
+        //deck.shuffleDeck(deck.cards);
         player1.drawProgrammingCards();
         this.initialize();
         this.c = c;
@@ -85,19 +85,19 @@ public class ProgrammingPhaseScene extends Scene {
         sceneHeight = this.getHeight();
 
         //Card1
-        Image stream = new Image (ProgrammingPhaseScene.class.getClassLoader().getResourceAsStream(player1.getHand().get(0).imagePath)); //new FileInputStream("file:src/main/resources/Cards/left_turn.png")); 
-        ImageView imageView1 = new ImageView(stream);  
-        imageView1.setFitHeight(150);
-        imageView1.setFitWidth(100);
-        imageView1.setLayoutX(-10);
-        imageView1.setLayoutY(10);
+        // //Image stream = new Image (ProgrammingPhaseScene.class.getClassLoader().getResourceAsStream(player1.getHand().get(0).imagePath)); //new FileInputStream("file:src/main/resources/Cards/left_turn.png")); 
+        // ImageView imageView1 = new ImageView(stream);  
+        // imageView1.setFitHeight(150);
+        // imageView1.setFitWidth(100);
+        // imageView1.setLayoutX(-10);
+        // imageView1.setLayoutY(10);
         
 
-        //Card2 
-        Image stream2 = new Image (ProgrammingPhaseScene.class.getClassLoader().getResourceAsStream(player1.getHand().get(1).imagePath)); //new FileInputStream("file:src/main/resources/Cards/left_turn.png"));
-        ImageView imageView2 = new ImageView(stream2);
-        imageView2.setFitHeight(150);
-        imageView2.setFitWidth(100);
+        // //Card2 
+        // //Image stream2 = new Image (ProgrammingPhaseScene.class.getClassLoader().getResourceAsStream(player1.getHand().get(1).imagePath)); //new FileInputStream("file:src/main/resources/Cards/left_turn.png"));
+        // ImageView imageView2 = new ImageView(stream2);
+        // imageView2.setFitHeight(150);
+        // imageView2.setFitWidth(100);
         
 
 
@@ -110,8 +110,8 @@ public class ProgrammingPhaseScene extends Scene {
 
         // mainGrid.setRight(label);
         // mainGrid.setLeft(label);
-        mainGrid.(imageView1);
-        mainGrid(imageView2);
+        // mainGrid.(imageView1);
+        // mainGrid(imageView2);
 
         mainGrid.getChildren().forEach(this::makeDraggable);
         // mainGrid.setRight(Hand);
