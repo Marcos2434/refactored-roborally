@@ -35,7 +35,7 @@ public class TileCheckpoint extends Tile{
 
     @Override
     public void effect(Robot robot,Board board) {
-        robot.setCheckpoint(position, id);
+        robot.setCheckpoint(position);
     }
 
     @Override

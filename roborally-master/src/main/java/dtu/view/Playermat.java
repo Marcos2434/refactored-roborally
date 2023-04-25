@@ -61,7 +61,7 @@ public class Playermat extends StackPane{
     public void updateInfos(){
         lives.setText("Lives: " + String.valueOf(player.getRobot().getLives()) + "   ");
         damage.setText("Damage: " + String.valueOf(player.getRobot().getDamageTaken()));
-        chPoint.setText("Checkpoint: " + player.getRobot().getChPointName());
+        chPoint.setText("Checkpoint: " + "asd");
     }
 
     public Playermat(Player player){
@@ -83,7 +83,7 @@ public class Playermat extends StackPane{
         }
 
         lives = new Label("Lives: " + String.valueOf(player.getRobot().getLives()) + "   ");
-        chPoint = new Label("Checkpoint: " + player.getRobot().getChPointName());
+        chPoint = new Label("Checkpoint: " + "asd");
 
         HBox playerinfo2 = new HBox(lives, chPoint);
 

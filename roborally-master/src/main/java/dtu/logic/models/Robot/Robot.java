@@ -19,7 +19,6 @@ public class Robot {
 
     private Position pos = new Position(0,0);
     private Position checkpoint;
-    private String ChPointName = "Start";
 
     private int DirID;
     private ProgramCard LastMove = null;
@@ -76,17 +75,13 @@ public class Robot {
         return pos.getRow();
     }
 
-    public void setCheckpoint(Position pos, int id){
+    public void setCheckpoint(Position pos){
         this.checkpoint = pos;
-        this.ChPointName = String.valueOf(id);
     }
     public Position getCheckpoint(){
         return this.checkpoint;
     }
 
-    public String getChPointName(){
-        return this.ChPointName;
-    }
 
     public Direction getdir(){
         return Direction.getDirById(this.DirID); 

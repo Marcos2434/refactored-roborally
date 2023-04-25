@@ -42,8 +42,8 @@ public class BoardScene extends Scene {
     BorderPane boardPane;
     Controller c;
 
-    public void setPlayermats(){
-        Playermat p1 = new Playermat(c.getP());
+    public void setPlayermats(Player player){
+        Playermat p1 = new Playermat(player);
         VBox playersUI = new VBox(p1);
         boardPane.setRight(playersUI);
     }

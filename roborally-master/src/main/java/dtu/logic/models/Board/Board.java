@@ -152,7 +152,6 @@ public class Board extends GridPane {
     public void moveRobot(Robot robot,Position pos){
         getTileAt(robot.getPos()).unOccupy();
         robot.setPos(pos);
-        robot.setCheckpoint(new Position(pos.getColumn(),pos.getRow()));
         getTileAt(robot.getPos()).Occupy(robot.getImage(),robot.getDirID());
     }
     public void removePlayer(Player player){
