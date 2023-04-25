@@ -1,9 +1,13 @@
 package dtu.view;
 
 import javafx.scene.layout.BorderPane;
+
+import java.lang.reflect.InvocationTargetException;
+
 import dtu.controller.Controller;
 import dtu.logic.models.Position;
 import dtu.logic.models.Board.Board;
+import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.Robot;
 import dtu.roborally.view.widgets.ControlPanel;
 import javafx.scene.Scene;
@@ -39,7 +43,7 @@ public class BoardScene extends Scene {
             {"T","T","HT","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","C 1","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"},
-            {"T","T","BT 2 1","BT 2 1","BT 2 1","HT","T","T","T","T"},
+            {"T","T","BT 2 1","BT 2 1","BT 2 1","BT 2 1","BT 2 1","T","T","T"},
             {"T","T","BT 1 1","BT 4 1","LT 4","T","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","C 3","T"},
             {"C 2","T","HT","BT 1 2","BT 4 2","T","T","T","T","T"},
@@ -52,10 +56,17 @@ public class BoardScene extends Scene {
         
 
         Board board = new Board(board1);
-		Robot robot = new Robot(Color.BLUE, new Position(3, 12));
+		Robot robot = new Robot(Color.BLUE, new Position(3, 10));
+        
+        try {board.initPlayers();
+            board.addPlayer(new Player(robot,"Casper"));
+        }
+        catch (Exception ex) { ex.getCause(); }
+        board.moveRobot(robot,new Position(3, 10));
 		
 		ControlPanel cp = new ControlPanel(board, robot);
+        //cp.addplayer(new Player(cp.getrobot(),"Casper"));
 		boardPane.setCenter(board);
-		boardPane.setBottom(cp);
+		boardPane.setRight(cp);
     }
 }
