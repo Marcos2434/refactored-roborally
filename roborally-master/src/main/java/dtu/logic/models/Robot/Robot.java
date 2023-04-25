@@ -46,7 +46,7 @@ public class Robot {
         observers.add(observer);
     }
     
-    public Robot(Color color,Position position) {
+    public Robot(Color color, Position position) {
         this.color = color;
         this.DirID = 1;
         this.pos = position;

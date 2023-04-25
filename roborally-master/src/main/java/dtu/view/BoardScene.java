@@ -29,8 +29,8 @@ public class BoardScene extends Scene {
 
     public BoardScene(Controller c) {
         super(new BorderPane());
-        this.initialize();
         this.c = c;
+        this.initialize();
     }
     
 
@@ -58,6 +58,8 @@ public class BoardScene extends Scene {
         Board board = new Board(board1);
 		Robot robot = new Robot(Color.BLUE, new Position(3, 10));
         
+        c.setBoard(board);
+
         try {board.initPlayers();
             board.addPlayer(new Player(robot,"Casper"));
         }
@@ -68,5 +70,10 @@ public class BoardScene extends Scene {
         //cp.addplayer(new Player(cp.getrobot(),"Casper"));
 		boardPane.setCenter(board);
 		boardPane.setRight(cp);
+        
+    
+        
+        
+
     }
 }

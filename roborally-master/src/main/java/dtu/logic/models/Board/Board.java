@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 import dtu.logic.models.Direction;
 
-public class Board extends GridPane{
+public class Board extends GridPane {
 
     private Tile[][] grid = new Tile[13][10];
     private Player[] players;

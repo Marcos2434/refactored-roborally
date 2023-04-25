@@ -29,7 +29,7 @@ public class ControlPanel extends GridPane {
 	private Button uTurn = new Button("\u27F2");
 	private Button Activate = new Button("Activate register");
 	
-	public ControlPanel(Board board, Robot robot) {
+	public ControlPanel(Board board,Robot robot) {
 		this.board = board;
 		this.robot = robot;
 		//this.board.addPlayer(new Player(robot, "Casper"));
