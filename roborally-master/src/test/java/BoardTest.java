@@ -73,11 +73,8 @@ public class BoardTest {
     @When("the robot steps on a holetile")
     public void the_robot_steps_on_a_holetile() {
         robot.setPos(new Position(2, 0));
-        if (board.getTileAt(robot.getPos()) instanceof TileHole){
-            TileHole TH = (TileHole)board.getTileAt(robot.getPos());
-           
-            TH.effect(robot,board);
-        }
+        board.getTileAt(robot.getPos()).effect(robot,board);
+        
 }
     @Then("The robot Dies")
     public void the_robot_dies() {
@@ -256,7 +253,7 @@ public class BoardTest {
     @Given("A Board and four players with different starting points")
     public void a_board_and_four_players_with_different_starting_points() {
         String[][] board1 = {   
-            {"BT 3 2","½T","HT","","T","T","T","T","T","T"},
+            {"BT 3 2","T","HT","","T","T","T","T","T","T"},
             {"BT 3 2","T","HT","T","WT 1","WT 4","T","T","T","T"},
             {"T","T","HT","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"},
@@ -287,6 +284,7 @@ public class BoardTest {
         board.addPlayer(player3);
         board.addPlayer(player4);
         board.moveRobot(robot1, new Position(2,2));
+        robot1.setCheckpoint(new Position(0, 5));
         board.moveRobot(robot2, new Position(0,10));
         board.moveRobot(robot3, new Position(2,4));
                
@@ -295,16 +293,16 @@ public class BoardTest {
     @Then("Each robot is effected accordingly")
     public void each_robot_is_effected_accordingly() {
         
-        assertTrue(robot1.getPos().equals(new Position(0,5)));
-        assertTrue(robot2.getPos().equals(new Position(1,9)));
-        assertTrue(robot3.getPos().equals(new Position(2,5)));
+        assertEquals((new Position(0,5)),robot1.getPos());
+        assertEquals((new Position(1,9)),robot2.getPos());
+        assertEquals((new Position(2,5)),robot3.getPos());
     }
     @Given("A clean board and {int} players")
     public void a_clean_board_and_players(Integer int1) {
         String[][] board1 = {   
             {"T","T","T","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","T","T"},
+            {"T","T","T","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"},
@@ -390,6 +388,7 @@ public class BoardTest {
     public void the_board_activates_the_registers_in_a_way_that_makes_them_walk_on_top_of_tiles_with_effects() {
        
         board.moveRobot(player1.getRobot(),new Position(1,0));
+        robot1.setCheckpoint(new Position(0, 5));
         List<ProgramCard> cards1 = new ArrayList<ProgramCard>(Arrays.asList(new TurnLeft(1),
                                                                             new Forward(1),
                                                                             new Uturn(),

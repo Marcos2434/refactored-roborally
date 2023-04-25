@@ -34,24 +34,38 @@ public class TileBelt extends Tile{
     public void effect(Robot robot,Board board){
         
         board.getTileAt(robot.getPos()).unOccupy();
-       
+        System.out.println("before 2");
         if (intensity == 2){
-            pushRobot(robot,this.dir);
-            
+            System.out.println("in 2");
             if (board.getTileAt(robot.getPos()) instanceof TileBelt){
-                TileBelt tileBelt = (TileBelt) board.getTileAt(robot.getPos());
-                pushRobot(robot,tileBelt.getdir());
+                System.out.println("in instance 1");
+                TileBelt currtile = (TileBelt)board.getTileAt(robot.getPos());
+                pushRobot(robot,currtile.getdir());
+                board.getTileAt(robot.getPos()).Occupy(robot.getImage(), robot.getdir().getId()); 
+                try{Thread.sleep(500);}
+                catch(Exception e){System.out.println(e);}
+
+                if (board.getTileAt(robot.getPos()) instanceof TileBelt){
+                    System.out.println("in instance 2");
+                    TileBelt nextTileBelt = (TileBelt) board.getTileAt(robot.getPos());
+                    board.getTileAt(robot.getPos()).unOccupy();
+                    pushRobot(robot,nextTileBelt.getdir());
+                }
             }
         }
         else{ 
             pushRobot(robot, this.dir);
         }
-        board.getTileAt(robot.getPos()).Occupy(image, dir.getId()); 
-    }
+        board.getTileAt(robot.getPos()).Occupy(robot.getImage(), robot.getdir().getId()); 
+       
+    
+}
+
     private void pushRobot(Robot robot,Direction dir){
         if (dir.getId() == 1){robot.getPos().addY(-1);}
             else if (dir.getId() == 2){robot.getPos().addX(1);}
             else if (dir.getId() == 3){robot.getPos().addY(1);}
             else if (dir.getId() == 4){robot.getPos().addX(-1);}
     }
+    
 }
