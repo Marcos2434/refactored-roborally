@@ -19,6 +19,9 @@ public class ProCardFactory {
         else if (type == ProCardTypes.UTURN){
             return new Uturn();
         }
+        else if (type == ProCardTypes.AGAIN){
+            return new Again();
+        }
         else{return null;}
 
     }

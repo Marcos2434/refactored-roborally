@@ -6,7 +6,8 @@ import dtu.logic.models.Robot.Robot;
 public interface ProgramCard {
   
     void effect(Robot robot,Board board);
-
+    
+    String getImage();
 
 
 }

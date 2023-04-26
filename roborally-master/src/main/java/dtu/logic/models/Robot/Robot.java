@@ -16,7 +16,7 @@ public class Robot {
     private Image image;
     private int damageTaken = 0;
     private int lives = 3;
-
+    
     private Position pos = new Position(0,0);
     private Position checkpoint;
 

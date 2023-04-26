@@ -4,6 +4,14 @@ import dtu.logic.models.Cards.ProgramCard;
 import dtu.logic.models.Robot.Robot;
 public class TurnRight implements ProgramCard{
     private int intensity;
+    
+    private String image = "Cards/right_turn.png";
+    
+    @Override
+    public String getImage(){
+        return this.image;
+    }
+
     public TurnRight(int intensity) {
         this.intensity = intensity;
     }

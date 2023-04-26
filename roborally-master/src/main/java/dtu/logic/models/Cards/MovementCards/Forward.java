@@ -6,6 +6,14 @@ import dtu.logic.models.Robot.Robot;
 
 public class Forward implements ProgramCard {
     private int intensity;
+    
+    private String image = "Cards/mv_"+intensity+".png";
+    
+    @Override
+    public String getImage(){
+        return this.image;
+    }
+
     public Forward(int intensity) {
         this.intensity = intensity;
     }
