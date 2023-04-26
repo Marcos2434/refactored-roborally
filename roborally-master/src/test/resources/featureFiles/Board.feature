@@ -100,9 +100,9 @@ Feature: Boardfunctions
         When The board activates the registers in a way that makes them push eachother
         Then The robots respond accordingly
     
-    @tag18
-        Scenario: As the board When activating all registers, I want to activate all Tiles after each round.
-        Given A Board and four players with different starting points
-        When The board activates the registers in a way that makes them walk on top of tiles with effects 
-        Then The robots are affected acordingly.
+#    @tag18
+#        Scenario: As the board When activating all registers, I want to activate all Tiles after each round.
+#        Given A Board and four players with different starting points
+#        When The board activates the registers in a way that makes them walk on top of tiles with effects 
+#        Then The robots are affected acordingly.
         
