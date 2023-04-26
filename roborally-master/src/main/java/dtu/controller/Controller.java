@@ -81,7 +81,7 @@ public class Controller {
     };
 
     public void changeToBoardScene(){
-        this.boardScene.setPlayermats(players);
+        this.boardScene.setPlayermats(this.boardController.getPlayers());
         //System.out.println(players);
         this.setTheScene(this.getBoardScene(), "Roborally!");
         // this.startGame();
@@ -122,10 +122,6 @@ public class Controller {
 
     public ProgrammingPhaseScene getProgrammingPhaseScene() {
         return programmingPhaseScene;
-    }
-
-    public ArrayList<Player> getPlayers(){
-        return players;
     }
 
     // public void setProgrammingPhaseSceneSimple(ProgrammingPhaseSceneSimple programmingPhaseSceneSimple) {
