@@ -43,9 +43,9 @@ public class Controller {
     }
 
     public void launch() {
-        //this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
+        this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
 
-        this.setTheScene(this.getProgrammingPhaseScene(), "Roborally - Programming Phase"); //for natalia
+        //this.setTheScene(this.getProgrammingPhaseScene(), "Roborally - Programming Phase"); //for natalia
         // this.setTheScene(this.getProgrammingPhaseSceneSimple(), "Roborally - Programming Phase"); //for oli/gleb
 
     }
@@ -60,21 +60,21 @@ public class Controller {
         return board;
     }
 
-    private Position randomSpawn(){
-        int randID = (int)(Math.random() * availableBoardSpawns.size()-1);
-        Position randPos = availableBoardSpawns.get(randID);
-        availableBoardSpawns.remove(randID);
-        return randPos;
+    private Position assignSpawnToRobot(){
+        Position startPos = availableBoardSpawns.get(0);
+        availableBoardSpawns.remove(0);
+        return startPos;
 
     }
 
     public void createPlayer(RobotColor color, String name) {
-        // this.players.add(new Player(new Robot(color, new Position(2, 2)),name));
+        players.add(new Player(new Robot(color, assignSpawnToRobot()),name));
         System.out.println(name + " has chosen color " + color);
     };
 
     public void changeToBoardScene(){
-        // this.boardScene.setPlayermats(players);
+        this.boardScene.setPlayermats(players);
+        //System.out.println(players);
         this.setTheScene(this.getBoardScene(), "Roborally!");
         // this.startGame();
     }
@@ -99,6 +99,7 @@ public class Controller {
 
     public void setBoardScene(BoardScene boardScene) {
         this.boardScene = boardScene;
+        this.availableBoardSpawns = board.getSpawPositions();
     }
 
     public void setTheScene(Scene s, String title) {

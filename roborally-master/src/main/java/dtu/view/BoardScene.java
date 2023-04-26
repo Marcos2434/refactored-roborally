@@ -44,7 +44,7 @@ public class BoardScene extends Scene {
     
     BorderPane boardPane;
     Controller c;
-    HBox leftSide = new HBox();
+    HBox rightSide = new HBox();
     ArrayList<Playermat> pMats = new ArrayList<>();
     VBox playersUIright = new VBox();
     VBox playersUIleft = new VBox();
@@ -56,16 +56,14 @@ public class BoardScene extends Scene {
                 playersUIright.getChildren().add(p1);
                 pMats.add(p1);
             }
-            boardPane.setRight(playersUIright);
-        } 
-        
+        }
         else {
             for (int i = 0; i < 4; i++){
                 Playermat p1 = new Playermat(players.get(i));
                 playersUIright.getChildren().add(p1);
                 pMats.add(p1);
             }
-            boardPane.setRight(playersUIright);
+
             for (int i = 4; i < players.size(); i++){
                 Playermat p1 = new Playermat(players.get(i));
                 playersUIleft.getChildren().add(p1);
@@ -74,7 +72,7 @@ public class BoardScene extends Scene {
             boardPane.setLeft(playersUIleft);
         }
         // boardPane.setRight(playersUIright);
-        // leftSide.getChildren().add(playersUIleft);
+        
 
     }
 
@@ -128,17 +126,18 @@ public class BoardScene extends Scene {
 		boardPane.setCenter(board);
         // leftSide.getChildren().add(cp);
 
-        ArrayList<Player> players = new ArrayList<>();
-        players.add(new Player(robot, "Komv"));
-        players.add(new Player(robot, "Egle"));
-        players.add(new Player(robot, "Malév"));
-        players.add(new Player(robot, "GT"));
-        players.add(new Player(robot, "Komv"));
-        players.add(new Player(robot, "Egle"));
-        players.add(new Player(robot, "Malév"));
-        players.add(new Player(robot, "GT"));
-        setPlayermats(players);
+        // ArrayList<Player> players = new ArrayList<>();
+        // players.add(new Player(robot, "Komv"));
+        // players.add(new Player(robot, "Egle"));
+        // players.add(new Player(robot, "Malév"));
+        // players.add(new Player(robot, "GT"));
+        // players.add(new Player(robot, "Komv"));
+        // players.add(new Player(robot, "Egle"));
+        // players.add(new Player(robot, "Malév"));
+        // players.add(new Player(robot, "GT"));
+        // setPlayermats(players);
 
-		boardPane.setBottom(cp);
+		rightSide.getChildren().addAll(playersUIright,cp);
+        boardPane.setRight(rightSide);
     }
 }

@@ -164,13 +164,14 @@ public class MenuScene extends Scene {
 										c.createPlayer((RobotColor.BLACK), black.getText());
 										
 									}
-									c.changeToBoardScene();
+
 								}
-																
+						
 								// this.c.createPlayer(RobotcolorChoice.getValue().toString());
                 // this.c.getP().getRobot().registerObserver(rv);
                 // System.out.println("Player created:" + RobotcolorChoice.getValue().toString());
             }
+			c.changeToBoardScene();	
           }
         }
 		);
