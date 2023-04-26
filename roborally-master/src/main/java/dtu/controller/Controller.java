@@ -140,9 +140,7 @@ public class Controller {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 13; j++) {
                 if (this.getBoard().getTileAt(new Position(i,j)).equals(new TileStart(TileType.START))) {
-                    this.availableBoardSpawns.add(new Position(i, j));
-                    System.out.println(i);                   
-                    System.out.println(j);                   
+                    this.availableBoardSpawns.add(new Position(i, j));               
                 }
             }
         }
