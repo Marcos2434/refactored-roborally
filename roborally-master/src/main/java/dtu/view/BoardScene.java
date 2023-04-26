@@ -7,6 +7,7 @@ import java.lang.reflect.InvocationTargetException;
 import dtu.controller.Controller;
 import dtu.logic.models.Position;
 import dtu.logic.models.Board.Board;
+import dtu.logic.models.Board.BoardController;
 import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.Robot;
 import dtu.roborally.view.widgets.ControlPanel;
@@ -51,22 +52,26 @@ public class BoardScene extends Scene {
             // Start Field
             {"T","T","T","T","WT 1","WT 1","T","T","T","T"},
             {"T","S","WT 4","T","S","S","T","WT 2","S","T"},
-            {"T","T","T","S","T","T","S","T","T","T"},
+            {"S","T","T","S","T","T","S","T","T","S"},
         };
         
 
         Board board = new Board(board1);
 		Robot robot = new Robot(RobotColor.BLUE, new Position(3, 10));
-        
+
+
+
         c.setBoard(board);
 
-        try {board.initPlayers();
-            board.addPlayer(new Player(robot,"Casper"));
-        }
-        catch (Exception ex) { ex.getCause(); }
-        board.moveRobot(robot,new Position(3, 10));
+        
+
+        // try {board.initPlayers();
+        //     board.addPlayer(new Player(robot,"Casper"));
+        // }
+        // catch (Exception ex) { ex.getCause(); }
+        // board.moveRobot(robot,new Position(3, 10));
 		
-		ControlPanel cp = new ControlPanel(board, robot);
+		ControlPanel cp = new ControlPanel(c, robot);
         //cp.addplayer(new Player(cp.getrobot(),"Casper"));
 		boardPane.setCenter(board);
 		boardPane.setRight(cp);

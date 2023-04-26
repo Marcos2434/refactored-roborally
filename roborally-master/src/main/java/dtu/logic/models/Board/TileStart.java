@@ -9,7 +9,7 @@ public class TileStart extends Tile {
 	}
 
     @Override
-    public void effect(Robot robot, Board board) {;}
+    public void effect(Robot robot, BoardController boardController) { }
     
     @Override
     public String getname(){

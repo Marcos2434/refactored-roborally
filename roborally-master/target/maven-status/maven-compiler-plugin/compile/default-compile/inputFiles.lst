@@ -9,6 +9,7 @@ C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\Roborally.java
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\view\BoardScene.java
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Cards\MovementCards\TurnRight.java
+C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\roborally\view\widgets\BoardTeacher.java
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Board\TileHole.java
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Cards\MovementCards\ProCardFactory.java
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\view\ProgrammingPhaseScene.java
@@ -34,9 +35,9 @@ C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\roborally\view\widgets\Tile.java
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Board\TileType.java
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Board\TileWall.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\roborally\view\widgets\Board.java
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Cards\MovementCards\ProCardTypes.java
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Board\TileLazer.java
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\RobotColor.java
+C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Board\BoardController.java
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Cards\MovementCards\Backwards.java
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Robot\Robot.java

@@ -7,14 +7,14 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
-import dtu.logic.models.Board.Board;
+import dtu.controller.Controller;
+import dtu.logic.models.Board.BoardController;
 import dtu.logic.models.Robot.Robot;
 import dtu.logic.models.Cards.MovementCards.*;
-import dtu.logic.models.Player.Player;
 
 public class ControlPanel extends GridPane {
 
-	private Board board;
+	private Controller c;
 	private Robot robot;
 	
 	
@@ -29,8 +29,8 @@ public class ControlPanel extends GridPane {
 	private Button uTurn = new Button("\u27F2");
 	private Button Activate = new Button("Activate register");
 	
-	public ControlPanel(Board board,Robot robot) {
-		this.board = board;
+	public ControlPanel(Controller c, Robot robot) {
+		this.c = c;
 		this.robot = robot;
 		//this.board.addPlayer(new Player(robot, "Casper"));
 		
@@ -127,7 +127,7 @@ public class ControlPanel extends GridPane {
 					Task<Void> task = new Task<Void>() {
 						@Override
 						protected Void call() throws Exception {
-							board.runAllRegisters();
+							c.getBoardController().runAllRegisters();
 							return null;
 						}
 					};

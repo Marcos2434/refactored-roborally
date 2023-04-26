@@ -4,6 +4,7 @@ import dtu.logic.models.Position;
 import dtu.logic.models.Robot.Robot;
 import dtu.logic.models.Robot.Lazer;
 import javafx.scene.image.Image;
+
 public class TileLazer extends TileWall{
     private String name = "LT";
     private Position pos;
@@ -20,16 +21,16 @@ public class TileLazer extends TileWall{
         super(Type,dir.getId(),test);
         this.pos = pos;
     }
-    public void effect(Robot robot,Board board){;}
+    public void effect(Robot robot,BoardController boardController){;}
 
-    public void FIRE(Board board){
+    public void FIRE(BoardController boardController){
         
         Lazer lazer = new Lazer(new Position(getPos().getColumn(), getPos().getRow()),Direction.getDirById(this.getDirID()));
         lazer.Uturn();
-        if (lazer.moveTillHit(board) == true){
+        if (lazer.moveTillHit(boardController) == true){
             
-            Robot hitRob = board.getRobotAt(lazer.getPos());
-            hitRob.takeDmg(board);
+            Robot hitRob = boardController.getRobotAt(lazer.getPos());
+            hitRob.takeDmg(boardController);
         }
     }
 }

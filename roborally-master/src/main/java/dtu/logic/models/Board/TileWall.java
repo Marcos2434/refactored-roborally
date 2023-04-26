@@ -22,8 +22,8 @@ public class TileWall extends Tile{
         this.DirID = dir;
         redraw();
 	}
-
-    public void effect(Robot robot){;}
+    @Override
+    public void effect(Robot robot,BoardController boardController){;}
     
     public String getname(){return this.name;}
 

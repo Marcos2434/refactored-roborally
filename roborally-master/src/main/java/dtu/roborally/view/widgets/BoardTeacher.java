@@ -6,7 +6,7 @@ import dtu.roborally.view.CardinalPoints;
 import dtu.roborally.view.TileType;
 import javafx.scene.layout.GridPane;
 
-public class Board extends GridPane {
+public class BoardTeacher extends GridPane {
 
 	private Random rnd = new Random();
 	private Tile[][] board;
@@ -15,7 +15,7 @@ public class Board extends GridPane {
 	private int currentRobotRow, currentRobotColumn;
 	private CardinalPoints currentRobotDirection;
 	
-	public Board(int rows, int cols) {
+	public BoardTeacher(int rows, int cols) {
 		this.board = new Tile[rows][cols];
 		this.rows = rows;
 		this.cols = cols;
