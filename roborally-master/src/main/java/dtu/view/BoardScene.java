@@ -27,6 +27,7 @@ class Tuple<A, B> {
 public class BoardScene extends Scene {
 
     Controller c;
+    ControlPanel cp;
 
     public BoardScene(Controller c) {
         super(new BorderPane());
@@ -56,29 +57,36 @@ public class BoardScene extends Scene {
         };
         
 
-        Board board = new Board(board1);
-		Robot robot = new Robot(RobotColor.BLUE, new Position(3, 10));
-        ControlPanel cp = new ControlPanel(c, robot);
-
-
-        c.setBoard(board);
-
+		// Robot robot = new Robot(RobotColor.BLUE, new Position(3, 10));
+        // ControlPanel cp = new ControlPanel(c, robot);
         
-
+        
+        
+        
+        
         /*try {c.getBoardController().initPlayers();
-             c.getBoardController().addPlayer(new Player(robot,"Casper"));
-         }
+            c.getBoardController().addPlayer(new Player(robot,"Casper"));
+        }
         catch (Exception ex) { ex.getCause(); }
         c.getBoardController().moveRobot(robot,new Position(3, 10));*/
 		
 		
         //cp.addplayer(new Player(cp.getrobot(),"Casper"));
+		// boardPane.setRight(cp);
+        
+        
+        // Creating the board
+        Board board = new Board(board1);
+        c.setBoard(board);
 		boardPane.setCenter(board);
-		boardPane.setRight(cp);
-        
-    
-        
-        
 
+        // Register control panel
+        cp = new ControlPanel(c);
+        boardPane.setRight(cp);
     }
+
+    public ControlPanel getControlPanel() {
+        return this.cp;
+    }
+
 }
