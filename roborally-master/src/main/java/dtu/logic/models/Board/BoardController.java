@@ -1,6 +1,7 @@
 package dtu.logic.models.Board;
 
 import dtu.logic.models.Position;
+import dtu.logic.models.RobotColor;
 import dtu.logic.models.Cards.ProgramCard;
 import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.Lazer;
@@ -188,5 +189,14 @@ public class BoardController {
         else{
             return null;
         }
+    }
+    
+    public Player getPlayerByColor(RobotColor color){
+            for (int i = 0; i < this.players.size(); i++){
+                if (players.get(i).getRobot().getRobotColor().equals(color)){
+                    return players.get(i);
+                }   
+            }
+            return null;
     }
 }
