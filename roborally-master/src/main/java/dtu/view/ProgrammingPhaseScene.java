@@ -154,7 +154,7 @@ public class ProgrammingPhaseScene extends Scene {
             //go through all boxes and check if we released the mouse inside one of them
                 // mainGrid.getChildren().get(0);
                 
-                System.out.println(mainGrid.getChildren().get(1).toString());
+                System.out.println(mainGrid.getChildren().toString());
                 if (mainGrid.getChildren().get(0).contains(e.getSceneX(), e.getSceneY())){
                     System.out.println("mainGrid get(1) box toggle");
                     // System.out.println(node.getId());
