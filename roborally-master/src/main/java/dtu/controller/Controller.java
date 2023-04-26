@@ -42,13 +42,14 @@ public class Controller {
     }
 
     public void launch() {
+        //this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
         this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
 
         // this.setTheScene(this.getProgrammingPhaseScene(), "Roborally - Programming Phase"); //for natalia
         // this.setTheScene(this.getProgrammingPhaseSceneSimple(), "Roborally - Programming Phase"); //for oli/gleb
 
     }
-
+    //asd
     public void setCurrentRobot(Robot currentRobot) {
         this.currentRobot = currentRobot;
     }
@@ -59,6 +60,7 @@ public class Controller {
 
     public void setBoard(Board board) {
         this.board = board;
+        //this.availableBoardSpawns = this.board.getStartFields();
         this.boardController = new BoardController(board);
     }
 
@@ -71,7 +73,8 @@ public class Controller {
         System.out.println(name + " has chosen color " + color);
     };
 
-    public void changeToBoardScene() {
+    public void changeToBoardScene(){
+        this.boardScene.setPlayermats(this.boardController.getPlayers());
         this.setTheScene(this.getBoardScene(), "Roborally!");
         this.startGame();
     }
@@ -86,7 +89,7 @@ public class Controller {
 
     public void setTheScene(Scene s) {
         this.primaryStage.setScene(s);
-        primaryStage.setTitle("Roborally - v. 0.1");
+        primaryStage.setTitle("Roborally - 0.5 - Playermat update");
         this.primaryStage.show();
     }
 

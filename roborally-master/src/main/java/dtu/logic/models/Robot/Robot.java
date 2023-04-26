@@ -101,6 +101,7 @@ public class Robot {
         return this.checkpoint;
     }
 
+
     public Direction getdir(){
         return Direction.getDirById(this.DirID); 
     }
