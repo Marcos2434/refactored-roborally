@@ -24,6 +24,10 @@ public class Deck {
         {cards.add(ProCardFactory.createProgramCard(ProCardTypes.FORWARD, 3));}
         for(int i=0; i<5; i++)
         {cards.add(ProCardFactory.createProgramCard(ProCardTypes.BACKWARDS, 1));}
+       
+        for(int i=0; i<2; i++)
+        {cards.add(ProCardFactory.createProgramCard(ProCardTypes.AGAIN, 0));}
+
     }
 
     public ArrayList<ProgramCard> getDeck(){
