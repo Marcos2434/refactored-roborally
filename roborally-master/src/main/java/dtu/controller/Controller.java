@@ -158,7 +158,7 @@ public class Controller {
             this.boardController.getPlayers().get(i).getRobot().setPos(this.availableBoardSpawns.get(i));
             
             // set initial checkpoint
-            this.boardController.getPlayers().get(i).getRobot().setCheckpoint(this.availableBoardSpawns.get(i));
+            this.boardController.getPlayers().get(i).getRobot().addCheckpoint(this.availableBoardSpawns.get(i));
         }
     }
 

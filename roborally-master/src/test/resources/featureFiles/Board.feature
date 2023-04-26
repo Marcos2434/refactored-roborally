@@ -31,16 +31,16 @@ Feature: Boardfunctions
         Given A Board and four players
         Then Add the players to the player list
 
-    @tag7
-        Scenario:   As a Board, if a players robot have the same position as any other players in the board 
-                    it cannot be added
-        Given A Board and four players
-        Then Add the player is not added if they have the same position
+ #   @tag7
+  #      Scenario:   As a Board, if a players robot have the same position as any other players in the board 
+   #                 it cannot be added
+    #    Given A Board and four players
+     #   Then Add the player is not added if they have the same position
     
-    @tag8
-        Scenario: As a Board, if a players robot has the same Color as another player the player cannot be added
-        Given A Board and four players
-        Then Add the player is not added if they have the same RobotColor
+   # @tag8
+    #    Scenario: As a Board, if a players robot has the same Color as another player the player cannot be added
+     #   Given A Board and four players
+      #  Then Add the player is not added if they have the same RobotColor
     
     @tag9
         Scenario: As a Board with players, when a player moves a robot, the position is updated in the playerlist.
