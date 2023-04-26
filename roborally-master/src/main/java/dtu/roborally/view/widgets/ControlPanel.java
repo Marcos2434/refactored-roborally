@@ -24,7 +24,7 @@ public class ControlPanel extends GridPane {
 	final ComboBox<String> comboBox = new ComboBox<String>();
 
 
-	private Button addPlayer = new Button("Add Player");
+	
 	
 	private Button moveF1 = new Button("\u2191");
 	private Button moveF2 = new Button("\u21D1");
@@ -39,9 +39,6 @@ public class ControlPanel extends GridPane {
 	
 	public ControlPanel(Controller c) {
 		this.c = c;
-
-
-		
 		configure();
 		addListeners();
 	}
@@ -65,6 +62,7 @@ public class ControlPanel extends GridPane {
 			System.out.println("Selected register: " + selectedOption);
 
 			c.setCurrentRobot(c.getBoardController().getPlayerByName(selectedOption).getRobot());
+			
 
 		});
 	}
