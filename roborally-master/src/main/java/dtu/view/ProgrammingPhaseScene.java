@@ -101,8 +101,8 @@ public class ProgrammingPhaseScene extends Scene {
         Rectangle frame = new Rectangle(100,150);
         frame.setStroke(Color.BLACK);
         frame.setFill(null);
-        this.leftBox1 = new VBox(frame);
-        mainGrid.add(leftBox1, 0, 0, 1, 1);
+        // this.leftBox1 = new VBox(frame);
+        mainGrid.add(frame, 0, 0, 1, 1);
 
         // BoundingBox leftBox1 = new BoundingBox(0, 0, 100, 150);
         
@@ -110,26 +110,26 @@ public class ProgrammingPhaseScene extends Scene {
         Rectangle frame2 = new Rectangle(100,150);
         frame2.setStroke(Color.RED);
         frame2.setFill(null);
-        this.leftBox2 = new VBox(frame2);
-        mainGrid.add(leftBox2, 0, 1, 1, 1); 
+        // this.leftBox2 = new VBox(frame2);
+        mainGrid.add(frame2, 0, 1, 1, 1); 
 
         Rectangle frame3 = new Rectangle(100,150);
         frame3.setStroke(Color.BLUE);
         frame3.setFill(null);
-        this.leftBox3 = new VBox(frame3);
-        mainGrid.add(leftBox3, 0, 2, 1, 1);
+        // this.leftBox3 = new VBox(frame3);
+        mainGrid.add(frame3, 0, 2, 1, 1);
 
         Rectangle frame4 = new Rectangle(100,150);
         frame4.setStroke(Color.GREEN);
         frame4.setFill(null);
-        this.leftBox4 = new VBox(frame4);
-        mainGrid.add(leftBox4, 0, 3, 1, 1);
+        // this.leftBox4 = new VBox(frame4);
+        mainGrid.add(frame4, 0, 3, 1, 1);
 
         Rectangle frame5 = new Rectangle(100,150);
         frame5.setStroke(Color.PURPLE);
         frame5.setFill(null);
-        this.leftBox5 = new VBox(frame5);
-        mainGrid.add(leftBox5, 0, 4, 1, 1);
+        // this.leftBox5 = new VBox(frame5);
+        mainGrid.add(frame5, 0, 4, 1, 1);
 
 
 
@@ -140,9 +140,6 @@ public class ProgrammingPhaseScene extends Scene {
     private double startY;
 
     private void makeDraggable (Node node){
-        double width = getWidth();
-        double height = getHeight();
-
         node.setOnMousePressed(e->{
             startX = e.getSceneX() - node.getTranslateX();
             startY = e.getSceneY() - node.getTranslateY();
@@ -155,31 +152,60 @@ public class ProgrammingPhaseScene extends Scene {
 
         node.setOnMouseReleased(e->{
             //go through all boxes and check if we released the mouse inside one of them
-
-                if (e.getSceneX() >= mainGrid.getLayoutX() && e.getSceneX() <= (mainGrid.getLayoutX() + mainGrid.getWidth())
-                    && e.getSceneY() >= mainGrid.getLayoutY() && e.getSceneY() <= (mainGrid.getLayoutY() + mainGrid.getHeight())) {
-                    System.out.println("Mouse released within GridPane");
+                // mainGrid.getChildren().get(0);
+                
+                System.out.println(mainGrid.getChildren().get(1).toString());
+                if (mainGrid.getChildren().get(0).contains(e.getSceneX(), e.getSceneY())){
+                    System.out.println("mainGrid get(1) box toggle");
+                    // System.out.println(node.getId());
+                    System.out.println(mainGrid.getChildren().toString());
                 }
-                // if (mainGrid(0,0).contains(e.getSceneX(), e.getSceneY())){
-                   
+                if (mainGrid.getChildren().get(1).contains(e.getSceneX(), e.getSceneY())){
+                    // System.out.println("mainGrid get(1) box toggle");
+                    // System.out.println(node.getId());
+                }
+                if (mainGrid.getChildren().get(2).contains(e.getSceneX(), e.getSceneY())){
+                    // System.out.println("mainGrid get(2) box toggle");
+                    // System.out.println(node.getId());
+                }
+                if (mainGrid.getChildren().get(3).contains(e.getSceneX(), e.getSceneY())){
+                    // System.out.println("mainGrid get(3) box toggle");
+                    // System.out.println(node.getId());
+                }
+                if (mainGrid.getChildren().get(4).contains(e.getSceneX(), e.getSceneY())){
+                    // System.out.println("mainGrid get(4) box toggle");
+                    // System.out.println(node.getId());
+                }
+                if (mainGrid.getChildren().get(5).contains(e.getSceneX(), e.getSceneY())){
+                    // System.out.println("mainGrid get(5) box toggle");
+                    // System.out.println(node.getId());
+                }
+                if (mainGrid.getChildren().get(6).contains(e.getSceneX(), e.getSceneY())){
+                    // System.out.println("mainGrid get(6) box toggle");
+                    // System.out.println(node.getId());
+                }
+                if (mainGrid.getChildren().get(7).contains(e.getSceneX(), e.getSceneY())){
+                    // System.out.println("mainGrid get(7) box toggle");
+                    // System.out.println(node.getId());
+                }
+
+
+
+                // if (leftBox1.contains(e.getSceneX(), e.getSceneY())){
+                //     System.out.println("entered if");
+                //     System.out.println(node.getId());
+                //     leftBox1.getChildren().add(node);
+                //     System.out.println(leftBox1.getChildren());
+                //     // leftBox1.removeChild(node);
+                //     // leftBox1.getChildren().removeAll(leftBox1.getChildren());
                 // }
 
+                // //if we did, then we set the card to the center of the box
+                // if (leftBox2.contains(e.getSceneX(), e.getSceneY())){
+                //     System.out.println("entered if second one");
+                //     System.out.println(node.getId());
 
-                if (leftBox1.contains(e.getSceneX(), e.getSceneY())){
-                    System.out.println("entered if");
-                    System.out.println(node.getId());
-                    leftBox1.getChildren().add(node);
-                    System.out.println(leftBox1.getChildren());
-                    // leftBox1.removeChild(node);
-                    // leftBox1.getChildren().removeAll(leftBox1.getChildren());
-                }
-
-                //if we did, then we set the card to the center of the box
-                if (leftBox2.contains(e.getSceneX(), e.getSceneY())){
-                    System.out.println("entered if second one");
-                    System.out.println(node.getId());
-
-                }
+                // }
                 
                 else {
                     // node.setTranslateX(-);
@@ -189,12 +215,26 @@ public class ProgrammingPhaseScene extends Scene {
                 }
         
         });
-        node.setOnMouseClicked(e->{
-            if (leftBox1.contains(e.getSceneX(), e.getSceneY())){
-                leftBox1.getChildren().clear();
-          }
-        // node.setOnMouseReleased();   
+        // node.setOnMouseClicked(e->{
+        //     if (leftBox1.contains(e.getSceneX(), e.getSceneY())){
+        //         leftBox1.getChildren().clear();
+        //   }
+        // // node.setOnMouseReleased();   
             
-         });
+        //  });
     }
 }
+
+
+
+
+//HOW TO GET NODE FROM GRIDPANE
+
+// private Node getNodeFromGridPane(GridPane gridPane, int col, int row) {
+//     for (Node node : gridPane.getChildren()) {
+//         if (GridPane.getColumnIndex(node) == col && GridPane.getRowIndex(node) == row) {
+//             return node;
+//         }
+//     }
+//     return null;
+// }
