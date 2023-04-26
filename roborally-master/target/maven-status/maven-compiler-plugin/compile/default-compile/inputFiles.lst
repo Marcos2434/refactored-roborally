@@ -1,4 +1,5 @@
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\view\ProgrammingPhaseSceneSimple.java
+C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Cards\Card.java
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Cards\MovementCards\Again.java
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Board\Board.java
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Board\TileCheckpoint.java
@@ -35,6 +36,8 @@ C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\roborally\view\widgets\Tile.java
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Board\TileType.java
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Board\TileWall.java
+C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Color.java
+C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\roborally\view\widgets\Board.java
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Cards\MovementCards\ProCardTypes.java
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Board\TileLazer.java
 C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\RobotColor.java
