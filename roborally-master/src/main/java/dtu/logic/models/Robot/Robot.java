@@ -27,6 +27,7 @@ public class Robot {
 
     public List<ProgramCard> register = new ArrayList<ProgramCard>(5);
     
+    // TODO: hashset?
     private List<RobotObserver> observers = new ArrayList<RobotObserver>();
 
     public int getcheckpointCount(){

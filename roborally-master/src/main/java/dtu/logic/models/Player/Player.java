@@ -16,6 +16,7 @@ public class Player {
     private Deck deck = new Deck();
     private ArrayList<ProgramCard> hand = new ArrayList<ProgramCard>();
     
+    
     public Player(Robot robot,String name) {
         this.robot = robot;
         this.name = name;
@@ -59,6 +60,9 @@ public class Player {
             registerCards = hand;
         }
         
+        // notify observers
+        notify();
+
         // add to robot register
         robot.setRegister(registerCards);
         

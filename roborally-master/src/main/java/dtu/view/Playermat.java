@@ -3,6 +3,7 @@ package dtu.view;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import dtu.logic.models.RobotColor;
 import dtu.logic.models.Player.Player;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -18,16 +19,16 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-
-public class Playermat extends StackPane{
+public class Playermat extends StackPane {
 
     Player player;
-        
+
     public static final int width = 330;
     public static final int height = 214;
 
@@ -36,69 +37,110 @@ public class Playermat extends StackPane{
     private Label lives;
     private Label damage;
     private Label chPoint;
-    private HBox cardsHbox;
-    
+    private HBox cardsHbox = new HBox();
+
     private Image backgroundpic = new Image("playermat/playermat.png");
     private ImageView background = new ImageView(backgroundpic);
 
     private Image cardbackpic = new Image("playermat/cardback.png");
-    private ImageView cardback = new ImageView(cardbackpic);
+    private Image lockedpic = new Image("playermat/locked.png");
 
-    private Image ActiveCardPic = new Image("Cards/AgainCard.png");
+    private Image ActiveCardPic; // = new Image("Cards/AgainCard.png");
     private ImageView ActiveCard;
 
-    
-
-
-    public void setRegister(){
-        cardsHbox.getChildren().clear();
-        for (int i = 0; i < player.getHand().size(); i++) {
-            ImageView cb = new ImageView(cardbackpic);
-            cardsHbox.getChildren().add(cb);
+    private void setColor(){
+        if (player.getRobot().getRobotColor().equals(RobotColor.BLACK)){
+            this.color.setText("BLACK");
+            this.color.setStyle("-fx-font-weight: bold; -fx-text-fill:BLACK; -fx-font-size: 15; -fx-padding: 0 0 0 10;");
+        }
+        else if (player.getRobot().getRobotColor().equals(RobotColor.BLUE)){
+            this.color.setText("BLUE");
+            this.color.setStyle("-fx-font-weight: bold; -fx-text-fill:BLUE; -fx-font-size: 15; -fx-padding: 0 0 0 10;");
+        }
+        else if (player.getRobot().getRobotColor().equals(RobotColor.GREEN)){
+            this.color.setText("GREEN");
+            this.color.setStyle("-fx-font-weight: bold; -fx-text-fill:GREEN; -fx-font-size: 15; -fx-padding: 0 0 0 10;");
+        }
+        else if (player.getRobot().getRobotColor().equals(RobotColor.ORANGE)){
+            this.color.setText("ORANGE");
+            this.color.setStyle("-fx-font-weight: bold; -fx-text-fill:ORANGE; -fx-font-size: 15; -fx-padding: 0 0 0 10;");
+        }
+        else if (player.getRobot().getRobotColor().equals(RobotColor.PURPLE)){
+            this.color.setText("PURPLE");
+            this.color.setStyle("-fx-font-weight: bold; -fx-text-fill:PURPLE; -fx-font-size: 15; -fx-padding: 0 0 0 10;");
+        }
+        else if (player.getRobot().getRobotColor().equals(RobotColor.RED)){
+            this.color.setText("RED");
+            this.color.setStyle("-fx-font-weight: bold; -fx-text-fill:RED; -fx-font-size: 15; -fx-padding: 0 0 0 10;");
+        }
+        else if (player.getRobot().getRobotColor().equals(RobotColor.WHITE)){
+            this.color.setText("WHITE");
+            this.color.setStyle("-fx-font-weight: bold; -fx-text-fill:WHITE; -fx-font-size: 15; -fx-padding: 0 0 0 10;");
+        }
+        else if (player.getRobot().getRobotColor().equals(RobotColor.YELLOW)){
+            this.color.setText("YELLOW");
+            this.color.setStyle("-fx-font-weight: bold; -fx-text-fill:YELLOW; -fx-font-size: 15; -fx-padding: 0 0 0 10;");
         }
     }
 
-    public void updateChPInfo(String info){
+    public void setRegister(int amountInHand) {
+        cardsHbox.getChildren().clear();
+        for (int i = 0; i < amountInHand; i++) {
+            ImageView cb = new ImageView(cardbackpic);
+            cardsHbox.getChildren().add(cb);
+        }
+        for (int i = amountInHand; i < 5; i++) {
+            ImageView cb = new ImageView(lockedpic);
+            cardsHbox.getChildren().add(cb);
+        }
+        cardsHbox.setStyle("-fx-padding: 0 0 0 2;");
+    }
+
+    public void updateChPInfo(String info) {
         chPoint.setText("Checkpoint: " + info);
     }
 
-    public void updatelives(){
+    public void updatelives() {
         lives.setText("Lives: " + String.valueOf(player.getRobot().getLives()) + "   ");
-        
+
     }
-    public void updateDamage(){
+
+    public void updateDamage() {
         damage.setText("Damage: " + String.valueOf(player.getRobot().getDamageTaken()));
     }
 
-    public String getPName(){
+    public String getPName() {
         return player.getName();
     }
 
-    public Playermat(Player player){
+    //public void activeC
+
+    public Playermat(Player player) {
 
         this.player = player;
 
         pName = new Label(player.getName());
         pName.prefHeight(54);
         pName.prefWidth(191);
-        pName.setStyle("prefHeight= 54.0; prefWidth= 188.0");
+        pName.setStyle("-fx-font-weight: bold; -fx-font-size: 15;");
         color = new Label("BLUE");
-        color.setStyle("-fx-padding: 0 0 0 10;");
+        setColor();
         HBox playerinfo = new HBox(pName, color);
+        playerinfo.setStyle("-fx-padding: 5 0 15 0;");
 
-        HBox cardsHbox = new HBox();
-        for (int i = 0; i < 5; i++) {
-            ImageView cb = new ImageView(cardbackpic);
-            cardsHbox.getChildren().add(cb);
-        }
+        cardsHbox.setStyle("-fx-padding: 0 0 44 2;");
+        cardsHbox.setSpacing(4);
+        // setRegister(4);
 
         lives = new Label();
         updatelives();
         chPoint = new Label("Checkpoint: " + "Start");
 
         HBox playerinfo2 = new HBox(lives, chPoint);
+        playerinfo2.setStyle("-fx-padding: 10 0 0 0;");
 
         damage = new Label();
+        damage.setStyle("-fx-font-weight: bold; -fx-font-size: 15; -fx-padding: 25 0 0 0;");
         updateDamage();
         VBox vbox = new VBox(playerinfo, cardsHbox, playerinfo2, damage);
         vbox.prefHeight(height);
@@ -106,7 +148,7 @@ public class Playermat extends StackPane{
         vbox.setStyle("-fx-padding: 0 0 0 20;");
 
         ActiveCard = new ImageView(ActiveCardPic);
-        
+
         HBox hbox1 = new HBox(vbox, ActiveCard);
         hbox1.prefHeight(height);
         hbox1.prefWidth(width);
@@ -115,25 +157,25 @@ public class Playermat extends StackPane{
         super.getChildren().addAll(background, hbox1);
     }
 
-    
     // @Override
     // public void start(Stage primaryStage) throws Exception {
-    //     try{
-    //     Pane root = FXMLLoader.load(getClass().getClassLoader().getResource("playermat/playermat.fxml"));
-    //     //BorderPane root = new BorderPane();
-    //     Scene scene = new Scene(root);
+    // try{
+    // Pane root =
+    // FXMLLoader.load(getClass().getClassLoader().getResource("playermat/playermat.fxml"));
+    // //BorderPane root = new BorderPane();
+    // Scene scene = new Scene(root);
 
-    //     primaryStage.setTitle("A rohadás öljön meg");
-    //     primaryStage.setScene(scene);
-    //     primaryStage.show();
-    //     }
-    //     catch(Exception ex) {
-    //         ex.printStackTrace();
-    //     }
+    // primaryStage.setTitle("A rohadás öljön meg");
+    // primaryStage.setScene(scene);
+    // primaryStage.show();
+    // }
+    // catch(Exception ex) {
+    // ex.printStackTrace();
+    // }
     // }
 
     // public static void main(String[] args) {
-    //     // Launch GUI
-    //     launch(args);
+    // // Launch GUI
+    // launch(args);
     // }
 }
