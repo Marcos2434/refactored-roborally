@@ -140,15 +140,15 @@ public class Controller {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 13; j++) {
                 if (this.getBoard().getTileAt(new Position(i,j)).equals(new TileStart(TileType.START))) {
-                    this.availableBoardSpawns.add(new Position(i, j));                            
+                    this.availableBoardSpawns.add(new Position(i, j));
+                    System.out.println(i);                   
+                    System.out.println(j);                   
                 }
             }
         }
         
         // Set robot to positions
         for (int i = 0; i < this.boardController.getPlayers().size(); i++) {
-            // this.boardController.addPlayer(this.boardController.getPlayers()[i]);
-            
             // place robot on scene
             this.boardController.getBoard().getTileAt(this.availableBoardSpawns.get(i)).Occupy(
                 this.boardController.getPlayers().get(i).getRobot().getImage(), this.boardController.getPlayers().get(i).getRobot().getDirID());;
