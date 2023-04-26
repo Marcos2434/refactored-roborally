@@ -30,7 +30,6 @@ public class MenuScene extends Scene {
         BorderPane menu = (BorderPane) this.getRoot();
 		
 		menu.setPrefSize(500, 500);
-        RobotViewer rv = new RobotViewer();
 
 		// RED
 		Text r = new Text("RED");

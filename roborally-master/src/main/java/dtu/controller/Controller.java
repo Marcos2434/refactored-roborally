@@ -69,7 +69,9 @@ public class Controller {
     }
 
     public void createPlayer(RobotColor color, String name) {
-        this.boardController.addPlayer(new Player(new Robot(color), name));
+        Robot robot = new Robot(color);
+        robot.registerObserver(this.boardScene);
+        this.boardController.addPlayer(new Player(robot, name));
         System.out.println(name + " has chosen color " + color);
     };
 
@@ -151,8 +153,8 @@ public class Controller {
         // Set robot to positions
         for (int i = 0; i < this.boardController.getPlayers().size(); i++) {
             // place robot on scene
-            this.boardController.getBoard().getTileAt(this.availableBoardSpawns.get(i)).Occupy(
-                this.boardController.getPlayers().get(i).getRobot().getImage(), this.boardController.getPlayers().get(i).getRobot().getDirID());;
+            // this.boardController.getBoard().getTileAt(this.availableBoardSpawns.get(i)).Occupy(this.boardController.getPlayers().get(i).getRobot().getImage(), this.boardController.getPlayers().get(i).getRobot().getDirID());
+            this.boardController.getBoard().getTileAt(this.availableBoardSpawns.get(i)).Occupy();
             
             // place robot on board
             this.boardController.getPlayers().get(i).getRobot().setPos(this.availableBoardSpawns.get(i));

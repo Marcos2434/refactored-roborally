@@ -40,7 +40,7 @@ public class BoardController {
         for (int i=0; i<5;i++){
             for (int j = 0; j < this.players.size(); j++) {
                 Robot r = this.players.get(j).getRobot();
-                System.out.println(r.getCheckpoint());
+                
                 if (r.getRegister().size() > i){
                     r.moveByCard(this, r.getRegister().get(i));
                 }
@@ -122,7 +122,7 @@ public class BoardController {
         this.board.getTileAt(robot.getPos()).unOccupy();
         robot.setPos(pos);
         robot.setCheckpoint(new Position(pos.getColumn(),pos.getRow()));
-        this.board.getTileAt(robot.getPos()).Occupy(robot.getImage(),robot.getDirID());
+        this.board.getTileAt(robot.getPos()).Occupy();
     }
 
     public ArrayList<Player> getPlayers(){
@@ -130,7 +130,7 @@ public class BoardController {
     }
     
     // check if a robot is allowed a move:
-    public boolean allowmove(Robot robot,Direction dir){
+    public boolean allowmove(Robot robot, Direction dir){
         
         Position toPos = robot.getPosInDir(dir);
         

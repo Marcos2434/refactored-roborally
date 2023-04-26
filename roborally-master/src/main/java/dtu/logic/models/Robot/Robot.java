@@ -40,12 +40,13 @@ public class Robot {
     public void setLastMove(ProgramCard card){
         this.LastMove = card;
     }
-    public ProgramCard getLastMove(){
+    public ProgramCard getLastMove() {
         return this.LastMove;
     }
-    public void notify(Position pos) {
+    
+    public void robotNotify() {
         for (RobotObserver observer : observers) {
-            observer.updateCoords(pos);
+            observer.updateRobotInfo(this);
         }
     }
     public Image getImage(){
@@ -76,10 +77,11 @@ public class Robot {
     // Position and movement
     public void setPos(Position pos) {
         this.pos = pos;
-        notify(pos);
+        robotNotify();
     }
+
     public Position getPos() {
-        return(pos);
+        return pos;
     }
 
     public RobotColor getRobotColor() {
@@ -131,7 +133,7 @@ public class Robot {
             }
         }
         //update tile
-        boardController.getBoard().getTileAt(pos).Occupy(image, DirID);
+        boardController.getBoard().getTileAt(pos).Occupy();
     }
 
     public Position getPosInDir(Direction dir){
@@ -142,7 +144,17 @@ public class Robot {
         else {return null;}
     }
 
-    public void moveforward(Boolean forward,BoardController boardController){
+    public void addCol(int intensity) {
+        pos.addX(intensity);
+        robotNotify();
+    }    
+
+    public void addRow(int intensity) {
+        pos.addY(intensity);
+        robotNotify();
+    }    
+
+    public void moveforward(Boolean forward, BoardController boardController){
         
         int d;
         Direction MoveDir;
@@ -165,12 +177,11 @@ public class Robot {
             }
            
             // move
-            if (this.DirID == 1){pos.addY(-d);}
-            else if (this.DirID == 2){pos.addX(d);}
-            else if (this.DirID == 3){pos.addY(d);}
-            else if (this.DirID == 4){pos.addX(-d);} 
+            if (this.DirID == 1){this.addRow(-d);}
+            else if (this.DirID == 2){this.addCol(d);}
+            else if (this.DirID == 3){this.addRow(d);}
+            else if (this.DirID == 4){this.addCol(-d);} 
         }
-        
         
         
     }
@@ -185,7 +196,7 @@ public class Robot {
         this.pos = new Position(checkpoint.getColumn(),checkpoint.getRow());
         this.lives -=1;
         this.damageTaken = 0;
-        boardController.getBoard().getTileAt(pos).Occupy(image, DirID);
+        boardController.getBoard().getTileAt(pos).Occupy();
     }
     public void takeDmg(BoardController boardController){
         this.damageTaken += 1;
@@ -221,7 +232,7 @@ public class Robot {
             robot.pos.getColumn() < 0 || robot.pos.getColumn()>10){Death(boardController);}
         
 
-        boardController.getBoard().getTileAt(robot.getPos()).Occupy(robot.image, robot.DirID);  
+        boardController.getBoard().getTileAt(robot.getPos()).Occupy();  
     } 
     
     public void FIRE(BoardController boardController){
@@ -276,8 +287,17 @@ public class Robot {
 
     public void moveByCard(BoardController boardController, ProgramCard card){
         
-    card.effect(this,boardController);
-    this.LastMove = card;
+        card.effect(this, boardController);
+        this.LastMove = card;
 
-    }  
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Robot) {
+            Robot r = (Robot) obj;
+            if (r.getRobotColor() == this.getRobotColor()) return true;
+        }
+        return false;
+    }
 }   
