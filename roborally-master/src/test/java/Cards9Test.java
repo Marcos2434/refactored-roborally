@@ -61,7 +61,7 @@ public class Cards9Test {
         @When("The player receives {int} cards from the deck and chooses {int} of them")
         public void the_player_receives_cards_from_the_deck_and_chooses_of_them(Integer int1, Integer int2) {
             testPlayer.drawProgrammingCards();
-            testPlayer.chooseProgrammingCards(5);        
+            testPlayer.chooseProgrammingCards();        
         }
         @Then("The player has {int} cards in the register")
         public void the_player_has_cards_in_the_register(Integer int1) {

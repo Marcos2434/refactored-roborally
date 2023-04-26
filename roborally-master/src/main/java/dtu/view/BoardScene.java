@@ -58,20 +58,20 @@ public class BoardScene extends Scene {
 
         Board board = new Board(board1);
 		Robot robot = new Robot(RobotColor.BLUE, new Position(3, 10));
-
+        ControlPanel cp = new ControlPanel(c, robot);
 
 
         c.setBoard(board);
 
         
 
-        // try {board.initPlayers();
-        //     board.addPlayer(new Player(robot,"Casper"));
-        // }
-        // catch (Exception ex) { ex.getCause(); }
-        // board.moveRobot(robot,new Position(3, 10));
+        /*try {c.getBoardController().initPlayers();
+             c.getBoardController().addPlayer(new Player(robot,"Casper"));
+         }
+        catch (Exception ex) { ex.getCause(); }
+        c.getBoardController().moveRobot(robot,new Position(3, 10));*/
 		
-		ControlPanel cp = new ControlPanel(c, robot);
+		
         //cp.addplayer(new Player(cp.getrobot(),"Casper"));
 		boardPane.setCenter(board);
 		boardPane.setRight(cp);
