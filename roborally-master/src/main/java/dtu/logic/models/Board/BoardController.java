@@ -10,14 +10,13 @@ import java.util.ArrayList;
 import dtu.logic.models.Direction;
 
 public class BoardController {
-    private Player[] players;
+    private ArrayList<Player> players = new ArrayList<Player>();
     private Board board;
-    private static int nextPlayerIdx = 0;
 
     public BoardController(Board board) {
         this.board = board;
     }
-
+    
     public void fireboardLazers(){
         for (int i=0; i<13; i++){
             for (int j=0; j<10; j++){
@@ -30,37 +29,39 @@ public class BoardController {
         }
     }
 
-    public void initPlayers(){
-        players = new Player[8];
-        nextPlayerIdx = 0;
+    public void emptyAllRegisters() {
+        for (int i = 0; i < this.players.size(); i++) {
+            Robot r = this.players.get(i).getRobot();
+            r.setRegister(new ArrayList<ProgramCard>());
+        }
     }
 
-    public void runAllRegisters(){
+    public void runAllRegisters() {
         for (int i=0; i<5;i++){
-            for (int j=0; j<nextPlayerIdx; j++){
-                
-            
-                Robot r = players[j].getRobot();
-
+            for (int j = 0; j < this.players.size(); j++) {
+                Robot r = this.players.get(j).getRobot();
+                System.out.println(r.getCheckpoint());
                 if (r.getRegister().size() > i){
                     r.moveByCard(this, r.getRegister().get(i));
                 }
-
+                
                 if (i == 4){
                     r.setRegister(new ArrayList<ProgramCard>());
                 }
-
-                //try{Thread.sleep(200);}
-                //catch(Exception e){System.out.println(e);}
             }
-            
+
+            try {
+                Thread.sleep(800);
+            } catch (Exception e) { System.err.println(e); }
             
             RunAllEffects();
-            
             fireRobotLazers();
             fireboardLazers();
         }
+        this.emptyAllRegisters();
+
     }
+
     public void RunAllEffects(){
         int c;
         int r;
@@ -87,57 +88,44 @@ public class BoardController {
             }
         }
     }
+    
     public void fireRobotLazers(){
-        for (int i = 0; i <nextPlayerIdx; i++){
-            players[i].getRobot().FIRE(this);
+        for (int i = 0; i < this.players.size(); i++){
+            players.get(i).getRobot().FIRE(this);
         }
     }
 
     public void addPlayer(Player player){
         boolean allowed = true;
         
-        for (int j = 0; j < nextPlayerIdx; j++){
-            if (players[j].getRobot().getRobotColor()  ==  (player.getRobot().getRobotColor())){
-                allowed = false;
-                
+        for (int i = 0; i < this.players.size(); i++){
+            if (players.get(i).getRobot().getRobotColor()  ==  (player.getRobot().getRobotColor())){
+                allowed = false;   
             }
         }
-        for (int i = 0; i < nextPlayerIdx; i++){
-            if (players[i].getRobot().getPos()  .equals  (player.getRobot().getPos())){
-                allowed = false;
-               
-            }
-        }
-        if (allowed){
-            players[nextPlayerIdx] = player;
-            nextPlayerIdx++;
-            
+
+        if (allowed){ 
+            players.add(player);
         }
     }
+
+    public Player getPlayerByName(String name) {
+        for (int i = 0; i < this.players.size(); i++){
+            if (players.get(i).getName().equals(name)){
+                return players.get(i);
+            }
+        }
+        return null;
+    }
+
     public void moveRobot(Robot robot,Position pos){
         this.board.getTileAt(robot.getPos()).unOccupy();
         robot.setPos(pos);
         robot.setCheckpoint(new Position(pos.getColumn(),pos.getRow()));
         this.board.getTileAt(robot.getPos()).Occupy(robot.getImage(),robot.getDirID());
     }
-    public void removePlayer(Player player){
-        for (int i = 0; i < players.length;i++){
-            if (players[i].getName().equals(player.getName())){
-                players[i] = null;
-                nextPlayerIdx--;
-            }
-        }
-        if (this.players[nextPlayerIdx] != null){
-            for (int i = 0; i < nextPlayerIdx; i++){
-                if (players[i] == null){
-                    players[i] = players[i+1];
-                    players[i+1] = null;
-                }
-            }
-        }
-    }
 
-    public Player[] getPlayers(){
+    public ArrayList<Player> getPlayers(){
         return this.players;
     }
     
@@ -188,11 +176,11 @@ public class BoardController {
 
     public Robot getRobotAt(Position pos){
         
-        if (pos.getRow()>=0 && pos.getColumn()>=0 && pos.getColumn()<10 && pos.getRow()<13){
+        if (pos.getRow()>=0 && pos.getColumn()>=0 && pos.getColumn()<10 && pos.getRow()<13) {
             
-            for (int i=0; i < nextPlayerIdx; i++){
-                if (players[i].getRobot().getPos().equals(pos)){
-                    return players[i].getRobot();
+            for (int i = 0; i < this.players.size(); i++){
+                if (players.get(i).getRobot().getPos().equals(pos)){
+                    return players.get(i).getRobot();
                 }   
             }
             return null;

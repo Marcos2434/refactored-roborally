@@ -112,69 +112,63 @@ public class MenuScene extends Scene {
         createPlayerButton.setOnMouseClicked(new EventHandler<Event>() {
             @Override
             public void handle(Event event) {
-							// For loop going through all checkboxes
-							for(int i = 0; i < checkarray.length; i++){
-								if (checkarray[i].isSelected()){
-									if (checkarray[i].getText().contains("red")){
-										if (red.getText().isEmpty()){
-											red.setText("RED");
-										}
-										c.createPlayer((RobotColor.RED), red.getText());
-									}
-									if (checkarray[i].getText().contains("blue")){
-										if (blue.getText().isEmpty()){
-											blue.setText("BLUE");
-										}
-										c.createPlayer((RobotColor.BLUE), blue.getText());
-									}
-									if (checkarray[i].getText().contains("green")){
-										if (green.getText().isEmpty()){
-											green.setText("GREEN");
-										}
-										c.createPlayer((RobotColor.GREEN), green.getText());
-									}
-									if (checkarray[i].getText().contains("yellow")){
-										if (yellow.getText().isEmpty()){
-											yellow.setText("YELLOW");
-										}
-										c.createPlayer((RobotColor.YELLOW), yellow.getText());
-									}
-									if (checkarray[i].getText().contains("orange")){
-										if (orange.getText().isEmpty()){
-											orange.setText("ORANGE");
-										}
-										c.createPlayer((RobotColor.ORANGE), orange.getText());
-									}
-									if (checkarray[i].getText().contains("purple")){
-										if (purple.getText().isEmpty()){
-											purple.setText("PURPLE");
-										}
-										c.createPlayer((RobotColor.PURPLE), purple.getText());
-									}
-									if (checkarray[i].getText().contains("white")){
-										if (white.getText().isEmpty()){
-											white.setText("WHITE");
-										}
-										c.createPlayer((RobotColor.WHITE), white.getText());
-									}
-									if (checkarray[i].getText().contains("black")){
-										if (black.getText().isEmpty()){
-											black.setText("BLACK");
-										}
-										c.createPlayer((RobotColor.BLACK), black.getText());
-										
-									}
-
-								}
-						
-								// this.c.createPlayer(RobotcolorChoice.getValue().toString());
-                // this.c.getP().getRobot().registerObserver(rv);
-                // System.out.println("Player created:" + RobotcolorChoice.getValue().toString());
-            }
-			c.changeToBoardScene();	
+				// For loop going through all checkboxes
+				for(int i = 0; i < checkarray.length; i++){
+					if (checkarray[i].isSelected()){
+						if (checkarray[i].getText().contains("red")){
+							if (red.getText().isEmpty()){
+								red.setText("RED");
+							}
+							c.createPlayer((RobotColor.RED), red.getText());
+						}
+						if (checkarray[i].getText().contains("blue")){
+							if (blue.getText().isEmpty()){
+								blue.setText("BLUE");
+							}
+							c.createPlayer((RobotColor.BLUE), blue.getText());
+						}
+						if (checkarray[i].getText().contains("green")){
+							if (green.getText().isEmpty()){
+								green.setText("GREEN");
+							}
+							c.createPlayer((RobotColor.GREEN), green.getText());
+						}
+						if (checkarray[i].getText().contains("yellow")){
+							if (yellow.getText().isEmpty()){
+								yellow.setText("YELLOW");
+							}
+							c.createPlayer((RobotColor.YELLOW), yellow.getText());
+						}
+						if (checkarray[i].getText().contains("orange")){
+							if (orange.getText().isEmpty()){
+								orange.setText("ORANGE");
+							}
+							c.createPlayer((RobotColor.ORANGE), orange.getText());
+						}
+						if (checkarray[i].getText().contains("purple")){
+							if (purple.getText().isEmpty()){
+								purple.setText("PURPLE");
+							}
+							c.createPlayer((RobotColor.PURPLE), purple.getText());
+						}
+						if (checkarray[i].getText().contains("white")){
+							if (white.getText().isEmpty()){
+								white.setText("WHITE");
+							}
+							c.createPlayer((RobotColor.WHITE), white.getText());
+						}
+						if (checkarray[i].getText().contains("black")){
+							if (black.getText().isEmpty()){
+								black.setText("BLACK");
+							}
+							c.createPlayer((RobotColor.BLACK), black.getText());
+						}
+					}
+				}
+				c.getBoardScene().getControlPanel().addPlayerNamesToDropdown();
+				c.changeToBoardScene();
           }
-        }
-		);
+        });
 			
 
 		menu.setLeft(RGB);

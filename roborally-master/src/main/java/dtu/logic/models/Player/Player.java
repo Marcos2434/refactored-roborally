@@ -34,7 +34,6 @@ public class Player {
     public void GenerateDeck() {
         this.deck = new Deck();
     }
-    
 
     public void drawProgrammingCards() {
         deck.shuffleDeck();

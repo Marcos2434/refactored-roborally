@@ -44,6 +44,7 @@ public class BoardScene extends Scene {
     
     BorderPane boardPane;
     Controller c;
+    ControlPanel cp;
     HBox rightSide = new HBox();
     ArrayList<Playermat> pMats = new ArrayList<>();
     VBox playersUIright = new VBox();
@@ -106,38 +107,37 @@ public class BoardScene extends Scene {
         };
         
 
-        Board board = new Board(board1);
-		Robot robot = new Robot(RobotColor.BLUE, new Position(3, 10));
-        ControlPanel cp = new ControlPanel(c, robot);
-
-
-        c.setBoard(board);
-
+		// Robot robot = new Robot(RobotColor.BLUE, new Position(3, 10));
+        // ControlPanel cp = new ControlPanel(c, robot);
         
-
+        
+        
+        
+        
         /*try {c.getBoardController().initPlayers();
-             c.getBoardController().addPlayer(new Player(robot,"Casper"));
-         }
+            c.getBoardController().addPlayer(new Player(robot,"Casper"));
+        }
         catch (Exception ex) { ex.getCause(); }
         c.getBoardController().moveRobot(robot,new Position(3, 10));*/
 		
 		
         //cp.addplayer(new Player(cp.getrobot(),"Casper"));
+		// boardPane.setRight(cp);
+        
+        
+        // Creating the board
+        Board board = new Board(board1);
+        c.setBoard(board);
 		boardPane.setCenter(board);
-        // leftSide.getChildren().add(cp);
 
-        // ArrayList<Player> players = new ArrayList<>();
-        // players.add(new Player(robot, "Komv"));
-        // players.add(new Player(robot, "Egle"));
-        // players.add(new Player(robot, "Malév"));
-        // players.add(new Player(robot, "GT"));
-        // players.add(new Player(robot, "Komv"));
-        // players.add(new Player(robot, "Egle"));
-        // players.add(new Player(robot, "Malév"));
-        // players.add(new Player(robot, "GT"));
-        // setPlayermats(players);
-
-		rightSide.getChildren().addAll(playersUIright,cp);
+        // Register control panel
+        cp = new ControlPanel(c);
+        rightSide.getChildren().addAll(playersUIright,cp);
         boardPane.setRight(rightSide);
     }
+
+    public ControlPanel getControlPanel() {
+        return this.cp;
+    }
+
 }
