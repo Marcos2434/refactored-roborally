@@ -68,13 +68,6 @@ public class Controller {
         return board;
     }
 
-    private Position assignSpawnToRobot(){
-        Position startPos = availableBoardSpawns.get(0);
-        availableBoardSpawns.remove(0);
-        return startPos;
-
-    }
-
     public void createPlayer(RobotColor color, String name) {
         this.boardController.addPlayer(new Player(new Robot(color), name));
         System.out.println(name + " has chosen color " + color);
@@ -84,7 +77,7 @@ public class Controller {
         this.boardScene.setPlayermats(this.boardController.getPlayers());
         //System.out.println(players);
         this.setTheScene(this.getBoardScene(), "Roborally!");
-        // this.startGame();
+        this.startGame();
     }
 
     public void setMenuScene(MenuScene s) {
@@ -152,7 +145,9 @@ public class Controller {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 13; j++) {
                 if (this.getBoard().getTileAt(new Position(i,j)).equals(new TileStart(TileType.START))) {
-                    this.availableBoardSpawns.add(new Position(i, j));                            
+                    this.availableBoardSpawns.add(new Position(i, j));
+                    System.out.println(i);
+                    System.out.println(j);                            
                 }
             }
         }
