@@ -49,7 +49,7 @@ public class Controller {
         // this.setTheScene(this.getProgrammingPhaseSceneSimple(), "Roborally - Programming Phase"); //for oli/gleb
 
     }
-
+    //asd
     public void setCurrentRobot(Robot currentRobot) {
         this.currentRobot = currentRobot;
     }
