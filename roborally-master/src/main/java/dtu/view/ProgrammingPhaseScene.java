@@ -44,6 +44,7 @@ public class ProgrammingPhaseScene extends Scene {
     VBox leftBox3;
     VBox leftBox4;
     VBox leftBox5;
+    VBox buttonBox;
 
     //Frames
     Rectangle frame;
@@ -247,8 +248,12 @@ public class ProgrammingPhaseScene extends Scene {
         this.leftBox5 = new VBox(frame5,button);
         mainGrid.add(leftBox5, 0, 4, 1, 1);
 
-        
-
+        //Finish Button
+        this.button = new Button("Ready");
+        button.setPrefWidth(670);
+        this.buttonBox = new VBox(button);
+        mainGrid.add(buttonBox, 1, 6, 1, 1);
+        button.setOnAction(e->DoneButton());
     
         //------------------------------------- REGISTER_BOXES_END -------------------------------------//
     
@@ -296,7 +301,7 @@ public class ProgrammingPhaseScene extends Scene {
             }          
             if (leftBox2.getBoundsInParent().contains(e.getSceneX(), e.getSceneY())){
                 if (frame2.getFill()==null){
-                     node.setVisible(false);
+                    node.setVisible(false);
                     System.out.println("we are now in box 2");
                     frame2.setFill(new ImagePattern(new Image (node.getId()) ));
                     this.store2 = node;
@@ -330,7 +335,7 @@ public class ProgrammingPhaseScene extends Scene {
                             // frame3.setFill(new ImagePattern(new Image (node.getId()) ));
             }
             if (leftBox4.getBoundsInParent().contains(e.getSceneX(), e.getSceneY())){
-                if (frame4.getFill()==null){
+                if (frame4.getFill() == null){
                     node.setVisible(false);
                     System.out.println("we are now in box 4");
                     frame4.setFill(new ImagePattern(new Image (node.getId()) ));
@@ -383,15 +388,41 @@ public class ProgrammingPhaseScene extends Scene {
         store.setTranslateY(0);
         System.out.println("Button Pressed");
     };
+
     private void DoneButton (){
+        //Hardcoded passing card (right now passing first 5 cards from hand)
+        if (frame.getFill()!=null){
+            leftBox1.getId();
+            player1.getRobot().AddToRegister(player1.getHand().get(0));   
+        }
+        if (frame2.getFill()!=null){
+            leftBox2.getId();
+            player1.getRobot().AddToRegister(player1.getHand().get(1));   
+        }
+        if (frame3.getFill()!=null){
+            leftBox3.getId();
+            player1.getRobot().AddToRegister(player1.getHand().get(2));   
+        }
+        if (frame4.getFill()!=null){
+            leftBox4.getId();
+            player1.getRobot().AddToRegister(player1.getHand().get(3));   
+        }
+        if (frame5.getFill()!=null){
+            leftBox5.getId();
+            player1.getRobot().AddToRegister(player1.getHand().get(4));   
+        }
         
     }
 }
-//         Button createPlayerButton = new Button();
-//         createPlayerButton.setText("Start Game");
-//         createPlayerButton.setOnMouseClicked(new EventHandler<Event>() {
-//             @Override
-//             public void handle(Event event) {
+
+
+
+
+        // Button createPlayerButton = new Button();
+        // createPlayerButton.setText("Start Game");
+        // createPlayerButton.setOnMouseClicked(new EventHandler<Event>() {
+        //     @Override
+        //     public void handle(Event event) {
     
 
 
