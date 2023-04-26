@@ -15,7 +15,7 @@ import io.cucumber.java.en.Then;
 
 import dtu.logic.models.*;
 import dtu.logic.models.Board.Board;
-
+import dtu.logic.models.Board.BoardController;
 import dtu.logic.models.Cards.Deck;
 import dtu.logic.models.Cards.ProgramCard;
 import dtu.logic.models.Cards.MovementCards.Forward;
@@ -39,6 +39,7 @@ public class RobotTest {
         {"T","T","HT","T","T","T","T","T","T","T"},
     };
     Board board = new Board(board1, true);
+    BoardController bC = new BoardController(board);
     Deck deck = new Deck();
     // initiats a robot with everything needed, change this when making a
     // new test that requires a new thing so that we know every test works properly with complicated robots as well.
@@ -68,7 +69,7 @@ public class RobotTest {
     public void the_robot_recieved_damage(int int1) {
         assertEquals(0,robot.getDamageTaken());
         for (int i=0;i < int1;i++) {
-            robot.takeDmg(board);
+            robot.takeDmg(bC);
         }
         assertEquals(0+int1, robot.getDamageTaken());
     }
@@ -79,7 +80,7 @@ public class RobotTest {
         robot.setPos(new Position(1,2));
         assertEquals(1, robot.getPos().getColumn());
         assertEquals(2, robot.getPos().getRow());
-        for (int i=0; i<int1; i++) {robot.takeDmg(board);}
+        for (int i=0; i<int1; i++) {robot.takeDmg(bC);}
         
 
     }
@@ -93,50 +94,50 @@ public class RobotTest {
     //Being able to turn and show the direction
     @Then("the robot turns and it can display the direction")
     public void the_robot_turns() {
-        robot.turn(0, board); //Test of unambigoius input
+        robot.turn(0, bC); //Test of unambigoius input
         assertEquals(Direction.UP.getId(), robot.getdir().getId());
-        robot.turn(1, board); //Test of turning right
+        robot.turn(1, bC); //Test of turning right
         assertEquals(Direction.RIGHT.getId(),robot.getdir().getId());
-        robot.turn(-1, board); // Testing leftturn
+        robot.turn(-1, bC); // Testing leftturn
         assertEquals(Direction.UP.getId(), robot.getdir().getId());
-        robot.turn(5, board); //testing full rotation to the right
+        robot.turn(5, bC); //testing full rotation to the right
         assertEquals(Direction.RIGHT.getId(),robot.getdir().getId());
-        robot.turn(-5, board); //testing full rotation to the right
+        robot.turn(-5, bC); //testing full rotation to the right
         assertEquals(Direction.UP.getId(),robot.getdir().getId());
     }
     // Check of movement
     @Then("It turns to the right and moves forward and backwards {int} times")
     public void it_turns_to_the_right_and_moves_forward_and_backwards_times(Integer int1) {
             //moving right
-            robot.turn(1, board);
-            robot.moveforward(true,board);
+            robot.turn(1, bC);
+            robot.moveforward(true,bC);
             assertEquals(6,robot.getPos().getColumn());
             assertEquals(5,robot.getPos().getRow());
-            robot.moveforward(false,board);
+            robot.moveforward(false,bC);
             assertEquals(5,robot.getPos().getColumn());
             assertEquals(5,robot.getPos().getRow());
             //moving down
-            robot.turn(1, board);
-            robot.moveforward(true,board);
+            robot.turn(1, bC);
+            robot.moveforward(true,bC);
             assertEquals(5,robot.getPos().getColumn());
             assertEquals(6,robot.getPos().getRow());
-            robot.moveforward(false,board);
+            robot.moveforward(false,bC);
             assertEquals(5,robot.getPos().getColumn());
             assertEquals(5,robot.getPos().getRow());
             //moving left
-            robot.turn(1, board);
-            robot.moveforward(true,board);
+            robot.turn(1, bC);
+            robot.moveforward(true,bC);
             assertEquals(4,robot.getPos().getColumn());
             assertEquals(5,robot.getPos().getRow());
-            robot.moveforward(false,board);
+            robot.moveforward(false,bC);
             assertEquals(5,robot.getPos().getColumn());
             assertEquals(5,robot.getPos().getRow());
             //moving left
-            robot.turn(1, board);
-            robot.moveforward(true,board);
+            robot.turn(1, bC);
+            robot.moveforward(true,bC);
             assertEquals(5,robot.getPos().getColumn());
             assertEquals(4,robot.getPos().getRow());
-            robot.moveforward(false,board);
+            robot.moveforward(false,bC);
             assertEquals(5,robot.getPos().getColumn());
             assertEquals(5,robot.getPos().getRow());
     }
@@ -145,9 +146,9 @@ public class RobotTest {
     public void a_robot_moves_over_the_edge() { 
     //Moves over the left edge
     robot.setPos(new Position(0,0));
-    robot.takeDmg(board);
-    robot.turn(-1, board);
-    robot.moveByCard(board, new Forward(1));
+    robot.takeDmg(bC);
+    robot.turn(-1, bC);
+    robot.moveByCard(bC, new Forward(1));
     
 }
     Player player1; 
@@ -160,17 +161,17 @@ public class RobotTest {
         robot2 = new Robot(RobotColor.RED,new Position(5,4));
         player1 = new Player(robot1,"Casper");
         player2 = new Player(robot2,"Marcos");
-        board.getTileAt(robot1.getPos()).Occupy(robot1.getImage(), robot1.getDirID());
-        board.getTileAt(robot2.getPos()).Occupy(robot2.getImage(), robot2.getDirID());
+        bC.getBoard().getTileAt(robot1.getPos()).Occupy(robot1.getImage(), robot1.getDirID());
+        bC.getBoard().getTileAt(robot2.getPos()).Occupy(robot2.getImage(), robot2.getDirID());
         
         
     }
     @When("The robots are beside eachother and one robot tries to move through the other")
     public void the_robots_are_beside_eachother_and_one_robot_tries_to_move_through_the_other() {
-        board.initPlayers();
-        board.addPlayer(player1);
-        board.addPlayer(player2);
-        robot1.moveforward(true, board);
+        bC.initPlayers();
+        bC.addPlayer(player1);
+        bC.addPlayer(player2);
+        robot1.moveforward(true, bC);
         
     }
     @Then("the other robot is pushed")
@@ -181,33 +182,33 @@ public class RobotTest {
 
     @Then("i move. The Tile behind me is not ocupied and the tile i moved to is.")
     public void i_move_the_tile_behind_me_is_not_ocupied_and_the_tile_i_moved_to_is() {
-        robot.moveByCard(board,new Forward(1));
-        assertTrue(board.getTileAt(new Position(robot.getPos().getColumn(),robot.getPos().getRow())).isOcupied());
-        assertFalse(board.getTileAt(new Position(robot.getPos().getColumn()+1,robot.getPos().getRow())).isOcupied());
-        robot.moveByCard(board,new Forward(1));
-        assertTrue(board.getTileAt(new Position(robot.getPos().getColumn(),robot.getPos().getRow())).isOcupied());
-        assertFalse(board.getTileAt(new Position(robot.getPos().getColumn()+1,robot.getPos().getRow())).isOcupied());
+        robot.moveByCard(bC,new Forward(1));
+        assertTrue(bC.getBoard().getTileAt(new Position(robot.getPos().getColumn(),robot.getPos().getRow())).isOcupied());
+        assertFalse(bC.getBoard().getTileAt(new Position(robot.getPos().getColumn()+1,robot.getPos().getRow())).isOcupied());
+        robot.moveByCard(bC,new Forward(1));
+        assertTrue(bC.getBoard().getTileAt(new Position(robot.getPos().getColumn(),robot.getPos().getRow())).isOcupied());
+        assertFalse(bC.getBoard().getTileAt(new Position(robot.getPos().getColumn()+1,robot.getPos().getRow())).isOcupied());
 }
     @When("The robots are facing eachother and fire their lazer")
     public void the_robots_are_facing_eachother_and_fire_their_lazer() {
-        board.initPlayers();
+        bC.initPlayers();
         
-        board.addPlayer(player1);
-        board.addPlayer(player2);
+        bC.addPlayer(player1);
+        bC.addPlayer(player2);
         
         
-        board.getTileAt(robot1.getPos()).unOccupy();
-        board.getTileAt(robot2.getPos()).unOccupy();
+        bC.getBoard().getTileAt(robot1.getPos()).unOccupy();
+        bC.getBoard().getTileAt(robot2.getPos()).unOccupy();
         
         robot1.setPos(0, 5);
         robot1.setDir(Direction.RIGHT);
         robot2.setPos(8, 5);
         robot2.setDir(Direction.LEFT);
 
-        board.getTileAt(robot1.getPos()).Occupy(robot1.getImage(), robot1.getDirID());
-        board.getTileAt(robot2.getPos()).Occupy(robot2.getImage(), robot1.getDirID());
+        bC.getBoard().getTileAt(robot1.getPos()).Occupy(robot1.getImage(), robot1.getDirID());
+        bC.getBoard().getTileAt(robot2.getPos()).Occupy(robot2.getImage(), robot1.getDirID());
 
-        robot1.FIRE(board);
+        robot1.FIRE(bC);
         
     }
     @Then("both robots take dmg.")
@@ -226,18 +227,18 @@ public class RobotTest {
     public void the_robot_recieves_a_card() {
         Deck deck = new Deck();
         ProgramCard card = deck.cards.get(21); //Checks move forward 
-        robot.moveByCard(board, card);
+        robot.moveByCard(bC, card);
         
         ProgramCard card3 = deck.cards.get(33); //Checks backwards  
-        robot.moveByCard(board, card3);
+        robot.moveByCard(bC, card3);
         
         ProgramCard card1 = deck.cards.get(12); //Check U turn 
-        robot.moveByCard(board, card1);
+        robot.moveByCard(bC, card1);
         
         ProgramCard card2 = deck.cards.get(7); //Checks left turn
-        robot.moveByCard(board, card2);
+        robot.moveByCard(bC, card2);
 
-        robot.moveByCard(board, deck.cards.get(2));//Checks Right turn
+        robot.moveByCard(bC, deck.cards.get(2));//Checks Right turn
 
 
 
@@ -260,25 +261,25 @@ public class RobotTest {
         robot2 = new Robot(RobotColor.RED,new Position(0,4));
         robot3 = new Robot(RobotColor.GREEN,new Position(0,3)); 
         robot4 = new Robot(RobotColor.BLACK,new Position(0,2));
-        robot4.turn(2,board);
+        robot4.turn(2,bC);
         player1 = new Player(robot1,"Casper");
         player2 = new Player(robot2,"Marcos");
         player3 = new Player(robot3,"Casper2");
         player4 = new Player(robot4,"Marcos2");
-        board.getTileAt(robot1.getPos()).Occupy(robot1.getImage(), robot1.getDirID());
-        board.getTileAt(robot2.getPos()).Occupy(robot2.getImage(), robot2.getDirID());
-        board.getTileAt(robot3.getPos()).Occupy(robot3.getImage(), robot3.getDirID());
-        board.getTileAt(robot4.getPos()).Occupy(robot4.getImage(), robot4.getDirID());
-        board.initPlayers();
-        board.addPlayer(player1);
-        board.addPlayer(player2);
-        board.addPlayer(player3);
-        board.addPlayer(player4);
+        bC.getBoard().getTileAt(robot1.getPos()).Occupy(robot1.getImage(), robot1.getDirID());
+        bC.getBoard().getTileAt(robot2.getPos()).Occupy(robot2.getImage(), robot2.getDirID());
+        bC.getBoard().getTileAt(robot3.getPos()).Occupy(robot3.getImage(), robot3.getDirID());
+        bC.getBoard().getTileAt(robot4.getPos()).Occupy(robot4.getImage(), robot4.getDirID());
+        bC.initPlayers();
+        bC.addPlayer(player1);
+        bC.addPlayer(player2);
+        bC.addPlayer(player3);
+        bC.addPlayer(player4);
     }
     @When("when a robot in the end moves")
     public void when_a_robot_in_the_end_moves() {
         
-        robot4.moveforward(true,board);
+        robot4.moveforward(true,bC);
     }
     @Then("All the robots are pushed")
     public void all_the_robots_are_pushed() {
@@ -299,7 +300,7 @@ public class RobotTest {
     @When("when the robot opposite the wall moves into the row of robots")
     public void when_the_robot_opposite_the_wall_moves_into_the_row_of_robots() {
         
-        robot1.moveforward(true,board);
+        robot1.moveforward(true,bC);
     }
     @Then("Noone moves")
     public void noone_moves() {

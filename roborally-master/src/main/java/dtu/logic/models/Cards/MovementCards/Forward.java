@@ -1,6 +1,7 @@
 package dtu.logic.models.Cards.MovementCards;
 
 import dtu.logic.models.Board.Board;
+import dtu.logic.models.Board.BoardController;
 import dtu.logic.models.Cards.ProgramCard;
 import dtu.logic.models.Robot.Robot;
 
@@ -9,21 +10,21 @@ public class Forward implements ProgramCard {
     public Forward(int intensity) {
         this.intensity = intensity;
     }
-    public void effect(Robot robot,Board board){
+    public void effect(Robot robot, BoardController boardController){
         for (int i = 0; i <intensity; i++) {
-            robot.moveforward(true, board);
+            robot.moveforward(true, boardController);
             if (robot.getPos().getRow() < 0 || robot.getPos().getRow() > 12 ||
                 robot.getPos().getColumn() < 0 || robot.getPos().getColumn()>9){
-                    robot.Death(board);
+                    robot.Death(boardController);
                     break;
             }
             
         //update new tile
-            board.getTileAt(robot.getPos()).Occupy(robot.getImage(), robot.getDirID());
+            boardController.getBoard().getTileAt(robot.getPos()).Occupy(robot.getImage(), robot.getDirID());
             try{Thread.sleep(200);}
             catch(Exception e){System.out.println(e);}
 
         }
-        board.getTileAt(robot.getPos()).Occupy(robot.getImage(), robot.getDirID());
+        boardController.getBoard().getTileAt(robot.getPos()).Occupy(robot.getImage(), robot.getDirID());
     }
 }
