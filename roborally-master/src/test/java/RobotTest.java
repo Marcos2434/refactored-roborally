@@ -19,6 +19,7 @@ import dtu.logic.models.Board.BoardController;
 import dtu.logic.models.Cards.Deck;
 import dtu.logic.models.Cards.ProgramCard;
 import dtu.logic.models.Cards.MovementCards.Forward;
+import dtu.logic.models.Cards.MovementCards.TurnLeft;
 import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.*;
 public class RobotTest {
@@ -163,6 +164,8 @@ public class RobotTest {
         player2 = new Player(robot2,"Marcos");
         bC.getBoard().getTileAt(robot1.getPos()).Occupy(robot1.getImage(), robot1.getDirID());
         bC.getBoard().getTileAt(robot2.getPos()).Occupy(robot2.getImage(), robot2.getDirID());
+        bC.addPlayer(player1);
+        bC.addPlayer(player2);
         
         
     }
@@ -316,6 +319,19 @@ public class RobotTest {
         assertEquals(1,robot2.getDamageTaken());
         assertEquals(1,robot3.getDamageTaken());
         assertEquals(1,robot4.getDamageTaken());
+}
+    @When("One robot pushes the other over the edge")
+    public void one_robot_pushes_the_other_over_the_edge() {
+    
+        bC.moveRobot(robot1, new Position(0,5));
+        bC.moveRobot(robot2, new Position(1,5));
+        robot1.addCheckpoint(new Position(6, 6));
+        robot2.moveByCard(bC, new TurnLeft(1));
+        robot2.moveByCard(bC,new Forward(1));
+    }
+    @Then("The other robot dies and respawns")
+    public void the_other_robot_dies_and_respawns() {
+    assertEquals(new Position(6, 6),robot1.getPos());
 }
 }
 

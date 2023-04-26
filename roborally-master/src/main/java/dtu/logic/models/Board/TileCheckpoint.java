@@ -32,6 +32,15 @@ public class TileCheckpoint extends Tile {
         this.position = pos;
         redraw();
 	}
+    //@overload
+    public TileCheckpoint(TileType type, int id, Position pos,boolean test) {
+	    super(type);
+        this.id = id;
+        this.position = pos;
+       
+	}
+
+
 
     @Override
     public void effect(Robot robot, BoardController boardController) {

@@ -2,5 +2,17 @@
     "java.configuration.updateBuildConfiguration": "automatic",
     "files.associations": {
         "*.feature": "cucumber"
-      }
+      },
+      "koverage.coverageCommand": "Kov.GetCov",
+      "koverage.coverageFileNames": [
+        "lcov.info",
+        "cov.xml",
+        "coverage.xml",
+        "jacoco.xml"
+      ],
+      "koverage.coverageFilePaths": [
+        "**"
+      ],
+      "koverage.lowCoverageThreshold": 50,
+      "koverage.sufficientCoverageThreshold": 70
 }
