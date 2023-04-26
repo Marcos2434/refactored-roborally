@@ -31,24 +31,24 @@ public class TileBelt extends Tile{
     public Direction getdir(){
         return dir;
     }
-    public void effect(Robot robot,Board board){
+    public void effect(Robot robot, BoardController boardController){
         
-        board.getTileAt(robot.getPos()).unOccupy();
-        System.out.println("before 2");
+        boardController.getBoard().getTileAt(robot.getPos()).unOccupy();
+        
         if (intensity == 2){
-            System.out.println("in 2");
-            if (board.getTileAt(robot.getPos()) instanceof TileBelt){
-                System.out.println("in instance 1");
-                TileBelt currtile = (TileBelt)board.getTileAt(robot.getPos());
+           
+            if (boardController.getBoard().getTileAt(robot.getPos()) instanceof TileBelt){
+               
+                TileBelt currtile = (TileBelt)boardController.getBoard().getTileAt(robot.getPos());
                 pushRobot(robot,currtile.getdir());
-                board.getTileAt(robot.getPos()).Occupy(robot.getImage(), robot.getdir().getId()); 
+                boardController.getBoard().getTileAt(robot.getPos()).Occupy(robot.getImage(), robot.getdir().getId()); 
                 try{Thread.sleep(500);}
                 catch(Exception e){System.out.println(e);}
 
-                if (board.getTileAt(robot.getPos()) instanceof TileBelt){
-                    System.out.println("in instance 2");
-                    TileBelt nextTileBelt = (TileBelt) board.getTileAt(robot.getPos());
-                    board.getTileAt(robot.getPos()).unOccupy();
+                if (boardController.getBoard().getTileAt(robot.getPos()) instanceof TileBelt){
+                    
+                    TileBelt nextTileBelt = (TileBelt) boardController.getBoard().getTileAt(robot.getPos());
+                    boardController.getBoard().getTileAt(robot.getPos()).unOccupy();
                     pushRobot(robot,nextTileBelt.getdir());
                 }
             }
@@ -56,7 +56,7 @@ public class TileBelt extends Tile{
         else{ 
             pushRobot(robot, this.dir);
         }
-        board.getTileAt(robot.getPos()).Occupy(robot.getImage(), robot.getdir().getId()); 
+        boardController.getBoard().getTileAt(robot.getPos()).Occupy(robot.getImage(), robot.getdir().getId()); 
        
     
 }

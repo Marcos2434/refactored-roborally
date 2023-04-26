@@ -1,23 +1,32 @@
 package dtu.logic.models.Cards.MovementCards;
 import dtu.logic.models.Board.Board;
+import dtu.logic.models.Board.BoardController;
 import dtu.logic.models.Cards.ProgramCard;
 import dtu.logic.models.Robot.Robot;
 
 public class Backwards implements ProgramCard{
     private int intensity;
+
+    private String image = "Cards/mv_back.png";
+    
+    @Override
+    public String getImage(){
+        return this.image;
+    }
+    
     public Backwards(int intensity) {
         this.intensity = intensity;
     }
-    public void effect(Robot robot,Board board){
+    public void effect(Robot robot, BoardController boardController){
         for (int i = 0; i <intensity; i++) {
-            robot.moveforward(false, board);
+            robot.moveforward(false, boardController);
             if (robot.getPos().getRow() < 0 || robot.getPos().getRow() > 12 ||
                 robot.getPos().getColumn() < 0 || robot.getPos().getColumn()>9)
-                {robot.Death(board);
+                {robot.Death(boardController);
                     break;}
-                board.getTileAt(robot.getPos()).Occupy(robot.getImage(), robot.getDirID());
+                boardController.getBoard().getTileAt(robot.getPos()).Occupy(robot.getImage(), robot.getDirID());
         }
-        board.getTileAt(robot.getPos()).Occupy(robot.getImage(), robot.getDirID());
+        boardController.getBoard().getTileAt(robot.getPos()).Occupy(robot.getImage(), robot.getDirID());
         
     }
     

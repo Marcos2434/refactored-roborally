@@ -48,7 +48,7 @@ public class Tile extends Canvas{
 		gc.drawImage(image, 0, 0);
 		
         if (Ocupied) {
-            System.out.println("Redraw");
+            
         	gc.save();
             gc.transform(new Affine(new Rotate(90*(robotDirection-1), 33, 33)));
 			gc.drawImage(robotImage, 0, 0);
@@ -57,9 +57,7 @@ public class Tile extends Canvas{
 	}
 
     // effect method for tiles, this normal tile does nothing()
-    public void effect(Robot robot,Board board){
-    ;
-    }
+    public void effect(Robot robot, BoardController boardController) {}
 
     public String getname(){
         return this.name;
@@ -67,7 +65,7 @@ public class Tile extends Canvas{
 
     public void Occupy(Image robotImage, int rD){
         this.Ocupied = true;
-        System.out.println("Occupy");
+       
         this.robotImage = robotImage;
         this.robotDirection = rD;
         redraw();

@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.transform.Affine;
 import javafx.scene.transform.Rotate;
 
-public class TileCheckpoint extends Tile{
+public class TileCheckpoint extends Tile {
     private String name = "C";
     private int id;
     private Image image;
@@ -34,7 +34,7 @@ public class TileCheckpoint extends Tile{
 	}
 
     @Override
-    public void effect(Robot robot,Board board) {
+    public void effect(Robot robot, BoardController boardController) {
         if (robot.getcheckpointCount() == this.id-1){
             robot.setCheckpoint(position);
             robot.CheckpointReached();
