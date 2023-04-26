@@ -180,6 +180,7 @@ public class ProgrammingPhaseScene extends Scene {
 
                 if (leftBox1.getBoundsInParent().contains(e.getSceneX(), e.getSceneY())){
                     System.out.println("WE are now in box 1");
+                    leftBox1.getChildren().remove
                 }
                             
                 if (leftBox2.getBoundsInParent().contains(e.getSceneX(), e.getSceneY())){
