@@ -43,12 +43,13 @@ public class Controller {
 
     public void launch() {
         //this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
+        //this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
 
         this.setTheScene(this.getProgrammingPhaseScene(), "Roborally - Programming Phase"); //for natalia
         // this.setTheScene(this.getProgrammingPhaseSceneSimple(), "Roborally - Programming Phase"); //for oli/gleb
 
     }
-
+    //asd
     public void setCurrentRobot(Robot currentRobot) {
         this.currentRobot = currentRobot;
     }
@@ -59,6 +60,7 @@ public class Controller {
 
     public void setBoard(Board board) {
         this.board = board;
+        //this.availableBoardSpawns = this.board.getStartFields();
         this.boardController = new BoardController(board);
     }
 
@@ -72,6 +74,7 @@ public class Controller {
     };
 
     public void changeToBoardScene(){
+        this.boardScene.setPlayermats(this.boardController.getPlayers());
         this.setTheScene(this.getBoardScene(), "Roborally!");
         this.startGame();
     }
@@ -86,7 +89,7 @@ public class Controller {
 
     public void setTheScene(Scene s) {
         this.primaryStage.setScene(s);
-        primaryStage.setTitle("Roborally - v. 0.1");
+        primaryStage.setTitle("Roborally - 0.5 - Playermat update");
         this.primaryStage.show();
     }
 
@@ -140,15 +143,13 @@ public class Controller {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 13; j++) {
                 if (this.getBoard().getTileAt(new Position(i,j)).equals(new TileStart(TileType.START))) {
-                    this.availableBoardSpawns.add(new Position(i, j));                            
+                    this.availableBoardSpawns.add(new Position(i, j));               
                 }
             }
         }
         
         // Set robot to positions
         for (int i = 0; i < this.boardController.getPlayers().size(); i++) {
-            // this.boardController.addPlayer(this.boardController.getPlayers()[i]);
-            
             // place robot on scene
             this.boardController.getBoard().getTileAt(this.availableBoardSpawns.get(i)).Occupy(
                 this.boardController.getPlayers().get(i).getRobot().getImage(), this.boardController.getPlayers().get(i).getRobot().getDirID());;
@@ -157,7 +158,7 @@ public class Controller {
             this.boardController.getPlayers().get(i).getRobot().setPos(this.availableBoardSpawns.get(i));
             
             // set initial checkpoint
-            this.boardController.getPlayers().get(i).getRobot().setCheckpoint(this.availableBoardSpawns.get(i));
+            this.boardController.getPlayers().get(i).getRobot().addCheckpoint(this.availableBoardSpawns.get(i));
         }
     }
 

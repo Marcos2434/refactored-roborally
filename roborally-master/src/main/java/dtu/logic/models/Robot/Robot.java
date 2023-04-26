@@ -9,8 +9,10 @@ import dtu.logic.models.Board.BoardController;
 import dtu.logic.models.Board.Tile;
 
 import dtu.logic.models.Cards.ProgramCard;
+import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Robot {
     private RobotColor Robotcolor;
@@ -20,7 +22,7 @@ public class Robot {
     private int checkpointCount = 0;
     
     private Position pos = new Position(0,0);
-    private Position checkpoint;
+    private ArrayList<Position> checkpoints = new ArrayList<Position>();
 
     private int DirID;
     private ProgramCard LastMove = null;
@@ -67,7 +69,7 @@ public class Robot {
         this.Robotcolor = Robotcolor;
         this.DirID = 1;
         this.pos = position;
-        this.checkpoint = new Position(position.getColumn(), position.getRow());
+        this.checkpoints.add(new Position(position.getColumn(), position.getRow()));
         this.image = new Image(getClass().getClassLoader().getResourceAsStream(this.Robotcolor.getPictureFile()));  
     }
 
@@ -94,12 +96,13 @@ public class Robot {
         return pos.getRow();
     }
 
-    public void setCheckpoint(Position pos){
-        this.checkpoint = new Position(pos.getColumn(),pos.getRow());
+    public void addCheckpoint(Position pos){
+        this.checkpoints.add(new Position(pos.getColumn(),pos.getRow()));
     }
-    public Position getCheckpoint(){
-        return this.checkpoint;
+    public ArrayList<Position> getCheckpoint(){
+        return this.checkpoints;
     }
+
 
     public Direction getdir(){
         return Direction.getDirById(this.DirID); 
@@ -181,7 +184,22 @@ public class Robot {
             this.pos.getColumn() > 0 && this.pos.getColumn()<10){
             boardController.getBoard().getTileAt(pos).unOccupy();
         } 
-        this.pos = new Position(checkpoint.getColumn(),checkpoint.getRow());
+        Collections.reverse(this.checkpoints);
+        for (int i = 0; i <checkpoints.size(); i++){
+            if (i == checkpoints.size() - 1){
+                if (boardController.getBoard().getTileAt(checkpoints.get(i)).isOcupied()){
+                    boardController.getRobotAt(checkpoints.get(i)).Death(boardController);
+                }
+                this.pos = new Position (checkpoints.get(i).getColumn(),checkpoints.get(i).getRow());
+            }
+            else if (!boardController.getBoard().getTileAt(checkpoints.get(i)).isOcupied()){
+                this.pos = new Position (checkpoints.get(i).getColumn(),checkpoints.get(i).getRow());
+            }
+            
+        }
+        
+        
+        
         this.lives -=1;
         this.damageTaken = 0;
         boardController.getBoard().getTileAt(pos).Occupy(image, DirID);

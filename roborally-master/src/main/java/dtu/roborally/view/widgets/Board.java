@@ -1,7 +1,9 @@
 package dtu.roborally.view.widgets;
 
+import java.util.ArrayList;
 import java.util.Random;
 
+import dtu.logic.models.Position;
 import dtu.roborally.view.CardinalPoints;
 import dtu.roborally.view.TileType;
 import javafx.scene.layout.GridPane;
@@ -40,6 +42,7 @@ public class Board extends GridPane {
 			}
 		}
 	}
+
 	
 	private TileType getRandomTileType() {
 		double val = rnd.nextDouble();

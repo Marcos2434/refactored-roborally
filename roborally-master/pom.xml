@@ -16,6 +16,11 @@
 			<version>21-ea+5</version>
 		</dependency>
 		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-fxml</artifactId>
+			<version>21-ea+5</version>
+		</dependency>
+		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-java</artifactId>
 			<version>7.11.2</version>
@@ -44,7 +49,8 @@
 					<!-- Marcos's login panel -->
 					<mainClass>dtu.view.View</mainClass>
 					<!-- Adam's board -->
-					<!--<mainClass>dtu.Roborally</mainClass>-->
+					<!-- <mainClass>dtu.Roborally</mainClass> -->
+					<!-- <mainClass>dtu.view.Playermat</mainClass> -->
 				</configuration>
 			</plugin>
 		</plugins>
