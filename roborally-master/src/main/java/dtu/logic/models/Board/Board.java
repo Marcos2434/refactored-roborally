@@ -40,18 +40,6 @@ public class Board extends GridPane {
             }
         }
     }
-    
-    public ArrayList<Position> getSpawPositions(){
-        ArrayList<Position> spawPositions = new ArrayList<Position>();
-        for (int row = 0; row < 13; row++) { 
-            for (int col = 0; col < 10; col++) {
-                if (grid[row][col].type.equals(TileType.START)){
-                    spawPositions.add(new Position(col, row));
-                }
-            }
-        }
-        return spawPositions;
-    }
 
     public Tile[][] getGrid() {
         return this.grid;
