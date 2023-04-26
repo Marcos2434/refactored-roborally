@@ -82,7 +82,7 @@ public class BoardController {
                 else{r = 12 - j/2;}
                */
                 if (this.getBoard().getTileAt(new Position(i,j)).isOcupied()){
-                    
+                
                     this.getBoard().getTileAt(new Position(i,j)).effect(getRobotAt(new Position(i,j)), this);
                 }
                 
@@ -122,7 +122,7 @@ public class BoardController {
     public void moveRobot(Robot robot,Position pos){
         this.board.getTileAt(robot.getPos()).unOccupy();
         robot.setPos(pos);
-        robot.addCheckpoint(new Position(pos.getColumn(),pos.getRow()));
+       
         this.board.getTileAt(robot.getPos()).Occupy(robot.getImage(),robot.getDirID());
     }
 

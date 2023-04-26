@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import org.junit.runner.RunWith;
 import io.cucumber.junit.Cucumber;
@@ -256,7 +257,7 @@ public class BoardTest {
             {"T","T","T","T","T","T","T","T","T","T"},
             {"LT 3","T","T","T","T","T","T","T","T","T"},
             {"BT 2 2","BT 1 2","T","T","T","T","T","T","T","T"},
-            {"T","T","T","T","T","T","T","T","T","T"},
+            {"T","T","T","T","T","C 1","T","C 2","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"}};
         this.board = new Board(board1, true);
         bC = new BoardController(board);
@@ -310,7 +311,8 @@ public class BoardTest {
         bC = new BoardController(board);
         robot1 = new Robot(RobotColor.BLUE,new Position(0,5));
         robot2 = new Robot(RobotColor.GREEN,new Position(1,5));
-        
+        bC.getBoard().getTileAt(robot1.getPos()).Occupy(robot1.getImage(), robot1.getDirID());
+        bC.getBoard().getTileAt(robot2.getPos()).Occupy(robot2.getImage(), robot2.getDirID());
         player1 = new Player(robot1,"Casper1");
         player2 = new Player(robot2,"Casper2");
        
@@ -400,6 +402,33 @@ public class BoardTest {
     assertEquals(2,player1.getRobot().getDamageTaken());
     assertEquals(2,player1.getRobot().getLives());
 }
+    @When("A robot walks over the next ceckpoint")
+    public void a_robot_walks_over_the_next_ceckpoint() {
+        bC.addPlayer(player1);
+       
+        bC.moveRobot(robot1, new Position(4,11));
+        robot1.moveByCard(bC,new TurnRight(1));
+        robot1.moveByCard(bC,new Forward(1));
+        bC.RunAllEffects();
+    }
+    @Then("it is added to the checkpoints")
+    public void it_is_added_to_the_checkpoints() {
+        assertEquals(new Position(5,11),robot1.getCheckpoints().get(robot1.getCheckpoints().size()-1));
+}
+    @When("A robot walks over the wrong ceckpoint")
+    public void a_robot_walks_over_the_wrong_ceckpoint() {
+        bC.addPlayer(player1);
+       
+        bC.moveRobot(robot1, new Position(6,11));
+        robot1.moveByCard(bC,new TurnRight(1));
+        robot1.moveByCard(bC,new Forward(1));
+        bC.RunAllEffects();
+    }
+    @Then("it is not added to the checkpoints")
+    public void it_is_not_added_to_the_checkpoints() {
+        assertNotEquals(new Position(7,11),robot1.getCheckpoints().get(robot1.getCheckpoints().size()-1));
+}
+
 }
 
 

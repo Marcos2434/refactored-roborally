@@ -100,9 +100,20 @@ Feature: Boardfunctions
         When The board activates the registers in a way that makes them push eachother
         Then The robots respond accordingly
     
-#    @tag18
-#        Scenario: As the board When activating all registers, I want to activate all Tiles after each round.
-#        Given A Board and four players with different starting points
-#        When The board activates the registers in a way that makes them walk on top of tiles with effects 
-#        Then The robots are affected acordingly.
-        
+    @tag18
+        Scenario: As the board When activating all registers, I want to activate all Tiles after each round.
+        Given A Board and four players with different starting points
+        When The board activates the registers in a way that makes them walk on top of tiles with effects 
+        Then The robots are affected acordingly.
+
+    @tag19
+        Scenario: When a robot walks over a checkpoint tile, the checkpoint is added to the robots list of checkpoints
+        Given A Board and four players with different starting points
+        When A robot walks over the next ceckpoint 
+        Then it is added to the checkpoints    
+
+    @tag20
+        Scenario: When a robot walks over a checkpoint tile that is too far ahead, the checkpoint is not added to the robots list of checkpoints
+        Given A Board and four players with different starting points
+        When A robot walks over the wrong ceckpoint 
+        Then it is not added to the checkpoints    

@@ -99,7 +99,7 @@ public class Robot {
     public void addCheckpoint(Position pos){
         this.checkpoints.add(new Position(pos.getColumn(),pos.getRow()));
     }
-    public ArrayList<Position> getCheckpoint(){
+    public ArrayList<Position> getCheckpoints(){
         return this.checkpoints;
     }
 
@@ -186,17 +186,24 @@ public class Robot {
         } 
         Collections.reverse(this.checkpoints);
         for (int i = 0; i <checkpoints.size(); i++){
+            
+
             if (i == checkpoints.size() - 1){
                 if (boardController.getBoard().getTileAt(checkpoints.get(i)).isOcupied()){
                     boardController.getRobotAt(checkpoints.get(i)).Death(boardController);
                 }
                 this.pos = new Position (checkpoints.get(i).getColumn(),checkpoints.get(i).getRow());
-            }
-            else if (!boardController.getBoard().getTileAt(checkpoints.get(i)).isOcupied()){
-                this.pos = new Position (checkpoints.get(i).getColumn(),checkpoints.get(i).getRow());
+                break;
             }
             
+            else if (!boardController.getBoard().getTileAt(checkpoints.get(i)).isOcupied()){
+                this.pos = new Position (checkpoints.get(i).getColumn(),checkpoints.get(i).getRow());
+                break;
+            }
+            
+            
         }
+        Collections.reverse(this.checkpoints);
         
         
         
@@ -225,17 +232,21 @@ public class Robot {
     public void Push(Robot robot, BoardController boardController){
 
         boardController.getBoard().getTileAt(robot.getPos()).unOccupy();
-        
-        if (boardController.getBoard().getTileAt(robot.getPosInDir(Direction.getDirById(this.DirID))).isOcupied()){
-            Push(boardController.getRobotAt(robot.getPosInDir(Direction.getDirById(this.DirID))),boardController);}
 
-        if (this.DirID == 1){robot.getPos().addY(-1);}
-        else if (this.DirID == 2){robot.getPos().addX(1);}
-        else if (this.DirID == 3){robot.getPos().addY(1);}
-        else if (this.DirID == 4){robot.getPos().addX(-1);}
+        if (robot.getPosInDir(Direction.getDirById(this.DirID)).isOutOfBounds()){robot.Death(boardController);}
+
+        else{
+            if (boardController.getBoard().getTileAt(robot.getPosInDir(Direction.getDirById(this.DirID))).isOcupied()){
+                Push(boardController.getRobotAt(robot.getPosInDir(Direction.getDirById(this.DirID))),boardController);}
+            
+            if (this.DirID == 1){robot.getPos().addY(-1);}
+            else if (this.DirID == 2){robot.getPos().addX(1);}
+            else if (this.DirID == 3){robot.getPos().addY(1);}
+            else if (this.DirID == 4){robot.getPos().addX(-1);}
+        }
         
-        if (robot.pos.getRow() < 0 || robot.pos.getRow() > 13 ||
-            robot.pos.getColumn() < 0 || robot.pos.getColumn()>10){Death(boardController);}
+        
+        
         
 
         boardController.getBoard().getTileAt(robot.getPos()).Occupy(robot.image, robot.DirID);  
