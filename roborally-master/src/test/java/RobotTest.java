@@ -168,7 +168,7 @@ public class RobotTest {
     }
     @When("The robots are beside eachother and one robot tries to move through the other")
     public void the_robots_are_beside_eachother_and_one_robot_tries_to_move_through_the_other() {
-        bC.initPlayers();
+        
         bC.addPlayer(player1);
         bC.addPlayer(player2);
         robot1.moveforward(true, bC);
@@ -191,7 +191,7 @@ public class RobotTest {
 }
     @When("The robots are facing eachother and fire their lazer")
     public void the_robots_are_facing_eachother_and_fire_their_lazer() {
-        bC.initPlayers();
+       
         
         bC.addPlayer(player1);
         bC.addPlayer(player2);
@@ -270,7 +270,7 @@ public class RobotTest {
         bC.getBoard().getTileAt(robot2.getPos()).Occupy(robot2.getImage(), robot2.getDirID());
         bC.getBoard().getTileAt(robot3.getPos()).Occupy(robot3.getImage(), robot3.getDirID());
         bC.getBoard().getTileAt(robot4.getPos()).Occupy(robot4.getImage(), robot4.getDirID());
-        bC.initPlayers();
+       
         bC.addPlayer(player1);
         bC.addPlayer(player2);
         bC.addPlayer(player3);
