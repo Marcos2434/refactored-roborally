@@ -11,21 +11,22 @@ public class Deck {
   
     public Deck(){
         for(int i=0; i<5; i++){
-        cards.add(ProCardFactory.createProgramCard(ProCardTypes.TURNLEFT, 1,"Cards/left_turn.png"));}
+        cards.add(ProCardFactory.createProgramCard(ProCardTypes.TURNLEFT, 1));}
         for(int i=0; i<5; i++)
-        {cards.add(ProCardFactory.createProgramCard(ProCardTypes.TURNRIGHT, 1,"Cards/right_turn.png"));}
+        {cards.add(ProCardFactory.createProgramCard(ProCardTypes.TURNRIGHT, 1));}
         for(int i=0; i<5; i++)
-        {cards.add(ProCardFactory.createProgramCard(ProCardTypes.UTURN, 0,"Cards/uturn.png"));}
+        {cards.add(ProCardFactory.createProgramCard(ProCardTypes.UTURN, 0));}
         for(int i=0; i<5; i++)
-        {cards.add(ProCardFactory.createProgramCard(ProCardTypes.FORWARD, 1,"Cards/mv_1.png"));}
+        {cards.add(ProCardFactory.createProgramCard(ProCardTypes.FORWARD, 1));}
         for(int i=0; i<5; i++)
-        {cards.add(ProCardFactory.createProgramCard(ProCardTypes.FORWARD, 2,"Cards/mv_2.png"));}
+        {cards.add(ProCardFactory.createProgramCard(ProCardTypes.FORWARD, 2));}
         for(int i=0; i<5; i++)
-        {cards.add(ProCardFactory.createProgramCard(ProCardTypes.FORWARD, 3,"Cards/mv_3.png"));}
+        {cards.add(ProCardFactory.createProgramCard(ProCardTypes.FORWARD, 3));}
         for(int i=0; i<5; i++)
-        {cards.add(ProCardFactory.createProgramCard(ProCardTypes.BACKWARDS, 1,"Cards/mv_back.png"));}
+        {cards.add(ProCardFactory.createProgramCard(ProCardTypes.BACKWARDS, 1));}
+       
         for(int i=0; i<2; i++)
-        {cards.add(ProCardFactory.createProgramCard(ProCardTypes.AGAIN, 0,"Cards/again.png"));}
+        {cards.add(ProCardFactory.createProgramCard(ProCardTypes.AGAIN, 0));}
 
     }
 

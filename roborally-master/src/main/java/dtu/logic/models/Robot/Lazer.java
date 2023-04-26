@@ -3,6 +3,7 @@ package dtu.logic.models.Robot;
 import dtu.logic.models.Direction;
 import dtu.logic.models.Position;
 import dtu.logic.models.Board.Board;
+import dtu.logic.models.Board.BoardController;
 
 public class Lazer {
     private Position pos;
@@ -45,11 +46,11 @@ public class Lazer {
         else if (dir.getId() == 4){return new Position(this.pos.getColumn()-1, this.pos.getRow());}
         else {return null;}
     }
-    public boolean moveTillHit(Board board){
+    public boolean moveTillHit(BoardController boardController){
       
         for (int i = 0; i <=13;i++){
             
-            if (board.allowmove(this)){
+            if (boardController.allowmove(this)){
                 // move
                 if (this.Dir.getId() == 1){pos.addY(-1);}
                 else if (this.Dir.getId()  == 2){pos.addX(1);}
@@ -57,8 +58,8 @@ public class Lazer {
                 else if (this.Dir.getId()  == 4){pos.addX(-1);}
                 //Move other robot out of the way first, if there is one
                 
-                if (board.getTileAt(getPos())!=null){
-                    if (board.getTileAt(getPos()).isOcupied()){
+                if (boardController.getBoard().getTileAt(getPos())!=null){
+                    if (boardController.getBoard().getTileAt(getPos()).isOcupied()){
                         return true;
                     }
                     else{;}

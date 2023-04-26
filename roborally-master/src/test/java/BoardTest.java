@@ -19,6 +19,7 @@ import io.cucumber.java.en.Then;
 import dtu.logic.models.RobotColor;
 import dtu.logic.models.*;
 import dtu.logic.models.Board.*;
+import dtu.logic.models.Board.BoardController;
 import dtu.logic.models.Cards.ProgramCard;
 import dtu.logic.models.Cards.MovementCards.Again;
 import dtu.logic.models.Cards.MovementCards.Backwards;
@@ -33,6 +34,7 @@ public class BoardTest {
     Position pos2;
     Position pos3;
     Board board;
+    BoardController bC;
     Robot robot;
     //test creation of Board
     @Given("A layout, a board is created. And a position is created")
@@ -59,6 +61,7 @@ public class BoardTest {
             {"T","T","HT","T","T","T","T","T","T","T"},
         };
         this.board = new Board(board1, true);
+        bC = new BoardController(board);
         robot.setPos(pos1);
         
     }
@@ -73,7 +76,7 @@ public class BoardTest {
     @When("the robot steps on a holetile")
     public void the_robot_steps_on_a_holetile() {
         robot.setPos(new Position(2, 0));
-        board.getTileAt(robot.getPos()).effect(robot,board);
+        board.getTileAt(robot.getPos()).effect(robot,bC);
         
 }
     @Then("The robot Dies")
@@ -96,14 +99,14 @@ public class BoardTest {
     @Then("the robot tries to move throug a wall and can't move")
     public void the_robot_tries_to_move_throug_a_wall_and_can_t_move() {
     
-    board.moveRobot(robot,new Position(4, 1));
+    bC.moveRobot(robot,new Position(4, 1));
 
-    robot.moveforward(true,board);
+    robot.moveforward(true,bC);
     assertEquals(1,robot.getPos().getRow());
-    robot.turn(1, board);
+    robot.turn(1, bC);
 
     
-    robot.moveforward(true,board);
+    robot.moveforward(true,bC);
     
     assertEquals(4,robot.getPos().getColumn());
     
@@ -135,6 +138,7 @@ public class BoardTest {
             {"T","T","T","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"}};
         this.board = new Board(board1, true);
+        bC = new BoardController(board);
         robot1 = new Robot(RobotColor.BLUE,new Position(3,3));
         robot2 = new Robot(RobotColor.GREEN,new Position(3,3));
         robot3 = new Robot(RobotColor.BLUE,new Position(5,3));
@@ -143,44 +147,44 @@ public class BoardTest {
         player2 = new Player(robot2,"Casper2");
         player3 = new Player(robot3,"Casper3");
         player4 = new Player(robot4,"Casper4");
-        board.initPlayers();
+        bC.initPlayers();
     }
     @Then("Add the players to the player list")
     public void add_the_players_to_the_player_list() {
-        board.addPlayer(player1);
-        board.addPlayer(player4);
-        assertEquals("Casper1",board.getPlayers()[0].getName());
-        assertEquals("Casper4",board.getPlayers()[1].getName());
+        bC.addPlayer(player1);
+        bC.addPlayer(player4);
+        assertEquals("Casper1",bC.getPlayers()[0].getName());
+        assertEquals("Casper4",bC.getPlayers()[1].getName());
 }
 
     @Then("Add the player is not added if they have the same position")
     public void add_the_player_is_not_added_if_they_have_the_same_position() {
-        board.addPlayer(player1);
-        board.addPlayer(player2);
-        assertNull(board.getPlayers()[1]);
+        bC.addPlayer(player1);
+        bC.addPlayer(player2);
+        assertNull(bC.getPlayers()[1]);
 }
     @Then("Add the player is not added if they have the same RobotColor")
     public void add_the_player_is_not_added_if_they_have_the_same_Robotcolor() {
-        board.addPlayer(player1);
-        board.addPlayer(player3);
-        assertNull(board.getPlayers()[1]);
+        bC.addPlayer(player1);
+        bC.addPlayer(player3);
+        assertNull(bC.getPlayers()[1]);
 }
 
     @When("the robots move")
     public void the_robots_move() {
-        board.addPlayer(player1);
-        robot1.moveforward(true, board);
+        bC.addPlayer(player1);
+        robot1.moveforward(true, bC);
         
     }
     @Then("The robots position is still the same in playerlist")
     public void the_robots_position_is_still_the_same_in_playerlist() {
-        assertTrue(board.getPlayers()[0].getRobot().getPos().equals(robot1.getPos()));
+        assertTrue(bC.getPlayers()[0].getRobot().getPos().equals(robot1.getPos()));
 }
     @When("A robot is placed to be hit by the lazer tile")
     public void a_robot_is_placed_to_be_hit_by_the_lazer_tile() {
-        board.addPlayer(player1);
-        board.moveRobot(robot1,new Position(7,7));
-        board.fireboardLazers(); 
+        bC.addPlayer(player1);
+        bC.moveRobot(robot1,new Position(7,7));
+        bC.fireboardLazers(); 
         
     }
     @Then("The robot takes damge")
@@ -190,9 +194,9 @@ public class BoardTest {
     @When("A robot tries to move trough the wall")
     public void a_robot_tries_to_move_trough_the_wall() {
         
-        board.moveRobot(robot1,new Position(0,7));
-        robot1.turn(1,board);
-        robot1.moveforward(true,board);
+        bC.moveRobot(robot1,new Position(0,7));
+        robot1.turn(1,bC);
+        robot1.moveforward(true,bC);
     }
     @Then("It is unable to")
     public void it_is_unable_to() {
@@ -200,11 +204,11 @@ public class BoardTest {
 }
     @When("A robot is placed on the BeltTile")
     public void a_robot_is_placed_on_the_belt_tile() {
-        board.moveRobot(robot1,new Position(2,4));
-        Tile tile =  board.getTileAt(robot1.getPos());
+        bC.moveRobot(robot1,new Position(2,4));
+        Tile tile =  bC.getBoard().getTileAt(robot1.getPos());
         if (tile instanceof TileBelt){
             TileBelt BT = (TileBelt) tile;
-            BT.effect(robot1,board);
+            BT.effect(robot1,bC);
         }
         
     }
@@ -214,10 +218,10 @@ public class BoardTest {
 }
     @When("A robot is placed on the BeltTile with intensity two where the tile after is no a belt tile")
     public void a_robot_is_placed_on_the_belt_tile_with_intensity_two_where_the_tile_after_is_no_a_belt_tile() {
-        board.moveRobot(robot1,new Position(6,7));
-        if (board.getTileAt(robot1.getPos()) instanceof TileBelt){
-            TileBelt tileBelt = (TileBelt)board.getTileAt(robot1.getPos());
-            tileBelt.effect(robot1,board);
+        bC.moveRobot(robot1,new Position(6,7));
+        if (bC.getBoard().getTileAt(robot1.getPos()) instanceof TileBelt){
+            TileBelt tileBelt = (TileBelt)bC.getBoard().getTileAt(robot1.getPos());
+            tileBelt.effect(robot1,bC);
         }
         
     }
@@ -227,10 +231,10 @@ public class BoardTest {
 }
     @When("A robot is placed on the BeltTile with intensity two where the tile after is a belt tile")
     public void a_robot_is_placed_on_the_belt_tile_with_intensity_two_where_the_tile_after_is_a_belt_tile() {
-        board.moveRobot(robot1,new Position(0,0));
-        if (board.getTileAt(robot1.getPos()) instanceof TileBelt){
-            TileBelt tileBelt = (TileBelt)board.getTileAt(robot1.getPos());
-            tileBelt.effect(robot1,board);
+        bC.moveRobot(robot1,new Position(0,0));
+        if (bC.getBoard().getTileAt(robot1.getPos()) instanceof TileBelt){
+            TileBelt tileBelt = (TileBelt)bC.getBoard().getTileAt(robot1.getPos());
+            tileBelt.effect(robot1,bC);
         }
     }
     @Then("The robot is pushed two space")
@@ -239,10 +243,10 @@ public class BoardTest {
 }
     @When("A robot is placed on the BeltTile with intensity two where the tile after is a belt tile with different direction")
     public void a_robot_is_placed_on_the_belt_tile_with_intensity_two_where_the_tile_after_is_a_belt_tile_with_different_direction() {
-        board.moveRobot(robot1,new Position(0,10));
-        if (board.getTileAt(robot1.getPos()) instanceof TileBelt){
-            TileBelt tileBelt = (TileBelt)board.getTileAt(robot1.getPos());
-            tileBelt.effect(robot1,board);
+        bC.moveRobot(robot1,new Position(0,10));
+        if (bC.getBoard().getTileAt(robot1.getPos()) instanceof TileBelt){
+            TileBelt tileBelt = (TileBelt)bC.getBoard().getTileAt(robot1.getPos());
+            tileBelt.effect(robot1,bC);
         }
     }
     @Then("The robot is pushed twice in different directions.")
@@ -267,6 +271,7 @@ public class BoardTest {
             {"T","T","T","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"}};
         this.board = new Board(board1, true);
+        bC = new BoardController(board);
         robot1 = new Robot(RobotColor.BLUE,new Position(0,5));
         robot2 = new Robot(RobotColor.GREEN,new Position(1,5));
         robot3 = new Robot(RobotColor.BLACK,new Position(2,5));
@@ -275,20 +280,20 @@ public class BoardTest {
         player2 = new Player(robot2,"Casper2");
         player3 = new Player(robot3,"Casper3");
         player4 = new Player(robot4,"Casper4");
-        board.initPlayers();
+        bC.initPlayers();
 }
     @When("robots are placed on tiles and allTileEffect is called")
     public void four_robots_are_placed_on_tiles_and_all_tile_effect_is_called() {
-        board.addPlayer(player1);
-        board.addPlayer(player2);
-        board.addPlayer(player3);
-        board.addPlayer(player4);
-        board.moveRobot(robot1, new Position(2,2));
+        bC.addPlayer(player1);
+        bC.addPlayer(player2);
+        bC.addPlayer(player3);
+        bC.addPlayer(player4);
+        bC.moveRobot(robot1, new Position(2,2));
         robot1.setCheckpoint(new Position(0, 5));
-        board.moveRobot(robot2, new Position(0,10));
-        board.moveRobot(robot3, new Position(2,4));
+        bC.moveRobot(robot2, new Position(0,10));
+        bC.moveRobot(robot3, new Position(2,4));
                
-        board.RunAllEffects();
+        bC.RunAllEffects();
     }
     @Then("Each robot is effected accordingly")
     public void each_robot_is_effected_accordingly() {
@@ -314,18 +319,19 @@ public class BoardTest {
             {"T","T","T","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"}};
         this.board = new Board(board1, true);
+        bC = new BoardController(board);
         robot1 = new Robot(RobotColor.BLUE,new Position(0,5));
         robot2 = new Robot(RobotColor.GREEN,new Position(1,5));
         
         player1 = new Player(robot1,"Casper1");
         player2 = new Player(robot2,"Casper2");
        
-        board.initPlayers();
+        bC.initPlayers();
 }
     @When("The board activates the registers")
     public void The_board_activates_the_registers() {
-        board.moveRobot(player1.getRobot(),new Position(2,8));
-        board.moveRobot(player2.getRobot(),new Position(8,8));
+        bC.moveRobot(player1.getRobot(),new Position(2,8));
+        bC.moveRobot(player2.getRobot(),new Position(8,8));
         List<ProgramCard> cards1 = new ArrayList<ProgramCard>(Arrays.asList(new Forward(2),
                                                                             new TurnRight(1),
                                                                             new Forward(1),
@@ -338,9 +344,9 @@ public class BoardTest {
                                                                             new Uturn()));
         player1.getRobot().setRegister(cards1);
         player2.getRobot().setRegister(cards2);
-        board.addPlayer(player1);
-        board.addPlayer(player2);
-        board.runAllRegisters();
+        bC.addPlayer(player1);
+        bC.addPlayer(player2);
+        bC.runAllRegisters();
 
 
     }
@@ -354,8 +360,8 @@ public class BoardTest {
 }
     @When("The board activates the registers in a way that makes them push eachother")
     public void the_board_activates_the_registers_in_a_way_that_makes_them_push_eachother() {
-        board.moveRobot(player1.getRobot(),new Position(5,8));
-        board.moveRobot(player2.getRobot(),new Position(4,8));
+        bC.moveRobot(player1.getRobot(),new Position(5,8));
+        bC.moveRobot(player2.getRobot(),new Position(4,8));
         List<ProgramCard> cards1 = new ArrayList<ProgramCard>(Arrays.asList(new TurnLeft(1), //deals 1 damage to platyer 2
                                                                             new Forward(2), //deals 3 damage to player 2 (2 push + lazer)
                                                                             new TurnRight(1), //does not hit
@@ -368,10 +374,10 @@ public class BoardTest {
                                                                             new Uturn())); // ends pointing Left
         player1.getRobot().setRegister(cards1);
         player2.getRobot().setRegister(cards2);
-        board.addPlayer(player1);
-        board.addPlayer(player2);
+        bC.addPlayer(player1);
+        bC.addPlayer(player2);
         
-        board.runAllRegisters();
+        bC.runAllRegisters();
     }
     @Then("The robots respond accordingly")
     public void the_robots_respond_accordingly() {
@@ -387,7 +393,7 @@ public class BoardTest {
     @When("The board activates the registers in a way that makes them walk on top of tiles with effects")
     public void the_board_activates_the_registers_in_a_way_that_makes_them_walk_on_top_of_tiles_with_effects() {
        
-        board.moveRobot(player1.getRobot(),new Position(1,0));
+        bC.moveRobot(player1.getRobot(),new Position(1,0));
         robot1.setCheckpoint(new Position(0, 5));
         List<ProgramCard> cards1 = new ArrayList<ProgramCard>(Arrays.asList(new TurnLeft(1),
                                                                             new Forward(1),
@@ -395,9 +401,9 @@ public class BoardTest {
                                                                             new Forward(2),
                                                                             new TurnRight(1)));
         player1.getRobot().setRegister(cards1);
-        board.addPlayer(player1);
+        bC.addPlayer(player1);
         
-        board.runAllRegisters();
+        bC.runAllRegisters();
     }
     @Then("The robots are affected acordingly.")
     public void the_robots_are_affected_acordingly() {

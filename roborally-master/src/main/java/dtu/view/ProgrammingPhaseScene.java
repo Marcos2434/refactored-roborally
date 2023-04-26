@@ -74,7 +74,7 @@ public class ProgrammingPhaseScene extends Scene {
      
            
         
-
+        try{
         // Card1
         Image stream = new Image (ProgrammingPhaseScene.class.getClassLoader().getResourceAsStream(player1.getHand().get(0).getImage())); //new FileInputStream("file:src/main/resources/Cards/left_turn.png")); 
         ImageView imageView1 = new ImageView(stream);  
@@ -87,10 +87,13 @@ public class ProgrammingPhaseScene extends Scene {
         ImageView imageView2 = new ImageView(stream2);
         imageView2.setFitHeight(150);
         imageView2.setFitWidth(100);
-    
-
-        mainGrid.add(imageView1, 3, 0, 1, 1);
-        mainGrid.add(imageView2, 3,1,1,1);
+        
+        
+            mainGrid.add(imageView1, 3, 0, 1, 1);
+            mainGrid.add(imageView2, 3,1,1,1);
+        }
+        catch(Exception e){System.out.println(e);}
+        
       
         
     
@@ -105,7 +108,6 @@ public class ProgrammingPhaseScene extends Scene {
         mainGrid.add(frame, 0, 0, 1, 1);
 
         // BoundingBox leftBox1 = new BoundingBox(0, 0, 100, 150);
-        
         
         Rectangle frame2 = new Rectangle(100,150);
         frame2.setStroke(Color.RED);
@@ -130,9 +132,6 @@ public class ProgrammingPhaseScene extends Scene {
         frame5.setFill(null);
         // this.leftBox5 = new VBox(frame5);
         mainGrid.add(frame5, 0, 4, 1, 1);
-
-
-
     }
 
 
