@@ -68,21 +68,22 @@ public class ProgrammingPhaseScene extends Scene {
     //------------------------------------- GLOBALS_END -------------------------------------//
 
     //Constructor
-    public ProgrammingPhaseScene(Controller c , Player player) {
+    public ProgrammingPhaseScene(Controller c) {
+
         super(new GridPane());
-        this.player1 = player;
+        this.c = c;
+        this.player1 = c.getCurrentPlayer();
         player1.GenerateDeck();
         this.deck = player1.getDeck();
         deck.shuffleDeck();
         player1.drawProgrammingCards();
         this.initialize();
-        this.c = c;
     }
 
     //Initialize
     public void initialize() {
         this.mainGrid = (GridPane) this.getRoot();
-        mainGrid.setGridLinesVisible( true );
+        // mainGrid.setGridLinesVisible( true ); //////
         // mainGrid.setPrefSize(1200, 900);
 
         // ColumnConstraints column1 = new ColumnConstraints();
@@ -107,8 +108,12 @@ public class ProgrammingPhaseScene extends Scene {
         column4.setMaxWidth(100);
    
         mainGrid.getColumnConstraints().addAll(column1, column2, column3, column4);
-     
-           
+
+
+        
+
+        
+        
         //------------------------------------- CARDS_START -------------------------------------//
 
         //Card1
@@ -190,7 +195,7 @@ public class ProgrammingPhaseScene extends Scene {
         
         //Make cards graggable
         mainGrid.getChildren().forEach(this::makeDraggable);
-        
+        mainGrid.add(c.getBoard(),1, 0, 1, 5);
 
         //------------------------------------- CARDS_END -------------------------------------//
 

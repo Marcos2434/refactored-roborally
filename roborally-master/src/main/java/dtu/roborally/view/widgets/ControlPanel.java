@@ -13,6 +13,7 @@ import javafx.scene.layout.Priority;
 import dtu.controller.Controller;
 import dtu.logic.models.Board.BoardController;
 import dtu.logic.models.Robot.Robot;
+import dtu.view.ProgrammingPhaseScene;
 import dtu.logic.models.Cards.MovementCards.*;
 
 public class ControlPanel extends GridPane {
@@ -25,7 +26,7 @@ public class ControlPanel extends GridPane {
 
 
 	
-	
+	private Button ChooseCards = new Button("Choose cards");
 	private Button moveF1 = new Button("\u2191");
 	private Button moveF2 = new Button("\u21D1");
 	private Button moveF3 = new Button("\u290A");
@@ -61,8 +62,8 @@ public class ControlPanel extends GridPane {
 			String selectedOption = comboBox.getSelectionModel().getSelectedItem();
 			System.out.println("Selected register: " + selectedOption);
 
-			c.setCurrentRobot(c.getBoardController().getPlayerByName(selectedOption).getRobot());
-			
+			c.setCurrentPlayer(c.getBoardController().getPlayerByName(selectedOption));
+
 
 		});
 	}
@@ -78,6 +79,7 @@ public class ControlPanel extends GridPane {
 		add(moveB2, 1, 2);
 		add(moveB3, 3, 2);
 		add(Activate, 4, 1);
+		add(ChooseCards,1,7);
 
 		add(comboBox, 0, 5);
 		
@@ -94,10 +96,22 @@ public class ControlPanel extends GridPane {
 	}
 
 	private void addListeners() {
+		ChooseCards.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				try{
+					 
+					c.setProgrammingPhaseScene(new ProgrammingPhaseScene(c));
+				}
+				catch(Exception e){System.out.println(e);}
+				c.setTheScene(c.getProgrammingPhaseScene(), "Choose Cards!!");
+				
+			}
+		});
 		uTurn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				c.getCurrentRobot().AddToRegister(new Uturn());
+				c.getCurrentPlayer().getRobot().AddToRegister(new Uturn());
 			}
 		});
 		
@@ -105,60 +119,60 @@ public class ControlPanel extends GridPane {
 			@Override
 			public void handle(ActionEvent event) {
 				
-				c.getCurrentRobot().AddToRegister(new Forward(1));
+				c.getCurrentPlayer().getRobot().AddToRegister(new Forward(1));
 				
 			}
 		});
 		moveF2.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				c.getCurrentRobot().AddToRegister(new Forward(2));
+				c.getCurrentPlayer().getRobot().AddToRegister(new Forward(2));
 			}
 		});
 		moveF3.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				c.getCurrentRobot().AddToRegister(new Forward(3));
+				c.getCurrentPlayer().getRobot().AddToRegister(new Forward(3));
 			}
 		});
 		
 		moveB1.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				c.getCurrentRobot().AddToRegister(new Backwards(1));
+				c.getCurrentPlayer().getRobot().AddToRegister(new Backwards(1));
 			}
 		});
 		moveB2.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				c.getCurrentRobot().AddToRegister(new Backwards(2));
+				c.getCurrentPlayer().getRobot().AddToRegister(new Backwards(2));
 			}
 		});
 		moveB3.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				c.getCurrentRobot().AddToRegister(new Backwards(3));
+				c.getCurrentPlayer().getRobot().AddToRegister(new Backwards(3));
 			}
 		});
 		
 		turnL.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				c.getCurrentRobot().AddToRegister(new TurnLeft(1));
+				c.getCurrentPlayer().getRobot().AddToRegister(new TurnLeft(1));
 			}
 		});
 		
 		turnR.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				c.getCurrentRobot().AddToRegister(new TurnRight(1));
+				c.getCurrentPlayer().getRobot().AddToRegister(new TurnRight(1));
 			}
 		});
 
 		Activate.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				if (c.getCurrentRobot().register.size() > 0) {
+				if (c.getCurrentPlayer().getRobot().register.size() > 0) {
 					Task<Void> task = new Task<Void>() {
 						@Override
 						protected Void call() throws Exception {

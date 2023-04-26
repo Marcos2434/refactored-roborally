@@ -35,27 +35,27 @@ public class Controller {
     private BoardController boardController;
     ArrayList<Position> availableBoardSpawns = new ArrayList<Position>();
 
-    private Robot currentRobot;
+    private Player currentPlayer;
 
     public Controller(Stage primaryStage) {
         this.primaryStage = primaryStage;
     }
 
     public void launch() {
-        //this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
+        this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
         //this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
 
-        this.setTheScene(this.getProgrammingPhaseScene(), "Roborally - Programming Phase"); //for natalia
+        //this.setTheScene(this.getProgrammingPhaseScene(), "Roborally - Programming Phase"); //for natalia
         // this.setTheScene(this.getProgrammingPhaseSceneSimple(), "Roborally - Programming Phase"); //for oli/gleb
 
     }
     //asd
-    public void setCurrentRobot(Robot currentRobot) {
-        this.currentRobot = currentRobot;
+    public void setCurrentPlayer(Player currentPlayer) {
+        this.currentPlayer = currentPlayer;
     }
 
-    public Robot getCurrentRobot() {
-        return currentRobot;
+    public Player getCurrentPlayer() {
+        return currentPlayer;
     }
 
     public void setBoard(Board board) {
@@ -115,13 +115,7 @@ public class Controller {
         return programmingPhaseScene;
     }
 
-    // public void setProgrammingPhaseSceneSimple(ProgrammingPhaseSceneSimple programmingPhaseSceneSimple) {
-    //     this.programmingPhaseSceneSimple = programmingPhaseSceneSimple;
-    // }
-
-    // public ProgrammingPhaseSceneSimple getProgrammingPhaseSceneSimple() {
-    //     return programmingPhaseSceneSimple;
-    // }
+  
 
     public BoardController getBoardController() {
         return boardController;
