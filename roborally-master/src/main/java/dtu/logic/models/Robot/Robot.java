@@ -18,6 +18,7 @@ public class Robot {
     private int damageTaken = 0;
     private int lives = 3;
     private int checkpointCount = 0;
+    
     private Position pos = new Position(0,0);
     private Position checkpoint;
 
@@ -94,11 +95,12 @@ public class Robot {
     }
 
     public void setCheckpoint(Position pos){
-        this.checkpoint = pos;
+        this.checkpoint = new Position(pos.getColumn(),pos.getRow());
     }
-    public Position getCheckpoint(Position pos){
+    public Position getCheckpoint(){
         return this.checkpoint;
     }
+
 
     public Direction getdir(){
         return Direction.getDirById(this.DirID); 
@@ -219,7 +221,7 @@ public class Robot {
             robot.pos.getColumn() < 0 || robot.pos.getColumn()>10){Death(boardController);}
         
 
-        boardController.getBoard().getTileAt(robot.getPos()).Occupy(image, DirID);  
+        boardController.getBoard().getTileAt(robot.getPos()).Occupy(robot.image, robot.DirID);  
     } 
     
     public void FIRE(BoardController boardController){

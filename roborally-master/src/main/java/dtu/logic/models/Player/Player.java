@@ -34,22 +34,30 @@ public class Player {
     public void GenerateDeck() {
         this.deck = new Deck();
     }
-    
 
     public void drawProgrammingCards() {
         deck.shuffleDeck();
+        ArrayList<ProgramCard> arr = new ArrayList<ProgramCard>();;
         for (int i = 0; i < 9 - this.robot.getDamageTaken(); i++) {
             //String name = ((deck.cards).get(i)).name;
-            hand.add(deck.cards.get(i));
+            arr.add(deck.cards.get(i));
+            
             //hand.add(new ProgramCard(name, 3));
         }
+        hand = arr;
     }
 
     
 
-    public void chooseProgrammingCards(Integer numberOfCards) {
+    public void chooseProgrammingCards() {
+        List<ProgramCard> registerCards;
+        if (hand.size() >= 5){
+            registerCards = hand.subList(0, 5);
+        }
         // Choose from the hand
-        List<ProgramCard> registerCards = hand.subList(0, numberOfCards);
+        else{
+            registerCards = hand;
+        }
         
         // add to robot register
         robot.setRegister(registerCards);

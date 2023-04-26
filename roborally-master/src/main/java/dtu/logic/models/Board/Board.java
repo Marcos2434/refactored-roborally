@@ -1,4 +1,6 @@
 package dtu.logic.models.Board;
+import java.util.ArrayList;
+
 import dtu.logic.models.Position;
 import javafx.scene.layout.GridPane;
 

@@ -34,11 +34,11 @@ public class TileBelt extends Tile{
     public void effect(Robot robot, BoardController boardController){
         
         boardController.getBoard().getTileAt(robot.getPos()).unOccupy();
-        System.out.println("before 2");
+        
         if (intensity == 2){
-            System.out.println("in 2");
+           
             if (boardController.getBoard().getTileAt(robot.getPos()) instanceof TileBelt){
-                System.out.println("in instance 1");
+               
                 TileBelt currtile = (TileBelt)boardController.getBoard().getTileAt(robot.getPos());
                 pushRobot(robot,currtile.getdir());
                 boardController.getBoard().getTileAt(robot.getPos()).Occupy(robot.getImage(), robot.getdir().getId()); 
@@ -46,7 +46,7 @@ public class TileBelt extends Tile{
                 catch(Exception e){System.out.println(e);}
 
                 if (boardController.getBoard().getTileAt(robot.getPos()) instanceof TileBelt){
-                    System.out.println("in instance 2");
+                    
                     TileBelt nextTileBelt = (TileBelt) boardController.getBoard().getTileAt(robot.getPos());
                     boardController.getBoard().getTileAt(robot.getPos()).unOccupy();
                     pushRobot(robot,nextTileBelt.getdir());

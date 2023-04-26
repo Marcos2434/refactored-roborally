@@ -28,7 +28,7 @@ Feature: Player receives cards from the deck
      @tag6 
     Scenario: As a player I want to draw my cards from a shuffeled deck 
          Given A player is created with a chosen color for the robot and a deck is generated
-         When The player receives 9 cards from the deck
+        When The player receives 9 cards from the deck
         Then The cards are shuffeled      
    #@tag6
    #Scenario: As a player I want to be able to have all necessary programming cards in my deck 

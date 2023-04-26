@@ -23,8 +23,6 @@ import dtu.logic.models.Board.TileStart;
 
 public class Controller {
 
-    private ArrayList<Player> players = new ArrayList<Player>();
-
     // --- Scenes ---
     private MenuScene menuScene;
     private BoardScene boardScene;
@@ -37,21 +35,32 @@ public class Controller {
     private BoardController boardController;
     ArrayList<Position> availableBoardSpawns = new ArrayList<Position>();
 
+    private Robot currentRobot;
 
     public Controller(Stage primaryStage) {
         this.primaryStage = primaryStage;
     }
 
     public void launch() {
+        //this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
         this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
 
-        //this.setTheScene(this.getProgrammingPhaseScene(), "Roborally - Programming Phase"); //for natalia
+        // this.setTheScene(this.getProgrammingPhaseScene(), "Roborally - Programming Phase"); //for natalia
         // this.setTheScene(this.getProgrammingPhaseSceneSimple(), "Roborally - Programming Phase"); //for oli/gleb
 
+    }
+    //asd
+    public void setCurrentRobot(Robot currentRobot) {
+        this.currentRobot = currentRobot;
+    }
+
+    public Robot getCurrentRobot() {
+        return currentRobot;
     }
 
     public void setBoard(Board board) {
         this.board = board;
+        //this.availableBoardSpawns = this.board.getStartFields();
         this.boardController = new BoardController(board);
     }
 
@@ -60,11 +69,12 @@ public class Controller {
     }
 
     public void createPlayer(RobotColor color, String name) {
-        this.players.add(new Player(new Robot(color), name));
+        this.boardController.addPlayer(new Player(new Robot(color), name));
         System.out.println(name + " has chosen color " + color);
     };
 
     public void changeToBoardScene(){
+        this.boardScene.setPlayermats(this.boardController.getPlayers());
         this.setTheScene(this.getBoardScene(), "Roborally!");
         this.startGame();
     }
@@ -79,7 +89,7 @@ public class Controller {
 
     public void setTheScene(Scene s) {
         this.primaryStage.setScene(s);
-        primaryStage.setTitle("Roborally - v. 0.1");
+        primaryStage.setTitle("Roborally - 0.5 - Playermat update");
         this.primaryStage.show();
     }
 
@@ -117,31 +127,40 @@ public class Controller {
         return boardController;
     }
 
+    public ArrayList<String> getPlayersNames() {
+        ArrayList<String> playerNames = new ArrayList<String>();
+
+        for (int i = 0; i < this.boardController.getPlayers().size(); i++){
+            Player p = this.boardController.getPlayers().get(i);
+            playerNames.add(p.getName());
+        }
+        return playerNames;
+    }
+
     private void startGame() {
 
         // Find spawn positions
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 13; j++) {
                 if (this.getBoard().getTileAt(new Position(i,j)).equals(new TileStart(TileType.START))) {
-                    this.availableBoardSpawns.add(new Position(i, j));                            
+                    this.availableBoardSpawns.add(new Position(i, j));               
                 }
             }
         }
         
         // Set robot to positions
-        this.boardController.initPlayers();
-        for (int i = 0; i < this.players.size(); i++) {
-            this.players.get(i).getRobot().setPos(this.availableBoardSpawns.get(i));            
-            this.boardController.addPlayer(this.players.get(i));
+        for (int i = 0; i < this.boardController.getPlayers().size(); i++) {
+            // place robot on scene
             this.boardController.getBoard().getTileAt(this.availableBoardSpawns.get(i)).Occupy(
-                this.players.get(i).getRobot().getImage(), this.players.get(i).getRobot().getDirID());;
+                this.boardController.getPlayers().get(i).getRobot().getImage(), this.boardController.getPlayers().get(i).getRobot().getDirID());;
+            
+            // place robot on board
+            this.boardController.getPlayers().get(i).getRobot().setPos(this.availableBoardSpawns.get(i));
+            
+            // set initial checkpoint
+            this.boardController.getPlayers().get(i).getRobot().setCheckpoint(this.availableBoardSpawns.get(i));
         }
-
-        
-        // try {this.board.initPlayers();
-        // }
-        // catch (Exception ex) { ex.getCause(); }
-        // board.moveRobot(robot, new Position(3, 10));
-
     }
+
+
 }
