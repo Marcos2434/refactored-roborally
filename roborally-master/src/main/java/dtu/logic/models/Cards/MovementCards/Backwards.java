@@ -6,6 +6,14 @@ import dtu.logic.models.Robot.Robot;
 
 public class Backwards implements ProgramCard{
     private int intensity;
+
+    private String image = "Cards/mv_back.png";
+    
+    @Override
+    public String getImage(){
+        return this.image;
+    }
+    
     public Backwards(int intensity) {
         this.intensity = intensity;
     }

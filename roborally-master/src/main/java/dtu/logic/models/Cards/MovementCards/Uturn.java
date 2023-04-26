@@ -8,6 +8,15 @@ import dtu.logic.models.Robot.Robot;
 public class Uturn implements ProgramCard{
     public void effect(Robot robot, BoardController boardController){
         robot.turn(2, boardController);
+    }
+
+    private String image = "Cards/uturn.png";
+    
+    @Override
+    public String getImage(){
+        return this.image;
+    }
+    
     
 }
-}
+

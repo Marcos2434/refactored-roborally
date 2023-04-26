@@ -38,7 +38,8 @@ public class BoardController {
     public void runAllRegisters(){
         for (int i=0; i<5;i++){
             for (int j=0; j<nextPlayerIdx; j++){
-                System.out.println("Running card " + (i+1));
+                
+            
                 Robot r = players[j].getRobot();
 
                 if (r.getRegister().size() > i){
@@ -98,19 +99,19 @@ public class BoardController {
         for (int j = 0; j < nextPlayerIdx; j++){
             if (players[j].getRobot().getRobotColor()  ==  (player.getRobot().getRobotColor())){
                 allowed = false;
-                System.out.println("false1");
+                
             }
         }
         for (int i = 0; i < nextPlayerIdx; i++){
             if (players[i].getRobot().getPos()  .equals  (player.getRobot().getPos())){
                 allowed = false;
-                System.out.println("false1");
+               
             }
         }
         if (allowed){
             players[nextPlayerIdx] = player;
             nextPlayerIdx++;
-            System.out.println("Player added");
+            
         }
     }
     public void moveRobot(Robot robot,Position pos){
