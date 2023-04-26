@@ -77,7 +77,6 @@ public class ProgrammingPhaseScene extends Scene {
         try{
         // Card1
         Image stream = new Image (ProgrammingPhaseScene.class.getClassLoader().getResourceAsStream(player1.getHand().get(0).getImage())); //new FileInputStream("file:src/main/resources/Cards/left_turn.png")); 
-        System.out.println(stream);
         ImageView imageView1 = new ImageView(stream);  
         imageView1.setFitHeight(150);
         imageView1.setFitWidth(100);
@@ -85,7 +84,6 @@ public class ProgrammingPhaseScene extends Scene {
     
         //Card2 
         Image stream2 = new Image (ProgrammingPhaseScene.class.getClassLoader().getResourceAsStream(player1.getHand().get(1).getImage())); //new FileInputStream("file:src/main/resources/Cards/left_turn.png"));
-        System.out.println(stream2);
         ImageView imageView2 = new ImageView(stream2);
         imageView2.setFitHeight(150);
         imageView2.setFitWidth(100);
