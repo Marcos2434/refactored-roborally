@@ -88,14 +88,6 @@ public class Robot {
         return Robotcolor;
     }
 
-    public int getX() {
-        return pos.getColumn();
-    }
-
-    public int getY() {
-        return pos.getRow();
-    }
-
     public void addCheckpoint(Position pos){
         this.checkpoints.add(new Position(pos.getColumn(),pos.getRow()));
     }
@@ -305,7 +297,7 @@ public class Robot {
     public void moveByCard(BoardController boardController, ProgramCard card){
         
     card.effect(this,boardController);
-    this.LastMove = card;
+    
 
     }  
 }   

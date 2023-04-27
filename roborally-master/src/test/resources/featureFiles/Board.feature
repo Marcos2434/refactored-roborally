@@ -117,3 +117,9 @@ Feature: Boardfunctions
         Given A Board and four players with different starting points
         When A robot walks over the wrong ceckpoint 
         Then it is not added to the checkpoints    
+    
+    @tag21 
+        Scenario: When A robot dies, but the checkpoints it has aquired are occupied, then it spawns on its starting position and kills any robot there. 
+        Given  A Board and four players with different starting points
+        When A robot walks over a checkpoint and then dies while the its checkpoint is occupied
+        Then it spawns at the stating position

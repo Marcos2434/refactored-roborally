@@ -122,7 +122,6 @@ public class BoardController {
     public void moveRobot(Robot robot,Position pos){
         this.board.getTileAt(robot.getPos()).unOccupy();
         robot.setPos(pos);
-       
         this.board.getTileAt(robot.getPos()).Occupy(robot.getImage(),robot.getDirID());
     }
 

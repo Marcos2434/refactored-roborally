@@ -428,6 +428,21 @@ public class BoardTest {
     public void it_is_not_added_to_the_checkpoints() {
         assertNotEquals(new Position(7,11),robot1.getCheckpoints().get(robot1.getCheckpoints().size()-1));
 }
+    @When("A robot walks over a checkpoint and then dies while the its checkpoint is occupied")
+    public void a_robot_walks_over_a_checkpoint_and_then_dies_while_the_its_checkpoint_is_occupied() {
+        bC.addPlayer(player1);
+        bC.moveRobot(robot1, new Position(4,11));
+        robot1.moveByCard(bC,new TurnRight(1));
+        robot1.moveByCard(bC,new Forward(1));
+        bC.RunAllEffects();
+        bC.moveRobot(robot1, new Position(5,5));
+        bC.moveRobot(robot2,new Position(5,11));
+        robot1.Death(bC);
+    }
+    @Then("it spawns at the stating position")
+    public void it_spawns_at_the_stating_position() {
+        assertEquals(new Position(0,5),robot1.getPos());
+}
 
 }
 
