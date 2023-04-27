@@ -2,6 +2,7 @@ package dtu.view;
 
 import dtu.controller.Controller;
 import dtu.logic.models.RobotColor;
+import dtu.logic.models.Board.Board;
 import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.Robot;
 import javafx.scene.Scene;
@@ -164,6 +165,9 @@ public class MenuScene extends Scene {
 			System.out.println("Selected map: " + selectedOption);
 
 			c.setBoardSelecter(selectedOption);
+			c.setBoard(new Board(Map.getMapByName(selectedOption)));
+
+
 			note.setText(" ");
 		});
 		Button createPlayerButton = new Button();
@@ -186,6 +190,10 @@ public class MenuScene extends Scene {
             public void handle(Event event) {
 				// For loop going through all checkboxes
 				if (c.getBoardSelecter() != null){
+					try {BoardScene boardScene = new BoardScene(c);
+						c.setBoardScene(boardScene);}
+					catch(Exception e){System.out.println(e);}
+					
 					for(int i = 0; i < checkarray.length; i++){
 						if (checkarray[i].isSelected()){
 
@@ -212,6 +220,7 @@ public class MenuScene extends Scene {
 									green.setText("GREEN");
 								}
 								c.createPlayer((RobotColor.GREEN), green.getText());
+								System.out.println(c.getBoardController().getPlayers().size()); 
 							}
 							if (checkarray[i].getText().contains("yellow")){
 								if (yellow.getText().isEmpty()){
@@ -243,8 +252,13 @@ public class MenuScene extends Scene {
 								}
 								c.createPlayer((RobotColor.BLACK), black.getText());
 							}
+							System.out.println(c.getBoardController().getPlayers().size()); 
 						}
 					}
+					
+					System.out.println(c.getBoardController().getPlayers().size());
+						
+					
 					c.getBoardScene().getControlPanel().addPlayerNamesToDropdown();
 					c.changeToBoardScene();
 					c.spawnRobots();
@@ -252,9 +266,9 @@ public class MenuScene extends Scene {
 				else{
 					note.setText("Map has not been selected");   
 				}
-			
-
 			}
+			
+			
         });
 			
 
