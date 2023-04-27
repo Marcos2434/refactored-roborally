@@ -23,8 +23,8 @@ public class TileLazer extends TileWall{
 
     public void FIRE(BoardController boardController){
         
-        Lazer lazer = new Lazer(new Position(getPos().getColumn(), getPos().getRow()),Direction.getDirById(this.getDirID()));
-        lazer.Uturn();
+        Lazer lazer = new Lazer(new Position(getPos().getColumn(), getPos().getRow()),Direction.getDirById(this.getDirID()).opposite());
+        
         if (lazer.moveTillHit(boardController) == true){
             
             Robot hitRob = boardController.getRobotAt(lazer.getPos());
