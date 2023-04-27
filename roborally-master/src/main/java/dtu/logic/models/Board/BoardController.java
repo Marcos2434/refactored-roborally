@@ -84,7 +84,7 @@ public class BoardController {
                 else{r = 12 - j/2;}
                */
                 if (this.getBoard().getTileAt(new Position(i,j)).isOcupied()){
-                
+                 
                     this.getBoard().getTileAt(new Position(i,j)).effect(getRobotAt(new Position(i,j)), this);
                 }
                 
