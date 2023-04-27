@@ -195,7 +195,7 @@ public class MenuScene extends Scene {
 				c.getBoardScene().getControlPanel().addPlayerNamesToDropdown();
 				c.changeToBoardScene();
 				c.spawnRobots();
-          }
+          	}
         });
 			
 

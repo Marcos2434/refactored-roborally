@@ -81,10 +81,14 @@ public class Controller {
         System.out.println(name + " has chosen color " + color);
     };
 
-    public void changeToBoardScene(){
+    public void changeToBoardScene() {
         this.boardScene.setPlayermats(this.boardController.getPlayers());
         this.setTheScene(this.getBoardScene(), "Roborally!");
         this.spawnRobots();
+    }
+
+    public void backToBoardScene() {
+        this.setTheScene(this.getBoardScene(), "Roborally!");
     }
 
     public void setMenuScene(MenuScene s) {

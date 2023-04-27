@@ -4,11 +4,6 @@ dtu/logic/models/Cards/MovementCards/Again.class
 dtu/roborally/view/widgets/ControlPanel$7.class
 dtu/logic/models/Board/TileType.class
 dtu/roborally/view/TileType.class
-<<<<<<< HEAD
-=======
-dtu/view/Tuple.class
-dtu/view/RobotViewer.class
->>>>>>> d50095d1685ccf73194527586bdca603d3efcca6
 dtu/view/MenuScene.class
 dtu/logic/models/Position.class
 dtu/roborally/view/widgets/BoardTeacher.class
@@ -42,10 +37,6 @@ dtu/logic/models/Board/TileStart.class
 dtu/logic/models/Cards/Card.class
 dtu/logic/models/Cards/MovementCards/ProCardFactory.class
 dtu/roborally/view/widgets/Board.class
-<<<<<<< HEAD
-dtu/view/TestScene.class
-=======
->>>>>>> d50095d1685ccf73194527586bdca603d3efcca6
 dtu/logic/models/Player/Player.class
 dtu/logic/models/Robot/RobotObserver.class
 dtu/view/MenuScene$1.class
@@ -58,17 +49,11 @@ dtu/logic/models/Robot/Lazer.class
 dtu/logic/models/Board/TileHole.class
 dtu/roborally/view/widgets/ControlPanel$9.class
 dtu/logic/models/Cards/Deck.class
-<<<<<<< HEAD
 dtu/view/drawers/BoardDrawer.class
-=======
->>>>>>> d50095d1685ccf73194527586bdca603d3efcca6
 dtu/view/Playermat.class
 dtu/logic/models/RobotColor.class
 dtu/view/ProgrammingPhaseScene.class
 dtu/view/BoardScene.class
 dtu/logic/models/Board/Tile.class
-<<<<<<< HEAD
-=======
 dtu/logic/models/AI.class
->>>>>>> d50095d1685ccf73194527586bdca603d3efcca6
 dtu/roborally/view/widgets/Tile.class

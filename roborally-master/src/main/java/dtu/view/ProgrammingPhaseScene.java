@@ -286,7 +286,6 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
     // Observer method
     public void updateRobotInfo(Robot robot) {
         Platform.runLater(() -> {
-            System.out.println("Drawing!");
             bd.drawRobot(robot);
         });
         
@@ -459,7 +458,10 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
             player1.getRobot().AddToRegister(card);  
         }
         System.out.println(player1.getRobot().getRegister());
-        c.changeToBoardScene();
+        // c.backToBoardScene();
+        c.getBoardScene().redraw();
+        c.setTheScene(c.getBoardScene());
+        c.notifyAllRobotObservers();
     }
 }
 

@@ -102,17 +102,19 @@ public class BoardScene extends Scene implements RobotObserver {
         Board board = new Board(board1);
         c.setBoard(board);
         
-        // Draw board
-        bd = new BoardDrawer();
-        bd.draw(c.getBoard());
-        boardPane.setCenter(bd);
+        redraw();
 
         // Register control panel
         cp = new ControlPanel(c);
         rightSide.getChildren().addAll(playersUIright,cp);
         boardPane.setRight(rightSide);
+    }
 
-
+    public void redraw() {
+        // Draw board
+        bd = new BoardDrawer();
+        bd.draw(c.getBoard());
+        boardPane.setCenter(bd);
     }
 
     public void updateRobotInfo(Robot robot) {
