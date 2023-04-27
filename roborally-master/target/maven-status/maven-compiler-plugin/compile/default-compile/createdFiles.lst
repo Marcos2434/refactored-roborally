@@ -20,6 +20,7 @@ dtu\logic\models\Direction.class
 dtu\logic\models\Board\TileStart.class
 dtu\logic\models\Board\TileWall.class
 dtu\roborally\view\widgets\ControlPanel$5.class
+dtu\view\Map.class
 dtu\logic\models\Cards\MovementCards\ProCardTypes.class
 dtu\roborally\view\widgets\ControlPanel$10.class
 dtu\logic\models\Cards\ProgramCard.class
