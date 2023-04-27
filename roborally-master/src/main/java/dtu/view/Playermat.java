@@ -82,7 +82,7 @@ public class Playermat extends StackPane{
         pName.prefHeight(54);
         pName.prefWidth(191);
         pName.setStyle("prefHeight= 54.0; prefWidth= 188.0");
-        color = new Label("BLUE");
+        color = new Label(this.player.getRobot().getRobotColor().toString());
         color.setStyle("-fx-padding: 0 0 0 10;");
         HBox playerinfo = new HBox(pName, color);
 

@@ -1,7 +1,5 @@
 package dtu.roborally.view.widgets;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -12,7 +10,6 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import dtu.controller.Controller;
-import dtu.logic.models.Board.BoardController;
 import dtu.logic.models.Robot.Robot;
 import dtu.view.ProgrammingPhaseScene;
 import dtu.logic.models.Cards.MovementCards.*;

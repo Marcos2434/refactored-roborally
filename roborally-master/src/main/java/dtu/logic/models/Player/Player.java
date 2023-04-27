@@ -12,9 +12,9 @@ import java.util.Scanner;
 
 public class Player {
     private String name;
-    private Robot robot;
-    private Deck deck = new Deck();
-    private ArrayList<ProgramCard> hand = new ArrayList<ProgramCard>();
+    protected Robot robot;
+    protected Deck deck = new Deck();
+    protected ArrayList<ProgramCard> hand = new ArrayList<ProgramCard>();
     
     public Player(Robot robot,String name) {
         this.robot = robot;
