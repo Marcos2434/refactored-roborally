@@ -2,6 +2,8 @@ package dtu.view;
 
 import dtu.controller.Controller;
 import dtu.logic.models.RobotColor;
+import dtu.logic.models.Player.Player;
+import dtu.logic.models.Robot.Robot;
 import javafx.scene.Scene;
 
 import javafx.scene.layout.BorderPane;
@@ -166,6 +168,7 @@ public class MenuScene extends Scene {
 				}
 				c.getBoardScene().getControlPanel().addPlayerNamesToDropdown();
 				c.changeToBoardScene();
+				c.spawnRobots();
           }
         });
 			

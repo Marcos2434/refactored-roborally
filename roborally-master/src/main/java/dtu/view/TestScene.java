@@ -33,9 +33,8 @@ import javafx.scene.image.ImageView;
 import dtu.logic.models.RobotColor;
 
 
+public class TestScene extends Scene implements RobotObserver {
 
-public class BoardScene extends Scene implements RobotObserver {
-    
     BorderPane boardPane;
     Controller c;
     ControlPanel cp;
@@ -70,12 +69,11 @@ public class BoardScene extends Scene implements RobotObserver {
         // boardPane.setRight(playersUIright);
     }
 
-    public BoardScene(Controller c) throws IOException {
+    public TestScene(Controller c) throws IOException {
         super(new BorderPane());
         this.c = c;
         this.initialize();
     }
-    
 
     private void initialize() throws IOException {
         boardPane = (BorderPane) this.getRoot();
@@ -124,5 +122,4 @@ public class BoardScene extends Scene implements RobotObserver {
     public ControlPanel getControlPanel() {
         return this.cp;
     }
-
 }

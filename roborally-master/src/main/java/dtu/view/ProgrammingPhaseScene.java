@@ -16,16 +16,21 @@ import dtu.logic.models.RobotColor;
 import dtu.logic.models.Cards.Deck;
 import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.Robot;
+import dtu.logic.models.Robot.RobotObserver;
+import dtu.view.drawers.BoardDrawer;
 import io.cucumber.plugin.event.EventHandler;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
+import javafx.application.Platform;
 import javafx.event.Event;
+
+import java.io.IOException;
 // import javafx.event.EventHandler;
 import java.time.Duration;
 
 
     
-public class ProgrammingPhaseScene extends Scene {
+public class ProgrammingPhaseScene extends Scene implements RobotObserver {
     //------------------------------------- GLOBALS_START -------------------------------------//
     Controller c;
     Player player1;
@@ -65,6 +70,8 @@ public class ProgrammingPhaseScene extends Scene {
     GridPane mainGrid;
     
     Button button;
+
+    BoardDrawer bd;
     
     //------------------------------------- GLOBALS_END -------------------------------------//
 
@@ -196,7 +203,13 @@ public class ProgrammingPhaseScene extends Scene {
         
         //Make cards graggable
         mainGrid.getChildren().forEach(this::makeDraggable);
-        mainGrid.add(c.getBoard(),1, 0, 1, 5);
+        // mainGrid.add(c.getBoard(),1, 0, 1, 5);
+        
+        // Draw board
+        bd = new BoardDrawer();
+        bd.draw(c.getBoard());
+        
+        mainGrid.add(bd, 1, 0, 1, 5);
 
         //------------------------------------- CARDS_END -------------------------------------//
 
@@ -256,10 +269,15 @@ public class ProgrammingPhaseScene extends Scene {
         button.setOnAction(e->DoneButton());
     
         //------------------------------------- REGISTER_BOXES_END -------------------------------------//
-    
-    
-    
-    
+    }
+
+    // Observer method
+    public void updateRobotInfo(Robot robot) {
+        Platform.runLater(() -> {
+            System.out.println("Drawing!");
+            bd.drawRobot(robot);
+        });
+        
     }
 
     

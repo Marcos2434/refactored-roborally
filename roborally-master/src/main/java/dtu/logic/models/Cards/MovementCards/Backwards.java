@@ -26,6 +26,9 @@ public class Backwards implements ProgramCard{
                 {robot.Death(boardController);
                     break;}
                 boardController.getBoard().getTileAt(robot.getPos()).Occupy();
+                try {
+                    Thread.sleep(200);
+                 } catch (Exception e) { System.err.println(e); }
         }
         boardController.getBoard().getTileAt(robot.getPos()).Occupy();
         

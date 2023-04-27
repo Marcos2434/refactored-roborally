@@ -53,9 +53,7 @@ public class Robot {
     }
     
     public void robotNotify() {
-        System.out.println("Notifying obs ervers");
         for (RobotObserver observer : observers) {
-            System.out.println("Notified observer");
             observer.updateRobotInfo(this);
         }
     }
@@ -64,6 +62,7 @@ public class Robot {
     }
     
     public void registerObserver(RobotObserver observer) {
+        System.out.println("[ADDED OBSERVER]");
         observers.add(observer);
     }
 
@@ -170,12 +169,17 @@ public class Robot {
 
         int d;
         Direction MoveDir;
-        if (forward){MoveDir = getdir();
-                        d = 1;}
-        else {  turn(2,boardController);
-                MoveDir = Direction.getDirById(getdir().getId());
-                turn(2,boardController); 
-                d = -1;}
+        
+        if (forward) {
+            MoveDir = getdir();
+            d = 1;
+        } else {  
+            // turn(2,boardController);
+            MoveDir = Direction.getDirById(getdir().getId());
+            // turn(2,boardController); 
+            d = -1;
+        }
+
         //Update old tile
         boardController.getBoard().getTileAt(pos).unOccupy();
        

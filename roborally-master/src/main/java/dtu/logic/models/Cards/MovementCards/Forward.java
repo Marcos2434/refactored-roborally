@@ -40,7 +40,7 @@ public class Forward implements ProgramCard {
                     break;
             }
             
-        //update new tile
+            //update new tile
             boardController.getBoard().getTileAt(robot.getPos()).Occupy();
             try{Thread.sleep(200);}
             catch(Exception e){System.out.println(e);}

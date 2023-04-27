@@ -23,7 +23,7 @@ public class BoardDrawer extends GridPane {
     }
 
     public void drawRobot(Robot robot) {
-        System.out.println("Drawing Robot at " + robot.getPos().getRow() + ", " + robot.getPos().getColumn());
+        // System.out.println("Drawing Robot at " + robot.getPos().getRow() + ", " + robot.getPos().getColumn());
         
         StackPane stackPane = (StackPane) this.getChildren().get(robot.getPos().getRow() * 10 + robot.getPos().getColumn());
         
@@ -34,7 +34,7 @@ public class BoardDrawer extends GridPane {
         ImageView iv = new ImageView(robot.getImage());
         iv.setRotate(90*(robot.getDirID() - 1));
         stackPane.getChildren().add(iv);
-        System.out.println("Finished drawing robot");
+        // System.out.println("Finished drawing robot");
     }
     
     public void unDrawRobot(Position pos) {

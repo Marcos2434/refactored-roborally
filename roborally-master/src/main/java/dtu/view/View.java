@@ -18,6 +18,12 @@ public class View extends Application {
 		
 		BoardScene boardScene = new BoardScene(c);
 		c.setBoardScene(boardScene);
+
+		// ProgrammingPhaseScene programmingScene = new ProgrammingPhaseScene(c);
+		// c.setProgrammingPhaseScene(programmingScene);
+		// try {
+		// } catch (Exception e) { System.err.println(e); }
+
 		// ProgrammingPhaseSceneSimple programmingPhaseSceneSimple = new ProgrammingPhaseSceneSimple(c);
 		// c.setProgrammingPhaseSceneSimple(programmingPhaseSceneSimple);
 

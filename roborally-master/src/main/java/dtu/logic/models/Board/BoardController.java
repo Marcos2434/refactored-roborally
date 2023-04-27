@@ -52,9 +52,9 @@ public class BoardController {
                 }
             }
 
-            ///try {
-             //   Thread.sleep(800);
-            //} catch (Exception e) { System.err.println(e); }
+            try {
+               Thread.sleep(200);
+            } catch (Exception e) { System.err.println(e); }
             
             RunAllEffects();
             fireRobotLazers();
