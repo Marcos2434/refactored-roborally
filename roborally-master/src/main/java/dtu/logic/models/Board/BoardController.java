@@ -51,10 +51,9 @@ public class BoardController {
                 }
             }
 
-            ///try {
-             //   Thread.sleep(800);
+            //try {
+            //   Thread.sleep(800);
             //} catch (Exception e) { System.err.println(e); }
-            
             RunAllEffects();
             fireRobotLazers();
             fireboardLazers();
