@@ -19,7 +19,7 @@ import dtu.logic.models.Cards.MovementCards.*;
 public class ControlPanel extends GridPane {
 
 	private Controller c;
-	private Robot robot;
+	
 	
 	// ObservableList<String> players = FXCollections.observableArrayList();
 	final ComboBox<String> comboBox = new ComboBox<String>();
@@ -44,15 +44,7 @@ public class ControlPanel extends GridPane {
 		addListeners();
 	}
 
-	public ControlPanel(Controller c, Robot robot) {
-		this.c = c;
-		this.robot = robot;
-		//this.board.addPlayer(new Player(robot, "Casper"));
-		
-		configure();
-		// addListeners();
-		addRegisterListeners();
-	}
+
 	
 	public void addPlayerNamesToDropdown() {
 		System.out.println(c.getPlayersNames());
@@ -63,7 +55,6 @@ public class ControlPanel extends GridPane {
 			System.out.println("Selected register: " + selectedOption);
 
 			c.setCurrentPlayer(c.getBoardController().getPlayerByName(selectedOption));
-
 
 		});
 	}

@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import dtu.view.BoardScene;
 import dtu.view.MenuScene;
 import dtu.view.ProgrammingPhaseScene;
+import dtu.view.StartMenuScene;
 // import dtu.view.ProgrammingPhaseSceneSimple;
 import javafx.scene.Scene;
 
@@ -24,6 +25,7 @@ import dtu.logic.models.Board.TileStart;
 public class Controller {
 
     // --- Scenes ---
+    private StartMenuScene startMenuScene;
     private MenuScene menuScene;
     private BoardScene boardScene;
     private ProgrammingPhaseScene programmingPhaseScene;
@@ -42,9 +44,9 @@ public class Controller {
     }
 
     public void launch() {
-        this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
         //this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
-
+        this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
+        //this.setTheScene(this.getStartScene(), "Pick the type of play");
         //this.setTheScene(this.getProgrammingPhaseScene(), "Roborally - Programming Phase"); //for natalia
         // this.setTheScene(this.getProgrammingPhaseSceneSimple(), "Roborally - Programming Phase"); //for oli/gleb
 
@@ -79,6 +81,13 @@ public class Controller {
         this.startGame();
     }
 
+    public void setStartScene(StartMenuScene StartMenu){
+        this.startMenuScene = StartMenu;
+    }
+
+    public StartMenuScene getStartScene(){
+        return this.startMenuScene;
+    }
     public void setMenuScene(MenuScene s) {
         this.menuScene = s;
     }

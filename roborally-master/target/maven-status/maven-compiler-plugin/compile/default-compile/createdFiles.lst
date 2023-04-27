@@ -36,6 +36,7 @@ dtu\logic\models\Cards\MovementCards\TurnRight.class
 dtu\roborally\view\widgets\Board.class
 dtu\view\PlayermatController.class
 dtu\logic\models\Position.class
+dtu\view\StartMenuScene.class
 dtu\controller\Controller.class
 dtu\logic\models\Board\TileHole.class
 dtu\view\ProgrammingPhaseScene.class
