@@ -4,8 +4,10 @@ import dtu.logic.models.Robot.Robot;
 public class TileStart extends Tile {
     private String name = "Start";
     
+    
     public TileStart(TileType type) {
 	    super(type);
+        this.imageString = "tiles/start.png";
 	}
 
     @Override

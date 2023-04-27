@@ -16,6 +16,11 @@ public class BoardDrawer extends GridPane {
         for (int row = 0; row < 13; row++) {
             for (int col = 0; col < 10; col++) {
                 StackPane stackPane = new StackPane();
+
+                try{b.getGrid()[row][col].setImage(new Image(b.getGrid()[row][col].getimageString()));
+                    b.getGrid()[row][col].redraw();}
+                catch(Exception e){System.out.println(e);}
+
                 stackPane.getChildren().add(b.getGrid()[row][col]);
                 add(stackPane, col, row);
             }

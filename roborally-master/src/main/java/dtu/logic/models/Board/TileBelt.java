@@ -14,17 +14,12 @@ public class TileBelt extends Tile{
     public TileBelt(TileType type, Direction dir,int intensity){
         super(type);
         this.dir = dir;
-        this.image = new Image("tiles/" + intensity + "speedBelt" + dir.getId() + ".png");
         this.intensity = intensity;
-        redraw();
+        this.imageString = "tiles/" + intensity + "speedBelt" + dir.getId() + ".png";
+       
 	}
-    
-    public TileBelt(TileType type, Direction dir,int intensity, Boolean test){
-        super(type);
-        this.dir = dir;
-        this.intensity = intensity;
-        redraw();
-	}
+   
+
     public String getname(){
         return this.name;
     }

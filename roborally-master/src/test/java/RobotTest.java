@@ -40,7 +40,7 @@ public class RobotTest {
         {"T","T","HT","T","T","T","T","T","T","T"},
         {"T","T","HT","T","T","T","T","T","T","T"},
     };
-    Board board = new Board(board1, true);
+    Board board = new Board(board1);
     BoardController bC = new BoardController(board);
     Deck deck = new Deck();
     // initiats a robot with everything needed, change this when making a

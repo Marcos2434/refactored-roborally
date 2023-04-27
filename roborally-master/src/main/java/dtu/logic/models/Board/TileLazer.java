@@ -11,16 +11,14 @@ public class TileLazer extends TileWall{
     public Position getPos(){
         return pos;
     }
+    
     public TileLazer(TileType Type,Direction dir,Position pos){
         super(Type,dir.getId());
         this.pos = pos;
-        this.image = new Image("tiles/Lazer" + dir.getId() + ".png");
-        redraw();
+        this.imageString = "tiles/Lazer" + dir.getId() + ".png";
+   
     }
-    public TileLazer(TileType Type,Direction dir,Position pos,boolean test){
-        super(Type,dir.getId(),test);
-        this.pos = pos;
-    }
+ 
     public void effect(Robot robot,BoardController boardController){;}
 
     public void FIRE(BoardController boardController){

@@ -9,12 +9,11 @@ import javafx.scene.transform.Rotate;
 public class TileCheckpoint extends Tile {
     private String name = "C";
     private int id;
-    private Image image;
     private Position position;
 
     
     @Override
-    protected void redraw() {
+    public void redraw() {
 		GraphicsContext gc = getGraphicsContext2D();
 		gc.drawImage(image, 0, 0);
 		
@@ -25,20 +24,16 @@ public class TileCheckpoint extends Tile {
 			gc.restore();
         }
     }
+
+    
     public TileCheckpoint(TileType type, int id, Position pos) {
 	    super(type);
         this.id = id;
-        this.image = new Image("tiles/checkpoint" + id + ".png");
-        this.position = pos;
-        redraw();
-	}
-    //@overload
-    public TileCheckpoint(TileType type, int id, Position pos,boolean test) {
-	    super(type);
-        this.id = id;
+        this.imageString = "tiles/checkpoint" + id + ".png";
         this.position = pos;
        
 	}
+    //@overload
 
 
 
