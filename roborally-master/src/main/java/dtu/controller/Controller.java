@@ -88,6 +88,7 @@ public class Controller {
         Robot robot = new Robot(color);
         robot.registerObserver(this.boardScene);
         this.boardController.addPlayer(new Player(robot, name));
+        System.out.println(this.boardController.getPlayers().size()); 
         System.out.println(name + " has chosen color " + color);
     };
 

@@ -15,8 +15,6 @@ public class View extends Application {
 		MenuScene menuScene = new MenuScene(c);
 		c.setMenuScene(menuScene);
 		
-		BoardScene boardScene = new BoardScene(c);
-		c.setBoardScene(boardScene);
 
 		// ProgrammingPhaseScene programmingScene = new ProgrammingPhaseScene(c);
 		// c.setProgrammingPhaseScene(programmingScene);

@@ -35,7 +35,7 @@ import java.time.Duration;
 public class ProgrammingPhaseScene extends Scene implements RobotObserver {
     //------------------------------------- GLOBALS_START -------------------------------------//
     Controller c;
-    Player player1;
+  
     Robot robot1;
     Deck deck;
 
@@ -85,11 +85,11 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
     public ProgrammingPhaseScene(Controller c) {
         super(new GridPane());
         this.c = c;
-        this.player1 = c.getCurrentPlayer();
-        player1.GenerateDeck();
-        this.deck = player1.getDeck();
+      
+        c.getCurrentPlayer().GenerateDeck();
+        this.deck = c.getCurrentPlayer().getDeck();
         deck.shuffleDeck();
-        player1.drawProgrammingCards();
+        c.getCurrentPlayer().drawProgrammingCards();
         this.initialize();
     }
 
@@ -124,67 +124,67 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
         //------------------------------------- CARDS_START -------------------------------------//
 
         //Card1
-        Image stream1 = new Image (ProgrammingPhaseScene.class.getClassLoader().getResourceAsStream(player1.getHand().get(0).getImage())); //
+        Image stream1 = new Image (ProgrammingPhaseScene.class.getClassLoader().getResourceAsStream(c.getCurrentPlayer().getHand().get(0).getImage())); //
         this.imageView1 = new ImageView(stream1); //new ImageView(stream);  
         imageView1.setFitHeight(150);
         imageView1.setFitWidth(100);
-        String imagePath1 =player1.getHand().get(0).getImage().toString();
+        String imagePath1 =c.getCurrentPlayer().getHand().get(0).getImage().toString();
         imageView1.setId(imagePath1);
         //Card2 
-        Image stream2 = new Image (ProgrammingPhaseScene.class.getClassLoader().getResourceAsStream(player1.getHand().get(1).getImage())); 
+        Image stream2 = new Image (ProgrammingPhaseScene.class.getClassLoader().getResourceAsStream(c.getCurrentPlayer().getHand().get(1).getImage())); 
         ImageView imageView2 = new ImageView(stream2);
         imageView2.setFitHeight(150);
         imageView2.setFitWidth(100);
-        String imagePath2 =player1.getHand().get(1).getImage().toString();
+        String imagePath2 =c.getCurrentPlayer().getHand().get(1).getImage().toString();
         imageView2.setId(imagePath2);
         // Card3
-        Image stream3 = new Image (ProgrammingPhaseScene.class.getClassLoader().getResourceAsStream(player1.getHand().get(2).getImage())); 
+        Image stream3 = new Image (ProgrammingPhaseScene.class.getClassLoader().getResourceAsStream(c.getCurrentPlayer().getHand().get(2).getImage())); 
         ImageView imageView3 = new ImageView(stream3);
         imageView3.setFitHeight(150);
         imageView3.setFitWidth(100);
-        String imagePath3 =player1.getHand().get(2).getImage().toString();
+        String imagePath3 =c.getCurrentPlayer().getHand().get(2).getImage().toString();
         imageView3.setId(imagePath3);
         //Card4
-        Image stream4 = new Image (ProgrammingPhaseScene.class.getClassLoader().getResourceAsStream(player1.getHand().get(3).getImage())); //new FileInputStream("file:src/main/resources/Cards/left_turn.png"));
+        Image stream4 = new Image (ProgrammingPhaseScene.class.getClassLoader().getResourceAsStream(c.getCurrentPlayer().getHand().get(3).getImage())); //new FileInputStream("file:src/main/resources/Cards/left_turn.png"));
         ImageView imageView4 = new ImageView(stream4);
         imageView4.setFitHeight(150);
         imageView4.setFitWidth(100);
-        String imagePath4 =player1.getHand().get(3).getImage().toString();
+        String imagePath4 =c.getCurrentPlayer().getHand().get(3).getImage().toString();
         imageView4.setId(imagePath4);
         //Card5
-        Image stream5 = new Image (ProgrammingPhaseScene.class.getClassLoader().getResourceAsStream(player1.getHand().get(4).getImage())); 
+        Image stream5 = new Image (ProgrammingPhaseScene.class.getClassLoader().getResourceAsStream(c.getCurrentPlayer().getHand().get(4).getImage())); 
         ImageView imageView5 = new ImageView(stream5);
         imageView5.setFitHeight(150);
         imageView5.setFitWidth(100);
-        String imagePath5 =player1.getHand().get(4).getImage().toString();
+        String imagePath5 =c.getCurrentPlayer().getHand().get(4).getImage().toString();
         imageView5.setId(imagePath5);
         //Card6
-        Image stream6 = new Image (ProgrammingPhaseScene.class.getClassLoader().getResourceAsStream(player1.getHand().get(5).getImage()));
+        Image stream6 = new Image (ProgrammingPhaseScene.class.getClassLoader().getResourceAsStream(c.getCurrentPlayer().getHand().get(5).getImage()));
         ImageView imageView6 = new ImageView(stream6);
         imageView6.setFitHeight(150);
         imageView6.setFitWidth(100);
-        String imagePath6 =player1.getHand().get(5).getImage().toString();
+        String imagePath6 =c.getCurrentPlayer().getHand().get(5).getImage().toString();
         imageView6.setId(imagePath6);
         //Card7
-        Image stream7 = new Image (ProgrammingPhaseScene.class.getClassLoader().getResourceAsStream(player1.getHand().get(6).getImage()));
+        Image stream7 = new Image (ProgrammingPhaseScene.class.getClassLoader().getResourceAsStream(c.getCurrentPlayer().getHand().get(6).getImage()));
         ImageView imageView7 = new ImageView(stream7);
         imageView7.setFitHeight(150);
         imageView7.setFitWidth(100);
-        String imagePath7 =player1.getHand().get(6).getImage().toString();
+        String imagePath7 =c.getCurrentPlayer().getHand().get(6).getImage().toString();
         imageView7.setId(imagePath7);
         //Card8
-        Image stream8 = new Image (ProgrammingPhaseScene.class.getClassLoader().getResourceAsStream(player1.getHand().get(7).getImage()));
+        Image stream8 = new Image (ProgrammingPhaseScene.class.getClassLoader().getResourceAsStream(c.getCurrentPlayer().getHand().get(7).getImage()));
         ImageView imageView8 = new ImageView(stream8);
         imageView8.setFitHeight(150);
         imageView8.setFitWidth(100);
-        String imagePath8 =player1.getHand().get(7).getImage().toString();
+        String imagePath8 =c.getCurrentPlayer().getHand().get(7).getImage().toString();
         imageView8.setId(imagePath8);
         //Card9
-        Image stream9 = new Image (ProgrammingPhaseScene.class.getClassLoader().getResourceAsStream(player1.getHand().get(8).getImage()));
+        Image stream9 = new Image (ProgrammingPhaseScene.class.getClassLoader().getResourceAsStream(c.getCurrentPlayer().getHand().get(8).getImage()));
         ImageView imageView9 = new ImageView(stream9);
         imageView9.setFitHeight(150);
         imageView9.setFitWidth(100);
-        String imagePath9 =player1.getHand().get(8).getImage().toString();
+        String imagePath9 =c.getCurrentPlayer().getHand().get(8).getImage().toString();
         imageView9.setId(imagePath9);
 
 
@@ -427,7 +427,7 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
     private ProgramCard findCard(String cardId){
         // For loop
         for (int j = 0; j < 9; j++) {
-            ProgramCard card = player1.getHand().get(j);
+            ProgramCard card = c.getCurrentPlayer().getHand().get(j);
             if (card.getImage().equals(cardId)){
                 System.out.println("Card found");
                 return card;
@@ -439,27 +439,28 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
     private void DoneButton (){
         if (frame.getFill()!=null){
             ProgramCard card  = findCard(frame.getId());
-            player1.getRobot().AddToRegister(card);   
+            c.getCurrentPlayer().getRobot().AddToRegister(card);   
         }
         if (frame2.getFill()!=null){
             ProgramCard card  = findCard(frame2.getId());
-            player1.getRobot().AddToRegister(card);   
+            c.getCurrentPlayer().getRobot().AddToRegister(card);   
         }
         if (frame3.getFill()!=null){
             ProgramCard card  = findCard(frame3.getId());
-            player1.getRobot().AddToRegister(card);  
+            c.getCurrentPlayer().getRobot().AddToRegister(card);  
         }
         if (frame4.getFill()!=null){
             ProgramCard card  = findCard(frame4.getId());
-            player1.getRobot().AddToRegister(card);  
+            c.getCurrentPlayer().getRobot().AddToRegister(card);  
         }
         if (frame5.getFill()!=null){
             ProgramCard card  = findCard(frame5.getId());
-            player1.getRobot().AddToRegister(card);  
+            c.getCurrentPlayer().getRobot().AddToRegister(card);  
         }
-        System.out.println(player1.getRobot().getRegister());
+        System.out.println(c.getCurrentPlayer().getRobot().getRegister());
         // c.backToBoardScene();
         c.getBoardScene().redraw();
+        c.getCurrentPlayer().getHand().clear();
         c.setTheScene(c.getBoardScene());
         c.notifyAllRobotObservers();
     }

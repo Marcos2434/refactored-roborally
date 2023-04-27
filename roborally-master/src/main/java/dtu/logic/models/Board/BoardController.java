@@ -49,17 +49,20 @@ public class BoardController {
                 }
                 
                 if (i == 4){
-                    r.setRegister(new ArrayList<ProgramCard>());
+                    r.getRegister().clear();
                 }
             }
 
-            //try {
-            //   Thread.sleep(200);
-            //} catch (Exception e) { System.err.println(e); }
+            try {
+               Thread.sleep(100);
+            } catch (Exception e) { System.err.println(e); }
             
             RunAllEffects();
             fireRobotLazers();
             fireboardLazers();
+            try {
+                Thread.sleep(100);
+             } catch (Exception e) { System.err.println(e); }
         }
         this.emptyAllRegisters();
 

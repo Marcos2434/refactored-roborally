@@ -80,10 +80,8 @@ public class BoardScene extends Scene implements RobotObserver {
     private void initialize() throws IOException {
         boardPane = (BorderPane) this.getRoot();
 
-		
-        
-
         // Creating the board
+        System.out.println(c.getBoardSelecter());
         Board board = new Board(Map.getMapByName(c.getBoardSelecter()));
         c.setBoard(board);
         
