@@ -15,6 +15,7 @@ public class Tile extends Canvas {
     protected TileType type;
     protected Direction direction;
     protected Image image;
+    protected String imageString;
 	protected Image robotImage;
     protected int robotDirection;
     protected Boolean Ocupied = false;
@@ -22,13 +23,25 @@ public class Tile extends Canvas {
     public Tile(TileType type) {
 		super(TILE_SIZE, TILE_SIZE);
 		this.type = type;
-		this.image = new Image(getClass().getClassLoader().getResourceAsStream(this.type.getPictureFile()));
+		this.imageString = "tiles/floor.png";
 		
-		redraw();
+		//redraw();
 	}
 
-    public Tile(int tileSize, int tileSize2) {
+    public void setImage(Image image){
+        this.image = image;
     }
+
+    public String getimageString(){
+        return this.imageString;
+    }
+
+    public void setimageString(String IS){
+        this.imageString = IS;
+    }
+
+
+  
     
     @Override
     public boolean equals(Object obj) {
@@ -43,7 +56,7 @@ public class Tile extends Canvas {
         return this.type;
     }
         
-    protected void redraw() {
+    public void redraw() {
 		GraphicsContext gc = getGraphicsContext2D();
 		gc.drawImage(image, 0, 0);
 		
