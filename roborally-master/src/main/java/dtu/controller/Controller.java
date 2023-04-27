@@ -2,22 +2,17 @@ package dtu.controller;
 
 import dtu.logic.models.Player.*;
 import dtu.logic.models.Robot.Robot;
+import dtu.logic.models.AI;
 import dtu.logic.models.Position;
 import dtu.logic.models.RobotColor;
-
 import java.util.ArrayList;
-
-import dtu.logic.models.RobotColor;
-import dtu.logic.models.Position;
 import dtu.logic.models.Board.Board;
 import dtu.logic.models.Board.BoardController;
 import javafx.stage.Stage;
 import dtu.view.BoardScene;
 import dtu.view.MenuScene;
 import dtu.view.ProgrammingPhaseScene;
-// import dtu.view.ProgrammingPhaseSceneSimple;
 import javafx.scene.Scene;
-
 import dtu.logic.models.Board.TileType;
 import dtu.logic.models.Board.TileStart;
 
@@ -56,6 +51,11 @@ public class Controller {
 
     public Player getCurrentPlayer() {
         return currentPlayer;
+    }
+    public void createAI(RobotColor color){
+        this.boardController.addAI(new AI(new Robot(color)));
+        
+        
     }
 
     public void setBoard(Board board) {
