@@ -22,5 +22,13 @@ public enum Direction {
         return null;
     }
     
+    public Direction opposite(){
+        for (Direction d : Direction.values()){
+            if (Math.abs(d.getId() - (this.getId())) == 2){
+                return d;
+            }
+        }
+        return null;
+    }
     
 }

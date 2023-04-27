@@ -8,8 +8,6 @@ public interface ProgramCard {
   
     void effect(Robot robot, BoardController boardController);
 
-    
-    
     String getImage();
 
 

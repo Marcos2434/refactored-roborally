@@ -311,8 +311,8 @@ public class BoardTest {
         bC = new BoardController(board);
         robot1 = new Robot(RobotColor.BLUE,new Position(0,5));
         robot2 = new Robot(RobotColor.GREEN,new Position(1,5));
-        bC.getBoard().getTileAt(robot1.getPos()).Occupy(robot1.getImage(), robot1.getDirID());
-        bC.getBoard().getTileAt(robot2.getPos()).Occupy(robot2.getImage(), robot2.getDirID());
+        bC.getBoard().getTileAt(robot1.getPos()).Occupy();
+        bC.getBoard().getTileAt(robot2.getPos()).Occupy();
         player1 = new Player(robot1,"Casper1");
         player2 = new Player(robot2,"Casper2");
        

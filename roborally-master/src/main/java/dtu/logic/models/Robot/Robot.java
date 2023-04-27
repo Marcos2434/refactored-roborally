@@ -174,9 +174,8 @@ public class Robot {
             MoveDir = getdir();
             d = 1;
         } else {  
-            // turn(2,boardController);
-            MoveDir = Direction.getDirById(getdir().getId());
-            // turn(2,boardController); 
+            
+            MoveDir = getdir().opposite();
             d = -1;
         }
 
@@ -191,7 +190,6 @@ public class Robot {
                     Push(r,boardController);
                 }
             }
-           
             // move
             if (this.DirID == 1){this.addRow(-d);}
             else if (this.DirID == 2){this.addCol(d);}
@@ -208,6 +206,7 @@ public class Robot {
         if (this.pos.getRow() > 0 && this.pos.getRow() < 13 &&
             this.pos.getColumn() > 0 && this.pos.getColumn()<10){
             boardController.getBoard().getTileAt(pos).unOccupy();
+            this.prevPos = new Position(pos.getColumn(),pos.getRow());
         } 
         Collections.reverse(this.checkpoints);
         for (int i = 0; i <checkpoints.size(); i++){
@@ -229,12 +228,10 @@ public class Robot {
             
         }
         Collections.reverse(this.checkpoints);
-        
-        
-        
         this.lives -=1;
         this.damageTaken = 0;
         boardController.getBoard().getTileAt(pos).Occupy();
+        robotNotify();
     }
     public void takeDmg(BoardController boardController){
         this.damageTaken += 1;
@@ -253,9 +250,13 @@ public class Robot {
     public int getLives(){
         return this.lives;
     }
+
+    public void setPrevPos(Position pos){
+        this.prevPos = new Position(pos.getColumn(),pos.getRow());
+    }
     // interaction with other robots
     public void Push(Robot robot, BoardController boardController){
-
+        robot.setPrevPos(robot.getPos());
         boardController.getBoard().getTileAt(robot.getPos()).unOccupy();
 
         if (robot.getPosInDir(Direction.getDirById(this.DirID)).isOutOfBounds()){robot.Death(boardController);}
@@ -269,7 +270,7 @@ public class Robot {
             else if (this.DirID == 3){robot.getPos().addY(1);}
             else if (this.DirID == 4){robot.getPos().addX(-1);}
         }
-        
+        robot.robotNotify();
         boardController.getBoard().getTileAt(robot.getPos()).Occupy();  
     } 
     
@@ -339,3 +340,4 @@ public class Robot {
         return false;
     }
 }   
+

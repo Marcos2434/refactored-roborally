@@ -10,6 +10,8 @@ public class View extends Application {
 		Controller c = new Controller(primaryStage);
 		
 		// --- Define Scenes ---
+		StartMenuScene Start = new StartMenuScene(c);
+		c.setStartScene(Start);
 		MenuScene menuScene = new MenuScene(c);
 		c.setMenuScene(menuScene);
 		
