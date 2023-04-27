@@ -73,7 +73,7 @@ public class TileFactory {
 
         else if (tiles[0].trim().equals("C")){ 
             
-            return new TileCheckpoint(TileType.CHECKPOINT, Integer.parseInt(tiles[1]), new Position(col, row));
+            return new TileCheckpoint(TileType.CHECKPOINT, Integer.parseInt(tiles[1]), new Position(col, row),test);
             
         }
 

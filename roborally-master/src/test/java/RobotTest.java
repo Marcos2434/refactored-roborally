@@ -18,7 +18,9 @@ import dtu.logic.models.Board.Board;
 import dtu.logic.models.Board.BoardController;
 import dtu.logic.models.Cards.Deck;
 import dtu.logic.models.Cards.ProgramCard;
+import dtu.logic.models.Cards.MovementCards.Again;
 import dtu.logic.models.Cards.MovementCards.Forward;
+import dtu.logic.models.Cards.MovementCards.TurnLeft;
 import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.*;
 public class RobotTest {
@@ -163,12 +165,14 @@ public class RobotTest {
         player2 = new Player(robot2,"Marcos");
         bC.getBoard().getTileAt(robot1.getPos()).Occupy(robot1.getImage(), robot1.getDirID());
         bC.getBoard().getTileAt(robot2.getPos()).Occupy(robot2.getImage(), robot2.getDirID());
+        bC.addPlayer(player1);
+        bC.addPlayer(player2);
         
         
     }
     @When("The robots are beside eachother and one robot tries to move through the other")
     public void the_robots_are_beside_eachother_and_one_robot_tries_to_move_through_the_other() {
-        bC.initPlayers();
+        
         bC.addPlayer(player1);
         bC.addPlayer(player2);
         robot1.moveforward(true, bC);
@@ -191,7 +195,7 @@ public class RobotTest {
 }
     @When("The robots are facing eachother and fire their lazer")
     public void the_robots_are_facing_eachother_and_fire_their_lazer() {
-        bC.initPlayers();
+       
         
         bC.addPlayer(player1);
         bC.addPlayer(player2);
@@ -270,7 +274,7 @@ public class RobotTest {
         bC.getBoard().getTileAt(robot2.getPos()).Occupy(robot2.getImage(), robot2.getDirID());
         bC.getBoard().getTileAt(robot3.getPos()).Occupy(robot3.getImage(), robot3.getDirID());
         bC.getBoard().getTileAt(robot4.getPos()).Occupy(robot4.getImage(), robot4.getDirID());
-        bC.initPlayers();
+       
         bC.addPlayer(player1);
         bC.addPlayer(player2);
         bC.addPlayer(player3);
@@ -316,6 +320,32 @@ public class RobotTest {
         assertEquals(1,robot2.getDamageTaken());
         assertEquals(1,robot3.getDamageTaken());
         assertEquals(1,robot4.getDamageTaken());
+}
+    @When("One robot pushes the other over the edge")
+    public void one_robot_pushes_the_other_over_the_edge() {
+    
+        bC.moveRobot(robot1, new Position(0,5));
+        bC.moveRobot(robot2, new Position(1,5));
+        robot1.addCheckpoint(new Position(6, 6));
+        robot2.moveByCard(bC, new TurnLeft(1));
+        robot2.moveByCard(bC,new Forward(1));
+    }
+    @Then("The other robot dies and respawns")
+    public void the_other_robot_dies_and_respawns() {
+    assertEquals(new Position(6, 6),robot1.getPos());
+}
+    @When("one robot has a register consiting of one or more Again cards")
+    public void one_robot_has_a_register_consiting_of_one_or_more_again_cards() {
+        bC.moveRobot(robot1,new Position(5, 5));
+        robot1.AddToRegister(new Forward(1));
+        robot1.AddToRegister(new Again());
+        robot1.AddToRegister(new Again());
+        robot1.AddToRegister(new Again());
+        bC.runAllRegisters();
+    }
+    @Then("they will perform the effect of the last run card.")
+    public void they_will_perform_the_effect_of_the_last_run_card() {
+        assertEquals(new Position(5, 1),robot1.getPos());
 }
 }
 

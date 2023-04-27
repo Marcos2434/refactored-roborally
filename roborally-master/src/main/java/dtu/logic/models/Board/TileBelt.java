@@ -41,9 +41,9 @@ public class TileBelt extends Tile{
                
                 TileBelt currtile = (TileBelt)boardController.getBoard().getTileAt(robot.getPos());
                 pushRobot(robot,currtile.getdir());
-                boardController.getBoard().getTileAt(robot.getPos()).Occupy(); 
-                try{Thread.sleep(500);}
-                catch(Exception e){System.out.println(e);}
+                boardController.getBoard().getTileAt(robot.getPos()).Occupy(robot.getImage(), robot.getdir().getId()); 
+                //try{Thread.sleep(500);}
+                //catch(Exception e){System.out.println(e);}
 
                 if (boardController.getBoard().getTileAt(robot.getPos()) instanceof TileBelt){
                     

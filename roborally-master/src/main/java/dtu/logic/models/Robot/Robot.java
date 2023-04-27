@@ -9,8 +9,10 @@ import dtu.logic.models.Board.BoardController;
 import dtu.logic.models.Board.Tile;
 
 import dtu.logic.models.Cards.ProgramCard;
+import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Robot {
     private RobotColor Robotcolor;
@@ -20,7 +22,7 @@ public class Robot {
     private int checkpointCount = 0;
     
     private Position pos = new Position(0,0);
-    private Position checkpoint;
+    private ArrayList<Position> checkpoints = new ArrayList<Position>();
 
     private int DirID;
     private ProgramCard LastMove = null;
@@ -76,7 +78,7 @@ public class Robot {
         this.Robotcolor = Robotcolor;
         this.DirID = 1;
         this.pos = position;
-        this.checkpoint = new Position(position.getColumn(), position.getRow());
+        this.checkpoints.add(new Position(position.getColumn(), position.getRow()));
         this.image = new Image(getClass().getClassLoader().getResourceAsStream(this.Robotcolor.getPictureFile()));  
     }
 
@@ -101,19 +103,11 @@ public class Robot {
         return Robotcolor;
     }
 
-    public int getX() {
-        return pos.getColumn();
+    public void addCheckpoint(Position pos){
+        this.checkpoints.add(new Position(pos.getColumn(),pos.getRow()));
     }
-
-    public int getY() {
-        return pos.getRow();
-    }
-
-    public void setCheckpoint(Position pos){
-        this.checkpoint = new Position(pos.getColumn(),pos.getRow());
-    }
-    public Position getCheckpoint(){
-        return this.checkpoint;
+    public ArrayList<Position> getCheckpoints(){
+        return this.checkpoints;
     }
 
 
@@ -211,7 +205,29 @@ public class Robot {
             this.pos.getColumn() > 0 && this.pos.getColumn()<10){
             boardController.getBoard().getTileAt(pos).unOccupy();
         } 
-        this.pos = new Position(checkpoint.getColumn(),checkpoint.getRow());
+        Collections.reverse(this.checkpoints);
+        for (int i = 0; i <checkpoints.size(); i++){
+            
+
+            if (i == checkpoints.size() - 1){
+                if (boardController.getBoard().getTileAt(checkpoints.get(i)).isOcupied()){
+                    boardController.getRobotAt(checkpoints.get(i)).Death(boardController);
+                }
+                this.pos = new Position (checkpoints.get(i).getColumn(),checkpoints.get(i).getRow());
+                break;
+            }
+            
+            else if (!boardController.getBoard().getTileAt(checkpoints.get(i)).isOcupied()){
+                this.pos = new Position (checkpoints.get(i).getColumn(),checkpoints.get(i).getRow());
+                break;
+            }
+            
+            
+        }
+        Collections.reverse(this.checkpoints);
+        
+        
+        
         this.lives -=1;
         this.damageTaken = 0;
         boardController.getBoard().getTileAt(pos).Occupy();
@@ -237,19 +253,19 @@ public class Robot {
     public void Push(Robot robot, BoardController boardController){
 
         boardController.getBoard().getTileAt(robot.getPos()).unOccupy();
-        
-        if (boardController.getBoard().getTileAt(robot.getPosInDir(Direction.getDirById(this.DirID))).isOcupied()){
-            Push(boardController.getRobotAt(robot.getPosInDir(Direction.getDirById(this.DirID))),boardController);}
 
-        if (this.DirID == 1){robot.getPos().addY(-1);}
-        else if (this.DirID == 2){robot.getPos().addX(1);}
-        else if (this.DirID == 3){robot.getPos().addY(1);}
-        else if (this.DirID == 4){robot.getPos().addX(-1);}
-        
-        if (robot.pos.getRow() < 0 || robot.pos.getRow() > 13 ||
-            robot.pos.getColumn() < 0 || robot.pos.getColumn()>10){Death(boardController);}
-        
+        if (robot.getPosInDir(Direction.getDirById(this.DirID)).isOutOfBounds()){robot.Death(boardController);}
 
+        else{
+            if (boardController.getBoard().getTileAt(robot.getPosInDir(Direction.getDirById(this.DirID))).isOcupied()){
+                Push(boardController.getRobotAt(robot.getPosInDir(Direction.getDirById(this.DirID))),boardController);}
+            
+            if (this.DirID == 1){robot.getPos().addY(-1);}
+            else if (this.DirID == 2){robot.getPos().addX(1);}
+            else if (this.DirID == 3){robot.getPos().addY(1);}
+            else if (this.DirID == 4){robot.getPos().addX(-1);}
+        }
+        
         boardController.getBoard().getTileAt(robot.getPos()).Occupy();  
     } 
     
@@ -305,8 +321,8 @@ public class Robot {
 
     public void moveByCard(BoardController boardController, ProgramCard card){
         
-        card.effect(this, boardController);
-        this.LastMove = card;
+    card.effect(this,boardController);
+    
 
     }
     

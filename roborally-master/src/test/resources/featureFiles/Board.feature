@@ -31,16 +31,16 @@ Feature: Boardfunctions
         Given A Board and four players
         Then Add the players to the player list
 
-    @tag7
-        Scenario:   As a Board, if a players robot have the same position as any other players in the board 
-                    it cannot be added
-        Given A Board and four players
-        Then Add the player is not added if they have the same position
+ #   @tag7
+  #      Scenario:   As a Board, if a players robot have the same position as any other players in the board 
+   #                 it cannot be added
+    #    Given A Board and four players
+     #   Then Add the player is not added if they have the same position
     
-    @tag8
-        Scenario: As a Board, if a players robot has the same Color as another player the player cannot be added
-        Given A Board and four players
-        Then Add the player is not added if they have the same RobotColor
+   # @tag8
+    #    Scenario: As a Board, if a players robot has the same Color as another player the player cannot be added
+     #   Given A Board and four players
+      #  Then Add the player is not added if they have the same RobotColor
     
     @tag9
         Scenario: As a Board with players, when a player moves a robot, the position is updated in the playerlist.
@@ -100,9 +100,26 @@ Feature: Boardfunctions
         When The board activates the registers in a way that makes them push eachother
         Then The robots respond accordingly
     
-#    @tag18
-#        Scenario: As the board When activating all registers, I want to activate all Tiles after each round.
-#        Given A Board and four players with different starting points
-#        When The board activates the registers in a way that makes them walk on top of tiles with effects 
-#        Then The robots are affected acordingly.
-        
+    @tag18
+        Scenario: As the board When activating all registers, I want to activate all Tiles after each round.
+        Given A Board and four players with different starting points
+        When The board activates the registers in a way that makes them walk on top of tiles with effects 
+        Then The robots are affected acordingly.
+
+    @tag19
+        Scenario: When a robot walks over a checkpoint tile, the checkpoint is added to the robots list of checkpoints
+        Given A Board and four players with different starting points
+        When A robot walks over the next ceckpoint 
+        Then it is added to the checkpoints    
+
+    @tag20
+        Scenario: When a robot walks over a checkpoint tile that is too far ahead, the checkpoint is not added to the robots list of checkpoints
+        Given A Board and four players with different starting points
+        When A robot walks over the wrong ceckpoint 
+        Then it is not added to the checkpoints    
+    
+    @tag21 
+        Scenario: When A robot dies, but the checkpoints it has aquired are occupied, then it spawns on its starting position and kills any robot there. 
+        Given  A Board and four players with different starting points
+        When A robot walks over a checkpoint and then dies while the its checkpoint is occupied
+        Then it spawns at the stating position

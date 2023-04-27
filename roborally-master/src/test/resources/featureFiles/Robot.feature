@@ -89,6 +89,18 @@ Feature: Robot Selection
         When when the robot opposite the wall moves into the row of robots
         Then Three robots take damage
 
+    @tag16
+        Scenario: As a robot, if i push another robot over the edge it dies
+        Given Two robots being created 
+        When One robot pushes the other over the edge
+        Then The other robot dies and respawns
+    
+    @tag17 
+        Scenario: A robot that have used a program card before can use the same card again by using the Again card
+        Given Two robots being created 
+        When one robot has a register consiting of one or more Again cards
+        Then they will perform the effect of the last run card.
+
     
 
     

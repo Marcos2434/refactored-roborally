@@ -8,8 +8,11 @@ import dtu.logic.models.Robot.Robot;
 public class Forward implements ProgramCard {
     private int intensity;
     
-    private String image = "Cards/mv_"+intensity+".png";
-    
+    private String image;
+
+    public Forward () {
+        System.out.println("Forward card created" + image);
+    }
     @Override
     public String getImage(){
         return this.image;
@@ -17,8 +20,18 @@ public class Forward implements ProgramCard {
 
     public Forward(int intensity) {
         this.intensity = intensity;
+        if (intensity==1){
+            this.image = "Cards/mv_1.png";
+        }
+        if (intensity==2){
+            this.image = "Cards/mv_2.png";
+        }
+        if (intensity==3){
+            this.image = "Cards/mv_3.png";
+        }
     }
     public void effect(Robot robot, BoardController boardController){
+        robot.setLastMove(new Forward(intensity));
         for (int i = 0; i <intensity; i++) {
             robot.moveforward(true, boardController);
             if (robot.getPos().getRow() < 0 || robot.getPos().getRow() > 12 ||

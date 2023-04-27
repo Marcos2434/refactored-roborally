@@ -38,6 +38,10 @@ public class Position {
         this.row = y;
     }
 
+    public boolean isOutOfBounds(){
+            return getRow() < 0 || getRow() > 12 || getColumn() < 0 || getColumn()>9;
+    }
+
     public String toString() {
         return "(" + this.column + ", " + this.row + ")";
     }
