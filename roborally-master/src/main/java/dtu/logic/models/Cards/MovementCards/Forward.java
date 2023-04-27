@@ -31,6 +31,7 @@ public class Forward implements ProgramCard {
         }
     }
     public void effect(Robot robot, BoardController boardController){
+        robot.setLastMove(new Forward(intensity));
         for (int i = 0; i <intensity; i++) {
             robot.moveforward(true, boardController);
             if (robot.getPos().getRow() < 0 || robot.getPos().getRow() > 12 ||

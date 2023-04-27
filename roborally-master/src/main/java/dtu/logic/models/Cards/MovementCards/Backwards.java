@@ -18,6 +18,7 @@ public class Backwards implements ProgramCard{
         this.intensity = intensity;
     }
     public void effect(Robot robot, BoardController boardController){
+        robot.setLastMove(new Backwards(intensity));
         for (int i = 0; i <intensity; i++) {
             robot.moveforward(false, boardController);
             if (robot.getPos().getRow() < 0 || robot.getPos().getRow() > 12 ||
