@@ -41,11 +41,14 @@ public class AI extends Player {
             arr.add(deck.cards.get(i));
             
             //hand.add(new ProgramCard(name, 3));
-        }
+            }
         }
 
         hand = arr;
     }
-
+    @Override
+    public boolean isAI(){
+        return true;
+    }
     
 }

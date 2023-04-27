@@ -54,8 +54,6 @@ public class Controller {
     }
     public void createAI(RobotColor color){
         this.boardController.addAI(new AI(new Robot(color)));
-        
-        
     }
 
     public void setBoard(Board board) {
@@ -123,10 +121,10 @@ public class Controller {
 
     public ArrayList<String> getPlayersNames() {
         ArrayList<String> playerNames = new ArrayList<String>();
-
-        for (int i = 0; i < this.boardController.getPlayers().size(); i++){
-            Player p = this.boardController.getPlayers().get(i);
-            playerNames.add(p.getName());
+        for (Player i: this.boardController.getPlayers()) {
+            if (i.isAI() == false) {
+                playerNames.add(i.getName());
+            }
         }
         return playerNames;
     }

@@ -8,6 +8,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
+
+import java.util.ArrayList;
+
 import dtu.controller.Controller;
 import dtu.logic.models.Robot.Robot;
 import dtu.view.ProgrammingPhaseScene;

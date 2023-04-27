@@ -47,7 +47,9 @@ public class Player {
         hand = arr;
     }
 
-    
+    public boolean isAI(){
+        return false;
+    }
 
     public void chooseProgrammingCards() {
         List<ProgramCard> registerCards;

@@ -12,7 +12,7 @@ import dtu.logic.models.Direction;
 
 public class BoardController {
     private ArrayList<Player> players = new ArrayList<Player>();
-    private ArrayList<AI> ais = new ArrayList<AI>();
+
     private Board board;
 
     public BoardController(Board board) {
@@ -97,20 +97,13 @@ public class BoardController {
         }
     }
     public void addAI(AI ai){
-
-        for (int i = 0; i < this.ais.size(); i++){
-            if (ais.get(i).getName()  ==  (ai.getName())){
-                ai=new AI(ai.getRobot()); 
-            }
-
-        }
         for (int i = 0; i < this.players.size(); i++){
             if (players.get(i).getName()  ==  (ai.getName())){
                 ai=new AI(ai.getRobot()); 
             }
 
         }
-        ais.add(ai);
+        players.add(ai);
         return;
 
     }
@@ -147,7 +140,7 @@ public class BoardController {
     public ArrayList<Player> getPlayers(){
         return this.players;
     }
-    
+
     // check if a robot is allowed a move:
     public boolean allowmove(Robot robot,Direction dir){
         
