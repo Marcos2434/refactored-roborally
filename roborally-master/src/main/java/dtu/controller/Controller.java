@@ -25,11 +25,13 @@ public class Controller {
     private MenuScene menuScene;
     private BoardScene boardScene;
     private ProgrammingPhaseScene programmingPhaseScene;
+    
     // private ProgrammingPhaseSceneSimple programmingPhaseSceneSimple;
     // --------------
     private Stage primaryStage;
     
     private Board board;
+    private String boardSelecter = null;
     private BoardController boardController;
     ArrayList<Position> availableBoardSpawns = new ArrayList<Position>();
 
@@ -69,6 +71,13 @@ public class Controller {
         return board;
     }
 
+    public void setBoardSelecter(String SelBoard) {
+        this.boardSelecter = SelBoard;
+    }
+
+    public String getBoardSelecter(){
+        return this.boardSelecter;
+    }
     public void notifyAllRobotObservers() {
         for (int i = 0; i < this.boardController.getPlayers().size(); i++) {
             this.boardController.getPlayers().get(i).getRobot().robotNotify();
