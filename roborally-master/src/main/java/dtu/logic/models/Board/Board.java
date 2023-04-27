@@ -19,12 +19,12 @@ public class Board extends GridPane {
                 for (int col = 0; col < 10; col++) {
                         String T = boardGrid[row][col];
                         this.grid[row][col] = TileFactory.createtile(T, col, row);
-                        add(this.grid[row][col], col, row);
-                        
+                        // add(this.grid[row][col], col, row);
                 }
             }
         }
     }
+
     public Board(String[][] boardGrid, Boolean test){
         if (boardGrid.length != 13 || boardGrid[0].length != 10){
             System.out.println("Invalid size of grid");
@@ -34,7 +34,7 @@ public class Board extends GridPane {
                 for (int col = 0; col < 10; col++) {
                         String T = boardGrid[row][col];
                         this.grid[row][col] = TileFactory.createtile(T, col, row, test);
-                        add(this.grid[row][col], col, row);
+                        // add(this.grid[row][col], col, row);
                         
                 }
             }

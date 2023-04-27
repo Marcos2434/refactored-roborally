@@ -3,9 +3,6 @@ package dtu.view;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import dtu.controller.*;
-import dtu.logic.models.RobotColor;
-import dtu.logic.models.Player.Player;
-import dtu.logic.models.Robot.Robot;
 
 public class View extends Application {
 	@Override
@@ -20,6 +17,12 @@ public class View extends Application {
 		
 		BoardScene boardScene = new BoardScene(c);
 		c.setBoardScene(boardScene);
+
+		// ProgrammingPhaseScene programmingScene = new ProgrammingPhaseScene(c);
+		// c.setProgrammingPhaseScene(programmingScene);
+		// try {
+		// } catch (Exception e) { System.err.println(e); }
+
 		// ProgrammingPhaseSceneSimple programmingPhaseSceneSimple = new ProgrammingPhaseSceneSimple(c);
 		// c.setProgrammingPhaseSceneSimple(programmingPhaseSceneSimple);
 

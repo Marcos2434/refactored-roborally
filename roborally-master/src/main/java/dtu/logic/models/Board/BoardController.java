@@ -7,11 +7,12 @@ import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.Lazer;
 import dtu.logic.models.Robot.Robot;
 import java.util.ArrayList;
-
+import dtu.logic.models.AI;
 import dtu.logic.models.Direction;
 
 public class BoardController {
     private ArrayList<Player> players = new ArrayList<Player>();
+
     private Board board;
 
     public BoardController(Board board) {
@@ -42,6 +43,7 @@ public class BoardController {
             for (int j = 0; j < this.players.size(); j++) {
                 Robot r = this.players.get(j).getRobot();
                 
+                
                 if (r.getRegister().size() > i){
                     r.moveByCard(this, r.getRegister().get(i));
                 }
@@ -51,9 +53,10 @@ public class BoardController {
                 }
             }
 
-            //try {
-            //   Thread.sleep(800);
-            //} catch (Exception e) { System.err.println(e); }
+            try {
+               Thread.sleep(200);
+            } catch (Exception e) { System.err.println(e); }
+            
             RunAllEffects();
             fireRobotLazers();
             fireboardLazers();
@@ -94,7 +97,17 @@ public class BoardController {
             players.get(i).getRobot().FIRE(this);
         }
     }
+    public void addAI(AI ai){
+        for (int i = 0; i < this.players.size(); i++){
+            if (players.get(i).getName()  ==  (ai.getName())){
+                ai=new AI(ai.getRobot()); 
+            }
 
+        }
+        players.add(ai);
+        return;
+
+    }
     public void addPlayer(Player player){
         boolean allowed = true;
         
@@ -121,15 +134,15 @@ public class BoardController {
     public void moveRobot(Robot robot,Position pos){
         this.board.getTileAt(robot.getPos()).unOccupy();
         robot.setPos(pos);
-        this.board.getTileAt(robot.getPos()).Occupy(robot.getImage(),robot.getDirID());
+        this.board.getTileAt(robot.getPos()).Occupy();
     }
 
     public ArrayList<Player> getPlayers(){
         return this.players;
     }
-    
+
     // check if a robot is allowed a move:
-    public boolean allowmove(Robot robot,Direction dir){
+    public boolean allowmove(Robot robot, Direction dir){
         
         Position toPos = robot.getPosInDir(dir);
         

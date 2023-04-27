@@ -25,9 +25,12 @@ public class Backwards implements ProgramCard{
                 robot.getPos().getColumn() < 0 || robot.getPos().getColumn()>9)
                 {robot.Death(boardController);
                     break;}
-                boardController.getBoard().getTileAt(robot.getPos()).Occupy(robot.getImage(), robot.getDirID());
+                boardController.getBoard().getTileAt(robot.getPos()).Occupy();
+                try {
+                    Thread.sleep(200);
+                 } catch (Exception e) { System.err.println(e); }
         }
-        boardController.getBoard().getTileAt(robot.getPos()).Occupy(robot.getImage(), robot.getDirID());
+        boardController.getBoard().getTileAt(robot.getPos()).Occupy();
         
     }
     

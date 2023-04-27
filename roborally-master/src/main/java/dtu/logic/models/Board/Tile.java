@@ -8,7 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.transform.Affine;
 import javafx.scene.transform.Rotate;
 
-public class Tile extends Canvas{
+public class Tile extends Canvas {
     public static final int TILE_SIZE = 66;
 
     private String name = "T";
@@ -63,20 +63,21 @@ public class Tile extends Canvas{
         return this.name;
     }
 
-    public void Occupy(Image robotImage, int rD){
+    public void Occupy(){
         this.Ocupied = true;
        
-        this.robotImage = robotImage;
-        this.robotDirection = rD;
-        redraw();
+        // this.robotImage = robotImage;
+        // this.robotDirection = rD;
+        // redraw();
         
     }
 
     public void unOccupy(){
         this.Ocupied = false;
-        this.robotImage = null;
-        this.robotDirection = -1;
-        redraw();
+
+        // this.robotImage = null;
+        // this.robotDirection = -1;
+        // redraw();
     }
 
     public boolean isOcupied(){
