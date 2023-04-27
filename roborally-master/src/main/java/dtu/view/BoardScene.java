@@ -13,6 +13,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.fxml.FXMLLoader;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.css.Size;
 import dtu.controller.Controller;
 import dtu.logic.models.Position;
@@ -77,8 +78,6 @@ public class BoardScene extends Scene implements RobotObserver {
             boardPane.setLeft(playersUIleft);
         }
         // boardPane.setRight(playersUIright);
-        
-
     }
 
     public BoardScene(Controller c) throws IOException {
@@ -122,10 +121,15 @@ public class BoardScene extends Scene implements RobotObserver {
         cp = new ControlPanel(c);
         rightSide.getChildren().addAll(playersUIright,cp);
         boardPane.setRight(rightSide);
+
+
     }
 
     public void updateRobotInfo(Robot robot) {
-        bd.drawRobot(robot);
+        Platform.runLater(() -> {
+            bd.drawRobot(robot);
+        });
+        
     }
 
     public ControlPanel getControlPanel() {

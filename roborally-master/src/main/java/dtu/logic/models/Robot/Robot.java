@@ -25,12 +25,18 @@ public class Robot {
     private int DirID;
     private ProgramCard LastMove = null;
 
+    private Position prevPos;
+
     public List<ProgramCard> register = new ArrayList<ProgramCard>(5);
     
     private List<RobotObserver> observers = new ArrayList<RobotObserver>();
 
     public int getcheckpointCount(){
         return this.checkpointCount;
+    }
+
+    public Position getPrevPos() {
+        return prevPos;
     }
 
     public void CheckpointReached(){
@@ -45,7 +51,9 @@ public class Robot {
     }
     
     public void robotNotify() {
+        System.out.println("Notifying obs ervers");
         for (RobotObserver observer : observers) {
+            System.out.println("Notified observer");
             observer.updateRobotInfo(this);
         }
     }
@@ -77,6 +85,11 @@ public class Robot {
     // Position and movement
     public void setPos(Position pos) {
         this.pos = pos;
+        robotNotify();
+    }
+    
+    public void setPos(int x, int y) {
+        pos.set(x, y);
         robotNotify();
     }
 
@@ -116,6 +129,8 @@ public class Robot {
 
 
     public void turn(int intens, BoardController boardController){
+        this.prevPos = this.pos;
+
         if (intens>0){
             for (int i = 0; i < intens;i++){
                 this.DirID += 1;
@@ -134,6 +149,7 @@ public class Robot {
         }
         //update tile
         boardController.getBoard().getTileAt(pos).Occupy();
+        robotNotify();
     }
 
     public Position getPosInDir(Direction dir){
@@ -156,6 +172,8 @@ public class Robot {
 
     public void moveforward(Boolean forward, BoardController boardController){
         
+        this.prevPos = new Position(pos.getColumn(),pos.getRow());
+
         int d;
         Direction MoveDir;
         if (forward){MoveDir = getdir();
@@ -268,9 +286,9 @@ public class Robot {
         return this.register;
     }
 
-    public void setPos(int x, int y){
-        pos.set(x, y);
-    }
+    // public void setPos(int x, int y){
+    //     pos.set(x, y);
+    // }
 
     public void setX(int x){
         pos.setColumn(x);
