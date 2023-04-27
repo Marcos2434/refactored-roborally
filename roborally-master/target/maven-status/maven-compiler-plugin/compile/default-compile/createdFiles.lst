@@ -4,8 +4,6 @@ dtu/logic/models/Cards/MovementCards/Again.class
 dtu/roborally/view/widgets/ControlPanel$7.class
 dtu/logic/models/Board/TileType.class
 dtu/roborally/view/TileType.class
-dtu/view/Tuple.class
-dtu/view/RobotViewer.class
 dtu/view/MenuScene.class
 dtu/logic/models/Position.class
 dtu/roborally/view/widgets/BoardTeacher.class
@@ -51,6 +49,7 @@ dtu/logic/models/Robot/Lazer.class
 dtu/logic/models/Board/TileHole.class
 dtu/roborally/view/widgets/ControlPanel$9.class
 dtu/logic/models/Cards/Deck.class
+dtu/view/drawers/BoardDrawer.class
 dtu/view/Playermat.class
 dtu/logic/models/RobotColor.class
 dtu/view/ProgrammingPhaseScene.class

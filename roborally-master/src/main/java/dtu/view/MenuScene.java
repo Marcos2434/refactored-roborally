@@ -2,6 +2,8 @@ package dtu.view;
 
 import dtu.controller.Controller;
 import dtu.logic.models.RobotColor;
+import dtu.logic.models.Player.Player;
+import dtu.logic.models.Robot.Robot;
 import javafx.scene.Scene;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -42,7 +44,6 @@ public class MenuScene extends Scene {
         BorderPane menu = (BorderPane) this.getRoot();
 		menu.setBackground(background3);
 		menu.setPrefSize(500, 500);
-        RobotViewer rv = new RobotViewer();
 
 		// RED
 		//Text r = new Text("RED");
@@ -217,7 +218,8 @@ public class MenuScene extends Scene {
 				}
 				c.getBoardScene().getControlPanel().addPlayerNamesToDropdown();
 				c.changeToBoardScene();
-          }
+				c.spawnRobots();
+          	}
         });
 			
 

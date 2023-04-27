@@ -2,6 +2,7 @@ package dtu.roborally.view.widgets;
 
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -96,16 +97,12 @@ public class ControlPanel extends GridPane {
 	}
 
 	private void addListeners() {
-		ChooseCards.setOnAction(new EventHandler<ActionEvent>() {
+		ChooseCards.setOnMouseClicked(new EventHandler<Event>() {
 			@Override
-			public void handle(ActionEvent event) {
-				try{
-					 
-					c.setProgrammingPhaseScene(new ProgrammingPhaseScene(c));
-				}
-				catch(Exception e){System.out.println(e);}
-				c.setTheScene(c.getProgrammingPhaseScene(), "Player: "+(c.getCurrentPlayer().getName()));
-				
+			public void handle(Event event) {
+				c.setProgrammingPhaseScene(new ProgrammingPhaseScene(c));
+				c.setTheScene(c.getProgrammingPhaseScene(), "Choose Cards!!");
+				c.notifyAllRobotObservers();
 			}
 		});
 		uTurn.setOnAction(new EventHandler<ActionEvent>() {

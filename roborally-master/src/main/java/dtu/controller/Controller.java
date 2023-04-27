@@ -25,17 +25,17 @@ public class Controller {
     // private ProgrammingPhaseSceneSimple programmingPhaseSceneSimple;
     // --------------
     private Stage primaryStage;
-
+    
     private Board board;
     private BoardController boardController;
     ArrayList<Position> availableBoardSpawns = new ArrayList<Position>();
 
     private Player currentPlayer;
-
+    
     public Controller(Stage primaryStage) {
         this.primaryStage = primaryStage;
     }
-
+    
     public void launch() {
         this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
         //this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
@@ -66,15 +66,27 @@ public class Controller {
         return board;
     }
 
+    public void notifyAllRobotObservers() {
+        for (int i = 0; i < this.boardController.getPlayers().size(); i++) {
+            this.boardController.getPlayers().get(i).getRobot().robotNotify();
+        }
+    }
+
     public void createPlayer(RobotColor color, String name) {
-        this.boardController.addPlayer(new Player(new Robot(color), name));
+        Robot robot = new Robot(color);
+        robot.registerObserver(this.boardScene);
+        this.boardController.addPlayer(new Player(robot, name));
         System.out.println(name + " has chosen color " + color);
     };
 
-    public void changeToBoardScene(){
+    public void changeToBoardScene() {
         this.boardScene.setPlayermats(this.boardController.getPlayers());
         this.setTheScene(this.getBoardScene(), "Roborally!");
-        this.startGame();
+        this.spawnRobots();
+    }
+
+    public void backToBoardScene() {
+        this.setTheScene(this.getBoardScene(), "Roborally!");
     }
 
     public void setMenuScene(MenuScene s) {
@@ -107,6 +119,10 @@ public class Controller {
 
     public void setProgrammingPhaseScene(ProgrammingPhaseScene programmingPhaseScene) {
         this.programmingPhaseScene = programmingPhaseScene;
+        // Register the scene as a robot observer
+        for (int i = 0; i < this.boardController.getPlayers().size(); i++) {
+            this.boardController.getPlayers().get(i).getRobot().registerObserver(this.programmingPhaseScene);
+        }
     }
 
     public ProgrammingPhaseScene getProgrammingPhaseScene() {
@@ -129,8 +145,7 @@ public class Controller {
         return playerNames;
     }
 
-    private void startGame() {
-
+    public void spawnRobots() {
         // Find spawn positions
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 13; j++) {
@@ -143,8 +158,8 @@ public class Controller {
         // Set robot to positions
         for (int i = 0; i < this.boardController.getPlayers().size(); i++) {
             // place robot on scene
-            this.boardController.getBoard().getTileAt(this.availableBoardSpawns.get(i)).Occupy(
-                this.boardController.getPlayers().get(i).getRobot().getImage(), this.boardController.getPlayers().get(i).getRobot().getDirID());;
+            // this.boardController.getBoard().getTileAt(this.availableBoardSpawns.get(i)).Occupy(this.boardController.getPlayers().get(i).getRobot().getImage(), this.boardController.getPlayers().get(i).getRobot().getDirID());
+            this.boardController.getBoard().getTileAt(this.availableBoardSpawns.get(i)).Occupy();
             
             // place robot on board
             this.boardController.getPlayers().get(i).getRobot().setPos(this.availableBoardSpawns.get(i));
@@ -153,6 +168,4 @@ public class Controller {
             this.boardController.getPlayers().get(i).getRobot().addCheckpoint(this.availableBoardSpawns.get(i));
         }
     }
-
-
 }

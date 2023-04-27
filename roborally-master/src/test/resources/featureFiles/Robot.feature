@@ -94,6 +94,12 @@ Feature: Robot Selection
         Given Two robots being created 
         When One robot pushes the other over the edge
         Then The other robot dies and respawns
+    
+    @tag17 
+        Scenario: A robot that have used a program card before can use the same card again by using the Again card
+        Given Two robots being created 
+        When one robot has a register consiting of one or more Again cards
+        Then they will perform the effect of the last run card.
 
     
 

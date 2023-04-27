@@ -18,6 +18,7 @@ import dtu.logic.models.Board.Board;
 import dtu.logic.models.Board.BoardController;
 import dtu.logic.models.Cards.Deck;
 import dtu.logic.models.Cards.ProgramCard;
+import dtu.logic.models.Cards.MovementCards.Again;
 import dtu.logic.models.Cards.MovementCards.Forward;
 import dtu.logic.models.Cards.MovementCards.TurnLeft;
 import dtu.logic.models.Player.Player;
@@ -332,6 +333,19 @@ public class RobotTest {
     @Then("The other robot dies and respawns")
     public void the_other_robot_dies_and_respawns() {
     assertEquals(new Position(6, 6),robot1.getPos());
+}
+    @When("one robot has a register consiting of one or more Again cards")
+    public void one_robot_has_a_register_consiting_of_one_or_more_again_cards() {
+        bC.moveRobot(robot1,new Position(5, 5));
+        robot1.AddToRegister(new Forward(1));
+        robot1.AddToRegister(new Again());
+        robot1.AddToRegister(new Again());
+        robot1.AddToRegister(new Again());
+        bC.runAllRegisters();
+    }
+    @Then("they will perform the effect of the last run card.")
+    public void they_will_perform_the_effect_of_the_last_run_card() {
+        assertEquals(new Position(5, 1),robot1.getPos());
 }
 }
 

@@ -7,6 +7,7 @@ import dtu.logic.models.Robot.Robot;
 
 public class Uturn implements ProgramCard{
     public void effect(Robot robot, BoardController boardController){
+        robot.setLastMove(new Uturn());
         robot.turn(2, boardController);
     }
 

@@ -16,16 +16,23 @@ import dtu.logic.models.Cards.Deck;
 import dtu.logic.models.Cards.ProgramCard;
 import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.Robot;
+import dtu.logic.models.Robot.RobotObserver;
+import dtu.view.drawers.BoardDrawer;
 import javafx.scene.layout.BackgroundImage;
 //import io.cucumber.messages.types.Background;
 // import io.cucumber.messages.types.Background;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
+import javafx.application.Platform;
+import javafx.event.Event;
+
+import java.io.IOException;
+// import javafx.event.EventHandler;
+import java.time.Duration;
 
 
     
-public class ProgrammingPhaseScene extends Scene {
-    
+public class ProgrammingPhaseScene extends Scene implements RobotObserver {
     //------------------------------------- GLOBALS_START -------------------------------------//
     Controller c;
     Player player1;
@@ -66,6 +73,8 @@ public class ProgrammingPhaseScene extends Scene {
     GridPane mainGrid;
     
     Button button;
+
+    BoardDrawer bd;
 
     private double startX;
     private double startY;
@@ -195,10 +204,13 @@ public class ProgrammingPhaseScene extends Scene {
 
         //Make cards draggable
         mainGrid.getChildren().forEach(this::makeDraggable);
+        // mainGrid.add(c.getBoard(),1, 0, 1, 5);
         
-        //Add board to this scene
-        mainGrid.add(c.getBoard(),1, 0, 1, 5);
+        // Draw board
+        bd = new BoardDrawer();
+        bd.draw(c.getBoard());
         
+        mainGrid.add(bd, 1, 0, 1, 5);
 
         //------------------------------------- CARDS_END -------------------------------------//
 
@@ -269,7 +281,14 @@ public class ProgrammingPhaseScene extends Scene {
         button.setOnAction(e->DoneButton());
 
         //------------------------------------- REGISTER_BOXES_END -------------------------------------//
-    
+    }
+
+    // Observer method
+    public void updateRobotInfo(Robot robot) {
+        Platform.runLater(() -> {
+            bd.drawRobot(robot);
+        });
+        
     }
 
     
@@ -439,7 +458,10 @@ public class ProgrammingPhaseScene extends Scene {
             player1.getRobot().AddToRegister(card);  
         }
         System.out.println(player1.getRobot().getRegister());
-        c.changeToBoardScene();
+        // c.backToBoardScene();
+        c.getBoardScene().redraw();
+        c.setTheScene(c.getBoardScene());
+        c.notifyAllRobotObservers();
     }
 }
 

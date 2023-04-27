@@ -31,6 +31,7 @@ public class Forward implements ProgramCard {
         }
     }
     public void effect(Robot robot, BoardController boardController){
+        robot.setLastMove(new Forward(intensity));
         for (int i = 0; i <intensity; i++) {
             robot.moveforward(true, boardController);
             if (robot.getPos().getRow() < 0 || robot.getPos().getRow() > 12 ||
@@ -39,12 +40,12 @@ public class Forward implements ProgramCard {
                     break;
             }
             
-        //update new tile
-            boardController.getBoard().getTileAt(robot.getPos()).Occupy(robot.getImage(), robot.getDirID());
-            //try{Thread.sleep(200);}
-            //catch(Exception e){System.out.println(e);}
+            //update new tile
+            boardController.getBoard().getTileAt(robot.getPos()).Occupy();
+            try{Thread.sleep(200);}
+            catch(Exception e){System.out.println(e);}
 
         }
-        boardController.getBoard().getTileAt(robot.getPos()).Occupy(robot.getImage(), robot.getDirID());
+        boardController.getBoard().getTileAt(robot.getPos()).Occupy();
     }
 }

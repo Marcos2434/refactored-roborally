@@ -18,15 +18,19 @@ public class Backwards implements ProgramCard{
         this.intensity = intensity;
     }
     public void effect(Robot robot, BoardController boardController){
+        robot.setLastMove(new Backwards(intensity));
         for (int i = 0; i <intensity; i++) {
             robot.moveforward(false, boardController);
             if (robot.getPos().getRow() < 0 || robot.getPos().getRow() > 12 ||
                 robot.getPos().getColumn() < 0 || robot.getPos().getColumn()>9)
                 {robot.Death(boardController);
                     break;}
-                boardController.getBoard().getTileAt(robot.getPos()).Occupy(robot.getImage(), robot.getDirID());
+                boardController.getBoard().getTileAt(robot.getPos()).Occupy();
+                try {
+                    Thread.sleep(200);
+                 } catch (Exception e) { System.err.println(e); }
         }
-        boardController.getBoard().getTileAt(robot.getPos()).Occupy(robot.getImage(), robot.getDirID());
+        boardController.getBoard().getTileAt(robot.getPos()).Occupy();
         
     }
     

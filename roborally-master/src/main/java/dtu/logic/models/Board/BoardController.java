@@ -43,6 +43,7 @@ public class BoardController {
             for (int j = 0; j < this.players.size(); j++) {
                 Robot r = this.players.get(j).getRobot();
                 
+                
                 if (r.getRegister().size() > i){
                     r.moveByCard(this, r.getRegister().get(i));
                 }
@@ -52,9 +53,9 @@ public class BoardController {
                 }
             }
 
-            ///try {
-             //   Thread.sleep(800);
-            //} catch (Exception e) { System.err.println(e); }
+            try {
+               Thread.sleep(200);
+            } catch (Exception e) { System.err.println(e); }
             
             RunAllEffects();
             fireRobotLazers();
@@ -133,8 +134,7 @@ public class BoardController {
     public void moveRobot(Robot robot,Position pos){
         this.board.getTileAt(robot.getPos()).unOccupy();
         robot.setPos(pos);
-       
-        this.board.getTileAt(robot.getPos()).Occupy(robot.getImage(),robot.getDirID());
+        this.board.getTileAt(robot.getPos()).Occupy();
     }
 
     public ArrayList<Player> getPlayers(){
@@ -142,7 +142,7 @@ public class BoardController {
     }
 
     // check if a robot is allowed a move:
-    public boolean allowmove(Robot robot,Direction dir){
+    public boolean allowmove(Robot robot, Direction dir){
         
         Position toPos = robot.getPosInDir(dir);
         
