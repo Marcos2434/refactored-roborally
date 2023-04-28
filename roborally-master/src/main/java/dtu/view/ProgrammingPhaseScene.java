@@ -93,7 +93,6 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
         BackgroundImage background2 = new BackgroundImage(background, null, null, null, null);
         Background background3 = new Background(background2);
         
-        System.out.println("got over background");
         
         this.mainGrid = (GridPane) this.getRoot();
         //Set backround to the whole scene 
@@ -113,9 +112,7 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
    
         mainGrid.getColumnConstraints().addAll(column1, column2, column3, column4);
 
-        System.out.println("got over column assembly");
         //------------------------------------- CARDS_START -------------------------------------//
-        System.out.println("cards start");
         //Card1
         System.out.println(c.getCurrentPlayer().getHand().get(0).getImage());
         Image stream1 = new Image (ProgrammingPhaseScene.class.getClassLoader().getResourceAsStream(c.getCurrentPlayer().getHand().get(0).getImage())); //

@@ -129,9 +129,7 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
     }
 
     public void updateCardTaken(Player player, String cardImageString){
-        System.out.println("Notified");
         Platform.runLater(() -> {;
-            System.out.println("Notified");
             getPlayermat(player.getName()).activateCard(cardImageString);
         });
     }
