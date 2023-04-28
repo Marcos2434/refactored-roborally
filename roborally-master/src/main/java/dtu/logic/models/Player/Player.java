@@ -1,14 +1,10 @@
 package dtu.logic.models.Player;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import dtu.logic.models.RobotColor;
 import dtu.logic.models.Cards.Deck;
-
 import dtu.logic.models.Cards.ProgramCard;
 import dtu.logic.models.Robot.Robot;
-import java.util.Scanner;
+
 
 public class Player {
     private String name;
@@ -82,9 +78,5 @@ public class Player {
     public ArrayList<ProgramCard> getHand() {
         return hand;
     }
-
-  
-
-
 }
 

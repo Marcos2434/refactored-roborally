@@ -14,21 +14,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import dtu.logic.models.Cards.Deck;
 import dtu.logic.models.Cards.ProgramCard;
-import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.Robot;
 import dtu.logic.models.Robot.RobotObserver;
 import dtu.view.drawers.BoardDrawer;
-import javafx.scene.layout.BackgroundImage;
-//import io.cucumber.messages.types.Background;
-// import io.cucumber.messages.types.Background;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.application.Platform;
-import javafx.event.Event;
-
-import java.io.IOException;
-// import javafx.event.EventHandler;
-import java.time.Duration;
 
 
     
@@ -307,8 +298,6 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
         });
         // (3) Mouse Released
         node.setOnMouseReleased(e->{
-            double mouseX = e.getSceneX();
-            double mouseY = e.getSceneY();
             if (leftBox1.getBoundsInParent().contains(e.getSceneX(), e.getSceneY())){
                 if (frame.getFill()==null){
                     node.setVisible(false);
@@ -429,7 +418,6 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
         for (int j = 0; j < 9; j++) {
             ProgramCard card = c.getCurrentPlayer().getHand().get(j);
             if (card.getImage().equals(cardId)){
-                System.out.println("Card found");
                 return card;
             }
         }
@@ -457,7 +445,6 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
             ProgramCard card  = findCard(frame5.getId());
             c.getCurrentPlayer().getRobot().AddToRegister(card);  
         }
-        System.out.println(c.getCurrentPlayer().getRobot().getRegister());
         // c.backToBoardScene();
         c.getBoardScene().redraw();
         c.getCurrentPlayer().getHand().clear();

@@ -11,7 +11,7 @@ public class Forward implements ProgramCard {
     private String image;
 
     public Forward () {
-        System.out.println("Forward card created" + image);
+       
     }
     @Override
     public String getImage(){

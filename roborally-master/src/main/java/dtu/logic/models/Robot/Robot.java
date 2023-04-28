@@ -1,15 +1,10 @@
 package dtu.logic.models.Robot;
 import java.util.List;
-
 import dtu.logic.models.RobotColor;
 import dtu.logic.models.Direction;
 import dtu.logic.models.Position;
-import dtu.logic.models.Board.Board;
 import dtu.logic.models.Board.BoardController;
-import dtu.logic.models.Board.Tile;
-
 import dtu.logic.models.Cards.ProgramCard;
-import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -63,7 +58,6 @@ public class Robot {
     }
     
     public void registerObserver(RobotObserver observer) {
-        System.out.println("[ADDED OBSERVER]");
         observers.add(observer);
     }
 
@@ -82,11 +76,10 @@ public class Robot {
         this.image = new Image(getClass().getClassLoader().getResourceAsStream(this.Robotcolor.getPictureFile()));  
     }
 
-
-
     // Position and movement
     public void setPos(Position pos) {
         this.pos = pos;
+        System.out.println("setPos");
         robotNotify();
     }
     
@@ -288,9 +281,9 @@ public class Robot {
     public void AddToRegister(ProgramCard card){
         if (register.size() <5){
             register.add(card);
-            System.out.println("Card added to register");
+
         }
-        else{System.out.println("Register is full,insert is not possible");}
+
     }
     //Register handeling
     public void setRegister(List<ProgramCard> cards) {
@@ -300,7 +293,7 @@ public class Robot {
                 this.register.add(cards.get(i));
             }
         }
-        else{System.out.println("Too many cards!!!!!!!!!");}
+        else{;}
     }
 
 

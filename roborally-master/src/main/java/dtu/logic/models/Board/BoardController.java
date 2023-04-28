@@ -103,11 +103,11 @@ public class BoardController {
     public void addAI(AI ai){
         for (int i = 0; i < this.players.size(); i++){
             if (players.get(i).getName()  ==  (ai.getName())){
-                ai=new AI(ai.getRobot()); 
+                ai = new AI(new Robot(ai.getRobot().getRobotColor())); 
             }
 
         }
-        players.add(ai);
+        addPlayer(ai);
         return;
 
     }
