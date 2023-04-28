@@ -124,51 +124,17 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
 
     public void updateCardTaken(Player player, String cardImageString){
         Platform.runLater(() -> {;
-        getPlayermat(player.getName()).activateCard(cardImageString);
+            getPlayermat(player.getName()).activateCard(cardImageString);
         });
     }
 
     public ControlPanel getControlPanel() {
         return this.cp;
     }
-    public void Popup(){
-        ImageView imageView = new ImageView("Popupcard.png");
-        Label label = new Label("This is a Popup");
-      
-        // create a popup
-        Popup popup = new Popup();
-    
-        Button button = new Button("Test button for popup");
-        // add the label
-        
-        popup.getContent().add(label);
-        //label.setStyle("-fx-background-image: ;");
-        // set size of label
-        label.setMinWidth(80);
-        label.setMinHeight(50);
-        // set auto hide
-        popup.setAutoHide(true);
-        // action event
-        EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) //
-            {
-                if (!popup.isShowing())
-                    popup.show(boardPane.getScene().getWindow());
-                else
-                    popup.hide();
-            }
-        };
-    
+
     public void updateLaser(Lazer laser) {
         Platform.runLater(() -> {
             bd.drawLaser(laser);
         });   
-    }
-
-        // when button is pressed
-        button.setOnAction(event);
-        // add button
-        rightSide.getChildren().add(button);
-
     }
 }
