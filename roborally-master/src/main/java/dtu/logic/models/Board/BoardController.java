@@ -1,16 +1,18 @@
 package dtu.logic.models.Board;
 
 import dtu.logic.models.Position;
+import dtu.logic.models.RobotColor;
 import dtu.logic.models.Cards.ProgramCard;
 import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.Lazer;
 import dtu.logic.models.Robot.Robot;
 import java.util.ArrayList;
-
+import dtu.logic.models.AI;
 import dtu.logic.models.Direction;
 
 public class BoardController {
     private ArrayList<Player> players = new ArrayList<Player>();
+
     private Board board;
 
     public BoardController(Board board) {
@@ -40,23 +42,27 @@ public class BoardController {
         for (int i=0; i<5;i++){
             for (int j = 0; j < this.players.size(); j++) {
                 Robot r = this.players.get(j).getRobot();
-                System.out.println(r.getCheckpoint());
+                
+                
                 if (r.getRegister().size() > i){
                     r.moveByCard(this, r.getRegister().get(i));
                 }
                 
                 if (i == 4){
-                    r.setRegister(new ArrayList<ProgramCard>());
+                    r.getRegister().clear();
                 }
             }
 
             try {
-                Thread.sleep(800);
+               Thread.sleep(100);
             } catch (Exception e) { System.err.println(e); }
             
             RunAllEffects();
             fireRobotLazers();
             fireboardLazers();
+            try {
+                Thread.sleep(100);
+             } catch (Exception e) { System.err.println(e); }
         }
         this.emptyAllRegisters();
 
@@ -81,7 +87,7 @@ public class BoardController {
                 else{r = 12 - j/2;}
                */
                 if (this.getBoard().getTileAt(new Position(i,j)).isOcupied()){
-                    
+                 
                     this.getBoard().getTileAt(new Position(i,j)).effect(getRobotAt(new Position(i,j)), this);
                 }
                 
@@ -94,7 +100,17 @@ public class BoardController {
             players.get(i).getRobot().FIRE(this);
         }
     }
+    public void addAI(AI ai){
+        for (int i = 0; i < this.players.size(); i++){
+            if (players.get(i).getName()  ==  (ai.getName())){
+                ai=new AI(ai.getRobot()); 
+            }
 
+        }
+        players.add(ai);
+        return;
+
+    }
     public void addPlayer(Player player){
         boolean allowed = true;
         
@@ -121,16 +137,15 @@ public class BoardController {
     public void moveRobot(Robot robot,Position pos){
         this.board.getTileAt(robot.getPos()).unOccupy();
         robot.setPos(pos);
-        robot.setCheckpoint(new Position(pos.getColumn(),pos.getRow()));
-        this.board.getTileAt(robot.getPos()).Occupy(robot.getImage(),robot.getDirID());
+        this.board.getTileAt(robot.getPos()).Occupy();
     }
 
     public ArrayList<Player> getPlayers(){
         return this.players;
     }
-    
+
     // check if a robot is allowed a move:
-    public boolean allowmove(Robot robot,Direction dir){
+    public boolean allowmove(Robot robot, Direction dir){
         
         Position toPos = robot.getPosInDir(dir);
         
@@ -188,5 +203,14 @@ public class BoardController {
         else{
             return null;
         }
+    }
+    
+    public Player getPlayerByColor(RobotColor color){
+            for (int i = 0; i < this.players.size(); i++){
+                if (players.get(i).getRobot().getRobotColor().equals(color)){
+                    return players.get(i);
+                }   
+            }
+            return null;
     }
 }

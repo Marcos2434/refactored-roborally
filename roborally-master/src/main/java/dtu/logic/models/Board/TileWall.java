@@ -13,15 +13,11 @@ public class TileWall extends Tile{
     public TileWall(TileType type, int dir){
         super(type);
         this.DirID = dir;
-        this.image = new Image("tiles/wall" + DirID + ".png");
-        redraw();
+        this.imageString = "tiles/wall" + DirID + ".png";
+  
 	}
     
-    public TileWall(TileType type, int dir, Boolean test){
-        super(type);
-        this.DirID = dir;
-        redraw();
-	}
+
     @Override
     public void effect(Robot robot,BoardController boardController){;}
     

@@ -19,6 +19,7 @@ public class TurnLeft implements ProgramCard {
         this.intensity = -intensity;
     }
     public void effect(Robot robot, BoardController boardController){
+        robot.setLastMove(new TurnRight(intensity));
             robot.turn(intensity, boardController);
         
     }

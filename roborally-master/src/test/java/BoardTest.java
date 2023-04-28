@@ -1,4 +1,4 @@
-import static org.junit.Assert.assertNotNull;
+
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
@@ -7,12 +7,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
-import org.junit.runner.RunWith;
-import io.cucumber.junit.Cucumber;
-import io.cucumber.junit.CucumberOptions;
-import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
@@ -60,7 +57,7 @@ public class BoardTest {
             {"T","T","HT","T","T","T","T","T","T","T"},
             {"T","T","HT","T","T","T","T","T","T","T"},
         };
-        this.board = new Board(board1, true);
+        this.board = new Board(board1);
         bC = new BoardController(board);
         robot.setPos(pos1);
         
@@ -68,7 +65,7 @@ public class BoardTest {
     // test extraction of tile
     @Then("Show me what Tile it is")
     public void show_me_what_tile_it_is() {
-        assertEquals("T",board.getTileAt(pos1).getname());
+        assertTrue(TileFactory.createtile("T", pos1.getColumn(), pos1.getRow()).equals(board.getTileAt(pos1)));
         assertEquals("HT",board.getTileAt(pos2).getname());
         assertNull(board.getTileAt(pos3));
     }
@@ -137,7 +134,7 @@ public class BoardTest {
             {"BT 2 2","BT 1 2","T","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"}};
-        this.board = new Board(board1, true);
+        this.board = new Board(board1);
         bC = new BoardController(board);
         robot1 = new Robot(RobotColor.BLUE,new Position(3,3));
         robot2 = new Robot(RobotColor.GREEN,new Position(3,3));
@@ -147,28 +144,16 @@ public class BoardTest {
         player2 = new Player(robot2,"Casper2");
         player3 = new Player(robot3,"Casper3");
         player4 = new Player(robot4,"Casper4");
-        bC.initPlayers();
+       
     }
     @Then("Add the players to the player list")
     public void add_the_players_to_the_player_list() {
         bC.addPlayer(player1);
         bC.addPlayer(player4);
-        assertEquals("Casper1",bC.getPlayers()[0].getName());
-        assertEquals("Casper4",bC.getPlayers()[1].getName());
+        assertEquals("Casper1",bC.getPlayers().get(0).getName());
+        assertEquals("Casper4",bC.getPlayers().get(1).getName());
 }
-
-    @Then("Add the player is not added if they have the same position")
-    public void add_the_player_is_not_added_if_they_have_the_same_position() {
-        bC.addPlayer(player1);
-        bC.addPlayer(player2);
-        assertNull(bC.getPlayers()[1]);
-}
-    @Then("Add the player is not added if they have the same RobotColor")
-    public void add_the_player_is_not_added_if_they_have_the_same_Robotcolor() {
-        bC.addPlayer(player1);
-        bC.addPlayer(player3);
-        assertNull(bC.getPlayers()[1]);
-}
+    
 
     @When("the robots move")
     public void the_robots_move() {
@@ -178,7 +163,7 @@ public class BoardTest {
     }
     @Then("The robots position is still the same in playerlist")
     public void the_robots_position_is_still_the_same_in_playerlist() {
-        assertTrue(bC.getPlayers()[0].getRobot().getPos().equals(robot1.getPos()));
+        assertTrue(bC.getPlayers().get(0).getRobot().getPos().equals(robot1.getPos()));
 }
     @When("A robot is placed to be hit by the lazer tile")
     public void a_robot_is_placed_to_be_hit_by_the_lazer_tile() {
@@ -268,9 +253,9 @@ public class BoardTest {
             {"T","T","T","T","T","T","T","T","T","T"},
             {"LT 3","T","T","T","T","T","T","T","T","T"},
             {"BT 2 2","BT 1 2","T","T","T","T","T","T","T","T"},
-            {"T","T","T","T","T","T","T","T","T","T"},
+            {"T","T","T","T","T","C 1","T","C 2","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"}};
-        this.board = new Board(board1, true);
+        this.board = new Board(board1);
         bC = new BoardController(board);
         robot1 = new Robot(RobotColor.BLUE,new Position(0,5));
         robot2 = new Robot(RobotColor.GREEN,new Position(1,5));
@@ -280,7 +265,7 @@ public class BoardTest {
         player2 = new Player(robot2,"Casper2");
         player3 = new Player(robot3,"Casper3");
         player4 = new Player(robot4,"Casper4");
-        bC.initPlayers();
+      
 }
     @When("robots are placed on tiles and allTileEffect is called")
     public void four_robots_are_placed_on_tiles_and_all_tile_effect_is_called() {
@@ -289,7 +274,7 @@ public class BoardTest {
         bC.addPlayer(player3);
         bC.addPlayer(player4);
         bC.moveRobot(robot1, new Position(2,2));
-        robot1.setCheckpoint(new Position(0, 5));
+        robot1.addCheckpoint(new Position(0, 5));
         bC.moveRobot(robot2, new Position(0,10));
         bC.moveRobot(robot3, new Position(2,4));
                
@@ -318,15 +303,16 @@ public class BoardTest {
             {"T","T","T","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"}};
-        this.board = new Board(board1, true);
+        this.board = new Board(board1);
         bC = new BoardController(board);
         robot1 = new Robot(RobotColor.BLUE,new Position(0,5));
         robot2 = new Robot(RobotColor.GREEN,new Position(1,5));
-        
+        bC.getBoard().getTileAt(robot1.getPos()).Occupy();
+        bC.getBoard().getTileAt(robot2.getPos()).Occupy();
         player1 = new Player(robot1,"Casper1");
         player2 = new Player(robot2,"Casper2");
        
-        bC.initPlayers();
+        
 }
     @When("The board activates the registers")
     public void The_board_activates_the_registers() {
@@ -394,7 +380,7 @@ public class BoardTest {
     public void the_board_activates_the_registers_in_a_way_that_makes_them_walk_on_top_of_tiles_with_effects() {
        
         bC.moveRobot(player1.getRobot(),new Position(1,0));
-        robot1.setCheckpoint(new Position(0, 5));
+        robot1.addCheckpoint(new Position(0, 5));
         List<ProgramCard> cards1 = new ArrayList<ProgramCard>(Arrays.asList(new TurnLeft(1),
                                                                             new Forward(1),
                                                                             new Uturn(),
@@ -412,6 +398,48 @@ public class BoardTest {
     assertEquals(2,player1.getRobot().getDamageTaken());
     assertEquals(2,player1.getRobot().getLives());
 }
+    @When("A robot walks over the next ceckpoint")
+    public void a_robot_walks_over_the_next_ceckpoint() {
+        bC.addPlayer(player1);
+       
+        bC.moveRobot(robot1, new Position(4,11));
+        robot1.moveByCard(bC,new TurnRight(1));
+        robot1.moveByCard(bC,new Forward(1));
+        bC.RunAllEffects();
+    }
+    @Then("it is added to the checkpoints")
+    public void it_is_added_to_the_checkpoints() {
+        assertEquals(new Position(5,11),robot1.getCheckpoints().get(robot1.getCheckpoints().size()-1));
+}
+    @When("A robot walks over the wrong ceckpoint")
+    public void a_robot_walks_over_the_wrong_ceckpoint() {
+        bC.addPlayer(player1);
+       
+        bC.moveRobot(robot1, new Position(6,11));
+        robot1.moveByCard(bC,new TurnRight(1));
+        robot1.moveByCard(bC,new Forward(1));
+        bC.RunAllEffects();
+    }
+    @Then("it is not added to the checkpoints")
+    public void it_is_not_added_to_the_checkpoints() {
+        assertNotEquals(new Position(7,11),robot1.getCheckpoints().get(robot1.getCheckpoints().size()-1));
+}
+    @When("A robot walks over a checkpoint and then dies while the its checkpoint is occupied")
+    public void a_robot_walks_over_a_checkpoint_and_then_dies_while_the_its_checkpoint_is_occupied() {
+        bC.addPlayer(player1);
+        bC.moveRobot(robot1, new Position(4,11));
+        robot1.moveByCard(bC,new TurnRight(1));
+        robot1.moveByCard(bC,new Forward(1));
+        bC.RunAllEffects();
+        bC.moveRobot(robot1, new Position(5,5));
+        bC.moveRobot(robot2,new Position(5,11));
+        robot1.Death(bC);
+    }
+    @Then("it spawns at the stating position")
+    public void it_spawns_at_the_stating_position() {
+        assertEquals(new Position(0,5),robot1.getPos());
+}
+
 }
 
 

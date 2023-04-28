@@ -14,17 +14,12 @@ public class TileBelt extends Tile{
     public TileBelt(TileType type, Direction dir,int intensity){
         super(type);
         this.dir = dir;
-        this.image = new Image("tiles/" + intensity + "speedBelt" + dir.getId() + ".png");
         this.intensity = intensity;
-        redraw();
+        this.imageString = "tiles/" + intensity + "speedBelt" + dir.getId() + ".png";
+       
 	}
-    
-    public TileBelt(TileType type, Direction dir,int intensity, Boolean test){
-        super(type);
-        this.dir = dir;
-        this.intensity = intensity;
-        redraw();
-	}
+   
+
     public String getname(){
         return this.name;
     }
@@ -41,9 +36,9 @@ public class TileBelt extends Tile{
                
                 TileBelt currtile = (TileBelt)boardController.getBoard().getTileAt(robot.getPos());
                 pushRobot(robot,currtile.getdir());
-                boardController.getBoard().getTileAt(robot.getPos()).Occupy(robot.getImage(), robot.getdir().getId()); 
-                try{Thread.sleep(500);}
-                catch(Exception e){System.out.println(e);}
+                boardController.getBoard().getTileAt(robot.getPos()).Occupy(); 
+                //try{Thread.sleep(500);}
+                //catch(Exception e){System.out.println(e);}
 
                 if (boardController.getBoard().getTileAt(robot.getPos()) instanceof TileBelt){
                     
@@ -56,7 +51,7 @@ public class TileBelt extends Tile{
         else{ 
             pushRobot(robot, this.dir);
         }
-        boardController.getBoard().getTileAt(robot.getPos()).Occupy(robot.getImage(), robot.getdir().getId()); 
+        boardController.getBoard().getTileAt(robot.getPos()).Occupy(); 
        
     
 }

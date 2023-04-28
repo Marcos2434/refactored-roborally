@@ -17,7 +17,11 @@ public class Again implements ProgramCard{
     
     @Override
     public void effect(Robot robot, BoardController boardController) {
-        robot.getLastMove().effect(robot, boardController);
+        
+        if (robot.getLastMove() != null){
+            robot.getLastMove().effect(robot, boardController);
+        }
+        
     }
 
     

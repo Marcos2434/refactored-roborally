@@ -8,13 +8,14 @@ import javafx.scene.image.Image;
 import javafx.scene.transform.Affine;
 import javafx.scene.transform.Rotate;
 
-public class Tile extends Canvas{
+public class Tile extends Canvas {
     public static final int TILE_SIZE = 66;
 
     private String name = "T";
     protected TileType type;
     protected Direction direction;
     protected Image image;
+    protected String imageString;
 	protected Image robotImage;
     protected int robotDirection;
     protected Boolean Ocupied = false;
@@ -22,13 +23,25 @@ public class Tile extends Canvas{
     public Tile(TileType type) {
 		super(TILE_SIZE, TILE_SIZE);
 		this.type = type;
-		this.image = new Image(getClass().getClassLoader().getResourceAsStream(this.type.getPictureFile()));
+		this.imageString = "tiles/floor.png";
 		
-		redraw();
+		//redraw();
 	}
 
-    public Tile(int tileSize, int tileSize2) {
+    public void setImage(Image image){
+        this.image = image;
     }
+
+    public String getimageString(){
+        return this.imageString;
+    }
+
+    public void setimageString(String IS){
+        this.imageString = IS;
+    }
+
+
+  
     
     @Override
     public boolean equals(Object obj) {
@@ -43,7 +56,7 @@ public class Tile extends Canvas{
         return this.type;
     }
         
-    protected void redraw() {
+    public void redraw() {
 		GraphicsContext gc = getGraphicsContext2D();
 		gc.drawImage(image, 0, 0);
 		
@@ -63,20 +76,21 @@ public class Tile extends Canvas{
         return this.name;
     }
 
-    public void Occupy(Image robotImage, int rD){
+    public void Occupy(){
         this.Ocupied = true;
        
-        this.robotImage = robotImage;
-        this.robotDirection = rD;
-        redraw();
+        // this.robotImage = robotImage;
+        // this.robotDirection = rD;
+        // redraw();
         
     }
 
     public void unOccupy(){
         this.Ocupied = false;
-        this.robotImage = null;
-        this.robotDirection = -1;
-        redraw();
+
+        // this.robotImage = null;
+        // this.robotDirection = -1;
+        // redraw();
     }
 
     public boolean isOcupied(){

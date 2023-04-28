@@ -6,6 +6,7 @@ public class TileHole extends Tile {
     
     public TileHole(TileType type) {
 	    super(type);
+        this.imageString = "tiles/pit.png";
 	}
 
     @Override

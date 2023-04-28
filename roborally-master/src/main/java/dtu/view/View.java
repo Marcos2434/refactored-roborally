@@ -10,14 +10,16 @@ public class View extends Application {
 		Controller c = new Controller(primaryStage);
 		
 		// --- Define Scenes ---
+		StartMenuScene Start = new StartMenuScene(c);
+		c.setStartScene(Start);
 		MenuScene menuScene = new MenuScene(c);
 		c.setMenuScene(menuScene);
 		
-		BoardScene boardScene = new BoardScene(c);
-		c.setBoardScene(boardScene);
 
-		// ProgrammingPhaseScene programmingPhaseScene = new ProgrammingPhaseScene(c);
-		// c.setProgrammingPhaseScene(programmingPhaseScene);
+		// ProgrammingPhaseScene programmingScene = new ProgrammingPhaseScene(c);
+		// c.setProgrammingPhaseScene(programmingScene);
+		// try {
+		// } catch (Exception e) { System.err.println(e); }
 
 		// ProgrammingPhaseSceneSimple programmingPhaseSceneSimple = new ProgrammingPhaseSceneSimple(c);
 		// c.setProgrammingPhaseSceneSimple(programmingPhaseSceneSimple);
