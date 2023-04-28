@@ -36,7 +36,7 @@ public class AI extends Player {
                 }
         }
         hand = array;
-        robot.setRegister(hand);
+   
 
     }
     @Override

@@ -34,7 +34,7 @@ public class Controller {
     private BoardController boardController;
     ArrayList<Position> availableBoardSpawns = new ArrayList<Position>();
     private ArrayList<Player> realPlayers = new ArrayList<Player>();
-
+    private ArrayList<Player> Ais = new ArrayList<Player>();
 
     private Player currentPlayer;
     
@@ -187,23 +187,26 @@ public class Controller {
     }
 
 	public void nextScene(){
-        System.out.println(realPlayers.size());
-		if (getCount()==realPlayers.size()-1){
-            
+		if (getCount()==realPlayers.size()){
 			count0();
+            for (Player i : Ais) {
+                i.drawProgrammingCards();
+                i.chooseProgrammingCards();
+                System.out.println(i.getRobot().getRegister().toString());
+                notifyAllRobotObservers();
+            }
+            
 			setTheScene(getBoardScene(),"RoboRally!!");
 		}
 		else{
-			System.out.println("WE managed to get inside loop");
-			System.out.println(realPlayers.get(getCount()).toString());
 			setCurrentPlayer(realPlayers.get(getCount()));
 			addCount();
 			setProgrammingPhaseScene(new ProgrammingPhaseScene(this));
 			setTheScene(getProgrammingPhaseScene(), getCurrentPlayer().getName());
 		}   
-		addCount();
+        notifyAllRobotObservers();
+        
     }
-
     public void getRealPlayers(){
 		for (Player i : getBoardController().getPlayers()) {
 
@@ -211,6 +214,9 @@ public class Controller {
 
 				realPlayers.add(i);
 			}
+            else {
+                Ais.add(i);
+            }
 		}
 
     }
