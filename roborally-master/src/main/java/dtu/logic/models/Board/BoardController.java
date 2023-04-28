@@ -29,7 +29,6 @@ public class BoardController {
     }
 
     public void registerBoardObserver(BoardObserver o) {
-        System.out.println("Test");
         this.boardObservers.add(o);
     }
 
@@ -43,10 +42,6 @@ public class BoardController {
         for (BoardObserver o : this.boardObservers) {
             o.updateCardTaken(player, cardImageString);
         }
-
-
-        // this.boardScene.getPlayermat(currentPlayer.getName()).removeCard();
-        // System.out.println("Removed");
 	}
 
     public void notifyLaserObservers(Lazer laser) {
@@ -78,7 +73,7 @@ public class BoardController {
         for (int i=0; i<5;i++){
             for (int j = 0; j < this.players.size(); j++) {
                 Robot r = this.players.get(j).getRobot();
-              
+                System.out.println(r.getRegister());
                 
                 if (r.getRegister().size() > i){
                     notifyCardRemove(this.players.get(j), r.getRegister().get(i).getImage());
@@ -91,6 +86,10 @@ public class BoardController {
                 }
                 
             }
+            System.out.println();
+
+            
+            
             RunAllEffects();
             fireRobotLazers();
             fireboardLazers();
@@ -99,7 +98,7 @@ public class BoardController {
              } catch (Exception e) { System.err.println(e); }
         }
         this.emptyAllRegisters();
-        
+        System.out.println("Finnished");
 
     }
 

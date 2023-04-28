@@ -187,10 +187,9 @@ public class Controller {
 	public void nextScene(){
 		if (getCount()==realPlayers.size()){
 			count0();
-            for (Player ai : Ais) {
-                ai.drawProgrammingCards();
-                ai.chooseProgrammingCards();
-                System.out.println(ai.getRobot().getRegister().toString());
+            for (Player i : Ais) {
+                i.drawProgrammingCards();
+                i.chooseProgrammingCards();
                 notifyAllRobotObservers();
             }
             this.getBoardController().registerBoardObserver(this.getBoardScene());

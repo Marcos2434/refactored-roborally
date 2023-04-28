@@ -75,6 +75,12 @@ public class Playermat extends StackPane {
         return player;
     }
 
+    public void destroyed(){
+        Image shaderpic = new Image("playermat/destroyed.png");
+        ImageView shader = new ImageView(shaderpic);
+        super.getChildren().add(shader);
+    }
+
     public void setRegister(int amountInHand) {
         cardsHbox.getChildren().clear();
         for (int i = 0; i < amountInHand; i++) {
@@ -109,12 +115,13 @@ public class Playermat extends StackPane {
                 this.regSize -= 1;
             }
             catch(Exception i){
-                System.out.println(i);
             }
         } 
         ActiveCardPic = new Image(cardImageURL, 110, 156, false, false);
         ActiveCard = new ImageView(ActiveCardPic);
         hbox1.getChildren().set(1, ActiveCard);
+
+        System.out.println("Should be seen");
     }
 
     public void updateChPInfo(String info) {
@@ -137,6 +144,9 @@ public class Playermat extends StackPane {
             chPoint.setText("Checkpoint: " + this.player.getRobot().getcheckpointCount() + "    ");
         }
         lives.setText("Lives: " + String.valueOf(player.getRobot().getLives()) + "   ");
+        if (player.getRobot().getLives() == 0){
+            destroyed();
+        }
         damage.setText("Damage: " + String.valueOf(player.getRobot().getDamageTaken()));
     }
 

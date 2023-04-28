@@ -56,14 +56,6 @@ public class BoardDrawer extends GridPane {
         stackPane.getChildren().add(new ImageView(image));
     }
 
-    // public void drawLaser(Lazer laser) {
-    //     StackPane stackPane = (StackPane) this.getChildren().get(laser.getPos().getRow() * 10 + laser.getPos().getColumn());
-    //     stackPane.getChildren().add(new ImageView(new Image(laser.getImageString())));
-    //     try {
-    //         Thread.sleep(200);
-    //         stackPane.getChildren().removeIf(node -> node instanceof ImageView);
-    //     } catch(Exception e) { System.err.println(e); }
-    // }
     public void drawLaser(Lazer laser) {
         StackPane stackPane = (StackPane) this.getChildren().get(laser.getPos().getRow() * 10 + laser.getPos().getColumn());
         ImageView laserImageView = new ImageView(new Image(laser.getImageString()));
