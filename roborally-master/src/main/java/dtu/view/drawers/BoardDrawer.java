@@ -5,11 +5,14 @@ import dtu.logic.models.Rotation;
 import dtu.logic.models.Board.Board;
 import dtu.logic.models.Robot.Lazer;
 import dtu.logic.models.Robot.Robot;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.util.Duration;
 
 public class BoardDrawer extends GridPane {
 
@@ -53,9 +56,15 @@ public class BoardDrawer extends GridPane {
         stackPane.getChildren().add(new ImageView(image));
     }
 
-    public void drawLaser (Lazer laser) {
-        // StackPane stackPane = (StackPane) this.getChildren().get(laser.getPos().getRow() * 10 + laser.getPos().getColumn());
-        // stackPane.getChildren().add(new ImageView(new Image(laser.getImageString())));
+    public void drawLaser(Lazer laser) {
+        StackPane stackPane = (StackPane) this.getChildren().get(laser.getPos().getRow() * 10 + laser.getPos().getColumn());
+        ImageView laserImageView = new ImageView(new Image(laser.getImageString()));
+        stackPane.getChildren().add(laserImageView);
+    
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(100), event -> {
+            stackPane.getChildren().remove(laserImageView);
+        }));
+        timeline.play();
     }
 
 }

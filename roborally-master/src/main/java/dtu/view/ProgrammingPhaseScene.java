@@ -104,7 +104,7 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
         Image background = new Image (("playermat/lava.png"));
         BackgroundImage background2 = new BackgroundImage(background, null, null, null, null);
         Background background3 = new Background(background2);
-               
+        
         
         this.mainGrid = (GridPane) this.getRoot();
         //Set backround to the whole scene 
@@ -124,7 +124,6 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
    
         mainGrid.getColumnConstraints().addAll(column1, column2, column3, column4);
 
-        
         //------------------------------------- CARDS_START -------------------------------------//
         //Card1
         Image stream1 = new Image (ProgrammingPhaseScene.class.getClassLoader().getResourceAsStream(c.getCurrentPlayer().getHand().get(0).getImage())); //
@@ -544,6 +543,7 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
             ProgramCard card  = findCard(frame5.getId());
             c.getCurrentPlayer().getRobot().AddToRegister(card);  
         }
+        c.getBoardScene().getPlayermat(c.getCurrentPlayer().getName()).setRegister(c.getCurrentPlayer().getRobot().getRegister().size());
         done = true;
 
         c.getBoardScene().redraw();

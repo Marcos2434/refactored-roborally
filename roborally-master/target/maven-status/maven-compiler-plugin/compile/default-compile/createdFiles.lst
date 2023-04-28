@@ -27,7 +27,6 @@ dtu/logic/models/Cards/ActionCards/SpinLaser.class
 dtu/logic/models/Board/TileAction.class
 dtu/logic/models/Cards/MovementCards/Uturn.class
 dtu/roborally/view/widgets/ControlPanel.class
-dtu/view/PlayermatController.class
 dtu/logic/models/Board/Board.class
 dtu/logic/models/Cards/MovementCards/Forward.class
 dtu/logic/models/Board/TileStart.class

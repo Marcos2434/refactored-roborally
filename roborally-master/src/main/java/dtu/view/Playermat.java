@@ -1,29 +1,14 @@
 package dtu.view;
 
-import java.io.IOException;
-import java.util.logging.Logger;
 
 import dtu.logic.models.RobotColor;
 import dtu.logic.models.Player.Player;
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 public class Playermat extends StackPane {
 
@@ -90,6 +75,12 @@ public class Playermat extends StackPane {
         return player;
     }
 
+    public void destroyed(){
+        Image shaderpic = new Image("playermat/destroyed.png");
+        ImageView shader = new ImageView(shaderpic);
+        super.getChildren().add(shader);
+    }
+
     public void setRegister(int amountInHand) {
         cardsHbox.getChildren().clear();
         for (int i = 0; i < amountInHand; i++) {
@@ -120,18 +111,17 @@ public class Playermat extends StackPane {
             regSize = 0;
         } else if (regSize > 0){
             try {
-            // cardsHbox.getChildren().remove(0);
-            cardsHbox.getChildren().set(5 - regSize, new ImageView(dummypic));
-            this.regSize -= 1;
+                cardsHbox.getChildren().set(5 - regSize, new ImageView(dummypic));
+                this.regSize -= 1;
             }
             catch(Exception i){
             }
         } 
         ActiveCardPic = new Image(cardImageURL, 110, 156, false, false);
         ActiveCard = new ImageView(ActiveCardPic);
-        ActiveCard.setStyle("-fx-padding: 10 0 0 0;");
         hbox1.getChildren().set(1, ActiveCard);
 
+        System.out.println("Should be seen");
     }
 
     public void updateChPInfo(String info) {
@@ -144,6 +134,19 @@ public class Playermat extends StackPane {
     }
 
     public void updateDamage() {
+        damage.setText("Damage: " + String.valueOf(player.getRobot().getDamageTaken()));
+    }
+
+    public void updateInfo(){
+        if (this.player.getRobot().getcheckpointCount() == 0){
+            chPoint.setText("Checkpoint: Start");
+        } else {
+            chPoint.setText("Checkpoint: " + this.player.getRobot().getcheckpointCount() + "    ");
+        }
+        lives.setText("Lives: " + String.valueOf(player.getRobot().getLives()) + "   ");
+        if (player.getRobot().getLives() == 0){
+            destroyed();
+        }
         damage.setText("Damage: " + String.valueOf(player.getRobot().getDamageTaken()));
     }
 
