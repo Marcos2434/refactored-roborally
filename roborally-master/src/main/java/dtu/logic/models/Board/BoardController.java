@@ -65,30 +65,22 @@ public class BoardController {
                 if (r.getRegister().size() > i){
                     r.moveByCard(this, r.getRegister().get(i));
                 }
-                System.out.println("After i 1");
+                
                 
                 if (i == 4){
                     r.getRegister().clear();
                 }
-                System.out.println("After i 2");
+                
             }
-            System.out.println();
-
-            
-            
             RunAllEffects();
-            try {
-                Thread.sleep(100);
-            } catch (Exception e) { System.err.println(e); }
             fireRobotLazers();
             fireboardLazers();
-
             try {
                 Thread.sleep(100);
              } catch (Exception e) { System.err.println(e); }
         }
         this.emptyAllRegisters();
-        System.out.println("Finnished");
+        
 
     }
 
