@@ -58,7 +58,7 @@ public class Controller {
     public Player getCurrentPlayer() {
         return currentPlayer;
     }
-    public void createAI(RobotColor color,String name){
+    public void createAI(RobotColor color, String name){
         Robot robot = new Robot(color);
         robot.registerObserver(this.boardScene);
         if (name.isEmpty()){
@@ -81,7 +81,7 @@ public class Controller {
     public void createPlayer(RobotColor color, String name) {
         Robot robot = new Robot(color);
         robot.registerObserver(this.boardScene);
-        if (name.isEmpty()){
+        if (name.isEmpty()) {
 
             name=color.toString();
         }
@@ -192,7 +192,7 @@ public class Controller {
                 i.chooseProgrammingCards();
                 notifyAllRobotObservers();
             }
-            
+            this.getBoardController().registerBoardObserver(this.getBoardScene());
 			setTheScene(getBoardScene(),"RoboRally!!");
 		}
 		else{

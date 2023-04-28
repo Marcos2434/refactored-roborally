@@ -16,7 +16,6 @@ dtu/logic/models/Rotation.class
 dtu/roborally/view/widgets/ControlPanel$2.class
 dtu/logic/models/Board/TileFactory.class
 dtu/logic/models/Cards/MovementCards/Backwards.class
-dtu/view/BoardScene$1.class
 dtu/logic/models/Board/TileRepair.class
 dtu/logic/models/Color.class
 dtu/logic/models/Direction.class
