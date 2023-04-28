@@ -1,29 +1,14 @@
 package dtu.view;
 
-import java.io.IOException;
-import java.util.logging.Logger;
 
 import dtu.logic.models.RobotColor;
 import dtu.logic.models.Player.Player;
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 public class Playermat extends StackPane {
 
@@ -110,7 +95,6 @@ public class Playermat extends StackPane {
             cardsHbox.getChildren().add(cb);
             cardsHbox.setStyle("-fx-padding: 0 0 2 2;");
             this.regSize += 1;
-            System.out.println(regSize);
         } 
     }
     
@@ -129,13 +113,9 @@ public class Playermat extends StackPane {
                 System.out.println(i);
             }
         } 
-        System.out.println(cardImageURL);
         ActiveCardPic = new Image(cardImageURL, 110, 156, false, false);
         ActiveCard = new ImageView(ActiveCardPic);
-        ActiveCard.setStyle("-fx-padding: 10 0 0 0;");
         hbox1.getChildren().set(1, ActiveCard);
-
-        System.out.println("Should be seen");
     }
 
     public void updateChPInfo(String info) {
@@ -148,6 +128,12 @@ public class Playermat extends StackPane {
     }
 
     public void updateDamage() {
+        damage.setText("Damage: " + String.valueOf(player.getRobot().getDamageTaken()));
+    }
+
+    public void updateInfo(){
+        // chPoint.setText("Checkpoint: " + info);
+        lives.setText("Lives: " + String.valueOf(player.getRobot().getLives()) + "   ");
         damage.setText("Damage: " + String.valueOf(player.getRobot().getDamageTaken()));
     }
 

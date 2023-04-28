@@ -207,9 +207,7 @@ public class Controller {
     }
     public void getRealPlayers(){
 		for (Player i : getBoardController().getPlayers()) {
-
 			if (!i.isAI()){
-
 				realPlayers.add(i);
 			}
             else {
