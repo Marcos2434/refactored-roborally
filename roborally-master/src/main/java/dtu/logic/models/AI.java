@@ -14,6 +14,10 @@ public class AI extends Player {
         super(robot, "Bob"+AICount);
         AICount = AICount+1;
     }
+    public AI(Robot robot,String name) {
+        super(robot, name);
+        AICount = AICount+1;
+    }
 
     @Override 
     public void drawProgrammingCards() {

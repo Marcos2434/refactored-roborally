@@ -57,14 +57,24 @@ public class Controller {
     public Player getCurrentPlayer() {
         return currentPlayer;
     }
-    public void createAI(RobotColor color){
+    public void createAI(RobotColor color,String name){
         Robot robot = new Robot(color);
         robot.registerObserver(this.boardScene);
+        if (name.isEmpty()){
         this.boardController.addPlayer(new AI(robot));
+        }
+        else{
+            this.boardController.addPlayer(new AI(robot,name));
+        }
+        
     }
     public void createPlayer(RobotColor color, String name) {
         Robot robot = new Robot(color);
         robot.registerObserver(this.boardScene);
+        if (name.isEmpty()){
+
+            name=color.toString();
+        }
         this.boardController.addPlayer(new Player(robot, name));
 
     };
