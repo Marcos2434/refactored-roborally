@@ -11,6 +11,7 @@ import dtu.logic.models.Cards.ActionCard;
 import dtu.logic.models.Observers.BoardObserver;
 import dtu.logic.models.Observers.RobotObserver;
 import dtu.logic.models.Player.Player;
+import dtu.logic.models.Robot.Lazer;
 import dtu.logic.models.Robot.Robot;
 import dtu.roborally.view.widgets.ControlPanel;
 import dtu.view.drawers.BoardDrawer;
@@ -99,6 +100,12 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
 
     public ControlPanel getControlPanel() {
         return this.cp;
+    }
+
+    public void updateLaser(Lazer laser) {
+        Platform.runLater(() -> {
+            bd.drawLaser(laser);
+        });   
     }
 
 }

@@ -29,6 +29,7 @@ public class Lazer {
     public Direction getdir(){
         return this.Dir;
     }
+    
     public void Uturn(){
         for (int i=0; i<2;i++){
             this.DirID +=1;
@@ -56,6 +57,9 @@ public class Lazer {
                 else if (this.Dir.getId()  == 2){pos.addX(1);}
                 else if (this.Dir.getId()  == 3){pos.addY(1);}
                 else if (this.Dir.getId()  == 4){pos.addX(-1);}
+
+                boardController.notifyLaserObservers(this);
+
                 //Move other robot out of the way first, if there is one
                 
                 if (boardController.getBoard().getTileAt(getPos())!=null){
