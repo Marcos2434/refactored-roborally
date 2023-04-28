@@ -12,6 +12,7 @@ import javafx.scene.layout.Priority;
 import dtu.controller.Controller;
 import dtu.view.ProgrammingPhaseScene;
 import dtu.logic.models.Cards.MovementCards.*;
+import dtu.logic.models.Player.Player;
 
 public class ControlPanel extends GridPane {
 
@@ -88,11 +89,37 @@ public class ControlPanel extends GridPane {
 		ChooseCards.setOnMouseClicked(new EventHandler<Event>() {
 			@Override
 			public void handle(Event event) {
-				c.setProgrammingPhaseScene(new ProgrammingPhaseScene(c));
-				c.setTheScene(c.getProgrammingPhaseScene(), "Choose Cards!!");
+				for (Player i : c.getBoardController().getPlayers()) {
+					c.setCurrentPlayer(i);
+					if (i.isAI()){
+						//add cards to ai
+					}
+					else {
+						c.setProgrammingPhaseScene(new ProgrammingPhaseScene(c));
+						c.setTheScene(c.getProgrammingPhaseScene(),i.getName());
+						System.out.println("NOW WE ARE DONE WITH LOOP");
+
+						try{
+							Thread.sleep(200);
+						}
+						catch(Exception e){
+							System.out.println(e);}
+						
+						while (c.getProgrammingPhaseScene().done == false){
+						
+						}
+					}
+					
+				}
+				System.out.println("NOW WE ARE OUT WITH LOOP");
 				c.notifyAllRobotObservers();
+
+				// c.setProgrammingPhaseScene(new ProgrammingPhaseScene(c));
+				// c.setTheScene(c.getProgrammingPhaseScene(), "Choose Cards!!");
+				// c.notifyAllRobotObservers();
 			}
 		});
+
 		uTurn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -156,6 +183,7 @@ public class ControlPanel extends GridPane {
 
 		Activate.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
+			
 			public void handle(ActionEvent event) {
 				if (c.getCurrentPlayer().getRobot().register.size() > 0) {
 					Task<Void> task = new Task<Void>() {

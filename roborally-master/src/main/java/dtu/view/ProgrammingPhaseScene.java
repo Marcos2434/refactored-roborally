@@ -67,6 +67,8 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
 
     BoardDrawer bd;
 
+    public Boolean done = false;
+
     private double startX;
     private double startY;
     
@@ -445,6 +447,7 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
             ProgramCard card  = findCard(frame5.getId());
             c.getCurrentPlayer().getRobot().AddToRegister(card);  
         }
+        done = true;
 
         c.getBoardScene().redraw();
         c.getCurrentPlayer().getHand().clear();

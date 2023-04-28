@@ -25,7 +25,7 @@ public class Controller {
     private MenuScene menuScene;
     private BoardScene boardScene;
     private ProgrammingPhaseScene programmingPhaseScene;
-    
+    private static int count;
     // private ProgrammingPhaseSceneSimple programmingPhaseSceneSimple;
     // --------------
     private Stage primaryStage;
@@ -67,6 +67,12 @@ public class Controller {
             this.boardController.addPlayer(new AI(robot,name));
         }
         
+    }
+    public void addCount(){
+        count+=1;
+    }
+    public void count0(){
+        count=0;
     }
     public void createPlayer(RobotColor color, String name) {
         Robot robot = new Robot(color);
@@ -169,7 +175,7 @@ public class Controller {
     public ArrayList<String> getPlayersNames() {
         ArrayList<String> playerNames = new ArrayList<String>();
         for (Player i: this.boardController.getPlayers()) {
-            if (true) {
+            if (!i.isAI()) {
                 playerNames.add(i.getName());
             }
         }
