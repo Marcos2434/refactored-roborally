@@ -24,23 +24,23 @@ public class Tile extends Canvas {
 		super(TILE_SIZE, TILE_SIZE);
 		this.type = type;
 		this.imageString = "tiles/floor.png";
-		
-		//redraw();
 	}
 
     public void setImage(Image image){
         this.image = image;
     }
 
-    public String getimageString(){
+    public String getImageString(){
         return this.imageString;
     }
 
-    public void setimageString(String IS){
+    public void setImageString(String IS){
         this.imageString = IS;
     }
 
-
+    public Image getImage() {
+        return new Image(this.getImageString());
+    }
   
     
     @Override
@@ -55,19 +55,6 @@ public class Tile extends Canvas {
     public TileType getType() {
         return this.type;
     }
-        
-    public void redraw() {
-		GraphicsContext gc = getGraphicsContext2D();
-		gc.drawImage(image, 0, 0);
-		
-        if (Ocupied) {
-            
-        	gc.save();
-            gc.transform(new Affine(new Rotate(90*(robotDirection-1), 33, 33)));
-			gc.drawImage(robotImage, 0, 0);
-			gc.restore();
-        }
-	}
 
     // effect method for tiles, this normal tile does nothing()
     public void effect(Robot robot, BoardController boardController) {}
@@ -78,19 +65,10 @@ public class Tile extends Canvas {
 
     public void Occupy(){
         this.Ocupied = true;
-       
-        // this.robotImage = robotImage;
-        // this.robotDirection = rD;
-        // redraw();
-        
     }
 
     public void unOccupy(){
         this.Ocupied = false;
-
-        // this.robotImage = null;
-        // this.robotDirection = -1;
-        // redraw();
     }
 
     public boolean isOcupied(){
