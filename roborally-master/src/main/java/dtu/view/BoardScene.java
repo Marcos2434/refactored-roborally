@@ -105,6 +105,12 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
     public void updateRobotInfo(Robot robot) {
         Platform.runLater(() -> {
             bd.drawRobot(robot);
+            for (int i = 0; i<pMats.size(); i++){
+                if(pMats.get(i).getPlayer().getRobot() == robot){
+                    System.out.println(robot.getRobotColor() + " " + pMats.get(i).getPlayer().getRobot().getRobotColor());;
+                    pMats.get(i).updateInfo();
+                }
+            }
         });     
     }
 
@@ -114,8 +120,10 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
     }
 
     public void updateCardTaken(Player player, String cardImageString){
+        System.out.println("Notified");
         Platform.runLater(() -> {;
-        getPlayermat(player.getName()).activateCard(cardImageString);
+            System.out.println("Notified");
+            getPlayermat(player.getName()).activateCard(cardImageString);
         });
     }
 

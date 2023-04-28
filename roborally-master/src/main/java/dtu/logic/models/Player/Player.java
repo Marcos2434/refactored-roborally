@@ -59,8 +59,10 @@ public class Player {
         }
         
         // notify observers
-        notify();
-
+        try{
+            notify();
+        }
+        catch(Exception e){System.out.println(e);}
         // add to robot register
         robot.setRegister(registerCards);
         
