@@ -280,7 +280,6 @@ public class Robot {
     public void AddToRegister(ProgramCard card){
         if (register.size() <5){
             register.add(card);
-
         }
 
     }

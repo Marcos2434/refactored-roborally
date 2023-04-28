@@ -1,3 +1,4 @@
+package dtu.logic.models.Cards.ActionCards;
 
 import java.util.ArrayList;
 
@@ -7,8 +8,7 @@ import dtu.logic.models.Cards.ActionCard;
 import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.Robot;
 
-public class FireRain implements ActionCard{
-
+public class SpinLaser implements ActionCard{
     private String image = "";
     
     @Override
@@ -17,12 +17,9 @@ public class FireRain implements ActionCard{
     }
     
     public void action(Robot robot, BoardController boardController){
-        ArrayList<Player> players = boardController.getPlayers();
-        for (Player player : players) {
-           player.getRobot().takeDmg(boardController);
+        for (int i = 0; i < 5; i++) {
+            robot.turn(1, boardController);
+            //boardController.fireLaser(boardController);
         }
-        
-        
+        }
     }
-    
-}
