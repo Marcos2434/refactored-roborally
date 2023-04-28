@@ -2,21 +2,39 @@ package dtu.logic.models.Board;
 
 import dtu.logic.models.Position;
 import dtu.logic.models.RobotColor;
+import dtu.logic.models.Cards.ActionCard;
 import dtu.logic.models.Cards.ProgramCard;
+import dtu.logic.models.Cards.ActionCards.FireRain;
+import dtu.logic.models.Cards.ActionCards.SpinLaser;
+import dtu.logic.models.Observers.BoardObserver;
 import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.Lazer;
 import dtu.logic.models.Robot.Robot;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
+
 import dtu.logic.models.AI;
 import dtu.logic.models.Direction;
 
 public class BoardController {
     private ArrayList<Player> players = new ArrayList<Player>();
+    private LinkedHashSet<BoardObserver> boardObservers = new LinkedHashSet<BoardObserver>(1);
 
     private Board board;
 
     public BoardController(Board board) {
         this.board = board;
+    }
+
+    public void registerBoardObserver(BoardObserver o) {
+        System.out.println("Test");
+        this.boardObservers.add(o);
+    }
+
+    public void notifyNewAction(ActionCard actionCard) {
+        for (BoardObserver o : this.boardObservers) {
+            o.updateNewAction(actionCard);
+        }
     }
     
     public void fireboardLazers(){
@@ -53,13 +71,15 @@ public class BoardController {
                 }
             }
 
-            try {
-               Thread.sleep(100);
-            } catch (Exception e) { System.err.println(e); }
+            
             
             RunAllEffects();
+            try {
+                Thread.sleep(100);
+            } catch (Exception e) { System.err.println(e); }
             fireRobotLazers();
             fireboardLazers();
+
             try {
                 Thread.sleep(100);
              } catch (Exception e) { System.err.println(e); }
@@ -86,8 +106,7 @@ public class BoardController {
                     r = 6 - (int)Math.floor(j/2);}
                 else{r = 12 - j/2;}
                */
-                if (this.getBoard().getTileAt(new Position(i,j)).isOcupied()){
-                 
+                if (this.getBoard().getTileAt(new Position(i,j)).isOcupied()) {
                     this.getBoard().getTileAt(new Position(i,j)).effect(getRobotAt(new Position(i,j)), this);
                 }
                 

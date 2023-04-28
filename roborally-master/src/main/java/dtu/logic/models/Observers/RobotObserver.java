@@ -1,6 +1,5 @@
-package dtu.logic.models.Robot;
-
-import dtu.logic.models.Position;
+package dtu.logic.models.Observers;
+import dtu.logic.models.Robot.Robot;
 
 public interface RobotObserver {
     public void updateRobotInfo(Robot robot);

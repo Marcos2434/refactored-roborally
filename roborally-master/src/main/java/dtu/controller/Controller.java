@@ -42,14 +42,12 @@ public class Controller {
     }
     
     public void launch() {
-        //this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
         this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
         //this.setTheScene(this.getStartScene(), "Pick the type of play");
         //this.setTheScene(this.getProgrammingPhaseScene(), "Roborally - Programming Phase"); //for natalia
         // this.setTheScene(this.getProgrammingPhaseSceneSimple(), "Roborally - Programming Phase"); //for oli/gleb
-
     }
-    //asd
+
     public void setCurrentPlayer(Player currentPlayer) {
         this.currentPlayer = currentPlayer;
     }
@@ -86,7 +84,6 @@ public class Controller {
     };
     public void setBoard(Board board) {
         this.board = board;
-        //this.availableBoardSpawns = this.board.getStartFields();
         this.boardController = new BoardController(board);
     }
 
@@ -98,7 +95,7 @@ public class Controller {
         this.boardSelecter = SelBoard;
     }
 
-    public String getBoardSelecter(){
+    public String getBoardSelecter() {
         return this.boardSelecter;
     }
     public void notifyAllRobotObservers() {
@@ -107,16 +104,10 @@ public class Controller {
         }
     }
 
-
-
     public void changeToBoardScene() {
         this.boardScene.setPlayermats(this.boardController.getPlayers());
         this.setTheScene(this.getBoardScene(), "Roborally!");
         this.spawnRobots();
-    }
-
-    public void backToBoardScene() {
-        this.setTheScene(this.getBoardScene(), "Roborally!");
     }
 
     public void setStartScene(StartMenuScene StartMenu){
@@ -146,6 +137,7 @@ public class Controller {
 
     public void setBoardScene(BoardScene boardScene) {
         this.boardScene = boardScene;
+        this.boardController.registerBoardObserver(this.boardScene);
     }
 
     public void setTheScene(Scene s, String title) {
