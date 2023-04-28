@@ -60,31 +60,34 @@ public class BoardController {
         for (int i=0; i<5;i++){
             for (int j = 0; j < this.players.size(); j++) {
                 Robot r = this.players.get(j).getRobot();
-                
+                //System.out.println(r.getRegister());
                 
                 if (r.getRegister().size() > i){
                     r.moveByCard(this, r.getRegister().get(i));
                 }
+                //System.out.println("After i 1");
                 
                 if (i == 4){
                     r.getRegister().clear();
                 }
+                //System.out.println("After i 2");
             }
 
             
             
             RunAllEffects();
-            //try {
-            //    Thread.sleep(100);
-            //} catch (Exception e) { System.err.println(e); }
+            try {
+                Thread.sleep(100);
+            } catch (Exception e) { System.err.println(e); }
             fireRobotLazers();
             fireboardLazers();
 
-            //try {
-            //    Thread.sleep(100);
-            // } catch (Exception e) { System.err.println(e); }
+            try {
+                Thread.sleep(100);
+             } catch (Exception e) { System.err.println(e); }
         }
         this.emptyAllRegisters();
+        //System.out.println("Finnished");
 
     }
 
