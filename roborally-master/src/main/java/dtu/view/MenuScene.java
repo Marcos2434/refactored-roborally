@@ -1,3 +1,4 @@
+
 package dtu.view;
 
 import dtu.controller.Controller;
@@ -5,6 +6,7 @@ import dtu.logic.models.RobotColor;
 import dtu.logic.models.Board.Board;
 import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.Robot;
+import dtu.controller.Controller;//
 import javafx.scene.Scene;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -21,8 +23,10 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-
-
+import dtu.logic.models.RobotColor;
+import dtu.logic.models.Player.Player;
+import dtu.logic.models.Robot.Robot;
+import javafx.scene.control.ChoiceBox;
 public class MenuScene extends Scene {
 
     Controller c;
@@ -63,7 +67,12 @@ public class MenuScene extends Scene {
 		CheckRed.setStyle("-fx-Text-fill: #ffffff;");
 		CheckBox AIRed = new CheckBox("Is AI?");
 		AIRed.setStyle("-fx-Text-fill: #ffffff;");
-		VBox vboxRED = new VBox(red,CheckRed,AIRed);    
+		ChoiceBox ChoiceRed= new ChoiceBox();
+		ChoiceRed.getItems().add("--");
+		ChoiceRed.getItems().add("Player");
+		ChoiceRed.getItems().add("AI");
+		ChoiceRed.setValue("--");
+		VBox vboxRED = new VBox(red,CheckRed,AIRed,ChoiceRed);    
 		vboxRED.setPrefSize(125, 70);
 		
 		//BLUE
@@ -162,7 +171,6 @@ public class MenuScene extends Scene {
 		comboBox.setOnAction(event -> {
 			
 			String selectedOption = comboBox.getSelectionModel().getSelectedItem();
-			System.out.println("Selected map: " + selectedOption);
 
 			c.setBoardSelecter(selectedOption);
 			c.setBoard(new Board(Map.getMapByName(selectedOption)));
@@ -210,60 +218,99 @@ public class MenuScene extends Scene {
 
 							}
 							if (checkarray[i].getText().contains("blue")){
+								if (AIBlue.isSelected()){
+								c.createAI(RobotColor.BLUE);
+							}
+							else{
 								if (blue.getText().isEmpty()){
-									blue.setText("BLUE");
+										blue.setText("BLUE");
+									}
+									c.createPlayer((RobotColor.BLUE), blue.getText());
 								}
-								c.createPlayer((RobotColor.BLUE), blue.getText());
+	
+						}
+						if (checkarray[i].getText().contains("green")){
+								if (AIGreen.isSelected()){
+								c.createAI(RobotColor.GREEN);
 							}
-							if (checkarray[i].getText().contains("green")){
+							else{
 								if (green.getText().isEmpty()){
-									green.setText("GREEN");
+										green.setText("GREEN");
+									}
+									c.createPlayer((RobotColor.GREEN), green.getText());
 								}
-								c.createPlayer((RobotColor.GREEN), green.getText());
-								System.out.println(c.getBoardController().getPlayers().size()); 
+	
+						}
+						if (checkarray[i].getText().contains("yellow")){
+								if (AIYellow.isSelected()){
+								c.createAI(RobotColor.YELLOW);
 							}
-							if (checkarray[i].getText().contains("yellow")){
+							else{
 								if (yellow.getText().isEmpty()){
-									yellow.setText("YELLOW");
+										yellow.setText("YELLOW");
+									}
+									c.createPlayer((RobotColor.YELLOW), yellow.getText());
 								}
-								c.createPlayer((RobotColor.YELLOW), yellow.getText());
+	
+						}
+						if (checkarray[i].getText().contains("orange")){
+								if (AIOrange.isSelected()){
+								c.createAI(RobotColor.ORANGE);;
+								
 							}
-							if (checkarray[i].getText().contains("orange")){
+							else{
 								if (orange.getText().isEmpty()){
-									orange.setText("ORANGE");
+										orange.setText("ORANGE");
+									}
+									c.createPlayer((RobotColor.ORANGE), orange.getText());
 								}
-								c.createPlayer((RobotColor.ORANGE), orange.getText());
+	
+						}
+						if (checkarray[i].getText().contains("purple")){
+								if (AIPurple.isSelected()){
+								c.createAI(RobotColor.PURPLE);
 							}
-							if (checkarray[i].getText().contains("purple")){
+							else{
 								if (purple.getText().isEmpty()){
 									purple.setText("PURPLE");
+									}
+									c.createPlayer((RobotColor.PURPLE), purple.getText());
 								}
-								c.createPlayer((RobotColor.PURPLE), purple.getText());
 							}
-							if (checkarray[i].getText().contains("white")){
+						if (checkarray[i].getText().contains("white")){
+								if (AIWhite.isSelected()){
+								c.createAI(RobotColor.WHITE);
+							}
+							else{
 								if (white.getText().isEmpty()){
-									white.setText("WHITE");
+										white.setText("WHITE");
+									}
+									c.createPlayer((RobotColor.WHITE), white.getText());
 								}
-								c.createPlayer((RobotColor.WHITE), white.getText());
 							}
-							if (checkarray[i].getText().contains("black")){
+						if (checkarray[i].getText().contains("black")){
+								if (AIBlack.isSelected()){
+								c.createAI(RobotColor.BLACK);
+							}
+							else{
 								if (black.getText().isEmpty()){
-									black.setText("BLACK");
+										black.setText("BLACK");
+									}
+									c.createPlayer((RobotColor.BLACK), black.getText());
 								}
-								c.createPlayer((RobotColor.BLACK), black.getText());
+
 							}
-							System.out.println(c.getBoardController().getPlayers().size()); 
 						}
-					}
 					
-					System.out.println(c.getBoardController().getPlayers().size());
+
 						
 					
+					}
 					c.getBoardScene().getControlPanel().addPlayerNamesToDropdown();
 					c.changeToBoardScene();
 					c.spawnRobots();
 				}
-				else{
+				else {
 					note.setText("Map has not been selected");   
 				}
 			}

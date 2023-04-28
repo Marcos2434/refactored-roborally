@@ -58,9 +58,16 @@ public class Controller {
         return currentPlayer;
     }
     public void createAI(RobotColor color){
-        this.boardController.addAI(new AI(new Robot(color)));
+        Robot robot = new Robot(color);
+        robot.registerObserver(this.boardScene);
+        this.boardController.addPlayer(new AI(robot));
     }
+    public void createPlayer(RobotColor color, String name) {
+        Robot robot = new Robot(color);
+        robot.registerObserver(this.boardScene);
+        this.boardController.addPlayer(new Player(robot, name));
 
+    };
     public void setBoard(Board board) {
         this.board = board;
         //this.availableBoardSpawns = this.board.getStartFields();
@@ -84,13 +91,7 @@ public class Controller {
         }
     }
 
-    public void createPlayer(RobotColor color, String name) {
-        Robot robot = new Robot(color);
-        robot.registerObserver(this.boardScene);
-        this.boardController.addPlayer(new Player(robot, name));
-        System.out.println(this.boardController.getPlayers().size()); 
-        System.out.println(name + " has chosen color " + color);
-    };
+
 
     public void changeToBoardScene() {
         this.boardScene.setPlayermats(this.boardController.getPlayers());
@@ -158,7 +159,7 @@ public class Controller {
     public ArrayList<String> getPlayersNames() {
         ArrayList<String> playerNames = new ArrayList<String>();
         for (Player i: this.boardController.getPlayers()) {
-            if (i.isAI() == false) {
+            if (true) {
                 playerNames.add(i.getName());
             }
         }
@@ -174,15 +175,20 @@ public class Controller {
                 }
             }
         }
-        
         // Set robot to positions
-        for (int i = 0; i < this.boardController.getPlayers().size(); i++) {
+        for (int i = 0; i < this.boardController.getPlayers().size(); i++){
+
             // place robot on scene
             // this.boardController.getBoard().getTileAt(this.availableBoardSpawns.get(i)).Occupy(this.boardController.getPlayers().get(i).getRobot().getImage(), this.boardController.getPlayers().get(i).getRobot().getDirID());
             this.boardController.getBoard().getTileAt(this.availableBoardSpawns.get(i)).Occupy();
             
             // place robot on board
+
+
+            try{
             this.boardController.getPlayers().get(i).getRobot().setPos(this.availableBoardSpawns.get(i));
+            }catch(Exception e){System.out.println(e);}
+            
             
             // set initial checkpoint
             this.boardController.getPlayers().get(i).getRobot().addCheckpoint(this.availableBoardSpawns.get(i));

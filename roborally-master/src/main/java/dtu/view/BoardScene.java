@@ -1,36 +1,21 @@
 package dtu.view;
 
 import java.io.IOException;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.fxml.FXMLLoader;
-import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.css.Size;
 import dtu.controller.Controller;
-import dtu.logic.models.Position;
 import dtu.logic.models.Board.Board;
-import dtu.logic.models.Board.BoardController;
 import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.Robot;
 import dtu.logic.models.Robot.RobotObserver;
 import dtu.roborally.view.widgets.ControlPanel;
 import dtu.view.drawers.BoardDrawer;
-import javafx.scene.Parent;
+import javafx.application.Platform;
 import javafx.scene.Scene;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import dtu.logic.models.RobotColor;
+
+
 
 
 
@@ -81,7 +66,6 @@ public class BoardScene extends Scene implements RobotObserver {
         boardPane = (BorderPane) this.getRoot();
 
         // Creating the board
-        System.out.println(c.getBoardSelecter());
         Board board = new Board(Map.getMapByName(c.getBoardSelecter()));
         c.setBoard(board);
         
@@ -102,6 +86,8 @@ public class BoardScene extends Scene implements RobotObserver {
 
     public void updateRobotInfo(Robot robot) {
         Platform.runLater(() -> {
+            System.out.println(robot.getRobotColor());
+            System.out.println(robot.getPos());
             bd.drawRobot(robot);
         });     
     }
