@@ -9,6 +9,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
+
+import java.util.ArrayList;
+
 import dtu.controller.Controller;
 import dtu.view.ProgrammingPhaseScene;
 import dtu.logic.models.Cards.MovementCards.*;
@@ -82,38 +85,16 @@ public class ControlPanel extends GridPane {
 	}
 	
 	private void addRegisterListeners() {
-
 	}
+
 
 	private void addListeners() {
 		ChooseCards.setOnMouseClicked(new EventHandler<Event>() {
 			@Override
 			public void handle(Event event) {
-				for (Player i : c.getBoardController().getPlayers()) {
-					c.setCurrentPlayer(i);
-					if (i.isAI()){
-						//add cards to ai
-					}
-					else {
-						c.setProgrammingPhaseScene(new ProgrammingPhaseScene(c));
-						c.setTheScene(c.getProgrammingPhaseScene(),i.getName());
-						System.out.println("NOW WE ARE DONE WITH LOOP");
-
-						try{
-							Thread.sleep(200);
-						}
-						catch(Exception e){
-							System.out.println(e);}
-						
-						while (c.getProgrammingPhaseScene().done == false){
-						
-						}
-					}
-					
-				}
-				System.out.println("NOW WE ARE OUT WITH LOOP");
+				c.nextScene();
 				c.notifyAllRobotObservers();
-
+				
 				// c.setProgrammingPhaseScene(new ProgrammingPhaseScene(c));
 				// c.setTheScene(c.getProgrammingPhaseScene(), "Choose Cards!!");
 				// c.notifyAllRobotObservers();

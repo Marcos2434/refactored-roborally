@@ -33,6 +33,8 @@ public class Controller {
     private String boardSelecter = null;
     private BoardController boardController;
     ArrayList<Position> availableBoardSpawns = new ArrayList<Position>();
+    private ArrayList<Player> realPlayers = new ArrayList<Player>();
+
 
     private Player currentPlayer;
     
@@ -52,12 +54,7 @@ public class Controller {
     public void setCurrentPlayer(Player currentPlayer) {
         this.currentPlayer = currentPlayer;
     }
-    public void nextScene(){
-        if (count==getPlayerByName().length()){
 
-        }
-
-    }
     public Player getCurrentPlayer() {
         return currentPlayer;
     }
@@ -77,6 +74,9 @@ public class Controller {
     }
     public void count0(){
         count=0;
+    }
+    public int getCount(){
+        return count;
     }
     public void createPlayer(RobotColor color, String name) {
         Robot robot = new Robot(color);
@@ -114,7 +114,7 @@ public class Controller {
 
 
     public void changeToBoardScene() {
-        this.boardScene.setPlayermats(this.boardController.getPlayers());
+        boardScene.setPlayermats(boardController.getPlayers());
         this.setTheScene(this.getBoardScene(), "Roborally!");
         this.spawnRobots();
     }
@@ -184,6 +184,35 @@ public class Controller {
             }
         }
         return playerNames;
+    }
+
+	public void nextScene(){
+        System.out.println(realPlayers.size());
+		if (getCount()==realPlayers.size()-1){
+            
+			count0();
+			setTheScene(getBoardScene(),"RoboRally!!");
+		}
+		else{
+			System.out.println("WE managed to get inside loop");
+			System.out.println(realPlayers.get(getCount()).toString());
+			setCurrentPlayer(realPlayers.get(getCount()));
+			addCount();
+			setProgrammingPhaseScene(new ProgrammingPhaseScene(this));
+			setTheScene(getProgrammingPhaseScene(), getCurrentPlayer().getName());
+		}   
+		addCount();
+    }
+
+    public void getRealPlayers(){
+		for (Player i : getBoardController().getPlayers()) {
+
+			if (!i.isAI()){
+
+				realPlayers.add(i);
+			}
+		}
+
     }
 
     public void spawnRobots() {

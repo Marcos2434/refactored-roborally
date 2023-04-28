@@ -451,8 +451,9 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
 
         c.getBoardScene().redraw();
         c.getCurrentPlayer().getHand().clear();
-        c.setTheScene(c.getBoardScene());
         c.notifyAllRobotObservers();
+        c.nextScene();
+        // c.setTheScene(c.getBoardScene());
     }
 }
 

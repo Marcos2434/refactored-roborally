@@ -254,8 +254,7 @@ public class MenuScene extends Scene {
 					if (ChoiceBlack.getValue()=="AI"){
 						c.createAI(RobotColor.BLACK,black.getText());
 					}
-					
-					c.getBoardScene().getControlPanel().addPlayerNamesToDropdown();
+					c.getRealPlayers();
 					c.changeToBoardScene();
 					c.spawnRobots();
 				}
