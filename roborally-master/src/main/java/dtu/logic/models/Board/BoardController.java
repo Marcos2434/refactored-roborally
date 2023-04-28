@@ -72,7 +72,7 @@ public class BoardController {
         for (int i=0; i<5;i++){
             for (int j = 0; j < this.players.size(); j++) {
                 Robot r = this.players.get(j).getRobot();
-                System.out.println(r.getRegister());
+              
                 
                 if (r.getRegister().size() > i){
                     notifyCardRemove(this.players.get(j), r.getRegister().get(i).getImage());
@@ -98,25 +98,27 @@ public class BoardController {
     }
 
     public void RunAllEffects(){
-        int c;
-        int r;
+    int r;
+    int c;
+       
         for (int i = 0; i < 10; i++){
-           /* 
-            if (i % 2 == 1){
-
-                c = 4 - (int)Math.floor(i/2);
-            }
-
-            else{c = 9 - i/2;}
-            */
+            if (i % 3 == 1){
+                c = 3 - (int)Math.floor(i/3);}
+            else if (i % 3 == 2){
+                c = 6 - (int)Math.floor(i/3);}
+            else{c = 9 - i/3;}
+               
             for (int j = 0; j < 13; j++){
-               /* 
-                if (i % 2 == 1){
-                    r = 6 - (int)Math.floor(j/2);}
-                else{r = 12 - j/2;}
-               */
-                if (this.getBoard().getTileAt(new Position(i,j)).isOcupied()) {
-                    this.getBoard().getTileAt(new Position(i,j)).effect(getRobotAt(new Position(i,j)), this);
+               
+                if (j % 3 == 1){
+                    r = 3 - (int)Math.floor(j/3);}
+                else if (j % 3 == 2){
+                    r = 7 - (int)Math.floor(j/3);}
+                else{r = 12 - j/3;}
+                   
+               
+                if (this.getBoard().getTileAt(new Position(c,r)).isOcupied()) {
+                    this.getBoard().getTileAt(new Position(c,r)).effect(getRobotAt(new Position(c,r)), this);
                 }
                 
             }
