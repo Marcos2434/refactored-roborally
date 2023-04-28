@@ -38,6 +38,7 @@ public class Playermat extends StackPane {
     private Label damage;
     private Label chPoint;
     private HBox cardsHbox = new HBox();
+    private HBox hbox1;
 
     private Image backgroundpic = new Image("playermat/playermat.png");
     private ImageView background = new ImageView(backgroundpic);
@@ -48,7 +49,7 @@ public class Playermat extends StackPane {
     private int regSize;
 
     private Image ActiveCardPic; // = new Image("Cards/AgainCard.png");
-    private ImageView ActiveCard;
+    private ImageView ActiveCard = new ImageView(ActiveCardPic);
 
     private void setColor(){
         if (player.getRobot().getRobotColor().equals(RobotColor.BLACK)){
@@ -111,20 +112,14 @@ public class Playermat extends StackPane {
             this.regSize += 1;
             System.out.println(regSize);
         } 
-        else {
-            activateCard("Cards/AgainCard.png");
-        }
     }
     
     public void activateCard(String cardImageURL){
-        System.out.println(player.getName() + cardImageURL);
         if (regSize == 1){
-            System.out.println("Got in if");
             cardsHbox.getChildren().clear();
             cardsHbox.setStyle("-fx-padding: 0 0 44 2;");
             regSize = 0;
         } else if (regSize > 0){
-            System.out.println("Got in elif " + regSize);
             try {
             // cardsHbox.getChildren().remove(0);
             cardsHbox.getChildren().set(5 - regSize, new ImageView(dummypic));
@@ -134,8 +129,12 @@ public class Playermat extends StackPane {
                 System.out.println(i);
             }
         } 
-        ActiveCardPic = new Image(cardImageURL);
+        System.out.println(cardImageURL);
+        ActiveCardPic = new Image(cardImageURL, 110, 156, false, false);
         ActiveCard = new ImageView(ActiveCardPic);
+        hbox1.getChildren().set(1, ActiveCard);
+
+        System.out.println("Should be seen");
     }
 
     public void updateChPInfo(String info) {
@@ -154,8 +153,6 @@ public class Playermat extends StackPane {
     public String getPName() {
         return player.getName();
     }
-
-    //public void activeC
 
     public Playermat(Player player) {
 
@@ -191,10 +188,11 @@ public class Playermat extends StackPane {
 
         ActiveCard = new ImageView(ActiveCardPic);
 
-        HBox hbox1 = new HBox(vbox, ActiveCard);
+        hbox1 = new HBox(vbox, ActiveCard);
         hbox1.prefHeight(height);
         hbox1.prefWidth(width);
         hbox1.setStyle("-fx-padding: 15 0 0 0;");
+        hbox1.setSpacing(15);
 
         super.getChildren().addAll(background, hbox1);
     }
