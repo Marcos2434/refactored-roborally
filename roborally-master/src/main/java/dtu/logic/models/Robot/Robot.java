@@ -5,6 +5,7 @@ import dtu.logic.models.Direction;
 import dtu.logic.models.Position;
 import dtu.logic.models.Board.BoardController;
 import dtu.logic.models.Cards.ProgramCard;
+import dtu.logic.models.Observers.RobotObserver;
 import javafx.scene.image.Image;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -37,7 +38,8 @@ public class Robot {
         return prevPos;
     }
 
-    public void CheckpointReached(){
+    public void 
+    CheckpointReached(){
         this.checkpointCount +=1;
     }
 
@@ -85,7 +87,6 @@ public class Robot {
     // Position and movement
     public void setPos(Position pos) {
         this.pos = pos;
-        System.out.println("setPos");
         robotNotify();
     }
     
@@ -183,6 +184,12 @@ public class Robot {
         boardController.getBoard().getTileAt(pos).unOccupy();
        
         if (boardController.allowmove(this,MoveDir)){
+
+            if (this.DirID == 1){this.addRow(-d);}
+            else if (this.DirID == 2){this.addCol(d);}
+            else if (this.DirID == 3){this.addRow(d);}
+            else if (this.DirID == 4){this.addCol(-d);} 
+            boardController.getBoard().getTileAt(pos).Occupy();
             //Move other robot out of the way first, if there is one
             if (boardController.getBoard().getTileAt(getPosInDir(MoveDir))!=null){
                 if (boardController.getBoard().getTileAt(getPosInDir(MoveDir)).isOcupied()){
@@ -190,11 +197,8 @@ public class Robot {
                     Push(r,boardController);
                 }
             }
-            // move
-            if (this.DirID == 1){this.addRow(-d);}
-            else if (this.DirID == 2){this.addCol(d);}
-            else if (this.DirID == 3){this.addRow(d);}
-            else if (this.DirID == 4){this.addCol(-d);} 
+            
+            
         }
         
         
@@ -257,7 +261,7 @@ public class Robot {
     // interaction with other robots
     public void Push(Robot robot, BoardController boardController){
         robot.setPrevPos(robot.getPos());
-        boardController.getBoard().getTileAt(robot.getPos()).unOccupy();
+        
 
         if (robot.getPosInDir(Direction.getDirById(this.DirID)).isOutOfBounds()){robot.Death(boardController);}
 

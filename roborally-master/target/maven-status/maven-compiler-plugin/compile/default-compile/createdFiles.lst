@@ -22,6 +22,7 @@ dtu/logic/models/Color.class
 dtu/roborally/view/widgets/ControlPanel$11.class
 dtu/logic/models/Direction.class
 dtu/roborally/view/widgets/ControlPanel$6.class
+dtu/logic/models/Observers/RobotObserver.class
 dtu/logic/models/Cards/MovementCards/TurnRight.class
 dtu/view/View.class
 dtu/logic/models/Board/TileBelt.class
@@ -43,7 +44,6 @@ dtu/logic/models/Cards/MovementCards/ProCardFactory.class
 dtu/roborally/view/widgets/Board.class
 dtu/logic/models/Player/Player.class
 dtu/view/Map.class
-dtu/logic/models/Robot/RobotObserver.class
 dtu/view/MenuScene$1.class
 dtu/roborally/view/CardinalPoints.class
 dtu/logic/models/Robot/Robot.class
@@ -60,6 +60,7 @@ dtu/view/Playermat.class
 dtu/logic/models/RobotColor.class
 dtu/logic/models/Cards/ActionCards/OilStorm.class
 dtu/view/ProgrammingPhaseScene.class
+dtu/logic/models/Observers/BoardObserver.class
 dtu/view/BoardScene.class
 dtu/logic/models/Board/Tile.class
 dtu/logic/models/Cards/ActionCards/FireRain.class

@@ -24,10 +24,12 @@ public class TileCheckpoint extends Tile {
 
     @Override
     public void effect(Robot robot, BoardController boardController) {
+        
         if (robot.getcheckpointCount() == this.id-1){
             robot.addCheckpoint(position);
             robot.CheckpointReached();
         }
+        
         
     }
 
