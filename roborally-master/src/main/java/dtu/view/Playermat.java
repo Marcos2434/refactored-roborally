@@ -105,9 +105,8 @@ public class Playermat extends StackPane {
             regSize = 0;
         } else if (regSize > 0){
             try {
-            // cardsHbox.getChildren().remove(0);
-            cardsHbox.getChildren().set(5 - regSize, new ImageView(dummypic));
-            this.regSize -= 1;
+                cardsHbox.getChildren().set(5 - regSize, new ImageView(dummypic));
+                this.regSize -= 1;
             }
             catch(Exception i){
                 System.out.println(i);
@@ -132,7 +131,11 @@ public class Playermat extends StackPane {
     }
 
     public void updateInfo(){
-        // chPoint.setText("Checkpoint: " + info);
+        if (this.player.getRobot().getcheckpointCount() == 0){
+            chPoint.setText("Checkpoint: Start");
+        } else {
+            chPoint.setText("Checkpoint: " + this.player.getRobot().getcheckpointCount() + "    ");
+        }
         lives.setText("Lives: " + String.valueOf(player.getRobot().getLives()) + "   ");
         damage.setText("Damage: " + String.valueOf(player.getRobot().getDamageTaken()));
     }

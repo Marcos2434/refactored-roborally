@@ -38,8 +38,7 @@ public class Robot {
         return prevPos;
     }
 
-    public void 
-    CheckpointReached(){
+    public void CheckpointReached(){
         this.checkpointCount +=1;
     }
 
