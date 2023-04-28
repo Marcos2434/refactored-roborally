@@ -21,6 +21,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 
@@ -28,7 +29,7 @@ import javafx.scene.image.ImageView;
 
 
 public class BoardScene extends Scene implements RobotObserver, BoardObserver {
-    
+    Popup popup = new Popup();
     BorderPane boardPane;
     Controller c;
     ControlPanel cp;
@@ -79,7 +80,7 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
         c.setBoard(board);
         
         redraw();
-        //Popup();
+        Popup();
         // Register control panel
         cp = new ControlPanel(c);
         rightSide.getChildren().addAll(playersUIright,cp);
@@ -100,7 +101,11 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
     }
 
     public void updateNewAction(ActionCard actionCard) {
-        // Run popup here !
+
+        if (!popup.isShowing()){           
+        popup.show(boardPane.getScene().getWindow());}
+        else{
+            popup.hide();}
         System.out.println("New Action!");
     }
 
@@ -108,37 +113,18 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
         return this.cp;
     }
     public void Popup(){
-        ImageView imageView = new ImageView("Popupcard.png");
+        Image view = new Image("Cards/Popup.png");
+        ImageView imageView = new ImageView(view);
         Label label = new Label("This is a Popup");
-      
-        // create a popup
-        Popup popup = new Popup();
-    
+        
         Button button = new Button("Test button for popup");
         // add the label
-        
-        popup.getContent().add(label);
-        //label.setStyle("-fx-background-image: ;");
+        popup.getContent().add(imageView);
         // set size of label
         label.setMinWidth(80);
         label.setMinHeight(50);
         // set auto hide
         popup.setAutoHide(true);
-        // action event
-        EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) //
-            {
-                if (!popup.isShowing())
-                    popup.show(boardPane.getScene().getWindow());
-                else
-                    popup.hide();
-            }
-        };
-    
-        // when button is pressed
-        button.setOnAction(event);
-        // add button
-        rightSide.getChildren().add(button);
-
+        
     }
 }
