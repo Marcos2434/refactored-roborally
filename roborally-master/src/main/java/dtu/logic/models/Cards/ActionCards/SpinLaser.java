@@ -10,7 +10,9 @@ import dtu.logic.models.Robot.Robot;
 
 public class SpinLaser implements ActionCard{
     private String image = "";
-    
+    private String Description = "You are infused with the power of the bayblades, your robot spins uncontrollably, shooting its laser in all directions";
+    private String Name = "Baybladre Shooter";
+
     @Override
     public String getImage(){
         return this.image;
@@ -28,5 +30,13 @@ public class SpinLaser implements ActionCard{
             robot.FIRE(boardController);
         }
      }
+
+    public String getName(){
+        return Name;
+    }
+
+    public String getDescription(){
+        return Description;
+    }
     
 }
