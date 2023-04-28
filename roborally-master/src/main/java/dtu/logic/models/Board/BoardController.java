@@ -70,13 +70,15 @@ public class BoardController {
                 }
             }
 
-            try {
-               Thread.sleep(100);
-            } catch (Exception e) { System.err.println(e); }
+            
             
             RunAllEffects();
+            try {
+                Thread.sleep(100);
+             } catch (Exception e) { System.err.println(e); }
             fireRobotLazers();
             fireboardLazers();
+
             try {
                 Thread.sleep(100);
              } catch (Exception e) { System.err.println(e); }

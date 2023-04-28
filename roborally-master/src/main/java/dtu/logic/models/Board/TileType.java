@@ -11,7 +11,8 @@ public enum TileType {
 	CHECKPOINT("tiles/checkpoint1.png"),
 	LAZER("tiles/Lazer1.png"),
 	BELT("tiles/Lazer1.png"),
-	REPAIR("tiles/Repair.png"),;
+	REPAIR("tiles/Repair.png"),
+	ACTION("tiles/Action.png");
 
 	
 	private String pictureFile;
