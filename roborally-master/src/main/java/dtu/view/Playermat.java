@@ -120,8 +120,6 @@ public class Playermat extends StackPane {
         ActiveCardPic = new Image(cardImageURL, 110, 156, false, false);
         ActiveCard = new ImageView(ActiveCardPic);
         hbox1.getChildren().set(1, ActiveCard);
-
-        System.out.println("Should be seen");
     }
 
     public void updateChPInfo(String info) {
