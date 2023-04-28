@@ -18,24 +18,22 @@ public class AI extends Player {
     @Override 
     public void drawProgrammingCards() {
         deck.shuffleDeck();
-        ArrayList<ProgramCard> arr = new ArrayList<ProgramCard>();;
+        ArrayList<ProgramCard> array = new ArrayList<ProgramCard>();;
         if (this.robot.getDamageTaken()<4) 
         {
             for (int i = 0; i < 5; i++) {
             //String name = ((deck.cards).get(i)).name;
-            arr.add(deck.cards.get(i));
-        }
-        }
-        else{
-        for (int i = 0; i < 9 - this.robot.getDamageTaken(); i++) {
-            //String name = ((deck.cards).get(i)).name;
-            arr.add(deck.cards.get(i));
-            
-            //hand.add(new ProgramCard(name, 3));
+            array.add(deck.cards.get(i));
             }
         }
+        else{
+            for (int i = 0; i < 9 - this.robot.getDamageTaken(); i++) {
+                array.add(deck.cards.get(i));
+                }
+        }
+        hand = array;
+        robot.setRegister(hand);
 
-        hand = arr;
     }
     @Override
     public boolean isAI(){

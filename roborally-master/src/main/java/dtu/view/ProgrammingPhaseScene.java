@@ -198,8 +198,8 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
         // mainGrid.add(c.getBoard(),1, 0, 1, 5);
         
         // Draw board
-        bd = new BoardDrawer();
-        bd.draw(c.getBoard());
+        bd = new BoardDrawer(c.getBoard());
+        bd.draw();
         
         mainGrid.add(bd, 1, 0, 1, 5);
 

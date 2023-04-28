@@ -26,7 +26,7 @@ import javafx.scene.image.Image;
 import dtu.logic.models.RobotColor;
 import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.Robot;
-
+import javafx.scene.control.ChoiceBox;
 public class MenuScene extends Scene {
 
     Controller c;
@@ -67,7 +67,12 @@ public class MenuScene extends Scene {
 		CheckRed.setStyle("-fx-Text-fill: #ffffff;");
 		CheckBox AIRed = new CheckBox("Is AI?");
 		AIRed.setStyle("-fx-Text-fill: #ffffff;");
-		VBox vboxRED = new VBox(red,CheckRed,AIRed);    
+		ChoiceBox ChoiceRed= new ChoiceBox();
+		ChoiceRed.getItems().add("--");
+		ChoiceRed.getItems().add("Player");
+		ChoiceRed.getItems().add("AI");
+		ChoiceRed.setValue("--");
+		VBox vboxRED = new VBox(red,CheckRed,AIRed,ChoiceRed);    
 		vboxRED.setPrefSize(125, 70);
 		
 		//BLUE
