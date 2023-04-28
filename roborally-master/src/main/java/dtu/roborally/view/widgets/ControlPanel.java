@@ -101,6 +101,7 @@ public class ControlPanel extends GridPane {
 			@Override
 			public void handle(ActionEvent event) {
 				c.getCurrentPlayer().getRobot().AddToRegister(new Uturn());
+				c.getBoardScene().getPlayermat(c.getCurrentPlayer().getName()).addRegister();
 			}
 		});
 		

@@ -101,9 +101,10 @@ public class Playermat extends StackPane {
     }
 
     public void addRegister(){
-        if (player.getRobot().getRegister().size() < 5){
+        if (cardsHbox.getChildren().size() < 5){
             ImageView cb = new ImageView(cardbackpic);
             cardsHbox.getChildren().add(cb);
+            cardsHbox.setStyle("-fx-padding: 0 0 2 2;");
             System.out.println("Added to mat, should be seen");    
         }
         else{
