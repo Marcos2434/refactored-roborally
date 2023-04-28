@@ -71,12 +71,10 @@ public class BoardController {
                 if (r.getRegister().size() > i){
                     r.moveByCard(this, r.getRegister().get(i));
                 }
-                System.out.println("After i 1");
                 
                 if (i == 4){
                     r.getRegister().clear();
                 }
-                System.out.println("After i 2");
             }
             System.out.println();
 

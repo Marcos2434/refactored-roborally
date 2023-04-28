@@ -3,8 +3,10 @@ package dtu.view;
 import java.io.IOException;
 import javafx.scene.layout.BorderPane;
 import java.util.ArrayList;
+
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Popup;
 import dtu.controller.Controller;
 import dtu.logic.models.Board.Board;
 import dtu.logic.models.Cards.ActionCard;
@@ -17,6 +19,9 @@ import dtu.roborally.view.widgets.ControlPanel;
 import dtu.view.drawers.BoardDrawer;
 import javafx.application.Platform;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 
 
@@ -32,6 +37,8 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
     VBox playersUIright = new VBox();
     VBox playersUIleft = new VBox();
     BoardDrawer bd;
+
+    Popup popup = new Popup();
 
     public void setPlayermats(ArrayList<Player> players){
         if (players.size() <= 4){
@@ -78,6 +85,8 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
         cp = new ControlPanel(c);
         rightSide.getChildren().addAll(playersUIright,cp);
         boardPane.setRight(rightSide);
+
+        // boardPane.getChildren().add(popup);
     }
 
     public void redraw() {
@@ -96,6 +105,22 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
     public void updateNewAction(ActionCard actionCard) {
         // Run popup here !
         System.out.println("New Action!");
+        popup();
+    }
+
+    public void popup() {
+        Platform.runLater(() -> {
+            Image view = new Image("Cards/popup.png");
+            ImageView imageView = new ImageView(view);
+            Label label = new Label("This is a Popup");
+            // add the label
+            popup.getContent().add(imageView);
+            // set size of label
+            label.setMinWidth(80);
+            label.setMinHeight(50);
+            // set auto hide
+            popup.setAutoHide(false);
+        });   
     }
 
     public ControlPanel getControlPanel() {
