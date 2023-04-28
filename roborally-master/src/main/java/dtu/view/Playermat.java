@@ -27,7 +27,7 @@ import javafx.stage.Stage;
 
 public class Playermat extends StackPane {
 
-    Player player;
+    private Player player;
 
     public static final int width = 330;
     public static final int height = 214;
@@ -83,6 +83,10 @@ public class Playermat extends StackPane {
         }
     }
 
+    public Player getPlayer(){
+        return player;
+    }
+
     public void setRegister(int amountInHand) {
         cardsHbox.getChildren().clear();
         for (int i = 0; i < amountInHand; i++) {
@@ -94,6 +98,18 @@ public class Playermat extends StackPane {
             cardsHbox.getChildren().add(cb);
         }
         cardsHbox.setStyle("-fx-padding: 0 0 0 2;");
+    }
+
+    public void addRegister(){
+        if (player.getRobot().getRegister().size() < 5){
+            ImageView cb = new ImageView(cardbackpic);
+            cardsHbox.getChildren().add(cb);
+            System.out.println("Added to mat, should be seen");    
+        }
+        else{
+            System.out.println("Nope");
+        }
+
     }
 
     public void updateChPInfo(String info) {

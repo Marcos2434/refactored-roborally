@@ -19,6 +19,7 @@ public class ControlPanel extends GridPane {
 
 	private Controller c;
 	private Robot robot;
+	private String pName;
 	
 	// ObservableList<String> players = FXCollections.observableArrayList();
 	final ComboBox<String> comboBox = new ComboBox<String>();
@@ -63,7 +64,8 @@ public class ControlPanel extends GridPane {
 		comboBox.setOnAction(event -> {
 			String selectedOption = comboBox.getSelectionModel().getSelectedItem();
 			System.out.println("Selected register: " + selectedOption);
-
+			
+			this.pName = selectedOption;
 			c.setCurrentRobot(c.getBoardController().getPlayerByName(selectedOption).getRobot());
 
 		});
@@ -100,6 +102,7 @@ public class ControlPanel extends GridPane {
 			@Override
 			public void handle(ActionEvent event) {
 				c.getCurrentRobot().AddToRegister(new Uturn());
+				c.getBoardScene().getPlayermat(pName).addRegister();
 			}
 		});
 		
@@ -108,6 +111,7 @@ public class ControlPanel extends GridPane {
 			public void handle(ActionEvent event) {
 				
 				c.getCurrentRobot().AddToRegister(new Forward(1));
+				c.getBoardScene().getPlayermat(pName).addRegister();
 				
 			}
 		});
@@ -115,12 +119,15 @@ public class ControlPanel extends GridPane {
 			@Override
 			public void handle(ActionEvent event) {
 				c.getCurrentRobot().AddToRegister(new Forward(2));
+				c.getBoardScene().getPlayermat(pName).addRegister();
 			}
 		});
 		moveF3.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
 				c.getCurrentRobot().AddToRegister(new Forward(3));
+				c.getBoardScene().getPlayermat(pName).addRegister();
+				// c.getBoardScene().
 			}
 		});
 		
@@ -128,18 +135,21 @@ public class ControlPanel extends GridPane {
 			@Override
 			public void handle(ActionEvent event) {
 				c.getCurrentRobot().AddToRegister(new Backwards(1));
+				c.getBoardScene().getPlayermat(pName).addRegister();
 			}
 		});
 		moveB2.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
 				c.getCurrentRobot().AddToRegister(new Backwards(2));
+				c.getBoardScene().getPlayermat(pName).addRegister();
 			}
 		});
 		moveB3.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
 				c.getCurrentRobot().AddToRegister(new Backwards(3));
+				c.getBoardScene().getPlayermat(pName).addRegister();
 			}
 		});
 		
@@ -147,6 +157,7 @@ public class ControlPanel extends GridPane {
 			@Override
 			public void handle(ActionEvent event) {
 				c.getCurrentRobot().AddToRegister(new TurnLeft(1));
+				c.getBoardScene().getPlayermat(pName).addRegister();
 			}
 		});
 		
@@ -154,6 +165,7 @@ public class ControlPanel extends GridPane {
 			@Override
 			public void handle(ActionEvent event) {
 				c.getCurrentRobot().AddToRegister(new TurnRight(1));
+				c.getBoardScene().getPlayermat(pName).addRegister();
 			}
 		});
 

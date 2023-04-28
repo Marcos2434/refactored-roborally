@@ -73,8 +73,15 @@ public class BoardScene extends Scene {
             boardPane.setLeft(playersUIleft);
         }
         // boardPane.setRight(playersUIright);
-        
+    }
 
+    public Playermat getPlayermat(String pName){
+        for (int i = 0; i < pMats.size(); i++){
+            if (pMats.get(i).getPlayer().getName().equals(pName)){
+                return pMats.get(i);
+            }
+        }
+        return null;
     }
 
     public BoardScene(Controller c) throws IOException {
