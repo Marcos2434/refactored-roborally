@@ -277,7 +277,7 @@ public class BoardTest {
         robot1.addCheckpoint(new Position(0, 5));
         bC.moveRobot(robot2, new Position(0,10));
         bC.moveRobot(robot3, new Position(2,4));
-               
+    
         bC.RunAllEffects();
     }
     @Then("Each robot is effected accordingly")

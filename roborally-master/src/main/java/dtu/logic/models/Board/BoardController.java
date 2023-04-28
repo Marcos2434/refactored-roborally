@@ -109,9 +109,9 @@ public class BoardController {
        
         for (int i = 0; i < 10; i++){
             if (i % 3 == 1){
-                c = 3 - (int)Math.floor(i/3);}
+                c = 2 - (int)Math.floor(i/3);}
             else if (i % 3 == 2){
-                c = 6 - (int)Math.floor(i/3);}
+                c = 5 - (int)Math.floor(i/3);}
             else{c = 9 - i/3;}
                
             for (int j = 0; j < 13; j++){
