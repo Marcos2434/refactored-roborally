@@ -9,9 +9,13 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
+
+import java.util.ArrayList;
+
 import dtu.controller.Controller;
 import dtu.view.ProgrammingPhaseScene;
 import dtu.logic.models.Cards.MovementCards.*;
+import dtu.logic.models.Player.Player;
 
 public class ControlPanel extends GridPane {
 
@@ -81,18 +85,22 @@ public class ControlPanel extends GridPane {
 	}
 	
 	private void addRegisterListeners() {
-
 	}
+
 
 	private void addListeners() {
 		ChooseCards.setOnMouseClicked(new EventHandler<Event>() {
 			@Override
 			public void handle(Event event) {
-				c.setProgrammingPhaseScene(new ProgrammingPhaseScene(c));
-				c.setTheScene(c.getProgrammingPhaseScene(), "Choose Cards!!");
+				c.nextScene();
 				c.notifyAllRobotObservers();
+				
+				// c.setProgrammingPhaseScene(new ProgrammingPhaseScene(c));
+				// c.setTheScene(c.getProgrammingPhaseScene(), "Choose Cards!!");
+				// c.notifyAllRobotObservers();
 			}
 		});
+
 		uTurn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -156,6 +164,7 @@ public class ControlPanel extends GridPane {
 
 		Activate.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
+			
 			public void handle(ActionEvent event) {
 				if (c.getCurrentPlayer().getRobot().register.size() > 0) {
 					Task<Void> task = new Task<Void>() {

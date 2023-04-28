@@ -14,6 +14,10 @@ public class AI extends Player {
         super(robot, "Bob"+AICount);
         AICount = AICount+1;
     }
+    public AI(Robot robot,String name) {
+        super(robot, name);
+        AICount = AICount+1;
+    }
 
     @Override 
     public void drawProgrammingCards() {
@@ -32,7 +36,7 @@ public class AI extends Player {
                 }
         }
         hand = array;
-        robot.setRegister(hand);
+   
 
     }
     @Override
