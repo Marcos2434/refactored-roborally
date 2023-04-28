@@ -48,13 +48,19 @@ public class BoardController {
         // this.boardScene.getPlayermat(currentPlayer.getName()).removeCard();
         // System.out.println("Removed");
 	}
+
+    public void notifyLaserObservers(Lazer laser) {
+        for (BoardObserver o : this.boardObservers) {
+            o.updateLaser(laser);
+        }
+    }
     
-    public void fireboardLazers(){
+    public void fireboardLazers() {
         for (int i=0; i<13; i++){
             for (int j=0; j<10; j++){
                 Tile tile = this.getBoard().getTileAt(new Position(i,j));
                 if (tile instanceof TileLazer){
-                    TileLazer TL = (TileLazer)tile;
+                    TileLazer TL = (TileLazer) tile;
                     TL.FIRE(this);
                 }
             }
