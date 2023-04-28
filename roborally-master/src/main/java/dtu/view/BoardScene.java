@@ -7,9 +7,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import dtu.controller.Controller;
 import dtu.logic.models.Board.Board;
+import dtu.logic.models.Cards.ActionCard;
+import dtu.logic.models.Observers.BoardObserver;
+import dtu.logic.models.Observers.RobotObserver;
 import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.Robot;
-import dtu.logic.models.Robot.RobotObserver;
 import dtu.roborally.view.widgets.ControlPanel;
 import dtu.view.drawers.BoardDrawer;
 import javafx.application.Platform;
@@ -19,7 +21,7 @@ import javafx.scene.Scene;
 
 
 
-public class BoardScene extends Scene implements RobotObserver {
+public class BoardScene extends Scene implements RobotObserver, BoardObserver {
     
     BorderPane boardPane;
     Controller c;
@@ -86,10 +88,13 @@ public class BoardScene extends Scene implements RobotObserver {
 
     public void updateRobotInfo(Robot robot) {
         Platform.runLater(() -> {
-            System.out.println(robot.getRobotColor());
-            System.out.println(robot.getPos());
             bd.drawRobot(robot);
         });     
+    }
+
+    public void updateNewAction(ActionCard actionCard) {
+        // Run popup here !
+        System.out.println("New Action!");
     }
 
     public ControlPanel getControlPanel() {

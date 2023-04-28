@@ -5,6 +5,7 @@ import dtu.logic.models.Direction;
 import dtu.logic.models.Position;
 import dtu.logic.models.Board.BoardController;
 import dtu.logic.models.Cards.ProgramCard;
+import dtu.logic.models.Observers.RobotObserver;
 import javafx.scene.image.Image;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -85,7 +86,6 @@ public class Robot {
     // Position and movement
     public void setPos(Position pos) {
         this.pos = pos;
-       
         robotNotify();
     }
     
