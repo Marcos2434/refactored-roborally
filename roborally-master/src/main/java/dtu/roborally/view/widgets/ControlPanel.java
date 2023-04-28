@@ -45,6 +45,9 @@ public class ControlPanel extends GridPane {
 		addListeners();
 	}
 
+	public void notifyCardRan(){
+		
+	}
 
 	
 	public void addPlayerNamesToDropdown() {
