@@ -114,9 +114,7 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
 
         //------------------------------------- CARDS_START -------------------------------------//
         //Card1
-        System.out.println(c.getCurrentPlayer().getHand().get(0).getImage());
         Image stream1 = new Image (ProgrammingPhaseScene.class.getClassLoader().getResourceAsStream(c.getCurrentPlayer().getHand().get(0).getImage())); //
-        System.out.println("asd2");
         this.imageView1 = new ImageView(stream1); //new ImageView(stream);  
         imageView1.setFitHeight(150);
         imageView1.setFitWidth(100);
@@ -353,9 +351,6 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
                     this.store3 = node;
                     frame3.setId(node.getId());
                 }
-                
-                            // System.out.println("we are now in box 3");
-                            // frame3.setFill(new ImagePattern(new Image (node.getId()) ));
             }
             if (leftBox4.getBoundsInParent().contains(e.getSceneX(), e.getSceneY())){
                 if (frame4.getFill() == null){
