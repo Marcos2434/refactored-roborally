@@ -89,7 +89,7 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
         c.setBoard(board);
         
         redraw();
-        Popup();
+        Popup1();
         // Register control panel
         cp = new ControlPanel(c);
         rightSide.getChildren().addAll(playersUIright,cp);
@@ -127,7 +127,7 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
     public ControlPanel getControlPanel() {
         return this.cp;
     }
-    public void Popup(){
+    public void Popup1(){
         Image view = new Image("Cards/Popup.png");
         ImageView imageView = new ImageView(view);
         Label label = new Label("This is a Popup");
