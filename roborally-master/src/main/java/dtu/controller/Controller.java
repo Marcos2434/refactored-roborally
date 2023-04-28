@@ -88,11 +88,6 @@ public class Controller {
         }
     }
 
-    public void notifyCardRemove(){
-        this.boardScene.getPlayermat(currentPlayer.getName()).removeCard();
-        System.out.println("Removed");
-	}
-
     public void changeToBoardScene() {
         this.boardScene.setPlayermats(this.boardController.getPlayers());
         this.setTheScene(this.getBoardScene(), "Roborally!");
@@ -121,7 +116,6 @@ public class Controller {
     }
 
     public BoardScene getBoardScene() {
-        System.out.println("Got to getBoardScene");
         return boardScene;
     }
 

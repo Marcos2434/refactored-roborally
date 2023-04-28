@@ -58,10 +58,8 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
     }
 
     public Playermat getPlayermat(String pName){
-        System.out.println("Got to getPlayermat");
         for (int i = 0; i < pMats.size(); i++){
             if (pMats.get(i).getPName().equals(pName)){
-                System.out.println("Got the pMat");
                 return pMats.get(i);
             }
         }
@@ -106,6 +104,12 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
     public void updateNewAction(ActionCard actionCard) {
         // Run popup here !
         System.out.println("New Action!");
+    }
+
+    public void updateCardTaken(Player player, String cardImageString){
+        Platform.runLater(() -> {;
+        getPlayermat(player.getName()).activateCard(cardImageString);
+        });
     }
 
     public ControlPanel getControlPanel() {

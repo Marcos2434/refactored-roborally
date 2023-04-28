@@ -44,7 +44,7 @@ public class Playermat extends StackPane {
 
     private Image cardbackpic = new Image("playermat/cardback.png");
     private Image lockedpic = new Image("playermat/locked.png");
-    private Image dummypic = new Image("playermat/locked.png");
+    private Image dummypic = new Image("playermat/dummy.png");
     private int regSize;
 
     private Image ActiveCardPic; // = new Image("Cards/AgainCard.png");
@@ -108,26 +108,34 @@ public class Playermat extends StackPane {
             ImageView cb = new ImageView(cardbackpic);
             cardsHbox.getChildren().add(cb);
             cardsHbox.setStyle("-fx-padding: 0 0 2 2;");
-            System.out.println("Added to mat, should be seen");
             this.regSize += 1;
             System.out.println(regSize);
+        } 
+        else {
+            activateCard("Cards/AgainCard.png");
         }
     }
     
-    public void removeCard(){
-        System.out.println("Got the remove");
+    public void activateCard(String cardImageURL){
+        System.out.println(player.getName() + cardImageURL);
         if (regSize == 1){
             System.out.println("Got in if");
             cardsHbox.getChildren().clear();
             cardsHbox.setStyle("-fx-padding: 0 0 44 2;");
-
-        } else if (cardsHbox.getChildren().size() > 0 && regSize > 0){
+            regSize = 0;
+        } else if (regSize > 0){
             System.out.println("Got in elif " + regSize);
+            try {
+            // cardsHbox.getChildren().remove(0);
             cardsHbox.getChildren().set(5 - regSize, new ImageView(dummypic));
             this.regSize -= 1;
-            System.out.print("rekt");
-
+            }
+            catch(Exception i){
+                System.out.println(i);
+            }
         } 
+        ActiveCardPic = new Image(cardImageURL);
+        ActiveCard = new ImageView(ActiveCardPic);
     }
 
     public void updateChPInfo(String info) {

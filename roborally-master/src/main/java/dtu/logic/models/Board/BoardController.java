@@ -10,6 +10,8 @@ import dtu.logic.models.Observers.BoardObserver;
 import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.Lazer;
 import dtu.logic.models.Robot.Robot;
+import javafx.scene.image.Image;
+
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 
@@ -21,7 +23,6 @@ public class BoardController {
     private LinkedHashSet<BoardObserver> boardObservers = new LinkedHashSet<BoardObserver>(1);
 
     private Board board;
-    private Controller c;
 
     public BoardController(Board board) {
         this.board = board;
@@ -37,6 +38,16 @@ public class BoardController {
             o.updateNewAction(actionCard);
         }
     }
+
+    public void notifyCardRemove(Player player, String cardImageString){
+        for (BoardObserver o : this.boardObservers) {
+            o.updateCardTaken(player, cardImageString);
+        }
+
+
+        // this.boardScene.getPlayermat(currentPlayer.getName()).removeCard();
+        // System.out.println("Removed");
+	}
     
     public void fireboardLazers(){
         for (int i=0; i<13; i++){
@@ -61,20 +72,17 @@ public class BoardController {
         for (int i=0; i<5;i++){
             for (int j = 0; j < this.players.size(); j++) {
                 Robot r = this.players.get(j).getRobot();
-                System.out.println("Fasz");
-                c.setCurrentPlayer(this.players.get(j));
 
                 // System.out.println("faszom");
                 // c.notifyCardRemove();
 
                 if (r.getRegister().size() > i){
+                    notifyCardRemove(this.players.get(j), r.getRegister().get(i).getImage());
                     r.moveByCard(this, r.getRegister().get(i));
-                    c.getBoardScene().getPlayermat(c.getCurrentPlayer().getName()).removeCard();
                 }
                 
                 if (i == 4){
                     r.getRegister().clear();
-                    c.getBoardScene().getPlayermat(c.getCurrentPlayer().getName()).removeCard();
                 }
             }
 
