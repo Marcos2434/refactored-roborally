@@ -213,10 +213,10 @@ public class Robot {
 
     // Damage and live control
     public void Death(BoardController boardController){
-        boardController.getBoard().getTileAt(pos).unOccupy();
-        if (this.pos.getRow() > 0 && this.pos.getRow() < 13 &&
-            this.pos.getColumn() > 0 && this.pos.getColumn()<10){
-            
+        
+        if (this.pos.getRow() >= 0 && this.pos.getRow() < 13 &&
+            this.pos.getColumn() >= 0 && this.pos.getColumn()<10){
+            boardController.getBoard().getTileAt(pos).unOccupy();
             this.prevPos = new Position(pos.getColumn(),pos.getRow());
         } 
         Collections.reverse(this.checkpoints);
