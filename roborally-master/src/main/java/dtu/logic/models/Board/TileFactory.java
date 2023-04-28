@@ -43,7 +43,11 @@ public class TileFactory {
         else if (tiles[0].trim().equals("RT")){ 
             
             return new TileRepair(TileType.REPAIR);
+        }
+
+        else if (tiles[0].trim().equals("AT")){ 
             
+            return new TileAction(TileType.ACTION);
         }
 
         else{return new Tile(TileType.FLOOR);}
