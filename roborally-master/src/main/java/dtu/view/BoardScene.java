@@ -80,26 +80,9 @@ public class BoardScene extends Scene implements RobotObserver {
     private void initialize() throws IOException {
         boardPane = (BorderPane) this.getRoot();
 
-		String[][] board1 = {
-            {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","HT","T","WT 1","WT 4","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","T","T","T","C 1","T","T","T","T"},
-            {"T","T","BT 4 1","BT 4 1","BT 4 1","BT 4 1","BT 4 1","T","T","T"},
-            {"T","T","BT 2 1","BT 2 1","BT 2 1","BT 2 1","BT 2 1","T","T","T"},
-            {"T","T","BT 1 1","BT 4 1","LT 4","T","T","T","T","T"},
-            {"T","T","T","T","T","T","T","T","C 3","T"},
-            {"C 2","T","HT","BT 1 2","BT 4 2","T","T","T","T","T"},
-            {"T","T","HT","T","T","T","T","T","T","T"},
-            // Start Field
-            {"T","T","T","T","WT 1","WT 1","T","T","T","T"},
-            {"T","S","WT 4","T","S","S","T","WT 2","S","T"},
-            {"S","T","T","S","T","T","S","T","T","S"},
-        };
-        
-
         // Creating the board
-        Board board = new Board(board1);
+        System.out.println(c.getBoardSelecter());
+        Board board = new Board(Map.getMapByName(c.getBoardSelecter()));
         c.setBoard(board);
         
         redraw();

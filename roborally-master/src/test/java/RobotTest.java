@@ -40,7 +40,7 @@ public class RobotTest {
         {"T","T","HT","T","T","T","T","T","T","T"},
         {"T","T","HT","T","T","T","T","T","T","T"},
     };
-    Board board = new Board(board1, true);
+    Board board = new Board(board1);
     BoardController bC = new BoardController(board);
     Deck deck = new Deck();
     // initiats a robot with everything needed, change this when making a
@@ -163,8 +163,8 @@ public class RobotTest {
         robot2 = new Robot(RobotColor.RED,new Position(5,4));
         player1 = new Player(robot1,"Casper");
         player2 = new Player(robot2,"Marcos");
-        bC.getBoard().getTileAt(robot1.getPos()).Occupy(robot1.getImage(), robot1.getDirID());
-        bC.getBoard().getTileAt(robot2.getPos()).Occupy(robot2.getImage(), robot2.getDirID());
+        bC.getBoard().getTileAt(robot1.getPos()).Occupy();
+        bC.getBoard().getTileAt(robot2.getPos()).Occupy();
         bC.addPlayer(player1);
         bC.addPlayer(player2);
         
@@ -209,8 +209,8 @@ public class RobotTest {
         robot2.setPos(8, 5);
         robot2.setDir(Direction.LEFT);
 
-        bC.getBoard().getTileAt(robot1.getPos()).Occupy(robot1.getImage(), robot1.getDirID());
-        bC.getBoard().getTileAt(robot2.getPos()).Occupy(robot2.getImage(), robot1.getDirID());
+        bC.getBoard().getTileAt(robot1.getPos()).Occupy();
+        bC.getBoard().getTileAt(robot2.getPos()).Occupy();
 
         robot1.FIRE(bC);
         
@@ -270,10 +270,10 @@ public class RobotTest {
         player2 = new Player(robot2,"Marcos");
         player3 = new Player(robot3,"Casper2");
         player4 = new Player(robot4,"Marcos2");
-        bC.getBoard().getTileAt(robot1.getPos()).Occupy(robot1.getImage(), robot1.getDirID());
-        bC.getBoard().getTileAt(robot2.getPos()).Occupy(robot2.getImage(), robot2.getDirID());
-        bC.getBoard().getTileAt(robot3.getPos()).Occupy(robot3.getImage(), robot3.getDirID());
-        bC.getBoard().getTileAt(robot4.getPos()).Occupy(robot4.getImage(), robot4.getDirID());
+        bC.getBoard().getTileAt(robot1.getPos()).Occupy();
+        bC.getBoard().getTileAt(robot2.getPos()).Occupy();
+        bC.getBoard().getTileAt(robot3.getPos()).Occupy();
+        bC.getBoard().getTileAt(robot4.getPos()).Occupy();
        
         bC.addPlayer(player1);
         bC.addPlayer(player2);

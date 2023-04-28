@@ -1,4 +1,4 @@
-import static org.junit.Assert.assertNotNull;
+
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
@@ -9,11 +9,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
-import org.junit.runner.RunWith;
-import io.cucumber.junit.Cucumber;
-import io.cucumber.junit.CucumberOptions;
-import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
@@ -61,7 +57,7 @@ public class BoardTest {
             {"T","T","HT","T","T","T","T","T","T","T"},
             {"T","T","HT","T","T","T","T","T","T","T"},
         };
-        this.board = new Board(board1, true);
+        this.board = new Board(board1);
         bC = new BoardController(board);
         robot.setPos(pos1);
         
@@ -69,7 +65,7 @@ public class BoardTest {
     // test extraction of tile
     @Then("Show me what Tile it is")
     public void show_me_what_tile_it_is() {
-        assertEquals("T",board.getTileAt(pos1).getname());
+        assertTrue(TileFactory.createtile("T", pos1.getColumn(), pos1.getRow()).equals(board.getTileAt(pos1)));
         assertEquals("HT",board.getTileAt(pos2).getname());
         assertNull(board.getTileAt(pos3));
     }
@@ -138,7 +134,7 @@ public class BoardTest {
             {"BT 2 2","BT 1 2","T","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"}};
-        this.board = new Board(board1, true);
+        this.board = new Board(board1);
         bC = new BoardController(board);
         robot1 = new Robot(RobotColor.BLUE,new Position(3,3));
         robot2 = new Robot(RobotColor.GREEN,new Position(3,3));
@@ -259,7 +255,7 @@ public class BoardTest {
             {"BT 2 2","BT 1 2","T","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","C 1","T","C 2","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"}};
-        this.board = new Board(board1, true);
+        this.board = new Board(board1);
         bC = new BoardController(board);
         robot1 = new Robot(RobotColor.BLUE,new Position(0,5));
         robot2 = new Robot(RobotColor.GREEN,new Position(1,5));
@@ -307,12 +303,12 @@ public class BoardTest {
             {"T","T","T","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"}};
-        this.board = new Board(board1, true);
+        this.board = new Board(board1);
         bC = new BoardController(board);
         robot1 = new Robot(RobotColor.BLUE,new Position(0,5));
         robot2 = new Robot(RobotColor.GREEN,new Position(1,5));
-        bC.getBoard().getTileAt(robot1.getPos()).Occupy(robot1.getImage(), robot1.getDirID());
-        bC.getBoard().getTileAt(robot2.getPos()).Occupy(robot2.getImage(), robot2.getDirID());
+        bC.getBoard().getTileAt(robot1.getPos()).Occupy();
+        bC.getBoard().getTileAt(robot2.getPos()).Occupy();
         player1 = new Player(robot1,"Casper1");
         player2 = new Player(robot2,"Casper2");
        

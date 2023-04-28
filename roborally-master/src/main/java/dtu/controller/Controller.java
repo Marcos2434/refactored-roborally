@@ -12,6 +12,8 @@ import javafx.stage.Stage;
 import dtu.view.BoardScene;
 import dtu.view.MenuScene;
 import dtu.view.ProgrammingPhaseScene;
+import dtu.view.StartMenuScene;
+// import dtu.view.ProgrammingPhaseSceneSimple;
 import javafx.scene.Scene;
 import dtu.logic.models.Board.TileType;
 import dtu.logic.models.Board.TileStart;
@@ -19,14 +21,17 @@ import dtu.logic.models.Board.TileStart;
 public class Controller {
 
     // --- Scenes ---
+    private StartMenuScene startMenuScene;
     private MenuScene menuScene;
     private BoardScene boardScene;
     private ProgrammingPhaseScene programmingPhaseScene;
+    
     // private ProgrammingPhaseSceneSimple programmingPhaseSceneSimple;
     // --------------
     private Stage primaryStage;
     
     private Board board;
+    private String boardSelecter = null;
     private BoardController boardController;
     ArrayList<Position> availableBoardSpawns = new ArrayList<Position>();
 
@@ -37,9 +42,9 @@ public class Controller {
     }
     
     public void launch() {
-        this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
         //this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
-
+        this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
+        //this.setTheScene(this.getStartScene(), "Pick the type of play");
         //this.setTheScene(this.getProgrammingPhaseScene(), "Roborally - Programming Phase"); //for natalia
         // this.setTheScene(this.getProgrammingPhaseSceneSimple(), "Roborally - Programming Phase"); //for oli/gleb
 
@@ -66,6 +71,13 @@ public class Controller {
         return board;
     }
 
+    public void setBoardSelecter(String SelBoard) {
+        this.boardSelecter = SelBoard;
+    }
+
+    public String getBoardSelecter(){
+        return this.boardSelecter;
+    }
     public void notifyAllRobotObservers() {
         for (int i = 0; i < this.boardController.getPlayers().size(); i++) {
             this.boardController.getPlayers().get(i).getRobot().robotNotify();
@@ -76,6 +88,7 @@ public class Controller {
         Robot robot = new Robot(color);
         robot.registerObserver(this.boardScene);
         this.boardController.addPlayer(new Player(robot, name));
+        System.out.println(this.boardController.getPlayers().size()); 
         System.out.println(name + " has chosen color " + color);
     };
 
@@ -89,6 +102,13 @@ public class Controller {
         this.setTheScene(this.getBoardScene(), "Roborally!");
     }
 
+    public void setStartScene(StartMenuScene StartMenu){
+        this.startMenuScene = StartMenu;
+    }
+
+    public StartMenuScene getStartScene(){
+        return this.startMenuScene;
+    }
     public void setMenuScene(MenuScene s) {
         this.menuScene = s;
     }

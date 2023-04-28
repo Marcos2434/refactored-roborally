@@ -49,17 +49,20 @@ public class BoardController {
                 }
                 
                 if (i == 4){
-                    r.setRegister(new ArrayList<ProgramCard>());
+                    r.getRegister().clear();
                 }
             }
 
             try {
-               Thread.sleep(200);
+               Thread.sleep(100);
             } catch (Exception e) { System.err.println(e); }
             
             RunAllEffects();
             fireRobotLazers();
             fireboardLazers();
+            try {
+                Thread.sleep(100);
+             } catch (Exception e) { System.err.println(e); }
         }
         this.emptyAllRegisters();
 
@@ -84,7 +87,7 @@ public class BoardController {
                 else{r = 12 - j/2;}
                */
                 if (this.getBoard().getTileAt(new Position(i,j)).isOcupied()){
-                
+                 
                     this.getBoard().getTileAt(new Position(i,j)).effect(getRobotAt(new Position(i,j)), this);
                 }
                 
