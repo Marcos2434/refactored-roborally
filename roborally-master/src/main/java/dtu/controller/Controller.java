@@ -170,8 +170,6 @@ public class Controller {
         return programmingPhaseScene;
     }
 
-  
-
     public BoardController getBoardController() {
         return boardController;
     }

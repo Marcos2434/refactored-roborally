@@ -27,6 +27,7 @@ public class Robot {
 
     public List<ProgramCard> register = new ArrayList<ProgramCard>(5);
     
+    // TODO: hashset?
     private List<RobotObserver> observers = new ArrayList<RobotObserver>();
 
     public int getcheckpointCount(){
@@ -169,7 +170,8 @@ public class Robot {
 
         int d;
         Direction MoveDir;
-        
+        boolean shouldpush = false;
+        Robot r = null;
         if (forward) {
             MoveDir = getdir();
             d = 1;
@@ -184,19 +186,25 @@ public class Robot {
        
         if (boardController.allowmove(this,MoveDir)){
 
+            
+            //Move other robot out of the way first, if there is one
+            if (boardController.getBoard().getTileAt(getPosInDir(MoveDir))!=null){
+                if (boardController.getBoard().getTileAt(getPosInDir(MoveDir)).isOcupied()){
+                    r = boardController.getRobotAt(getPosInDir(MoveDir));
+                    shouldpush = true;
+                    
+                }
+            }
+
             if (this.DirID == 1){this.addRow(-d);}
             else if (this.DirID == 2){this.addCol(d);}
             else if (this.DirID == 3){this.addRow(d);}
             else if (this.DirID == 4){this.addCol(-d);} 
-            boardController.getBoard().getTileAt(pos).Occupy();
-            //Move other robot out of the way first, if there is one
-            if (boardController.getBoard().getTileAt(getPosInDir(MoveDir))!=null){
-                if (boardController.getBoard().getTileAt(getPosInDir(MoveDir)).isOcupied()){
-                    Robot r = boardController.getRobotAt(getPosInDir(MoveDir));
-                    Push(r,boardController);
-                }
-            }
             
+            
+            if (shouldpush){
+                Push(r,boardController);
+            }
             
         }
         
