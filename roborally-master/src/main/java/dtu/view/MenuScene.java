@@ -301,11 +301,11 @@ public class MenuScene extends Scene {
 						
 					
 					}
-				c.getBoardScene().getControlPanel().addPlayerNamesToDropdown();
+					c.getBoardScene().getControlPanel().addPlayerNamesToDropdown();
 					c.changeToBoardScene();
 					c.spawnRobots();
 				}
-				else{
+				else {
 					note.setText("Map has not been selected");   
 				}
 			}

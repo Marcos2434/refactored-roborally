@@ -445,7 +445,7 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
             ProgramCard card  = findCard(frame5.getId());
             c.getCurrentPlayer().getRobot().AddToRegister(card);  
         }
-        // c.backToBoardScene();
+
         c.getBoardScene().redraw();
         c.getCurrentPlayer().getHand().clear();
         c.setTheScene(c.getBoardScene());

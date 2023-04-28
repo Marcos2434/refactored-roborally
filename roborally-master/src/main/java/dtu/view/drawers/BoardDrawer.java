@@ -17,12 +17,11 @@ public class BoardDrawer extends GridPane {
             for (int col = 0; col < 10; col++) {
                 StackPane stackPane = new StackPane();
 
-                try{b.getGrid()[row][col].setImage(new Image(b.getGrid()[row][col].getimageString()));
-                    b.getGrid()[row][col].redraw();}
-                catch(Exception e){System.out.println(e);}
+                // b.getGrid()[row][col].setImage(new Image(b.getGrid()[row][col].getImageString()));
 
                 stackPane.getChildren().add(b.getGrid()[row][col]);
                 add(stackPane, col, row);
+                drawTileAt(new Position(col, row), b.getTileAt(new Position(col, row)).getImage());
             }
         }
     }
@@ -45,6 +44,11 @@ public class BoardDrawer extends GridPane {
     public void unDrawRobot(Position pos) {
         StackPane stackPane = (StackPane) this.getChildren().get(pos.getRow() * 10 + pos.getColumn());
         stackPane.getChildren().removeIf(node -> node instanceof ImageView);
+    }
+
+    public void drawTileAt(Position pos, Image image) {
+        StackPane stackPane = (StackPane) this.getChildren().get(pos.getRow() * 10 + pos.getColumn());
+        stackPane.getChildren().add(new ImageView(image));
     }
 
 }
