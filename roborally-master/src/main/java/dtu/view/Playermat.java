@@ -1,29 +1,14 @@
 package dtu.view;
 
-import java.io.IOException;
-import java.util.logging.Logger;
 
 import dtu.logic.models.RobotColor;
 import dtu.logic.models.Player.Player;
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 public class Playermat extends StackPane {
 
@@ -120,9 +105,8 @@ public class Playermat extends StackPane {
             regSize = 0;
         } else if (regSize > 0){
             try {
-            // cardsHbox.getChildren().remove(0);
-            cardsHbox.getChildren().set(5 - regSize, new ImageView(dummypic));
-            this.regSize -= 1;
+                cardsHbox.getChildren().set(5 - regSize, new ImageView(dummypic));
+                this.regSize -= 1;
             }
             catch(Exception i){
                 System.out.println(i);
@@ -147,7 +131,11 @@ public class Playermat extends StackPane {
     }
 
     public void updateInfo(){
-        // chPoint.setText("Checkpoint: " + info);
+        if (this.player.getRobot().getcheckpointCount() == 0){
+            chPoint.setText("Checkpoint: Start");
+        } else {
+            chPoint.setText("Checkpoint: " + this.player.getRobot().getcheckpointCount() + "    ");
+        }
         lives.setText("Lives: " + String.valueOf(player.getRobot().getLives()) + "   ");
         damage.setText("Damage: " + String.valueOf(player.getRobot().getDamageTaken()));
     }
