@@ -71,7 +71,7 @@ public class Controller {
     public void setBoard(Board board) {
         this.board = board;
         //this.availableBoardSpawns = this.board.getStartFields();
-        this.boardController = new BoardController(board);
+        this.boardController = new BoardController(board, this);
     }
 
     public Board getBoard() {
@@ -91,7 +91,7 @@ public class Controller {
         }
     }
 
-    public void notifyCardRun(){
+    public void notifyCardRemove(){
         this.boardScene.getPlayermat(currentPlayer.getName()).removeCard();
         System.out.println("Removed");
 	}
@@ -128,6 +128,7 @@ public class Controller {
     }
 
     public BoardScene getBoardScene() {
+        System.out.println("Got to getBoardScene");
         return boardScene;
     }
 

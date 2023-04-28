@@ -56,8 +56,10 @@ public class BoardScene extends Scene implements RobotObserver {
     }
 
     public Playermat getPlayermat(String pName){
+        System.out.println("Got to getPlayermat");
         for (int i = 0; i < pMats.size(); i++){
             if (pMats.get(i).getPName().equals(pName)){
+                System.out.println("Got the pMat");
                 return pMats.get(i);
             }
         }

@@ -109,17 +109,23 @@ public class Playermat extends StackPane {
             cardsHbox.getChildren().add(cb);
             cardsHbox.setStyle("-fx-padding: 0 0 2 2;");
             System.out.println("Added to mat, should be seen");
-            this.regSize += 1;    
+            this.regSize += 1;
+            System.out.println(regSize);
         }
     }
     
     public void removeCard(){
+        System.out.println("Got the remove");
         if (regSize == 1){
+            System.out.println("Got in if");
             cardsHbox.getChildren().clear();
             cardsHbox.setStyle("-fx-padding: 0 0 44 2;");
+
         } else if (cardsHbox.getChildren().size() > 0 && regSize > 0){
+            System.out.println("Got in elif " + regSize);
             cardsHbox.getChildren().set(5 - regSize, new ImageView(dummypic));
-            System.out.print(cardsHbox.getChildren());
+            this.regSize -= 1;
+            System.out.print("rekt");
 
         } 
     }
