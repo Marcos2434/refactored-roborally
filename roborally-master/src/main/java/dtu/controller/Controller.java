@@ -13,7 +13,6 @@ import dtu.view.BoardScene;
 import dtu.view.MenuScene;
 import dtu.view.ProgrammingPhaseScene;
 import dtu.view.StartMenuScene;
-// import dtu.view.ProgrammingPhaseSceneSimple;
 import javafx.scene.Scene;
 import dtu.logic.models.Board.TileType;
 import dtu.logic.models.Board.TileStart;
@@ -25,7 +24,7 @@ public class Controller {
     private MenuScene menuScene;
     private BoardScene boardScene;
     private ProgrammingPhaseScene programmingPhaseScene;
-    
+    private static int count;
     // private ProgrammingPhaseSceneSimple programmingPhaseSceneSimple;
     // --------------
     private Stage primaryStage;
@@ -34,6 +33,8 @@ public class Controller {
     private String boardSelecter = null;
     private BoardController boardController;
     ArrayList<Position> availableBoardSpawns = new ArrayList<Position>();
+    private ArrayList<Player> realPlayers = new ArrayList<Player>();
+    private ArrayList<Player> Ais = new ArrayList<Player>();
 
     private Player currentPlayer;
     
@@ -42,12 +43,14 @@ public class Controller {
     }
     
     public void launch() {
+        //this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
         this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
         //this.setTheScene(this.getStartScene(), "Pick the type of play");
         //this.setTheScene(this.getProgrammingPhaseScene(), "Roborally - Programming Phase"); //for natalia
         // this.setTheScene(this.getProgrammingPhaseSceneSimple(), "Roborally - Programming Phase"); //for oli/gleb
-    }
 
+    }
+    //asd
     public void setCurrentPlayer(Player currentPlayer) {
         this.currentPlayer = currentPlayer;
     }
@@ -55,19 +58,39 @@ public class Controller {
     public Player getCurrentPlayer() {
         return currentPlayer;
     }
-    public void createAI(RobotColor color){
+    public void createAI(RobotColor color,String name){
         Robot robot = new Robot(color);
         robot.registerObserver(this.boardScene);
+        if (name.isEmpty()){
         this.boardController.addPlayer(new AI(robot));
+        }
+        else{
+            this.boardController.addPlayer(new AI(robot,name));
+        }
+        
+    }
+    public void addCount(){
+        count+=1;
+    }
+    public void count0(){
+        count=0;
+    }
+    public int getCount(){
+        return count;
     }
     public void createPlayer(RobotColor color, String name) {
         Robot robot = new Robot(color);
         robot.registerObserver(this.boardScene);
+        if (name.isEmpty()){
+
+            name=color.toString();
+        }
         this.boardController.addPlayer(new Player(robot, name));
 
     };
     public void setBoard(Board board) {
         this.board = board;
+        //this.availableBoardSpawns = this.board.getStartFields();
         this.boardController = new BoardController(board);
     }
 
@@ -79,7 +102,7 @@ public class Controller {
         this.boardSelecter = SelBoard;
     }
 
-    public String getBoardSelecter() {
+    public String getBoardSelecter(){
         return this.boardSelecter;
     }
     public void notifyAllRobotObservers() {
@@ -88,10 +111,16 @@ public class Controller {
         }
     }
 
+
+
     public void changeToBoardScene() {
-        this.boardScene.setPlayermats(this.boardController.getPlayers());
+        boardScene.setPlayermats(boardController.getPlayers());
         this.setTheScene(this.getBoardScene(), "Roborally!");
         this.spawnRobots();
+    }
+
+    public void backToBoardScene() {
+        this.setTheScene(this.getBoardScene(), "Roborally!");
     }
 
     public void setStartScene(StartMenuScene StartMenu){
@@ -121,7 +150,6 @@ public class Controller {
 
     public void setBoardScene(BoardScene boardScene) {
         this.boardScene = boardScene;
-        this.boardController.registerBoardObserver(this.boardScene);
     }
 
     public void setTheScene(Scene s, String title) {
@@ -149,11 +177,46 @@ public class Controller {
     public ArrayList<String> getPlayersNames() {
         ArrayList<String> playerNames = new ArrayList<String>();
         for (Player i: this.boardController.getPlayers()) {
-            if (true) {
+            if (!i.isAI()) {
                 playerNames.add(i.getName());
             }
         }
         return playerNames;
+    }
+
+	public void nextScene(){
+		if (getCount()==realPlayers.size()){
+			count0();
+            for (Player i : Ais) {
+                i.drawProgrammingCards();
+                i.chooseProgrammingCards();
+                System.out.println(i.getRobot().getRegister().toString());
+                notifyAllRobotObservers();
+            }
+            
+			setTheScene(getBoardScene(),"RoboRally!!");
+		}
+		else{
+			setCurrentPlayer(realPlayers.get(getCount()));
+			addCount();
+			setProgrammingPhaseScene(new ProgrammingPhaseScene(this));
+			setTheScene(getProgrammingPhaseScene(), getCurrentPlayer().getName());
+		}   
+        notifyAllRobotObservers();
+        
+    }
+    public void getRealPlayers(){
+		for (Player i : getBoardController().getPlayers()) {
+
+			if (!i.isAI()){
+
+				realPlayers.add(i);
+			}
+            else {
+                Ais.add(i);
+            }
+		}
+
     }
 
     public void spawnRobots() {
