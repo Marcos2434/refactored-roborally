@@ -125,7 +125,8 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
 
     public void updateNewAction(ActionCard actionCard) {
         // Run popup here !
-        System.out.println("New Action!");
+        System.out.println(actionCard.getName()); 
+        System.out.println(actionCard.getDescription()); 
     }
 
     public void updateCardTaken(Player player, String cardImageString){

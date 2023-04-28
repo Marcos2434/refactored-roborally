@@ -12,7 +12,8 @@ import dtu.logic.models.Robot.Robot;
 public class FireRain implements ActionCard {
 
     private String image = "";
-    
+    private String name = "FireRain";
+    private String Description = "You have stepped upon the storm gods sacred tile, they are punnishing everyone with a storm of fire!! All robots take 1 damage.";
     @Override
     public String getImage(){
         return this.image;
@@ -22,9 +23,15 @@ public class FireRain implements ActionCard {
         ArrayList<Player> players = boardController.getPlayers();
         for (Player player : players) {
            player.getRobot().takeDmg(boardController);
-        }
-        
-        
+        }   
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public String getDescription(){
+        return Description;
     }
     
 }
