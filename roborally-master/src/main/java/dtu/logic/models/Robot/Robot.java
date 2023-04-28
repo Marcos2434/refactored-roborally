@@ -199,7 +199,7 @@ public class Robot {
             else if (this.DirID == 2){this.addCol(d);}
             else if (this.DirID == 3){this.addRow(d);}
             else if (this.DirID == 4){this.addCol(-d);} 
-            boardController.getBoard().getTileAt(pos).Occupy();
+            
             
             if (shouldpush){
                 Push(r,boardController);

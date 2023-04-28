@@ -35,7 +35,7 @@ public class RobotTest {
         {"T","T","HT","T","T","T","T","T","T","T"},
         {"T","T","HT","T","T","T","T","T","T","T"},
         {"T","T","HT","T","T","T","T","T","T","T"},
-        {"T","T","HT","T","T","T","T","T","T","T"},
+        {"T","T","HT","T","T","T","T","T","T","C 1"},
         {"T","T","HT","T","T","T","T","T","T","T"},
         {"T","T","HT","T","T","T","T","T","T","T"},
         {"T","T","HT","T","T","T","T","T","T","T"},
@@ -347,5 +347,20 @@ public class RobotTest {
     public void they_will_perform_the_effect_of_the_last_run_card() {
         assertEquals(new Position(5, 1),robot1.getPos());
 }
+    @When("The robot is pushed over the edge while having the checkpoint")
+    public void the_robot_is_pushed_over_the_edge_while_having_the_checkpoint() {
+        bC.moveRobot(robot1,new Position(9,9));
+        bC.moveRobot(robot2,new Position(8, 9));
+        bC.getBoard().getTileAt(robot1.getPos()).Occupy();
+        bC.getBoard().getTileAt(robot2.getPos()).Occupy();
+        robot2.turn(1,bC);
+        robot2.AddToRegister(new Forward(1));
+        bC.RunAllEffects();
+        bC.runAllRegisters();
+    }
+    @Then("it spawnns at the startpoint.")
+    public void it_spawnns_at_the_startpoint() {
+        assertEquals(new Position(5,5),robot1.getPos());
+        assertEquals(new Position(9,9),robot2.getPos());
+    }
 }
-
