@@ -18,7 +18,7 @@ public class TileBelt extends Tile{
         this.imageString = "tiles/" + intensity + "speedBelt" + dir.getId() + ".png";
        
 	}
-   
+   //muahahahh
 
     public String getname(){
         return this.name;
@@ -36,9 +36,9 @@ public class TileBelt extends Tile{
                
                 TileBelt currtile = (TileBelt)boardController.getBoard().getTileAt(robot.getPos());
                 pushRobot(robot,currtile.getdir());
-                boardController.getBoard().getTileAt(robot.getPos()).Occupy(); 
-                //try{Thread.sleep(500);}
-                //catch(Exception e){System.out.println(e);}
+                boardController.getBoard().getTileAt(robot.getPos()).Occupy();
+                try{Thread.sleep(500);}
+                catch(Exception e){System.out.println(e);}
 
                 if (boardController.getBoard().getTileAt(robot.getPos()) instanceof TileBelt){
                     
@@ -49,6 +49,8 @@ public class TileBelt extends Tile{
             }
         }
         else{ 
+            try{Thread.sleep(500);}
+                catch(Exception e){System.out.println(e);}
             pushRobot(robot, this.dir);
         }
         boardController.getBoard().getTileAt(robot.getPos()).Occupy(); 

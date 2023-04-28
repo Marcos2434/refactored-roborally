@@ -10,6 +10,8 @@ import dtu.logic.models.Observers.BoardObserver;
 import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.Lazer;
 import dtu.logic.models.Robot.Robot;
+import javafx.scene.image.Image;
+
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 
@@ -36,6 +38,16 @@ public class BoardController {
             o.updateNewAction(actionCard);
         }
     }
+
+    public void notifyCardRemove(Player player, String cardImageString){
+        for (BoardObserver o : this.boardObservers) {
+            o.updateCardTaken(player, cardImageString);
+        }
+
+
+        // this.boardScene.getPlayermat(currentPlayer.getName()).removeCard();
+        // System.out.println("Removed");
+	}
     
     public void fireboardLazers(){
         for (int i=0; i<13; i++){
@@ -63,6 +75,7 @@ public class BoardController {
                 System.out.println(r.getRegister());
                 
                 if (r.getRegister().size() > i){
+                    notifyCardRemove(this.players.get(j), r.getRegister().get(i).getImage());
                     r.moveByCard(this, r.getRegister().get(i));
                 }
                 
