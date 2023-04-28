@@ -70,6 +70,9 @@ public class Lazer {
                 else if (this.Dir.getId()  == 4){pos.addX(-1);}
 
                 boardController.notifyLaserObservers(this);
+                try {
+                    Thread.sleep(100);
+                } catch (Exception e) { System.err.println(e); }
 
                 //Move other robot out of the way first, if there is one
                 
