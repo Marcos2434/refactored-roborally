@@ -139,7 +139,7 @@ public class Playermat extends StackPane {
         pName.prefHeight(54);
         pName.prefWidth(191);
         pName.setStyle("-fx-font-weight: bold; -fx-font-size: 15;");
-        color = new Label("BLUE");
+        color = new Label();
         setColor();
         HBox playerinfo = new HBox(pName, color);
         playerinfo.setStyle("-fx-padding: 5 0 15 0;");
@@ -172,26 +172,4 @@ public class Playermat extends StackPane {
 
         super.getChildren().addAll(background, hbox1);
     }
-
-    // @Override
-    // public void start(Stage primaryStage) throws Exception {
-    // try{
-    // Pane root =
-    // FXMLLoader.load(getClass().getClassLoader().getResource("playermat/playermat.fxml"));
-    // //BorderPane root = new BorderPane();
-    // Scene scene = new Scene(root);
-
-    // primaryStage.setTitle("A rohadás öljön meg");
-    // primaryStage.setScene(scene);
-    // primaryStage.show();
-    // }
-    // catch(Exception ex) {
-    // ex.printStackTrace();
-    // }
-    // }
-
-    // public static void main(String[] args) {
-    // // Launch GUI
-    // launch(args);
-    // }
 }
