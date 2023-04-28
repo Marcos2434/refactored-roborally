@@ -9,12 +9,23 @@ public class Lazer {
     private Position pos;
     private Direction Dir;
     private int DirID;
+    private String imageString;
+
     public Lazer(Position pos, Direction dir){
         this.pos = pos;
         this.Dir = dir;
         this.DirID = dir.getId();
+        if (dir.getId() == 1 || dir.getId() == 3){
+            this.imageString = "tiles/laserVerti.png";
+        }
+        else{
+            this.imageString = "tiles/laserHori.png";
+        }
     }
 
+    public String getImageString(){
+        return imageString;
+    }
     public void setPos(Position pos) {
         this.pos = pos;
     }
