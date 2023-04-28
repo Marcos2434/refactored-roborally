@@ -130,7 +130,6 @@ public class Playermat extends StackPane {
         } 
         ActiveCardPic = new Image(cardImageURL, 110, 156, false, false);
         ActiveCard = new ImageView(ActiveCardPic);
-        ActiveCard.setStyle("-fx-padding: 10 0 0 0;");
         hbox1.getChildren().set(1, ActiveCard);
     }
 
