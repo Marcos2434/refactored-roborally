@@ -12,13 +12,16 @@ import javafx.scene.layout.StackPane;
 
 public class BoardDrawer extends GridPane {
 
-    public void draw(Board b) {
+    private Board b;
+
+    public BoardDrawer(Board b) {
+        this.b = b;
+    }
+
+    public void draw() {
         for (int row = 0; row < 13; row++) {
             for (int col = 0; col < 10; col++) {
                 StackPane stackPane = new StackPane();
-
-                // b.getGrid()[row][col].setImage(new Image(b.getGrid()[row][col].getImageString()));
-
                 stackPane.getChildren().add(b.getGrid()[row][col]);
                 add(stackPane, col, row);
                 drawTileAt(new Position(col, row), b.getTileAt(new Position(col, row)).getImage());
@@ -27,18 +30,16 @@ public class BoardDrawer extends GridPane {
     }
 
     public void drawRobot(Robot robot) {
-        // System.out.println("Drawing Robot at " + robot.getPos().getRow() + ", " + robot.getPos().getColumn());
-        
         StackPane stackPane = (StackPane) this.getChildren().get(robot.getPos().getRow() * 10 + robot.getPos().getColumn());
 
         if (robot.getPrevPos() != null) {
             this.unDrawRobot(robot.getPrevPos());
+            drawTileAt(robot.getPrevPos(), b.getTileAt(robot.getPrevPos()).getImage());
         }
 
         ImageView iv = new ImageView(robot.getImage());
         iv.setRotate(90*(robot.getDirID() - 1));
         stackPane.getChildren().add(iv);
-        // System.out.println("Finished drawing robot");
     }
     
     public void unDrawRobot(Position pos) {

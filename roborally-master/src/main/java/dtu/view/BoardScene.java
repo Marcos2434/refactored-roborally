@@ -79,8 +79,8 @@ public class BoardScene extends Scene implements RobotObserver {
 
     public void redraw() {
         // Draw board
-        bd = new BoardDrawer();
-        bd.draw(c.getBoard());
+        bd = new BoardDrawer(c.getBoard());
+        bd.draw();
         boardPane.setCenter(bd);
     }
 

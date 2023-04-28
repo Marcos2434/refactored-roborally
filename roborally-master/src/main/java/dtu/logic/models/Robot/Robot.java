@@ -40,6 +40,12 @@ public class Robot {
         this.checkpointCount +=1;
     }
 
+    public void heal(){
+        if (this.getDamageTaken() > 0){
+            this.damageTaken -=1;
+        }
+    }
+
     public void setLastMove(ProgramCard card){
         this.LastMove = card;
     }
