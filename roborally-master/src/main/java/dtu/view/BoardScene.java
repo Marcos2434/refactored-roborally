@@ -101,7 +101,7 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
     }
 
     public void updateNewAction(ActionCard actionCard) {
-
+        System.out.println("New Action Before loop!");
         if (!popup.isShowing()){           
         popup.show(boardPane.getScene().getWindow());}
         else{
@@ -116,8 +116,6 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
         Image view = new Image("Cards/Popup.png");
         ImageView imageView = new ImageView(view);
         Label label = new Label("This is a Popup");
-        
-        Button button = new Button("Test button for popup");
         // add the label
         popup.getContent().add(imageView);
         // set size of label
