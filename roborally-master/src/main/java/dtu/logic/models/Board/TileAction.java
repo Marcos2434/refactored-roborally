@@ -6,5 +6,7 @@ public class TileAction extends Tile{
         super(type);
         this.imageString = "tiles/Action.png";
     }
+
+    
     
 }
