@@ -9,7 +9,7 @@ import dtu.logic.models.Cards.ActionCard;
 import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.Robot;
 
-public class FireRain implements ActionCard{
+public class FireRain implements ActionCard {
 
     private String image = "";
     

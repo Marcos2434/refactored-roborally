@@ -18,7 +18,7 @@ import dtu.logic.models.Direction;
 
 public class BoardController {
     private ArrayList<Player> players = new ArrayList<Player>();
-    private LinkedHashSet<BoardObserver> boardObservers;
+    private LinkedHashSet<BoardObserver> boardObservers = new LinkedHashSet<BoardObserver>(1);
 
     private Board board;
 
@@ -27,6 +27,7 @@ public class BoardController {
     }
 
     public void registerBoardObserver(BoardObserver o) {
+        System.out.println("Test");
         this.boardObservers.add(o);
     }
 
@@ -75,7 +76,7 @@ public class BoardController {
             RunAllEffects();
             try {
                 Thread.sleep(100);
-             } catch (Exception e) { System.err.println(e); }
+            } catch (Exception e) { System.err.println(e); }
             fireRobotLazers();
             fireboardLazers();
 
@@ -106,11 +107,6 @@ public class BoardController {
                 else{r = 12 - j/2;}
                */
                 if (this.getBoard().getTileAt(new Position(i,j)).isOcupied()) {
-                    // if (this.getBoard().getTileAt(new Position(i,j)) instanceof ActionTile) {
-
-                    // }
-                    ActionCard DELETEME = new FireRain();
-                    notifyNewAction(DELETEME);
                     this.getBoard().getTileAt(new Position(i,j)).effect(getRobotAt(new Position(i,j)), this);
                 }
                 
