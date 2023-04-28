@@ -110,7 +110,6 @@ public class Playermat extends StackPane {
             cardsHbox.getChildren().add(cb);
             cardsHbox.setStyle("-fx-padding: 0 0 2 2;");
             this.regSize += 1;
-            System.out.println(regSize);
         } 
     }
     
@@ -126,16 +125,13 @@ public class Playermat extends StackPane {
             this.regSize -= 1;
             }
             catch(Exception i){
-                System.out.println(i);
             }
         } 
-        System.out.println(cardImageURL);
         ActiveCardPic = new Image(cardImageURL, 110, 156, false, false);
         ActiveCard = new ImageView(ActiveCardPic);
         ActiveCard.setStyle("-fx-padding: 10 0 0 0;");
         hbox1.getChildren().set(1, ActiveCard);
 
-        System.out.println("Should be seen");
     }
 
     public void updateChPInfo(String info) {

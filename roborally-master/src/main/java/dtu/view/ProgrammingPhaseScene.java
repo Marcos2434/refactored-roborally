@@ -93,7 +93,7 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
         BackgroundImage background2 = new BackgroundImage(background, null, null, null, null);
         Background background3 = new Background(background2);
         
-        System.out.println("got over background");
+       
         
         this.mainGrid = (GridPane) this.getRoot();
         //Set backround to the whole scene 
@@ -113,18 +113,14 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
    
         mainGrid.getColumnConstraints().addAll(column1, column2, column3, column4);
 
-        System.out.println("got over column assembly");
+        
         //------------------------------------- CARDS_START -------------------------------------//
-        System.out.println("cards start");
         //Card1
-        System.out.println(c.getCurrentPlayer().getHand().get(0).getImage());
         Image stream1 = new Image (ProgrammingPhaseScene.class.getClassLoader().getResourceAsStream(c.getCurrentPlayer().getHand().get(0).getImage())); //
-        System.out.println("asd2");
         this.imageView1 = new ImageView(stream1); //new ImageView(stream);  
         imageView1.setFitHeight(150);
         imageView1.setFitWidth(100);
         String imagePath1 =c.getCurrentPlayer().getHand().get(0).getImage().toString();
-        System.out.println(imagePath1);
         imageView1.setId(imagePath1);
         //Card2 
         Image stream2 = new Image (ProgrammingPhaseScene.class.getClassLoader().getResourceAsStream(c.getCurrentPlayer().getHand().get(1).getImage())); 
@@ -356,9 +352,6 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
                     this.store3 = node;
                     frame3.setId(node.getId());
                 }
-                
-                            // System.out.println("we are now in box 3");
-                            // frame3.setFill(new ImagePattern(new Image (node.getId()) ));
             }
             if (leftBox4.getBoundsInParent().contains(e.getSceneX(), e.getSceneY())){
                 if (frame4.getFill() == null){
@@ -453,10 +446,10 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
         done = true;
 
         c.getBoardScene().redraw();
+        // player1.getHand().clear();
         c.getCurrentPlayer().getHand().clear();
         c.notifyAllRobotObservers();
         c.nextScene();
-        // c.setTheScene(c.getBoardScene());
     }
 }
 

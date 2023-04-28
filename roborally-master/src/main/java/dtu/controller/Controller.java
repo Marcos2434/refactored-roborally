@@ -190,7 +190,6 @@ public class Controller {
             for (Player i : Ais) {
                 i.drawProgrammingCards();
                 i.chooseProgrammingCards();
-                System.out.println(i.getRobot().getRegister().toString());
                 notifyAllRobotObservers();
             }
             
