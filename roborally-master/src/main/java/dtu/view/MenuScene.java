@@ -166,7 +166,6 @@ public class MenuScene extends Scene {
 		comboBox.setOnAction(event -> {
 			
 			String selectedOption = comboBox.getSelectionModel().getSelectedItem();
-			System.out.println("Selected map: " + selectedOption);
 
 			c.setBoardSelecter(selectedOption);
 			c.setBoard(new Board(Map.getMapByName(selectedOption)));
@@ -234,7 +233,6 @@ public class MenuScene extends Scene {
 										green.setText("GREEN");
 									}
 									c.createPlayer((RobotColor.GREEN), green.getText());
-								System.out.println(c.getBoardController().getPlayers().size()); 
 								}
 	
 						}
@@ -295,11 +293,11 @@ public class MenuScene extends Scene {
 									}
 									c.createPlayer((RobotColor.BLACK), black.getText());
 								}
-							System.out.println(c.getBoardController().getPlayers().size()); 
+
 							}
 						}
 					
-					System.out.println(c.getBoardController().getPlayers().size());
+
 						
 					
 					}

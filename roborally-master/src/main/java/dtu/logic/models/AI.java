@@ -1,26 +1,17 @@
 package dtu.logic.models;
 import dtu.logic.models.Player.Player;
-
 import java.util.ArrayList;
-import java.util.List;
-
-import dtu.logic.models.RobotColor;
-import dtu.logic.models.Cards.Deck;
-
 import dtu.logic.models.Cards.ProgramCard;
 import dtu.logic.models.Robot.Robot;
-import java.util.Scanner;
- 
+
 /**
  * AI
  */
 public class AI extends Player {
     static int AICount = 1;
-   
     
     public AI(Robot robot) {
         super(robot, "Bob"+AICount);
-        //TODO Auto-generated constructor stub
         AICount = AICount+1;
     }
 
@@ -50,5 +41,4 @@ public class AI extends Player {
     public boolean isAI(){
         return true;
     }
-    
 }

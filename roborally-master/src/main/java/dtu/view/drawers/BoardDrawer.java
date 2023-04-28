@@ -31,7 +31,7 @@ public class BoardDrawer extends GridPane {
         // System.out.println("Drawing Robot at " + robot.getPos().getRow() + ", " + robot.getPos().getColumn());
         
         StackPane stackPane = (StackPane) this.getChildren().get(robot.getPos().getRow() * 10 + robot.getPos().getColumn());
-        
+
         if (robot.getPrevPos() != null) {
             this.unDrawRobot(robot.getPrevPos());
         }
