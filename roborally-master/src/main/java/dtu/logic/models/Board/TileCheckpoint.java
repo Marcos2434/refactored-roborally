@@ -10,21 +10,6 @@ public class TileCheckpoint extends Tile {
     private String name = "C";
     private int id;
     private Position position;
-
-    
-    @Override
-    public void redraw() {
-		GraphicsContext gc = getGraphicsContext2D();
-		gc.drawImage(image, 0, 0);
-		
-        if (Ocupied) {
-        	gc.save();
-            gc.transform(new Affine(new Rotate(90*(robotDirection-1), 33, 33)));
-			gc.drawImage(robotImage, 0, 0);
-			gc.restore();
-        }
-    }
-
     
     public TileCheckpoint(TileType type, int id, Position pos) {
 	    super(type);
