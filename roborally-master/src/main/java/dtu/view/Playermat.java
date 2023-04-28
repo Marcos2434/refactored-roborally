@@ -132,6 +132,7 @@ public class Playermat extends StackPane {
         System.out.println(cardImageURL);
         ActiveCardPic = new Image(cardImageURL, 110, 156, false, false);
         ActiveCard = new ImageView(ActiveCardPic);
+        ActiveCard.setStyle("-fx-padding: 10 0 0 0;");
         hbox1.getChildren().set(1, ActiveCard);
 
         System.out.println("Should be seen");
@@ -192,7 +193,7 @@ public class Playermat extends StackPane {
         hbox1.prefHeight(height);
         hbox1.prefWidth(width);
         hbox1.setStyle("-fx-padding: 15 0 0 0;");
-        hbox1.setSpacing(15);
+        hbox1.setSpacing(13);
 
         super.getChildren().addAll(background, hbox1);
     }
