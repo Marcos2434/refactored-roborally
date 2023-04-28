@@ -1,6 +1,8 @@
 package dtu.logic.models.Board;
 
 import dtu.logic.models.Cards.ActionCard;
+import dtu.logic.models.Cards.ActionCards.ActionCardFactory;
+import dtu.logic.models.Cards.ActionCards.ActionCardTypes;
 import dtu.logic.models.Cards.ActionCards.FireRain;
 import dtu.logic.models.Robot.Robot;
 
@@ -15,7 +17,7 @@ public class TileAction extends Tile {
     
     @Override
     public void effect(Robot robot, BoardController boardController) {
-        ActionCard DELETEME = new FireRain();
-        boardController.notifyNewAction(DELETEME);
+        ActionCard card = ActionCardFactory.createActionCard(ActionCardTypes.getRandomActionType());
+        boardController.notifyNewAction(card);
     }
 }
