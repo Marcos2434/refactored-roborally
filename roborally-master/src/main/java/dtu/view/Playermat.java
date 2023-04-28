@@ -44,6 +44,8 @@ public class Playermat extends StackPane {
 
     private Image cardbackpic = new Image("playermat/cardback.png");
     private Image lockedpic = new Image("playermat/locked.png");
+    private Image dummypic = new Image("playermat/locked.png");
+    private int regSize;
 
     private Image ActiveCardPic; // = new Image("Cards/AgainCard.png");
     private ImageView ActiveCard;
@@ -98,19 +100,28 @@ public class Playermat extends StackPane {
             cardsHbox.getChildren().add(cb);
         }
         cardsHbox.setStyle("-fx-padding: 0 0 0 2;");
+        regSize = 5;
     }
 
     public void addRegister(){
-        if (cardsHbox.getChildren().size() < 5){
+        if (cardsHbox.getChildren().size() < 5 && regSize < 5){
             ImageView cb = new ImageView(cardbackpic);
             cardsHbox.getChildren().add(cb);
             cardsHbox.setStyle("-fx-padding: 0 0 2 2;");
-            System.out.println("Added to mat, should be seen");    
+            System.out.println("Added to mat, should be seen");
+            this.regSize += 1;    
         }
-        else{
-            System.out.println("Nope");
-        }
+    }
+    
+    public void removeCard(){
+        if (regSize == 1){
+            cardsHbox.getChildren().clear();
+            cardsHbox.setStyle("-fx-padding: 0 0 44 2;");
+        } else if (cardsHbox.getChildren().size() > 0 && regSize > 0){
+            cardsHbox.getChildren().set(5 - regSize, new ImageView(dummypic));
+            System.out.print(cardsHbox.getChildren());
 
+        } 
     }
 
     public void updateChPInfo(String info) {

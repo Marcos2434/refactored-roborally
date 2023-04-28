@@ -91,7 +91,10 @@ public class Controller {
         }
     }
 
-
+    public void notifyCardRun(){
+        this.boardScene.getPlayermat(currentPlayer.getName()).removeCard();
+        System.out.println("Removed");
+	}
 
     public void changeToBoardScene() {
         this.boardScene.setPlayermats(this.boardController.getPlayers());
@@ -149,8 +152,6 @@ public class Controller {
     public ProgrammingPhaseScene getProgrammingPhaseScene() {
         return programmingPhaseScene;
     }
-
-  
 
     public BoardController getBoardController() {
         return boardController;
