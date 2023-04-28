@@ -10,6 +10,8 @@ public class TileAction extends Tile {
         super(type);
         this.imageString = "tiles/Action.png";
     }
+
+    
     
     @Override
     public void effect(Robot robot, BoardController boardController) {
