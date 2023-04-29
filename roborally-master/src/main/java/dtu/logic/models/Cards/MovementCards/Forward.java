@@ -43,8 +43,12 @@ public class Forward implements ProgramCard {
             
             //update new tile
             boardController.getBoard().getTileAt(robot.getPos()).Occupy();
-            try{Thread.sleep(200);}
+            boardController.runAllHoles();
+            try{
+                //Thread.sleep(200);
+            }
             catch(Exception e){System.out.println(e);}
+            boardController.runAllHoles();
 
         }
         boardController.getBoard().getTileAt(robot.getPos()).Occupy();

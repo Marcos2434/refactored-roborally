@@ -19,9 +19,9 @@ public class OilStorm implements ActionCard{
     }
     
     public void action(Robot robot, BoardController boardController){
-        ArrayList<Player> players = boardController.getPlayers();
-        for (Player player : players) {
-           //player.getRobot()
+        
+        for (Player player : boardController.getPlayers()) {
+           player.getRobot().heal();
         }
     }
     public String getName(){

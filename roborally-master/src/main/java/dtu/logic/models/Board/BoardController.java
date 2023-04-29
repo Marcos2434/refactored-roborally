@@ -77,6 +77,7 @@ public class BoardController {
                 
                 if (r.getRegister().size() > i){
                     notifyCardRemove(this.players.get(j), r.getRegister().get(i).getImage());
+              
                     r.moveByCard(this, r.getRegister().get(i));
                 }
                 
@@ -84,22 +85,33 @@ public class BoardController {
                 if (i == 4){
                     r.getRegister().clear();
                 }
+                try {
+                    //Thread.sleep(1000);
+                 } catch (Exception e) { System.err.println(e); }
+                
+                
                 
             }
-           
-
-            
-            
             RunAllEffects();
             fireRobotLazers();
             fireboardLazers();
-            //try {
-            //    Thread.sleep(100);
-            // } catch (Exception e) { System.err.println(e); }
+            try {
+                //Thread.sleep(2000);
+             } catch (Exception e) { System.err.println(e); }
         }
         this.emptyAllRegisters();
-       
+    }
 
+    public void runAllHoles(){
+            for (int i = 0; i < 10; i++){
+                for (int j = 0; j < 13; j++){
+                    if (this.getBoard().getTileAt(new Position(i,j)) instanceof TileHole){
+                        if (this.getBoard().getTileAt(new Position(i,j)).isOcupied()) {
+                            this.getBoard().getTileAt(new Position(i,j)).effect(getRobotAt(new Position(i,j)), this);
+                        }
+                    }
+                }
+            }
     }
 
     public void RunAllEffects(){
@@ -125,7 +137,6 @@ public class BoardController {
                 if (this.getBoard().getTileAt(new Position(c,r)).isOcupied()) {
                     this.getBoard().getTileAt(new Position(c,r)).effect(getRobotAt(new Position(c,r)), this);
                 }
-                
             }
         }
     }

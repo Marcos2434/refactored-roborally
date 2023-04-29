@@ -20,8 +20,7 @@ public class FireRain implements ActionCard {
     }
     
     public void action(Robot robot, BoardController boardController){
-        ArrayList<Player> players = boardController.getPlayers();
-        for (Player player : players) {
+        for (Player player : boardController.getPlayers()) {
            player.getRobot().takeDmg(boardController);
         }   
     }

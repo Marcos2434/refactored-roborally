@@ -19,10 +19,12 @@ public class SpinLaser implements ActionCard{
     }
     
     public void action(Robot robot, BoardController boardController){
-        for (int i = 0; i < 5; i++) {
-            robot.turn(1, boardController);
+        for (int i = 0; i < 4; i++) {
+            try{robot.turn(1, boardController);}
+            catch(Exception e){System.out.println(e);}
+            System.out.println("FIRE (in spinlaser)");
             try{
-                Thread.sleep(200);
+                Thread.sleep(600);
             }
             catch(Exception e){
                 System.out.println(e);}

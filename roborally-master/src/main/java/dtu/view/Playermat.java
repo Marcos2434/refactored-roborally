@@ -121,7 +121,7 @@ public class Playermat extends StackPane {
         ActiveCard = new ImageView(ActiveCardPic);
         hbox1.getChildren().set(1, ActiveCard);
 
-        System.out.println("Should be seen");
+        
     }
 
     public void updateChPInfo(String info) {
@@ -138,10 +138,10 @@ public class Playermat extends StackPane {
     }
 
     public void updateInfo(){
-        if (this.player.getRobot().getcheckpointCount() == 0){
+        if (this.player.getRobot().getCheckpointCount() == 0){
             chPoint.setText("Checkpoint: Start");
         } else {
-            chPoint.setText("Checkpoint: " + this.player.getRobot().getcheckpointCount() + "    ");
+            chPoint.setText("Checkpoint: " + this.player.getRobot().getCheckpointCount() + "    ");
         }
         lives.setText("Lives: " + String.valueOf(player.getRobot().getLives()) + "   ");
         if (player.getRobot().getLives() == 0){

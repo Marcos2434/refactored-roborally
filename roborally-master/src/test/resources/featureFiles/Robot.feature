@@ -102,11 +102,11 @@ Feature: Robot Selection
         Then they will perform the effect of the last run card.
     
     @tag18
-        Scenario: a Robot is standing on a checkpoint at the edge of the board and is pushed off so that the pusher now has the checkpoints as well. 
-                    The robot that dies, Spawns at its startpoint because of the checkpoint being occupied.
-            Given Two robots being created 
-            When The robot is pushed over the edge while having the checkpoint
-            Then it spawnns at the startpoint.
+        Scenario:  robot walking over a holetile with a move three card, still dies.
+        Given Two robots being created 
+        When one moves over a holetile with movepower three.
+        Then The robot dies.
+   
 
     
 

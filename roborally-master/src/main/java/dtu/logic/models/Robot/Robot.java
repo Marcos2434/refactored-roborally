@@ -30,7 +30,7 @@ public class Robot {
     // TODO: hashset?
     private List<RobotObserver> observers = new ArrayList<RobotObserver>();
 
-    public int getcheckpointCount(){
+    public int getCheckpointCount(){
         return this.checkpointCount;
     }
 
@@ -170,8 +170,8 @@ public class Robot {
 
         int d;
         Direction MoveDir;
-        boolean shouldpush = false;
-        Robot r = null;
+        
+        
         if (forward) {
             MoveDir = getdir();
             d = 1;
@@ -190,8 +190,8 @@ public class Robot {
             //Move other robot out of the way first, if there is one
             if (boardController.getBoard().getTileAt(getPosInDir(MoveDir))!=null){
                 if (boardController.getBoard().getTileAt(getPosInDir(MoveDir)).isOcupied()){
-                    r = boardController.getRobotAt(getPosInDir(MoveDir));
-                    shouldpush = true;
+                    Robot r = boardController.getRobotAt(getPosInDir(MoveDir));
+                    Push(r,boardController);
                     
                 }
             }
@@ -199,12 +199,7 @@ public class Robot {
             else if (this.DirID == 2){this.addCol(d);}
             else if (this.DirID == 3){this.addRow(d);}
             else if (this.DirID == 4){this.addCol(-d);} 
-            
-            
-            if (shouldpush){
-                Push(r,boardController);
-            }
-            
+   
         }
         
         
@@ -233,9 +228,7 @@ public class Robot {
             else if (!boardController.getBoard().getTileAt(checkpoints.get(i)).isOcupied()){
                 this.pos = new Position (checkpoints.get(i).getColumn(),checkpoints.get(i).getRow());
                 break;
-            }
-            
-            
+            } 
         }
         Collections.reverse(this.checkpoints);
         this.lives -=1;
