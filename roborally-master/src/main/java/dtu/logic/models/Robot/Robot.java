@@ -9,6 +9,7 @@ import dtu.logic.models.Observers.RobotObserver;
 import javafx.scene.image.Image;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 
 public class Robot {
     private RobotColor Robotcolor;
@@ -17,7 +18,7 @@ public class Robot {
     private int lives = 3;
     private int checkpointCount = 0;
     
-    private Position pos = new Position(0,0);
+    private Position pos = new Position(0, 0);
     private ArrayList<Position> checkpoints = new ArrayList<Position>();
 
     private int DirID;
@@ -27,8 +28,7 @@ public class Robot {
 
     public List<ProgramCard> register = new ArrayList<ProgramCard>(5);
     
-    // TODO: hashset?
-    private List<RobotObserver> observers = new ArrayList<RobotObserver>();
+    private LinkedHashSet<RobotObserver> observers = new LinkedHashSet<RobotObserver>();
 
     public int getCheckpointCount(){
         return this.checkpointCount;
