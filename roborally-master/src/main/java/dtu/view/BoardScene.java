@@ -42,6 +42,7 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
     private ImageView fireRain;
     private ImageView oilStorm;
     private ImageView spinLaser;
+ 
 
     public void setPlayermats(ArrayList<Player> players){
         if (players.size() <= 4){
@@ -115,17 +116,20 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
 
     
     private void initialize() throws IOException {
+        
         boardPane = (BorderPane) this.getRoot();
         //Music player
-        Media media = new Media(new File("/Users/Natalia/Downloads/musicPiano.mp3").toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(media);  
-        mediaPlayer.setAutoPlay(true);  
+        //_______________ BRING BAACK MUSIC ___________________________
+        // Media media = new Media(new File("/Users/Natalia/Downloads/musicPiano.mp3").toURI().toString());
+        // MediaPlayer mediaPlayer = new MediaPlayer(media);  
+        // mediaPlayer.setAutoPlay(true);  
+        // _____________________________________________________________
 
         //Background picture
         Image background = new Image (("playermat/dummyplayermat.png"));
         BackgroundImage background2 = new BackgroundImage(background, null, null, null, null);
         Background background3 = new Background(background2);
-
+        
 
     
         // Creating the board
@@ -154,6 +158,7 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
 
         
         cp = new ControlPanel(c);
+        cp.setChoose(false);
         VBox cpFinal = new VBox();; 
         cpFinal.getChildren().addAll(cp, fireRain, oilStorm, spinLaser);
 
@@ -161,7 +166,7 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
         boardPane.setBackground(background3);
         boardPane.setRight(rightSide);
 
-
+ 
     }
 
     public void redraw() {
