@@ -3,6 +3,7 @@ package dtu.view;
 import java.io.IOException;
 import javafx.scene.layout.BorderPane;
 import java.util.ArrayList;
+
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
@@ -12,6 +13,7 @@ import dtu.logic.models.Cards.ActionCard;
 import dtu.logic.models.Observers.BoardObserver;
 import dtu.logic.models.Observers.RobotObserver;
 import dtu.logic.models.Player.Player;
+import dtu.logic.models.Robot.Lazer;
 import dtu.logic.models.Robot.Robot;
 import dtu.roborally.view.widgets.ControlPanel;
 import dtu.view.drawers.BoardDrawer;
@@ -19,6 +21,9 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -39,6 +44,8 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
     VBox playersUIleft = new VBox();
     VBox testpopUP = new VBox();
     BoardDrawer bd;
+
+    Popup popup = new Popup();
 
     public void setPlayermats(ArrayList<Player> players){
         if (players.size() <= 4){
@@ -94,6 +101,8 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
         cp = new ControlPanel(c);
         rightSide.getChildren().addAll(playersUIright,cp);
         boardPane.setRight(rightSide);
+
+        // boardPane.getChildren().add(popup);
     }
 
     public void redraw() {
@@ -120,12 +129,18 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
 
     public void updateCardTaken(Player player, String cardImageString){
         Platform.runLater(() -> {;
-        getPlayermat(player.getName()).activateCard(cardImageString);
+            getPlayermat(player.getName()).activateCard(cardImageString);
         });
     }
 
     public ControlPanel getControlPanel() {
         return this.cp;
+    }
+
+    public void updateLaser(Lazer laser) {
+        Platform.runLater(() -> {
+            bd.drawLaser(laser);
+        });   
     }
     public void Popup1(){
         Image view = new Image("Cards/Popup.png");
