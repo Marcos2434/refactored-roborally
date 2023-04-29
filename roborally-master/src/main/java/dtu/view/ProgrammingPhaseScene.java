@@ -1,5 +1,4 @@
 package dtu.view;
-import java.util.List;
 
 import dtu.controller.Controller;
 import javafx.scene.Node;
@@ -543,7 +542,7 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
             ProgramCard card  = findCard(frame5.getId());
             c.getCurrentPlayer().getRobot().AddToRegister(card);  
         }
-        c.getBoardScene().getPlayermat(c.getCurrentPlayer().getName()).setRegister(c.getCurrentPlayer().getRobot().getRegister().size());
+        // c.getBoardScene().getPlayermat(c.getCurrentPlayer().getName()).setRegister(c.getCurrentPlayer().getRobot().getRegister().size());
         done = true;
 
         c.getBoardScene().redraw();
@@ -552,5 +551,7 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
         c.notifyAllRobotObservers();
         c.nextScene();
     }
+
+    public void updateRegister(Robot r){}
 }
 
