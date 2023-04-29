@@ -185,12 +185,12 @@ public class Controller {
     }
 
 	public void nextScene(){
+        // this.boardScene.clearAllActiveCards();
 		if (getCount()==realPlayers.size()){
 			count0();
             for (Player ai : Ais) {
                 ai.drawProgrammingCards();
                 ai.chooseProgrammingCards();
-                System.out.println(ai.getRobot().getRegister().toString());
                 notifyAllRobotObservers();
             }
             this.getBoardController().registerBoardObserver(this.getBoardScene());
@@ -207,9 +207,7 @@ public class Controller {
     }
     public void getRealPlayers(){
 		for (Player i : getBoardController().getPlayers()) {
-
 			if (!i.isAI()){
-
 				realPlayers.add(i);
 			}
             else {
@@ -221,8 +219,9 @@ public class Controller {
 
     public void spawnRobots() {
         // Find spawn positions
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 13; j++) {
+        for (int j = 0; j < 13; j++){
+            for (int i = 0; i < 10; i++) {
+             
                 if (this.getBoard().getTileAt(new Position(i,j)).equals(new TileStart(TileType.START))) {
                     this.availableBoardSpawns.add(new Position(i, j));               
                 }
@@ -240,7 +239,7 @@ public class Controller {
 
             try{
             this.boardController.getPlayers().get(i).getRobot().setPos(this.availableBoardSpawns.get(i));
-            }catch(Exception e){System.out.println(e);}
+            }catch(Exception e){;}
             
             
             // set initial checkpoint

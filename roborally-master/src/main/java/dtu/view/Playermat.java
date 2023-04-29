@@ -1,29 +1,14 @@
 package dtu.view;
 
-import java.io.IOException;
-import java.util.logging.Logger;
 
 import dtu.logic.models.RobotColor;
 import dtu.logic.models.Player.Player;
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 public class Playermat extends StackPane {
 
@@ -90,6 +75,12 @@ public class Playermat extends StackPane {
         return player;
     }
 
+    public void destroyed(){
+        Image shaderpic = new Image("playermat/destroyed.png");
+        ImageView shader = new ImageView(shaderpic);
+        super.getChildren().add(shader);
+    }
+
     public void setRegister(int amountInHand) {
         cardsHbox.getChildren().clear();
         for (int i = 0; i < amountInHand; i++) {
@@ -110,7 +101,6 @@ public class Playermat extends StackPane {
             cardsHbox.getChildren().add(cb);
             cardsHbox.setStyle("-fx-padding: 0 0 2 2;");
             this.regSize += 1;
-            System.out.println(regSize);
         } 
     }
     
@@ -121,21 +111,15 @@ public class Playermat extends StackPane {
             regSize = 0;
         } else if (regSize > 0){
             try {
-            // cardsHbox.getChildren().remove(0);
-            cardsHbox.getChildren().set(5 - regSize, new ImageView(dummypic));
-            this.regSize -= 1;
+                cardsHbox.getChildren().set(5 - regSize, new ImageView(dummypic));
+                this.regSize -= 1;
             }
             catch(Exception i){
-                System.out.println(i);
             }
         } 
-        System.out.println(cardImageURL);
         ActiveCardPic = new Image(cardImageURL, 110, 156, false, false);
         ActiveCard = new ImageView(ActiveCardPic);
-        ActiveCard.setStyle("-fx-padding: 10 0 0 0;");
         hbox1.getChildren().set(1, ActiveCard);
-
-        System.out.println("Should be seen");
     }
 
     public void updateChPInfo(String info) {
@@ -149,6 +133,24 @@ public class Playermat extends StackPane {
 
     public void updateDamage() {
         damage.setText("Damage: " + String.valueOf(player.getRobot().getDamageTaken()));
+    }
+
+    public void updateInfo(){
+        if (this.player.getRobot().getcheckpointCount() == 0){
+            chPoint.setText("Checkpoint: Start");
+        } else {
+            chPoint.setText("Checkpoint: " + this.player.getRobot().getcheckpointCount() + "    ");
+        }
+        lives.setText("Lives: " + String.valueOf(player.getRobot().getLives()) + "    ");
+        if (player.getRobot().getLives() == 0 && super.getChildren().size() == 2){
+            destroyed();
+        }
+        damage.setText("Damage: " + String.valueOf(player.getRobot().getDamageTaken()));
+    }
+
+    public void clearActiveCard(){
+        ActiveCard = new ImageView();
+        hbox1.getChildren().set(1, ActiveCard);
     }
 
     public String getPName() {
@@ -166,7 +168,7 @@ public class Playermat extends StackPane {
         color = new Label();
         setColor();
         HBox playerinfo = new HBox(pName, color);
-        playerinfo.setStyle("-fx-padding: 5 0 15 0;");
+        playerinfo.setStyle("-fx-padding: 5 0 14 0;");
 
         cardsHbox.setStyle("-fx-padding: 0 0 44 2;");
         cardsHbox.setSpacing(4);
@@ -183,17 +185,15 @@ public class Playermat extends StackPane {
         damage.setStyle("-fx-font-weight: bold; -fx-font-size: 15; -fx-padding: 25 0 0 0;");
         updateDamage();
         VBox vbox = new VBox(playerinfo, cardsHbox, playerinfo2, damage);
-        vbox.prefHeight(height);
-        vbox.prefWidth(210);
+        vbox.setMaxWidth(210);
+        vbox.setMinWidth(210);
         vbox.setStyle("-fx-padding: 0 0 0 20;");
 
         ActiveCard = new ImageView(ActiveCardPic);
 
         hbox1 = new HBox(vbox, ActiveCard);
-        hbox1.prefHeight(height);
         hbox1.prefWidth(width);
         hbox1.setStyle("-fx-padding: 15 0 0 0;");
-        hbox1.setSpacing(13);
 
         super.getChildren().addAll(background, hbox1);
     }

@@ -38,8 +38,7 @@ public class Robot {
         return prevPos;
     }
 
-    public void 
-    CheckpointReached(){
+    public void CheckpointReached(){
         this.checkpointCount +=1;
     }
 
@@ -47,6 +46,7 @@ public class Robot {
         if (this.getDamageTaken() > 0){
             this.damageTaken -=1;
         }
+        robotNotify();
     }
 
     public void setLastMove(ProgramCard card){
@@ -61,6 +61,13 @@ public class Robot {
             observer.updateRobotInfo(this);
         }
     }
+
+    public void registerNotify(){
+        for (RobotObserver observer : observers){
+            observer.updateRegister(this);
+        }
+    }
+
     public Image getImage(){
         return image;
     }
@@ -214,8 +221,8 @@ public class Robot {
     // Damage and live control
     public void Death(BoardController boardController){
         
-        if (this.pos.getRow() > 0 && this.pos.getRow() < 13 &&
-            this.pos.getColumn() > 0 && this.pos.getColumn()<10){
+        if (this.pos.getRow() >= 0 && this.pos.getRow() < 13 &&
+            this.pos.getColumn() >= 0 && this.pos.getColumn()<10){
             boardController.getBoard().getTileAt(pos).unOccupy();
             this.prevPos = new Position(pos.getColumn(),pos.getRow());
         } 
@@ -249,6 +256,7 @@ public class Robot {
         if (this.damageTaken >= 10){
           this.Death(boardController);
         }
+        robotNotify();
     }
     public int getDamageTaken() {
         return damageTaken;
@@ -299,6 +307,7 @@ public class Robot {
         if (register.size() <5){
             register.add(card);
         }
+        registerNotify();
 
     }
     //Register handeling
@@ -307,6 +316,9 @@ public class Robot {
         if ((cards.size() <= 5)){
             for (int i=0; i<cards.size(); i++){
                 this.register.add(cards.get(i));
+            }
+            if (cards.size() != 0){
+                registerNotify();
             }
         }
         else{;}
