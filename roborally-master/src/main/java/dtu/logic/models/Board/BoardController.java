@@ -74,6 +74,7 @@ public class BoardController {
     public void runAllRegisters() {
         for (int i=0; i<5;i++){
             for (int j = 0; j < this.players.size(); j++) {
+
                 Robot r = this.players.get(j).getRobot();
                
                 

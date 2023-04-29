@@ -20,6 +20,9 @@ public class WinScene extends Scene {
   private Controller c;
   private GridPane grid;
   private VBox mainBox = new VBox();
+  private Text winText;
+
+  
 
 
   public WinScene(Controller c) {
@@ -42,14 +45,26 @@ public class WinScene extends Scene {
     
     
     //Setting the text
-    Text winText = new Text("THE WINNNER IS:  " + c.getWinner().getName() + " !");
-    winText.setFont(Font.font("Verdana", 72));
-    winText.setFill(Color.WHITE);
+
+    
+    if (c.getWinner()!=null){
+        this.winText = new Text("THE WINNNER IS:  " + c.getWinner().getName() + " !");
+
+    }else{
+        this.winText = new Text("GAME OVER");
+
+    }
+        
+    
+
     DropShadow dropShadow = new DropShadow();
     dropShadow.setColor(Color.DARKGRAY);
     dropShadow.setOffsetX(5);
     dropShadow.setOffsetY(5);
     winText.setEffect(dropShadow);
+    winText.setFont(Font.font("Verdana", 72));
+    winText.setFill(Color.WHITE);
+
     
     //Showing the text
     
@@ -69,6 +84,7 @@ public class WinScene extends Scene {
 
 
     mainBox.getChildren().addAll(winText,vBoxForButton);
+    
     grid.setAlignment(Pos.CENTER);
     mainBox.setSpacing(20);
     grid.add(mainBox, 2, 2, 3, 3);

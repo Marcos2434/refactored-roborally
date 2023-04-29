@@ -35,9 +35,9 @@ public class Controller {
     ArrayList<Position> availableBoardSpawns = new ArrayList<Position>();
     private ArrayList<Player> realPlayers = new ArrayList<Player>();
     private ArrayList<Player> Ais = new ArrayList<Player>();
-    private Player winner;
+    private Player winner=null;
     private Player currentPlayer;
-    private boolean doRegs=false;
+    private boolean doRegs = false;
     private ArrayList<Player> playersAlive= new ArrayList<Player>();
     public Controller(Stage primaryStage) {
         this.primaryStage = primaryStage;
@@ -59,12 +59,16 @@ public class Controller {
     public Player getCurrentPlayer() {
         return currentPlayer;
     }
-    public void setPlayersAlive(){
+    public void checkPlayersAlive(){
+        playersAlive.clear();
+
         for (Player i : boardController.getPlayers()) {
-            if (i.getRobot().getLives()!=0) {
+            
+            if (i.getRobot().getLives()>0) {
                 playersAlive.add(i);
             }
         }
+
     }
     public void createAI(RobotColor color, String name){
         Robot robot = new Robot(color);
@@ -201,8 +205,8 @@ public class Controller {
     }
 
 	public void nextScene(){
-        setPlayersAlive();
-        if (playersAlive.size()==1) {
+        checkPlayersAlive();
+        if (playersAlive.size()==1){
             winner=playersAlive.get(0);
             this.realPlayers= new ArrayList<Player>();
             this.playersAlive= new ArrayList<Player>();
@@ -210,15 +214,26 @@ public class Controller {
             setTheScene(getWinScene(), "Winner!!!");
             return;
         }
+        if (playersAlive.size()==0){
+            winner=null;
+            this.realPlayers= new ArrayList<Player>();
+            this.playersAlive= new ArrayList<Player>();
+            setWinScene();
+            setTheScene(getWinScene(), "Winner!!!");
+            return;
+        }
+        
         this.boardScene.clearAllActiveCards();
 		if (getCount()==realPlayers.size()){
 			count0();
    
             getBoardScene().getControlPanel().setChoose(true);
             for (Player ai : Ais) {
-                ai.drawProgrammingCards();
-                ai.chooseProgrammingCards();
-                notifyAllRobotObservers();
+
+                    ai.drawProgrammingCards();
+                    ai.chooseProgrammingCards();
+                    notifyAllRobotObservers();
+                
             }
             this.getBoardController().registerBoardObserver(this.getBoardScene());
 			setTheScene(getBoardScene(),"RoboRally!!");
@@ -262,8 +277,6 @@ public class Controller {
             this.boardController.getBoard().getTileAt(this.availableBoardSpawns.get(i)).Occupy();
             
             // place robot on board
-
-
             try{
             this.boardController.getPlayers().get(i).getRobot().setPos(this.availableBoardSpawns.get(i));
             }catch(Exception e){;}
