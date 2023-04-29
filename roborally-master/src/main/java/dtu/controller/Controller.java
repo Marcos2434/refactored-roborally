@@ -185,6 +185,7 @@ public class Controller {
     }
 
 	public void nextScene(){
+        // this.boardScene.clearAllActiveCards();
 		if (getCount()==realPlayers.size()){
 			count0();
             for (Player ai : Ais) {

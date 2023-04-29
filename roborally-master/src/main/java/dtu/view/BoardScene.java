@@ -122,11 +122,6 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
         });     
     }
 
-    // public void updateNewAction(ActionCard actionCard) {
-    //     // Run popup here !
-    //     System.out.println("New Action!");
-    // }
-
     public void updateNewAction(ActionCard actionCard) {
         // Create popup
         Label label = new Label("You have been acted upon!");
@@ -144,11 +139,26 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
         popup.show(boardPane.getScene().getWindow());
     }
     
-
     public void updateCardTaken(Player player, String cardImageString){
         Platform.runLater(() -> {;
             getPlayermat(player.getName()).activateCard(cardImageString);
         });
+    }
+
+    public void updateRegister(Robot robot){
+        Platform.runLater(() -> {
+            for (int i = 0; i<pMats.size(); i++){
+                if(pMats.get(i).getPlayer().getRobot() == robot){
+                    pMats.get(i).setRegister(robot.getRegister().size());
+                }
+            }
+        });
+    };
+
+    public void clearAllActiveCards(){
+        for (int i = 0; i < pMats.size(); i++){
+            pMats.get(i).clearActiveCard();
+        }
     }
 
     public ControlPanel getControlPanel() {

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\Olivier Nicolas\GoodRoboRalley\refactored-roborally\roborally-master\src\main\java\dtu\view\ProgrammingPhaseScene.java
 C:\Users\Olivier Nicolas\GoodRoboRalley\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Cards\ActionCards\OilStorm.java
 C:\Users\Olivier Nicolas\GoodRoboRalley\refactored-roborally\roborally-master\src\main\java\dtu\roborally\view\widgets\Tile.java
@@ -57,3 +58,64 @@ C:\Users\Olivier Nicolas\GoodRoboRalley\refactored-roborally\roborally-master\sr
 C:\Users\Olivier Nicolas\GoodRoboRalley\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Cards\MovementCards\Uturn.java
 C:\Users\Olivier Nicolas\GoodRoboRalley\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Robot\Lazer.java
 C:\Users\Olivier Nicolas\GoodRoboRalley\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Board\TileBelt.java
+=======
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Board/TileFactory.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Board/TileRepair.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Player/Player.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/MovementCards/TurnLeft.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Board/TileLazer.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/MovementCards/ProCardFactory.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Board/TileStart.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/ActionCards/ActionCardTypes.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/roborally/view/widgets/Tile.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/ProgramCard.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Board/TileAction.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/Deck.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/view/StartMenuScene.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/ActionCards/ActionCardFactory.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Robot/Robot.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/Roborally.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/ActionDeck.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/MovementCards/Uturn.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/view/View.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Rotation.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Board/TileWall.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Board/TileCheckpoint.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/view/Playermat.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/roborally/view/TileType.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/MovementCards/Again.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Board/TileBelt.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/view/ProgrammingPhaseScene.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/Main.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Board/Tile.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Board/TileType.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Board/Board.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/MovementCards/Forward.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/MovementCards/TurnRight.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/view/Map.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/MovementCards/ProCardTypes.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Robot/Lazer.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/view/BoardScene.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Position.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/ActionCards/FireRain.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Board/BoardController.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/ActionCard.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/view/MenuScene.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/roborally/view/widgets/ControlPanel.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/Card.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/view/drawers/BoardDrawer.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Observers/BoardObserver.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/AI.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Color.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Observers/RobotObserver.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/RobotColor.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/ActionCards/SpinLaser.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/controller/Controller.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/roborally/view/CardinalPoints.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Board/TileHole.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Direction.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/roborally/view/widgets/Board.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/MovementCards/Backwards.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/ActionCards/OilStorm.java
+/mnt/Windows/Users/hibas/Desktop/Egyetem/Sem4_2023/AgileOoSD/Project/refactored-roborally/roborally-master/src/main/java/dtu/roborally/view/widgets/BoardTeacher.java
+>>>>>>> a4055d4fca3ea116fb98f66e0d7b8e395dcf65c4
