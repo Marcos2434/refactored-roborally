@@ -2,19 +2,12 @@ package dtu.view;
 
 import java.io.File;
 import java.io.IOException;
-
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BorderPane;
 import java.util.ArrayList;
-
-import javax.swing.plaf.synth.SynthSpinnerUI;
-
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Popup;
 import dtu.controller.Controller;
 import dtu.logic.models.Board.Board;
 import dtu.logic.models.Cards.ActionCard;
@@ -27,15 +20,9 @@ import dtu.view.drawers.BoardDrawer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.control.Button;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
@@ -44,24 +31,14 @@ import javafx.util.Duration;
 
 
 public class BoardScene extends Scene implements RobotObserver, BoardObserver {
-    
-
     private BorderPane boardPane;
     private Controller c;
     private ControlPanel cp;
     private ArrayList<Playermat> pMats = new ArrayList<>();
     private VBox playersUIright = new VBox();
     private VBox playersUIleft = new VBox();
-    private VBox testpopUP = new VBox();
     private BoardDrawer bd;
-    private Popup popup = new Popup();
     private HBox rightSide = new HBox();
-
-    private Pane pane;
-
-
-
-    
     private ImageView fireRain;
     private ImageView oilStorm;
     private ImageView spinLaser;
@@ -97,7 +74,6 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
             }
             boardPane.setLeft(playersUIleft);
         }
-        // boardPane.setRight(playersUIright);
     }
 
     public Playermat getPlayermat(String pName){
@@ -115,84 +91,29 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
         this.initialize();
     }
     
-
+    //Popup window (handled as a VBox which shows or doesn't show it's visibility, depending on the position of the robot-if the special tile was pressed)
     public void Popup1(ActionCard actionCard){
         ImageView currentImage;
-        System.out.println("we are in popu1");
         if (actionCard.getImage().equals("Cards/fireRain.png")){
             currentImage = fireRain;
-            System.out.println("we should be in fireRain");
         }
         else if (actionCard.getImage().equals("Cards/OilStorm.png")){
             currentImage = oilStorm;
-            System.out.println("we should be in oilStorm");
         }
         else {
             currentImage = spinLaser;
         }
         
-        currentImage.setVisible(true);
-
-        //_______________________
-        // Image view = new Image(actionCard.getImage());
-        // this.imageView = new ImageView(view);
-        // imageView.setFitWidth(200);
-        // imageView.setFitHeight(300);
-
-        
-        // System.out.println("cp thing before adding"+ pane.getChildren());
-        // try {
-        //     pane.getChildren().addAll(imageView);
-        // }
-        // catch (Exception e){
-        //     System.out.println("cpFinal is null");
-        // }
-        // // cpFinal.getChildren().addAll(cp,imageView);
-        // System.out.println("cp thing after adding"+ pane.getChildren());
-        //_________________
-        
-        // imageView.setVisible(true);
-        
+        currentImage.setVisible(true);        
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(10), event -> {
-            // Show the image after a delay of 3 seconds
             currentImage.setVisible(false);
         }));
         
-        timeline.play();
-        // imageView.setVisible(false);
-        
+        timeline.play();        
       
     }
 
-    // private void initialize() throws IOException {
-    //     boardPane = (BorderPane) this.getRoot();
-
-    //     Media media = new Media(new File("/Users/Natalia/Downloads/musicPiano.mp3").toURI().toString());
-    //     MediaPlayer mediaPlayer = new MediaPlayer(media);  
-    //     mediaPlayer.setAutoPlay(true);  
-
-    //     // Creating the board
-    //     Board board = new Board(Map.getMapByName(c.getBoardSelecter()));
-    //     c.setBoard(board);
-        
-    //     redraw();
-    //     // Register control panel
-    //     Image view = new Image("Cards/popup.png");
-    //     this.imageView = new ImageView(view);
-    //     StackPane.setAlignment(imageView, Pos.CENTER);
-    //     // StackPane.setMargin(imageView, new Insets(50));
-        
-    //     imageView.setVisible(true);
-    //     cp = new ControlPanel(c);
-    //     cp.getChildren().add(imageView);
-    //     boardPane.setRight(playersUIright);
-    //     // boardPane.setBottom(testpopUP);
-    //     boardPane.setBottom(cp);
-    //     // Popup2();
-    //     // popup.show(boardPane.getScene().getWindow());
-        
-    //     // boardPane.getChildren().add(popup);
-    // }
+    
     private void initialize() throws IOException {
         boardPane = (BorderPane) this.getRoot();
         //Music player
@@ -212,14 +133,7 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
         c.setBoard(board);
 
         redraw();
-        // Popup1();
-        // Register control panel
-        // Image view = new Image("Cards/popup.png");
-        // this.imageView = new ImageView(view);
-        // imageView.setVisible(false);
-        // imageView.setFitWidth(200);
-        // imageView.setFitHeight(300);
-
+        //Creating images for special cards and setting visibility to null
         Image view1 = new Image("Cards/fireRain.png");
         this.fireRain = new ImageView(view1);
         fireRain.setVisible(false);
@@ -238,25 +152,16 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
         spinLaser.setFitWidth(200);
         spinLaser.setFitHeight(300);
 
-        // this.pane = new Pane();
+        
         cp = new ControlPanel(c);
         VBox cpFinal = new VBox();; 
         cpFinal.getChildren().addAll(cp, fireRain, oilStorm, spinLaser);
 
-        //trying pane
-        
-        //trying pane
-
-        // cp.getChildren().add(imageView);
         rightSide.getChildren().addAll(playersUIright,cpFinal);
-        // boardPane.setBottom(testpopUP);
         boardPane.setBackground(background3);
         boardPane.setRight(rightSide);
 
-        // Popup2();
-        // popup.show(boardPane.getScene().getWindow());
 
-        // boardPane.getChildren().add(popup);
     }
 
     public void redraw() {
@@ -265,6 +170,7 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
         bd.draw();
         boardPane.setCenter(bd);
     }
+    
 
     public void updateRobotInfo(Robot robot) {
         Platform.runLater(() -> {
@@ -314,10 +220,4 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
             bd.drawLaser(laser);
         });   
     }
-    
-
-        // set auto hide
-        //popup.setAutoHide(true);
-        //popup.show();        
-    
 }
