@@ -38,6 +38,7 @@ public class Controller {
     private Player winner;
     private Player currentPlayer;
     private boolean doRegs=false;
+    private ArrayList<Player> playersAlive= new ArrayList<Player>();
     public Controller(Stage primaryStage) {
         this.primaryStage = primaryStage;
     }
@@ -57,6 +58,13 @@ public class Controller {
 
     public Player getCurrentPlayer() {
         return currentPlayer;
+    }
+    public void setPlayersAlive(){
+        for (Player i : boardController.getPlayers()) {
+            if (i.getRobot().getLives()!=0) {
+                playersAlive.add(i);
+            }
+        }
     }
     public void createAI(RobotColor color, String name){
         Robot robot = new Robot(color);
@@ -193,10 +201,11 @@ public class Controller {
     }
 
 	public void nextScene(){
-        
-        if (realPlayers.size()==1) {
-            winner=realPlayers.get(0);
+        setPlayersAlive();
+        if (playersAlive.size()==1) {
+            winner=playersAlive.get(0);
             this.realPlayers= new ArrayList<Player>();
+            this.playersAlive= new ArrayList<Player>();
             setWinScene();
             setTheScene(getWinScene(), "Winner!!!");
             return;
