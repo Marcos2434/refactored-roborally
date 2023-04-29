@@ -89,7 +89,6 @@ public class BoardController {
                     r.getRegister().clear();
                 }
             }
-            System.out.println();
 
             
             

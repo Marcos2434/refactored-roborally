@@ -46,6 +46,7 @@ public class Robot {
         if (this.getDamageTaken() > 0){
             this.damageTaken -=1;
         }
+        robotNotify();
     }
 
     public void setLastMove(ProgramCard card){
@@ -248,6 +249,7 @@ public class Robot {
         if (this.damageTaken >= 10){
           this.Death(boardController);
         }
+        robotNotify();
     }
     public int getDamageTaken() {
         return damageTaken;

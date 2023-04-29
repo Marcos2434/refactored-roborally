@@ -33,6 +33,7 @@ public class Playermat extends StackPane {
     private Image dummypic = new Image("playermat/dummy.png");
     private int regSize;
 
+    private Image cardSpacerPic = new Image("playermat/literalyPushingTheCardToThePlace.png");
     private Image ActiveCardPic; // = new Image("Cards/AgainCard.png");
     private ImageView ActiveCard = new ImageView(ActiveCardPic);
 
@@ -181,14 +182,13 @@ public class Playermat extends StackPane {
         damage.setStyle("-fx-font-weight: bold; -fx-font-size: 15; -fx-padding: 25 0 0 0;");
         updateDamage();
         VBox vbox = new VBox(playerinfo, cardsHbox, playerinfo2, damage);
-        vbox.prefHeight(height);
-        vbox.prefWidth(210);
+        vbox.setMinHeight(height);
+        vbox.setMinWidth(190);
         vbox.setStyle("-fx-padding: 0 0 0 20;");
 
         ActiveCard = new ImageView(ActiveCardPic);
 
         hbox1 = new HBox(vbox, ActiveCard);
-        hbox1.prefHeight(height);
         hbox1.prefWidth(width);
         hbox1.setStyle("-fx-padding: 15 0 0 0;");
         hbox1.setSpacing(13);
