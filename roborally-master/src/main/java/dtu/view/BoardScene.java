@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import javax.swing.plaf.synth.SynthSpinnerUI;
 
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
@@ -45,18 +46,25 @@ import javafx.util.Duration;
 public class BoardScene extends Scene implements RobotObserver, BoardObserver {
     
 
-    BorderPane boardPane;
-    Controller c;
-    ControlPanel cp;
-    ArrayList<Playermat> pMats = new ArrayList<>();
-    VBox playersUIright = new VBox();
-    VBox playersUIleft = new VBox();
-    VBox testpopUP = new VBox();
-    BoardDrawer bd;
-    Popup popup = new Popup();
-    HBox rightSide = new HBox();
+    private BorderPane boardPane;
+    private Controller c;
+    private ControlPanel cp;
+    private ArrayList<Playermat> pMats = new ArrayList<>();
+    private VBox playersUIright = new VBox();
+    private VBox playersUIleft = new VBox();
+    private VBox testpopUP = new VBox();
+    private BoardDrawer bd;
+    private Popup popup = new Popup();
+    private HBox rightSide = new HBox();
 
-    ImageView imageView;
+    private Pane pane;
+
+
+
+    
+    private ImageView fireRain;
+    private ImageView oilStorm;
+    private ImageView spinLaser;
 
     public void setPlayermats(ArrayList<Player> players){
         if (players.size() <= 4){
@@ -108,15 +116,46 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
     }
     
 
-    public void Popup1(){
-        System.out.println("we are here!");
+    public void Popup1(ActionCard actionCard){
+        ImageView currentImage;
+        System.out.println("we are in popu1");
+        if (actionCard.getImage().equals("Cards/fireRain.png")){
+            currentImage = fireRain;
+            System.out.println("we should be in fireRain");
+        }
+        else if (actionCard.getImage().equals("Cards/OilStorm.png")){
+            currentImage = oilStorm;
+            System.out.println("we should be in oilStorm");
+        }
+        else {
+            currentImage = spinLaser;
+        }
+        
+        currentImage.setVisible(true);
+
+        //_______________________
+        // Image view = new Image(actionCard.getImage());
+        // this.imageView = new ImageView(view);
+        // imageView.setFitWidth(200);
+        // imageView.setFitHeight(300);
 
         
-        imageView.setVisible(true);
+        // System.out.println("cp thing before adding"+ pane.getChildren());
+        // try {
+        //     pane.getChildren().addAll(imageView);
+        // }
+        // catch (Exception e){
+        //     System.out.println("cpFinal is null");
+        // }
+        // // cpFinal.getChildren().addAll(cp,imageView);
+        // System.out.println("cp thing after adding"+ pane.getChildren());
+        //_________________
+        
+        // imageView.setVisible(true);
         
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(10), event -> {
             // Show the image after a delay of 3 seconds
-            imageView.setVisible(false);
+            currentImage.setVisible(false);
         }));
         
         timeline.play();
@@ -175,14 +214,39 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
         redraw();
         // Popup1();
         // Register control panel
-        Image view = new Image("Cards/popup.png");
-        this.imageView = new ImageView(view);
-        imageView.setVisible(false);
-        imageView.setFitWidth(200);
-        imageView.setFitHeight(300);
+        // Image view = new Image("Cards/popup.png");
+        // this.imageView = new ImageView(view);
+        // imageView.setVisible(false);
+        // imageView.setFitWidth(200);
+        // imageView.setFitHeight(300);
+
+        Image view1 = new Image("Cards/fireRain.png");
+        this.fireRain = new ImageView(view1);
+        fireRain.setVisible(false);
+        fireRain.setFitWidth(200);
+        fireRain.setFitHeight(300);
+
+        Image view2 = new Image("Cards/OilStorm.png");
+        this.oilStorm = new ImageView(view2);
+        oilStorm.setVisible(false);
+        oilStorm.setFitWidth(200);
+        oilStorm.setFitHeight(300);
+
+        Image view3 = new Image("Cards/spinLaser.png");
+        this.spinLaser = new ImageView(view3);
+        spinLaser.setVisible(false);
+        spinLaser.setFitWidth(200);
+        spinLaser.setFitHeight(300);
+
+        // this.pane = new Pane();
         cp = new ControlPanel(c);
-        VBox cpFinal = new VBox();
-        cpFinal.getChildren().addAll(cp, imageView);
+        VBox cpFinal = new VBox();; 
+        cpFinal.getChildren().addAll(cp, fireRain, oilStorm, spinLaser);
+
+        //trying pane
+        
+        //trying pane
+
         // cp.getChildren().add(imageView);
         rightSide.getChildren().addAll(playersUIright,cpFinal);
         // boardPane.setBottom(testpopUP);
@@ -215,7 +279,8 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
     }
 
     public void updateNewAction(ActionCard actionCard) {
-        Popup1();
+        ActionCard cardToPass = actionCard;
+        Popup1(cardToPass);
     }
     
     public void updateCardTaken(Player player, String cardImageString){

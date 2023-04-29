@@ -10,7 +10,7 @@ import dtu.logic.models.Robot.Robot;
 
 public class OilStorm implements ActionCard{
 
-    private String image = "";
+    private String image = "Cards/OilStorm.png";
     private String name = "OilRain";
     private String Description = "A huge oil tanker not to far of the shore of your battle has tipped over, the huge barrels of oil are slung into the shore with such force that oil sprays upon the boardgame, to the pleassure of the robots. All robots heal for one damage";
     @Override

@@ -74,7 +74,7 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
 
     private Button finishButton;
 
-    BoardDrawer bd;
+    private BoardDrawer bd;
 
     public Boolean done = false;
 

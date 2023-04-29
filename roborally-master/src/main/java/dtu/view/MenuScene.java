@@ -29,7 +29,7 @@ import dtu.logic.models.Robot.Robot;
 import javafx.scene.control.ChoiceBox;
 public class MenuScene extends Scene {
 
-    Controller c;
+  	private Controller c;
 
     public MenuScene(Controller c) {
         super(new BorderPane());

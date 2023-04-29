@@ -11,7 +11,7 @@ import dtu.logic.models.Robot.Robot;
 
 public class FireRain implements ActionCard {
 
-    private String image = "";
+    private String image = "Cards/fireRain.png";
     private String name = "FireRain";
     private String Description = "You have stepped upon the storm gods sacred tile, they are punnishing everyone with a storm of fire!! All robots take 1 damage.";
     @Override

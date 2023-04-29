@@ -13,10 +13,13 @@ public class TileAction extends Tile {
         this.imageString = "tiles/Action.png";
     }
 
+    
+    
     @Override
     public void effect(Robot robot, BoardController boardController) {
         ActionCard card = ActionCardFactory.createActionCard(ActionCardTypes.getRandomActionType());
-        card.action(robot,boardController);
         boardController.notifyNewAction(card);
+        card.action(robot,boardController);
+        
     }
 }

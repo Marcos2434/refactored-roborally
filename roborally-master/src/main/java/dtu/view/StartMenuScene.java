@@ -15,7 +15,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.layout.VBox;
 
 public class StartMenuScene extends Scene {
-    Controller c;
+    private Controller c;
 
     public StartMenuScene(Controller c){
         super(new BorderPane(), 400, 300);
