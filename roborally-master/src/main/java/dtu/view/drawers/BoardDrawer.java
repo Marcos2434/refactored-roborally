@@ -1,7 +1,7 @@
 package dtu.view.drawers;
 
 import dtu.logic.models.Position;
-import dtu.logic.models.Rotation;
+
 import dtu.logic.models.Board.Board;
 import dtu.logic.models.Robot.Lazer;
 import dtu.logic.models.Robot.Robot;
@@ -36,14 +36,15 @@ public class BoardDrawer extends GridPane {
     public void drawRobot(Robot robot) {
         StackPane stackPane = (StackPane) this.getChildren().get(robot.getPos().getRow() * 10 + robot.getPos().getColumn());
 
-        if (robot.getPrevPos() != null) {
+        if (robot.getPrevPos() != null && !robot.getPrevPos().isOutOfBounds()) {
             this.unDrawRobot(robot.getPrevPos());
             drawTileAt(robot.getPrevPos(), b.getTileAt(robot.getPrevPos()).getImage());
         }
-
+        if (!robot.getPos().isOutOfBounds()){
         ImageView iv = new ImageView(robot.getImage());
         iv.setRotate(90*(robot.getDirID() - 1));
         stackPane.getChildren().add(iv);
+        }
     }
     
     public void unDrawRobot(Position pos) {

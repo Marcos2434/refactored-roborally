@@ -25,14 +25,6 @@ public class Position {
         this.row += y;
     }
 
-    public void setColumn(int x) {
-        this.column = x;
-    }
-
-    public void setRow(int y) {
-        this.row = y;
-    }
-
     public void set(int x, int y) {
         this.column = x;
         this.row = y;
