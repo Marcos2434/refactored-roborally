@@ -20,7 +20,7 @@ public enum Map {
                                                 {"T","S","WT 4","T","S","S","T","WT 2","S","T"},
                                                 {"S","T","T","S","T","T","S","T","T","S"},}),
 
-    map2("Black holes",2,new String[][]{ {"T   ","T     ","T     ","T     ","T   ","T","T     ","T      ","T    ","T   "},  
+    map2("Black holes",3,new String[][]{ {"T   ","T     ","T     ","T     ","T   ","T","T     ","T      ","T    ","T   "},  
                                                     {"T   ","BT 3 1","BT 3 1","BT 4 1","C 1   ","T","BT 2 1","BT 3 1","BT 3 1","T   "},
                                                     {"LT 4","BT 2 1","HT    ","BT 4 1","T   ","T","BT 2 1","HT    ","BT 4 1","LT 2"},
                                                     {"T   ","BT 2 1","BT 1 1","BT 1 1","T   ","T","BT 1 1","BT 1 1","BT 4 1","T   "},

@@ -86,7 +86,7 @@ public class BoardController {
                     r.getRegister().clear();
                 }
                 try {
-                    //Thread.sleep(1000);
+                    Thread.sleep(1000);
                  } catch (Exception e) { System.err.println(e); }
                 
                 
@@ -209,7 +209,7 @@ public class BoardController {
                     if (Math.abs(dir.getId() - WT.getDirID()) == 2){return false;} 
                     else{return true;}  
                 }
-        
+                
                 if (this.board.getTileAt(toPos).isOcupied()){getRobotAt(toPos).takeDmg(this);
                                                   return allowmove(getRobotAt(toPos),dir);}
                 else{return true;}  

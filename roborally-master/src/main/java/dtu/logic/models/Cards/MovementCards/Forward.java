@@ -2,6 +2,7 @@ package dtu.logic.models.Cards.MovementCards;
 
 import dtu.logic.models.Board.Board;
 import dtu.logic.models.Board.BoardController;
+import dtu.logic.models.Board.TileHole;
 import dtu.logic.models.Cards.ProgramCard;
 import dtu.logic.models.Robot.Robot;
 
@@ -34,7 +35,14 @@ public class Forward implements ProgramCard {
         robot.setLastMove(new Forward(intensity));
         
         for (int i = 0; i <intensity; i++) {
+            System.out.println(i);
             robot.moveforward(true, boardController);
+            try{
+                Thread.sleep(20);
+            }
+            catch(Exception e){System.out.println(e);}
+
+            robot.setPrevPos(robot.getPos());
             if (robot.getPos().getRow() < 0 || robot.getPos().getRow() > 12 ||
                 robot.getPos().getColumn() < 0 || robot.getPos().getColumn()>9){
                     robot.Death(boardController);
@@ -45,11 +53,14 @@ public class Forward implements ProgramCard {
             boardController.getBoard().getTileAt(robot.getPos()).Occupy();
             boardController.runAllHoles();
             try{
-                //Thread.sleep(200);
+                Thread.sleep(200);
             }
             catch(Exception e){System.out.println(e);}
-            boardController.runAllHoles();
-
+            if (boardController.getBoard().getTileAt(robot.getPos()) instanceof TileHole){
+                TileHole TH = (TileHole) boardController.getBoard().getTileAt(robot.getPos());
+                TH.effect(robot,boardController);
+                break;
+            }
         }
         boardController.getBoard().getTileAt(robot.getPos()).Occupy();
     }

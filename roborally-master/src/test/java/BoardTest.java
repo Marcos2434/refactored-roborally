@@ -246,7 +246,7 @@ public class BoardTest {
             {"BT 3 2","T","HT","T","WT 1","WT 4","T","T","T","T"},
             {"T","T","HT","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"},
-            {"T","T","BT 3 1","T","T","T","T","T","T","T"},
+            {"T","T","BT 3 1","T","T","T","T","T","HT","T"},
             {"RT","T","T","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"},
             {"T","LT 4","T","T","T","T","BT 1 2","T","T","T"},
@@ -452,6 +452,30 @@ public class BoardTest {
     @Then("The robot heal for all the damage")
     public void the_robot_heal_for_all_the_damage() {
         assertEquals(0, robot1.getDamageTaken());
+}
+
+    @When("Robot furthest back moves {int} times and pushes the row")
+    public void robot_furthest_back_moves_times_and_pushes_the_row(Integer int1) {
+        System.out.println("_________________");
+        bC.moveRobot(robot1, new Position(7, 4));
+        bC.moveRobot(robot2, new Position(6, 4));
+        bC.moveRobot(robot3, new Position(5, 4));
+        bC.moveRobot(robot4, new Position(4, 4));
+        robot4.turn(1,bC);
+        System.out.println("_________________");
+        System.out.println(robot4.getPos());
+        System.out.println(robot4.getdir().getId());
+        System.out.println("_________________");
+        robot4.moveByCard(bC,new Forward(3));
+        System.out.println("___________________");
+    }
+    @Then("{int} robots die")
+    public void robots_die(Integer int1) {
+        assertEquals(new Position(0,5),robot1.getPos());
+        assertEquals(new Position(1,5),robot2.getPos());
+        assertEquals(new Position(2,5),robot3.getPos());
+        assertEquals(new Position(7,4),robot4.getPos());
+
 }
 }
 

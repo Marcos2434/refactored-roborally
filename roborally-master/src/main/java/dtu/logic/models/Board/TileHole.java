@@ -11,7 +11,7 @@ public class TileHole extends Tile {
 
     @Override
     public void effect(Robot robot, BoardController boardController) {
-        
+        robot.setPrevPos(robot.getPos());
         robot.Death(boardController);
     }
 
