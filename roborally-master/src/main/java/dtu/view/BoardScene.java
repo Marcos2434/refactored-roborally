@@ -117,9 +117,9 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
     private void initialize() throws IOException {
         boardPane = (BorderPane) this.getRoot();
         //Music player
-        Media media = new Media(new File("/Users/Natalia/Downloads/musicPiano.mp3").toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(media);  
-        mediaPlayer.setAutoPlay(true);  
+        //Media media = new Media(new File("/Users/Natalia/Downloads/musicPiano.mp3").toURI().toString());
+        //MediaPlayer mediaPlayer = new MediaPlayer(media);  
+        //mediaPlayer.setAutoPlay(true);  
 
         //Background picture
         Image background = new Image (("playermat/dummyplayermat.png"));

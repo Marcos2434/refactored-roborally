@@ -56,6 +56,7 @@ public class PlayerTest {
     public void their_hands_are_not_empty() {
         assertTrue(ai1.getHand().size() > 0);
         assertTrue(ai1.getHand().size() > 0);
+        assertTrue(ai1.isAI());
 }
 
 }

@@ -135,3 +135,7 @@ Feature: Boardfunctions
         Given A Board and four players with different starting points
         When Robot furthest back moves three times and pushes the row
         Then three robots die
+
+    @tag24
+        Scenario: Robots walk on a actiontile and a random effect happens
+        Given

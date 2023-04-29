@@ -28,7 +28,6 @@ dtu\logic\models\Board\TileType.class
 dtu\view\MenuScene$1.class
 dtu\view\Playermat.class
 dtu\logic\models\Cards\MovementCards\TurnRight.class
-dtu\logic\models\Cards\ActionDeck.class
 dtu\logic\models\Cards\ActionCards\SpinLaser.class
 dtu\logic\models\Position.class
 dtu\view\StartMenuScene.class
