@@ -96,7 +96,7 @@ public class BoardController {
             fireRobotLazers();
             fireboardLazers();
             try {
-                //Thread.sleep(2000);
+                Thread.sleep(100);
              } catch (Exception e) { System.err.println(e); }
         }
         this.emptyAllRegisters();

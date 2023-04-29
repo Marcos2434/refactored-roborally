@@ -44,9 +44,6 @@ public class MenuScene extends Scene {
         BackgroundImage background2 = new BackgroundImage(background, null, null, null, null);
         Background background3 = new Background(background2);
         
-		
-
-        
 
         //Set backround to the whole scene 
         
@@ -54,9 +51,6 @@ public class MenuScene extends Scene {
 		menu.setBackground(background3);
 		menu.setPrefSize(500, 500);
 
-
-
-		
 		
 		// RED
 		//Text r = new Text("RED");
