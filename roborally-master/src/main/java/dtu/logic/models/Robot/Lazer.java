@@ -76,7 +76,7 @@ public class Lazer {
                    
                     boardController.notifyLaserObservers(this);
                     try {
-                      //Thread.sleep(100);
+                      Thread.sleep(100);
                     } catch (Exception e) { System.err.println(e); }
                     if (boardController.getBoard().getTileAt(getPos()).isOcupied()){
                         return true;

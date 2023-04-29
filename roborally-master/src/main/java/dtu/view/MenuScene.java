@@ -249,6 +249,7 @@ public class MenuScene extends Scene {
 						c.createAI(RobotColor.BLACK,black.getText());
 					}
 					c.getRealPlayers();
+					c.getBoardController().registerBoardObserver(c.getBoardScene());
 					c.changeToBoardScene();
 					c.spawnRobots();
 				}
