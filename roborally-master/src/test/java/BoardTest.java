@@ -245,8 +245,8 @@ public class BoardTest {
             {"BT 3 2","T","HT","","T","T","T","T","T","T"},
             {"BT 3 2","T","HT","T","WT 1","WT 4","T","T","T","T"},
             {"T","T","HT","T","T","T","T","T","T","T"},
-            {"T","T","T","T","T","T","T","T","T","T"},
-            {"T","T","BT 3 1","T","T","T","T","T","HT","T"},
+            {"T","T","T","T","T","T","T","T","HT","T"},
+            {"T","T","BT 3 1","T","T","T","T","T","T","T"},
             {"RT","T","T","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"},
             {"T","LT 4","T","T","T","T","BT 1 2","T","T","T"},
@@ -454,24 +454,27 @@ public class BoardTest {
         assertEquals(0, robot1.getDamageTaken());
 }
 
-    @When("Robot furthest back moves {int} times and pushes the row")
-    public void robot_furthest_back_moves_times_and_pushes_the_row(Integer int1) {
-     
-        bC.moveRobot(robot1, new Position(7, 4));
-        bC.moveRobot(robot2, new Position(6, 4));
-        bC.moveRobot(robot3, new Position(5, 4));
-        bC.moveRobot(robot4, new Position(4, 4));
-        robot4.turn(1,bC);
- 
-        robot4.moveByCard(bC,new Forward(3));
+    @When("Robot furthest back moves three times and pushes the row")
+    public void robot_furthest_back_moves_times_and_pushes_the_row() {
+        bC.addPlayer(player1);
+        bC.addPlayer(player2);
+        bC.addPlayer(player3);
+        bC.addPlayer(player4);
+        bC.moveRobot(robot1, new Position(7, 3));
+        bC.moveRobot(robot2, new Position(6,3));
+        bC.moveRobot(robot3, new Position(5, 3));
+        bC.moveRobot(robot4, new Position(4, 3));
+        robot4.AddToRegister(new TurnRight(1));
+        robot4.AddToRegister(new Forward(3));
+        bC.runAllRegisters();    
     
     }
-    @Then("{int} robots die")
-    public void robots_die(Integer int1) {
+    @Then("three robots die")
+    public void robots_die() {
         assertEquals(new Position(0,5),robot1.getPos());
         assertEquals(new Position(1,5),robot2.getPos());
         assertEquals(new Position(2,5),robot3.getPos());
-        assertEquals(new Position(7,4),robot4.getPos());
+        assertEquals(new Position(7,3),robot4.getPos());
 
 }
 }

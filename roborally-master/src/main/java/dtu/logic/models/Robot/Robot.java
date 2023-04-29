@@ -280,7 +280,7 @@ public class Robot {
         }
         robot.robotNotify();
         try{
-            Thread.sleep(20);
+            //Thread.sleep(20);
         }catch(Exception e){System.err.println(e);}
         boardController.getBoard().getTileAt(robot.getPos()).Occupy();  
     } 
@@ -320,19 +320,9 @@ public class Robot {
     public List<ProgramCard> getRegister() {
         return this.register;
     }
-
-    // public void setPos(int x, int y){
-    //     pos.set(x, y);
-    // }
-
-    public void setX(int x){
-        pos.setColumn(x);
+    public void setDamageTaken(int damage){
+        this.damageTaken = damage;
     }
-
-    public void setY(int y){
-        pos.setRow(y);
-    }
-
     @Override
     public String toString() {
         return this.Robotcolor.toString();
@@ -341,8 +331,6 @@ public class Robot {
     public void moveByCard(BoardController boardController, ProgramCard card){
         
     card.effect(this,boardController);
-    
-
     }
     
     @Override
