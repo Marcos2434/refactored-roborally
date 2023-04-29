@@ -73,7 +73,7 @@ public class BoardController {
         for (int i=0; i<5;i++){
             for (int j = 0; j < this.players.size(); j++) {
                 Robot r = this.players.get(j).getRobot();
-                System.out.println(r.getRegister());
+               
                 
                 if (r.getRegister().size() > i){
                     notifyCardRemove(this.players.get(j), r.getRegister().get(i).getImage());
@@ -86,19 +86,19 @@ public class BoardController {
                 }
                 
             }
-            System.out.println();
+           
 
             
             
             RunAllEffects();
             fireRobotLazers();
             fireboardLazers();
-            try {
-                Thread.sleep(100);
-             } catch (Exception e) { System.err.println(e); }
+            //try {
+            //    Thread.sleep(100);
+            // } catch (Exception e) { System.err.println(e); }
         }
         this.emptyAllRegisters();
-        System.out.println("Finnished");
+       
 
     }
 

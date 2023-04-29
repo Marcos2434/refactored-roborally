@@ -45,6 +45,7 @@ public class Robot {
     public void heal(){
         if (this.getDamageTaken() > 0){
             this.damageTaken -=1;
+            
         }
     }
 
@@ -194,7 +195,6 @@ public class Robot {
                     
                 }
             }
-
             if (this.DirID == 1){this.addRow(-d);}
             else if (this.DirID == 2){this.addCol(d);}
             else if (this.DirID == 3){this.addRow(d);}

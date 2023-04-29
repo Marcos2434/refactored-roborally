@@ -123,3 +123,9 @@ Feature: Boardfunctions
         Given  A Board and four players with different starting points
         When A robot walks over a checkpoint and then dies while the its checkpoint is occupied
         Then it spawns at the stating position
+    
+    @tag22
+        Scenario: A repairTile wil reset the damage of  robot
+        Given A Board and four players with different starting points
+        When A robot has taken damage and walks on top of a repairTile
+        Then The robot heal for all the damage
