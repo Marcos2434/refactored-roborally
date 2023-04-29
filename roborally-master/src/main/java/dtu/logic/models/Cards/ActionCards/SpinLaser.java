@@ -22,7 +22,7 @@ public class SpinLaser implements ActionCard{
         for (int i = 0; i < 4; i++) {
             try{robot.turn(1, boardController);}
             catch(Exception e){System.out.println(e);}
-            System.out.println("FIRE (in spinlaser)");
+           
             try{
                 Thread.sleep(600);
             }
