@@ -15,7 +15,6 @@ import dtu.logic.models.Observers.RobotObserver;
 import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.Lazer;
 import dtu.logic.models.Robot.Robot;
-import dtu.roborally.view.widgets.ControlPanel;
 import dtu.view.drawers.BoardDrawer;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -37,7 +36,6 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
     BorderPane boardPane;
     Controller c;
     ControlPanel cp;
-    HBox rightSide = new HBox();
     ArrayList<Playermat> pMats = new ArrayList<>();
     VBox playersUIright = new VBox();
     VBox playersUIleft = new VBox();
@@ -53,6 +51,9 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
                 playersUIright.getChildren().add(p1);
                 pMats.add(p1);
             }
+            for (int i = players.size(); i < 4; i++){
+                playersUIright.getChildren().add(new ImageView(new Image("playermat/dummyplayermat.png")));
+            }
         }
         else {
             for (int i = 0; i < 4; i++){
@@ -60,11 +61,17 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
                 playersUIright.getChildren().add(p1);
                 pMats.add(p1);
             }
+            for (int i = players.size(); i < 4; i++){
+                playersUIright.getChildren().add(new ImageView(new Image("playermat/dummyplayermat.png")));
+            }
 
             for (int i = 4; i < players.size(); i++){
                 Playermat p1 = new Playermat(players.get(i));
                 playersUIleft.getChildren().add(p1);
                 pMats.add(p1);
+            }
+            for (int i = players.size()-4; i < 4; i++){
+                playersUIleft.getChildren().add(new ImageView(new Image("playermat/dummyplayermat.png")));
             }
             boardPane.setLeft(playersUIleft);
         }
@@ -98,8 +105,8 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
         //Popup();
         // Register control panel
         cp = new ControlPanel(c);
-        rightSide.getChildren().addAll(playersUIright,cp);
-        boardPane.setRight(rightSide);
+        boardPane.setRight(playersUIright);
+        boardPane.setBottom(cp);
 
         // boardPane.getChildren().add(popup);
     }

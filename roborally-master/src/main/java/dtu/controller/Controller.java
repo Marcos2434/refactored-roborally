@@ -238,7 +238,7 @@ public class Controller {
 
             try{
             this.boardController.getPlayers().get(i).getRobot().setPos(this.availableBoardSpawns.get(i));
-            }catch(Exception e){System.out.println(e);}
+            }catch(Exception e){;}
             
             
             // set initial checkpoint

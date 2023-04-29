@@ -5,15 +5,15 @@ dtu/logic/models/Cards/ActionCards/ActionCardTypes.class
 dtu/logic/models/Board/TileType.class
 dtu/roborally/view/TileType.class
 dtu/view/MenuScene.class
+dtu/view/ControlPanel.class
 dtu/logic/models/Position.class
 dtu/roborally/view/widgets/BoardTeacher.class
 dtu/logic/models/Cards/MovementCards/ProCardTypes.class
 dtu/logic/models/Cards/ProgramCard.class
-dtu/roborally/view/widgets/ControlPanel$1.class
 dtu/controller/Controller.class
+dtu/view/ControlPanel$2$1.class
 dtu/logic/models/Board/TileCheckpoint.class
 dtu/logic/models/Rotation.class
-dtu/roborally/view/widgets/ControlPanel$2.class
 dtu/logic/models/Board/TileFactory.class
 dtu/logic/models/Cards/MovementCards/Backwards.class
 dtu/logic/models/Board/TileRepair.class
@@ -26,11 +26,11 @@ dtu/logic/models/Board/TileBelt.class
 dtu/logic/models/Cards/ActionCards/SpinLaser.class
 dtu/logic/models/Board/TileAction.class
 dtu/logic/models/Cards/MovementCards/Uturn.class
-dtu/roborally/view/widgets/ControlPanel.class
 dtu/logic/models/Board/Board.class
 dtu/logic/models/Cards/MovementCards/Forward.class
 dtu/logic/models/Board/TileStart.class
 dtu/logic/models/Cards/Card.class
+dtu/view/ControlPanel$2.class
 dtu/view/StartMenuScene.class
 dtu/logic/models/Cards/MovementCards/ProCardFactory.class
 dtu/roborally/view/widgets/Board.class
@@ -41,6 +41,7 @@ dtu/roborally/view/CardinalPoints.class
 dtu/logic/models/Robot/Robot.class
 dtu/logic/models/Board/TileWall.class
 dtu/logic/models/Board/TileLazer.class
+dtu/view/ControlPanel$1.class
 dtu/logic/models/Robot/Lazer.class
 dtu/logic/models/Board/TileHole.class
 dtu/logic/models/Cards/ActionCard.class
@@ -57,5 +58,4 @@ dtu/logic/models/Cards/ActionDeck.class
 dtu/logic/models/Board/Tile.class
 dtu/logic/models/Cards/ActionCards/FireRain.class
 dtu/logic/models/AI.class
-dtu/roborally/view/widgets/ControlPanel$2$1.class
 dtu/roborally/view/widgets/Tile.class

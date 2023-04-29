@@ -33,7 +33,6 @@ public class Playermat extends StackPane {
     private Image dummypic = new Image("playermat/dummy.png");
     private int regSize;
 
-    private Image cardSpacerPic = new Image("playermat/literalyPushingTheCardToThePlace.png");
     private Image ActiveCardPic; // = new Image("Cards/AgainCard.png");
     private ImageView ActiveCard = new ImageView(ActiveCardPic);
 
@@ -143,7 +142,7 @@ public class Playermat extends StackPane {
             chPoint.setText("Checkpoint: " + this.player.getRobot().getcheckpointCount() + "    ");
         }
         lives.setText("Lives: " + String.valueOf(player.getRobot().getLives()) + "    ");
-        if (player.getRobot().getLives() == 0){
+        if (player.getRobot().getLives() == 0 && super.getChildren().size() == 2){
             destroyed();
         }
         damage.setText("Damage: " + String.valueOf(player.getRobot().getDamageTaken()));
@@ -169,9 +168,9 @@ public class Playermat extends StackPane {
         color = new Label();
         setColor();
         HBox playerinfo = new HBox(pName, color);
-        playerinfo.setStyle("-fx-padding: 5 0 14 0;-fx-border-color: red;");
+        playerinfo.setStyle("-fx-padding: 5 0 14 0;");
 
-        cardsHbox.setStyle("-fx-padding: 0 0 44 2;-fx-border-color: red;");
+        cardsHbox.setStyle("-fx-padding: 0 0 44 2;");
         cardsHbox.setSpacing(4);
         // setRegister(4);
 
@@ -180,7 +179,7 @@ public class Playermat extends StackPane {
         chPoint = new Label("Checkpoint: " + "Start");
 
         HBox playerinfo2 = new HBox(lives, chPoint);
-        playerinfo2.setStyle("-fx-padding: 10 0 0 0;-fx-border-color: red;");
+        playerinfo2.setStyle("-fx-padding: 10 0 0 0;");
 
         damage = new Label();
         damage.setStyle("-fx-font-weight: bold; -fx-font-size: 15; -fx-padding: 25 0 0 0;");
@@ -188,13 +187,13 @@ public class Playermat extends StackPane {
         VBox vbox = new VBox(playerinfo, cardsHbox, playerinfo2, damage);
         vbox.setMaxWidth(210);
         vbox.setMinWidth(210);
-        vbox.setStyle("-fx-padding: 0 0 0 20; -fx-border-color: red;");
+        vbox.setStyle("-fx-padding: 0 0 0 20;");
 
         ActiveCard = new ImageView(ActiveCardPic);
 
         hbox1 = new HBox(vbox, ActiveCard);
         hbox1.prefWidth(width);
-        hbox1.setStyle("-fx-padding: 14 0 0 0; -fx-border-color: red;");
+        hbox1.setStyle("-fx-padding: 15 0 0 0;");
 
         super.getChildren().addAll(background, hbox1);
     }
