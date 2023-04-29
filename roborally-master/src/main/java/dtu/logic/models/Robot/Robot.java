@@ -165,9 +165,8 @@ public class Robot {
     }    
 
     public void moveforward(Boolean forward, BoardController boardController){
-        
+      
         this.prevPos = new Position(pos.getColumn(),pos.getRow());
-
         int d;
         Direction MoveDir;
         
@@ -180,13 +179,10 @@ public class Robot {
             MoveDir = getdir().opposite();
             d = -1;
         }
-
         //Update old tile
         boardController.getBoard().getTileAt(pos).unOccupy();
        
         if (boardController.allowmove(this,MoveDir)){
-
-            
             //Move other robot out of the way first, if there is one
             if (boardController.getBoard().getTileAt(getPosInDir(MoveDir))!=null){
                 if (boardController.getBoard().getTileAt(getPosInDir(MoveDir)).isOcupied()){
@@ -199,8 +195,8 @@ public class Robot {
             else if (this.DirID == 2){this.addCol(d);}
             else if (this.DirID == 3){this.addRow(d);}
             else if (this.DirID == 4){this.addCol(-d);} 
-   
         }
+        robotNotify();
         
         
     }
@@ -260,8 +256,8 @@ public class Robot {
     // interaction with other robots
     public void Push(Robot robot, BoardController boardController){
         robot.setPrevPos(robot.getPos());
-        
 
+        
         if (robot.getPosInDir(Direction.getDirById(this.DirID)).isOutOfBounds()){robot.Death(boardController);}
 
         else{
@@ -274,6 +270,9 @@ public class Robot {
             else if (this.DirID == 4){robot.getPos().addX(-1);}
         }
         robot.robotNotify();
+        try{
+            Thread.sleep(20);
+        }catch(Exception e){System.err.println(e);}
         boardController.getBoard().getTileAt(robot.getPos()).Occupy();  
     } 
     
