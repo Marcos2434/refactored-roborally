@@ -456,18 +456,15 @@ public class BoardTest {
 
     @When("Robot furthest back moves {int} times and pushes the row")
     public void robot_furthest_back_moves_times_and_pushes_the_row(Integer int1) {
-        System.out.println("_________________");
+     
         bC.moveRobot(robot1, new Position(7, 4));
         bC.moveRobot(robot2, new Position(6, 4));
         bC.moveRobot(robot3, new Position(5, 4));
         bC.moveRobot(robot4, new Position(4, 4));
         robot4.turn(1,bC);
-        System.out.println("_________________");
-        System.out.println(robot4.getPos());
-        System.out.println(robot4.getdir().getId());
-        System.out.println("_________________");
+ 
         robot4.moveByCard(bC,new Forward(3));
-        System.out.println("___________________");
+    
     }
     @Then("{int} robots die")
     public void robots_die(Integer int1) {

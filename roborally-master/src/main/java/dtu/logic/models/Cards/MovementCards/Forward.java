@@ -35,10 +35,10 @@ public class Forward implements ProgramCard {
         robot.setLastMove(new Forward(intensity));
         
         for (int i = 0; i <intensity; i++) {
-            System.out.println(i);
+           
             robot.moveforward(true, boardController);
             try{
-                Thread.sleep(20);
+                Thread.sleep(50);
             }
             catch(Exception e){System.out.println(e);}
 
