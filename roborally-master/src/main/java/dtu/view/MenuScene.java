@@ -168,9 +168,11 @@ public class MenuScene extends Scene {
 		comboBox.setOnAction(event -> {
 			
 			String selectedOption = comboBox.getSelectionModel().getSelectedItem();
-
-			c.setBoardSelecter(selectedOption);
-			c.setBoard(new Board(Map.getMapByName(selectedOption)));
+			
+			int id =  Integer.parseInt(selectedOption.split(" ")[0]);
+		
+			System.out.println(c.getBoardSelecter()); 
+			c.setBoard(new Board(Map.getMapById(id)));
 
 
 			note.setText(" ");
@@ -194,7 +196,7 @@ public class MenuScene extends Scene {
             @Override
             public void handle(Event event) {
 				// For loop going through all checkboxes
-				if (c.getBoardSelecter() != null){
+				if (c.getBoardSelecter() != 0){
 					try {BoardScene boardScene = new BoardScene(c);
 						c.setBoardScene(boardScene);}
 					catch(Exception e){System.out.println(e);}

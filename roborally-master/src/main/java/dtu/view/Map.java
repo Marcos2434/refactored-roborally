@@ -6,7 +6,7 @@ import java.util.Comparator;
 import javax.management.relation.RelationSupportMBean;
 
 public enum Map {
-    map1("Empty",1,new String[][]{   
+    map1(1,"Empty",1,new String[][]{   
         {"T","T","T","T","T","T","T","T","T","T"},
         {"T","T","T","T","T","T","T","T","T","T"},
         {"T","T","T","T","T","T","T","T","T","T"},
@@ -23,7 +23,7 @@ public enum Map {
         {"T","T","T","T","WT 1","WT 1","T","T","T","T"},
         {"AT  ","S","WT 4","T","S","S","T","WT 2","S","T"},
         {"S","T","T","S","T","T","S","T","T","S"},}),
-map2("The Pit",2,new String[][]{
+map2(2,"The Pit",2,new String[][]{
         {"T","T","T","WT 1","T","T","T","T ","T","T"},
         {"T","RT","T","T","C 1","T","T","T ","RT","T"},
         {"T","T","T","LT 3","T","T","BT 3 1","T ","T","T"},
@@ -39,7 +39,7 @@ map2("The Pit",2,new String[][]{
         {"T","BT 1 2","T","S","T","T","S","T","BT 1 2","T"},
         {"T ","S","WT 3","T","T","T","T","WT 3","S","T"},}),
 
-    map3("Black holes",3,new String[][]{ 
+    map3(3,"Black holes",3,new String[][]{ 
         {"T   ","T     ","T     ","T     ","T   ","T","T     ","T      ","T    ","T   "},  
         {"T   ","BT 3 1","BT 3 1","BT 4 1","C 1   ","T","BT 2 1","BT 3 1","BT 3 1","T   "},
         {"LT 4","BT 2 1","HT    ","BT 4 1","T   ","T","BT 2 1","HT    ","BT 4 1","LT 2"},
@@ -56,7 +56,7 @@ map2("The Pit",2,new String[][]{
         {"S  ","T     ","T     ","S     ","T   ","T   ","S     ","T   ","T","S"},}),
     
     
-    map4("Laser Tag",3,new String[][]{   
+    map4(4,"Laser Tag",3,new String[][]{   
         {"T","T","T","T","WT 2","WT 1","RT","HT","T","T"},
         {"T","T","WT 3","WT 2","T","T","WT 2","T","C 3","T"},
         {"T","C 1","WT 2","AT","T","HT","T","BT 4 1","WT 3","T"},
@@ -72,7 +72,7 @@ map2("The Pit",2,new String[][]{
         {"T","T","S","T","WT 2","S","T","T","S","T"},
         {"T","S","T","T","S","WT 4","T","S","T","T"},
         {"T","T","T","S","WT 2","T","S","T","T","T"},}  ),
-    map5("Arround the World",3,new String[][]{
+    map5(5,"Arround the World",3,new String[][]{
         {"T","T","T","T","LT 1","T","BT 2 1","BT 2 1","BT 3 1","HT"},
         {"T","BT 2 1","BT 3 1","T","T","T","BT 1 1","C 2","BT 3 1","T"},
         {"T","BT 1 1","BT 4 1","T","WT 3","T","BT 1 1","BT 4 1","BT 4 1","T"},
@@ -87,7 +87,7 @@ map2("The Pit",2,new String[][]{
         {"T","T","T","T","WT 1","WT 1","T","T","T","T"},
         {"T","S","WT 4","T","S","S","T","WT 2","S","T"},
         {"S","T","T","S","T","T","S","T","T","S"}, }),
-    map6("Parallel Parking",4,new String[][]{ 
+    map6(6,"Parallel Parking",4,new String[][]{ 
         {"T","T","T","T","T","T","T","T","T","T"},
         {"T","RT","T","T","T","C 1","T","T","T","T"},
         {"T","T","T","T","WT 1","WT 1","T","AT","T","T"},
@@ -103,7 +103,7 @@ map2("The Pit",2,new String[][]{
         {"S","S","T","T","T","C 3","T","T","S","S"},
         {"T","T","T","T","S","S","T","T","T","T"}}),
     
-    map7("Highway to Hell",5,new String[][]{
+    map7(7,"Highway to Hell",5,new String[][]{
         {"T","T","WT 1","T","T","LT 1","T","T","T","T"},
         {"T","RT","T","T","T","T","T","T","C 2","T"},
         {"BT 2 2","BT 2 2","BT 2 2","BT 2 2","BT 2 2","BT 2 2","BT 2 2","BT 2 2","BT 2 2","BT 2 2"},
@@ -123,7 +123,7 @@ map2("The Pit",2,new String[][]{
 });
 
 
-	
+	private int id;
 	private String Name;
     private String[][] map;
     private int level;
@@ -137,25 +137,30 @@ map2("The Pit",2,new String[][]{
     public int getLevel(){
         return level;
     }
+
+    public int getid(){
+        return id;
+    }
  
-	private Map(String Name,int Level,String[][] map) {
+	private Map(int id,String Name,int Level,String[][] map) {
 		this.Name = Name;
         this.map = map;
         this.level = Level;
+        this.id = id;
 	}
 
     public static ArrayList<String> getmapNames(){
         ArrayList<String> names = new ArrayList<String>();
         for (Map m : Map.values()){
-            names.add(m.getName() + "-- Level : " + m.getLevel());
+            names.add(m.getid() + " " + m.getName() + " -- Level : " + m.getLevel());
         }
         return names;
     }
 
-    public static String[][] getMapByName(String Name){
+    public static String[][] getMapById(int id){
         
         for (Map m : Map.values()){
-            if (m.getName().equals(Name)){
+            if (m.getid() == (id)){
                 return m.getMap();
             } 
         }
