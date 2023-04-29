@@ -133,7 +133,7 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
         Image background = new Image (("playermat/dummyplayermat.png"));
         BackgroundImage background2 = new BackgroundImage(background, null, null, null, null);
         Background background3 = new Background(background2);
-
+        
 
     
         // Creating the board
@@ -162,6 +162,7 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
 
         
         cp = new ControlPanel(c);
+        cp.setChoose(false);
         VBox cpFinal = new VBox();; 
         cpFinal.getChildren().addAll(cp, fireRain, oilStorm, spinLaser);
 
@@ -169,7 +170,7 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
         boardPane.setBackground(background3);
         boardPane.setRight(rightSide);
 
-
+ 
     }
 
     public void redraw() {

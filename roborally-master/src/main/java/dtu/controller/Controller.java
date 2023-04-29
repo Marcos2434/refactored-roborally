@@ -16,7 +16,7 @@ import dtu.view.StartMenuScene;
 import javafx.scene.Scene;
 import dtu.logic.models.Board.TileType;
 import dtu.logic.models.Board.TileStart;
-
+import dtu.view.WinScene;
 public class Controller {
 
     // --- Scenes ---
@@ -28,16 +28,17 @@ public class Controller {
     // private ProgrammingPhaseSceneSimple programmingPhaseSceneSimple;
     // --------------
     private Stage primaryStage;
-    
+    private WinScene winScene;
     private Board board;
     private String boardSelecter = null;
     private BoardController boardController;
     ArrayList<Position> availableBoardSpawns = new ArrayList<Position>();
     private ArrayList<Player> realPlayers = new ArrayList<Player>();
     private ArrayList<Player> Ais = new ArrayList<Player>();
-
+    private Player winner;
     private Player currentPlayer;
-    
+    private boolean doRegs=false;
+    private ArrayList<Player> playersAlive= new ArrayList<Player>();
     public Controller(Stage primaryStage) {
         this.primaryStage = primaryStage;
     }
@@ -58,6 +59,13 @@ public class Controller {
     public Player getCurrentPlayer() {
         return currentPlayer;
     }
+    public void setPlayersAlive(){
+        for (Player i : boardController.getPlayers()) {
+            if (i.getRobot().getLives()!=0) {
+                playersAlive.add(i);
+            }
+        }
+    }
     public void createAI(RobotColor color, String name){
         Robot robot = new Robot(color);
         robot.registerObserver(this.boardScene);
@@ -68,6 +76,9 @@ public class Controller {
             this.boardController.addPlayer(new AI(robot,name));
         }
         
+    }
+    public Player getWinner(){
+        return winner;
     }
     public void addCount(){
         count+=1;
@@ -147,7 +158,12 @@ public class Controller {
     public BoardScene getBoardScene() {
         return boardScene;
     }
-
+    public void setWinScene(){
+        this.winScene=new WinScene(this);
+    }
+    public WinScene getWinScene(){
+        return winScene;
+    }
     public void setBoardScene(BoardScene boardScene) {
         this.boardScene = boardScene;
     }
@@ -185,9 +201,20 @@ public class Controller {
     }
 
 	public void nextScene(){
-        // this.boardScene.clearAllActiveCards();
+        setPlayersAlive();
+        if (playersAlive.size()==1) {
+            winner=playersAlive.get(0);
+            this.realPlayers= new ArrayList<Player>();
+            this.playersAlive= new ArrayList<Player>();
+            setWinScene();
+            setTheScene(getWinScene(), "Winner!!!");
+            return;
+        }
+        this.boardScene.clearAllActiveCards();
 		if (getCount()==realPlayers.size()){
 			count0();
+   
+            getBoardScene().getControlPanel().setChoose(true);
             for (Player ai : Ais) {
                 ai.drawProgrammingCards();
                 ai.chooseProgrammingCards();

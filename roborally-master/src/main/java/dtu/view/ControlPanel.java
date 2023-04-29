@@ -35,7 +35,10 @@ public class ControlPanel extends GridPane {
 		addListeners();
 	}
 
-
+	public void setChoose(boolean b){
+		ChooseCards.setDisable(b);
+		Activate.setDisable(!b);
+	}
 
 
 	private void configure() {
@@ -150,10 +153,13 @@ public class ControlPanel extends GridPane {
 						@Override
 						protected Void call() throws Exception {
 							c.getBoardController().runAllRegisters();
+							setChoose(false);
 							return null;
+							
 						}
 					};
 					new Thread(task).start();}
+				
 		});
 	}
 }
