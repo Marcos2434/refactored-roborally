@@ -74,7 +74,7 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
 
     private Button finishButton;
 
-    private BoardDrawer bd;
+    BoardDrawer bd;
 
     public Boolean done = false;
 
@@ -97,7 +97,7 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
 
     //Initialize
     public void initialize() {
-        
+        System.out.println(c.getCurrentPlayer().getHand().toString());
 
 
         Image background = new Image (("playermat/lava.png"));
@@ -547,5 +547,6 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
     }
 
     public void updateRegister(Robot r){}
+    public void updateRobotDamageSound(Robot r){};
 }
 

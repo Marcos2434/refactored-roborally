@@ -3,7 +3,7 @@ package dtu.view;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import dtu.controller.*;
-
+import dtu.view.WinScene;
 public class View extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -14,7 +14,6 @@ public class View extends Application {
 		c.setStartScene(Start);
 		MenuScene menuScene = new MenuScene(c);
 		c.setMenuScene(menuScene);
-		
 
 		// ProgrammingPhaseScene programmingScene = new ProgrammingPhaseScene(c);
 		// c.setProgrammingPhaseScene(programmingScene);

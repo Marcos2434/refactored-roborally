@@ -191,6 +191,9 @@ public class BoardController {
     public ArrayList<Player> getPlayers(){
         return this.players;
     }
+    public void wipePlayers(){
+        players=new ArrayList<Player>();
+    }
 
     // check if a robot is allowed a move:
     public boolean allowmove(Robot robot, Direction dir){
