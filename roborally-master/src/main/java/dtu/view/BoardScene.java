@@ -91,6 +91,7 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
         super(new BorderPane());
         this.c = c;
         this.initialize();
+        
     }
     
     //Popup window (handled as a VBox which shows or doesn't show it's visibility, depending on the position of the robot-if the special tile was pressed)
@@ -122,7 +123,7 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
     
         boardPane = (BorderPane) this.getRoot();
         //Music player
-        Media media = new Media((getClass().getResource("/musicPiano.mp3").toString()));
+        Media media = new Media((getClass().getResource("/LetTheGameBegin.mp3").toString()));
         MediaPlayer mediaPlayer = new MediaPlayer(media);  
         mediaPlayer.setAutoPlay(true);  
 

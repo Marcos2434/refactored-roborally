@@ -13,6 +13,8 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.HBox;
@@ -45,13 +47,19 @@ public class MenuScene extends Scene {
         Background background3 = new Background(background2);
         
 
+		
+
+
         //Set backround to the whole scene 
         
         BorderPane menu = (BorderPane) this.getRoot();
 		menu.setBackground(background3);
 		menu.setPrefSize(500, 500);
 
-		
+		Media media = new Media((getClass().getResource("/musicPiano.mp3").toString()));
+        MediaPlayer mediaPlayer = new MediaPlayer(media);  
+        mediaPlayer.setAutoPlay(true); 
+		mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
 		// RED
 		//Text r = new Text("RED");
 		TextField red= new TextField();
