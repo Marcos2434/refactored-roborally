@@ -218,8 +218,9 @@ public class Controller {
 
     public void spawnRobots() {
         // Find spawn positions
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 13; j++) {
+        for (int j = 0; j < 13; j++){
+            for (int i = 0; i < 10; i++) {
+             
                 if (this.getBoard().getTileAt(new Position(i,j)).equals(new TileStart(TileType.START))) {
                     this.availableBoardSpawns.add(new Position(i, j));               
                 }
