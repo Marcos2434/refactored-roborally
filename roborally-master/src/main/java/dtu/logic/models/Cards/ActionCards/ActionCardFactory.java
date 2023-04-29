@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import dtu.logic.models.Cards.ActionCard;
 import dtu.logic.models.Cards.ActionDeck;
 
-
+//Create Action cards 
 
 public class ActionCardFactory {
     public static ActionCard createActionCard(ActionCardTypes type){

@@ -76,7 +76,7 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
 
     BoardDrawer bd;
 
-    public Boolean done = false;
+    private Boolean done = false;
 
     private double startX;
     private double startY;
@@ -124,6 +124,7 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
         mainGrid.getColumnConstraints().addAll(column1, column2, column3, column4);
 
         //------------------------------------- CARDS_START -------------------------------------//
+        //Here images are attached to the cards and their index is taken to be able to monitor drag and drop 
         //Card1
         Image stream1 = new Image (ProgrammingPhaseScene.class.getClassLoader().getResourceAsStream(c.getCurrentPlayer().getHand().get(0).getImage())); //
         this.imageView1 = new ImageView(stream1); //new ImageView(stream);  
@@ -232,7 +233,7 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
         //------------------------------------- CARDS_END -------------------------------------//
 
         //------------------------------------- REGISTER_BOXES_START -------------------------------------//
-        
+        //This part creates register boxes that will hold the cards that the player has chosen to play
         //Frame 1
         this.frame = new Rectangle(100,150);
         frame.setStroke(Color.BLACK);
@@ -373,6 +374,7 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
     }
     
     //------------------------------------- EVENTS_START -------------------------------------//
+    //These events habndle the drag and drop functionality of the cards
     private void makeDraggable (Node node){
         // (1) Mouse Pressed
         node.setOnMousePressed(e->{
@@ -502,7 +504,7 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
         store.setTranslateY(0);
     };
 
-
+    //Method to check if the player has chosen 5 cards and returning them so that the robots can move
     private ProgramCard findCard(String cardId){
         // For loop
         for (int j = 0; j < 9-c.getCurrentPlayer().getRobot().getDamageTaken(); j++) {
@@ -514,7 +516,7 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
         return null;
     }
 
-    
+    //Button to press when the player is ready choosing cards for the round
     private void DoneButton (){
         if (frame.getFill()!=null){
             ProgramCard card  = findCard(frame.getId());
@@ -536,11 +538,11 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
             ProgramCard card  = findCard(frame5.getId());
             c.getCurrentPlayer().getRobot().AddToRegister(card);  
         }
-        //c.getBoardScene().getPlayermat(c.getCurrentPlayer().getName()).setRegister(c.getCurrentPlayer().getRobot().getRegister().size());
+        
         done = true;
 
         c.getBoardScene().redraw();
-        // player1.getHand().clear();
+       
         c.getCurrentPlayer().getHand().clear();
         c.notifyAllRobotObservers();
         c.nextScene();
