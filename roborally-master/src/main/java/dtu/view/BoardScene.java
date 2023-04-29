@@ -140,7 +140,7 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
 
     
         // Creating the board
-        Board board = new Board(Map.getMapByName(c.getBoardSelecter()));
+        Board board = new Board(Map.getMapById(c.getBoardSelecter()));
         c.setBoard(board);
 
         redraw();

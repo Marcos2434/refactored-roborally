@@ -11,7 +11,7 @@ Feature: Player receives cards from the deck
          When The player receives 9 cards from the deck
          Then The player has 9 cards in his hand
     
-
+    
     
     @tag4
     Scenario: As a player i want to be able to choose 5 cards out of my hand
@@ -27,12 +27,15 @@ Feature: Player receives cards from the deck
 
      @tag6 
     Scenario: As a player I want to draw my cards from a shuffeled deck 
-         Given A player is created with a chosen color for the robot and a deck is generated
+        Given A player is created with a chosen color for the robot and a deck is generated
         When The player receives 9 cards from the deck
-        Then The cards are shuffeled      
-   #@tag6
-   #Scenario: As a player I want to be able to have all necessary programming cards in my deck 
-    #    Given A player is created with a chosen color for the robot and a deck is generated
-     #   Then The deck has all necessary programming cards in it
+        Then The cards are shuffeled     
+
+    @tag7
+        Scenario: There are different action cards that with different effects
+        Given three robots
+        When each robot gets a diffenret card
+        Then they act acordingly    
+    
 
     

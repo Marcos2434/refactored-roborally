@@ -11,7 +11,7 @@ public enum ActionCardTypes {
     //Random generator for action cards types 
     
     public static ActionCardTypes getRandomActionType(){
-        int rand = ThreadLocalRandom.current().nextInt(0, ActionCardTypes.values().length + 1);
+        int rand = ThreadLocalRandom.current().nextInt(0, ActionCardTypes.values().length);
         return ActionCardTypes.values()[rand];
     }
     

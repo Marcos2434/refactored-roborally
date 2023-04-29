@@ -281,7 +281,7 @@ public class Robot {
         }
         robot.robotNotify();
         try{
-            //Thread.sleep(20);
+            Thread.sleep(50);
         }catch(Exception e){System.err.println(e);}
         boardController.getBoard().getTileAt(robot.getPos()).Occupy();  
     } 

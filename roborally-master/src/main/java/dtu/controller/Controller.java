@@ -30,7 +30,7 @@ public class Controller {
     private Stage primaryStage;
     private WinScene winScene;
     private Board board;
-    private String boardSelecter = null;
+    private int boardSelecter = 0;
     private BoardController boardController;
     ArrayList<Position> availableBoardSpawns = new ArrayList<Position>();
     private ArrayList<Player> realPlayers = new ArrayList<Player>();
@@ -113,11 +113,11 @@ public class Controller {
         return board;
     }
 
-    public void setBoardSelecter(String SelBoard) {
+    public void setBoardSelecter(int SelBoard) {
         this.boardSelecter = SelBoard;
     }
 
-    public String getBoardSelecter(){
+    public int getBoardSelecter(){
         return this.boardSelecter;
     }
     public void notifyAllRobotObservers() {

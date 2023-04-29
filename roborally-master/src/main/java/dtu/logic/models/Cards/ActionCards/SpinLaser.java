@@ -29,7 +29,7 @@ public class SpinLaser implements ActionCard{
             }
             catch(Exception e){
                 System.out.println(e);}
-
+                
             robot.FIRE(boardController);
         }
      }

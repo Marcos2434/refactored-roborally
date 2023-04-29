@@ -78,8 +78,9 @@ public class Lazer {
                 if (boardController.getBoard().getTileAt(getPos())!=null){
                    
                     boardController.notifyLaserObservers(this);
-                    
+                   
                     if (boardController.getBoard().getTileAt(getPos()).isOcupied()){
+                        
                         return true;
                     }
                 }
