@@ -145,7 +145,7 @@ public class ControlPanel extends GridPane {
 			@Override
 			
 			public void handle(ActionEvent event) {
-				if (c.getCurrentPlayer().getRobot().register.size() > 0) {
+
 					Task<Void> task = new Task<Void>() {
 						@Override
 						protected Void call() throws Exception {
@@ -154,12 +154,6 @@ public class ControlPanel extends GridPane {
 						}
 					};
 					new Thread(task).start();}
-				else{
-					System.out.println("Register is empty");
-				}
-				
-				
-			}
 		});
 	}
 }

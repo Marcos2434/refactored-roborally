@@ -27,7 +27,7 @@ public class TileBelt extends Tile{
         return dir;
     }
     public void effect(Robot robot, BoardController boardController){
-        
+        robot.setPrevPos(robot.getPos());
         boardController.getBoard().getTileAt(robot.getPos()).unOccupy();
         
         if (intensity == 2){
@@ -35,25 +35,31 @@ public class TileBelt extends Tile{
             if (boardController.getBoard().getTileAt(robot.getPos()) instanceof TileBelt){
                
                 TileBelt currtile = (TileBelt)boardController.getBoard().getTileAt(robot.getPos());
+            
                 pushRobot(robot,currtile.getdir());
                 boardController.getBoard().getTileAt(robot.getPos()).Occupy();
-                try{Thread.sleep(500);}
-                catch(Exception e){System.out.println(e);}
-
+                
+                robot.robotNotify();
+               // try{Thread.sleep(500);}
+               // catch(Exception e){System.out.println(e);}
+//
                 if (boardController.getBoard().getTileAt(robot.getPos()) instanceof TileBelt){
-                    
+                    robot.setPrevPos(robot.getPos());
                     TileBelt nextTileBelt = (TileBelt) boardController.getBoard().getTileAt(robot.getPos());
                     boardController.getBoard().getTileAt(robot.getPos()).unOccupy();
                     pushRobot(robot,nextTileBelt.getdir());
+                    robot.robotNotify();
                 }
             }
         }
         else{ 
-            try{Thread.sleep(500);}
-                catch(Exception e){System.out.println(e);}
-            pushRobot(robot, this.dir);
+       //    try{Thread.sleep(500);}
+       //        catch(Exception e){System.out.println(e);}
+           pushRobot(robot, this.dir);
         }
         boardController.getBoard().getTileAt(robot.getPos()).Occupy(); 
+        robot.robotNotify();
+
        
     
 }

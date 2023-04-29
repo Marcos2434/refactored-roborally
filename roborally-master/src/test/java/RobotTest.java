@@ -363,4 +363,15 @@ public class RobotTest {
         assertEquals(new Position(5,5),robot1.getPos());
         assertEquals(new Position(9,9),robot2.getPos());
     }
+    @When("one moves over a holetile with movepower three.")
+    public void one_moves_over_a_holetile_with_movepower_three() {
+        bC.moveRobot(robot1,new Position(1, 12));
+        robot1.addCheckpoint(new Position(0, 3));
+        robot1.turn(1,bC);
+        robot1.moveByCard(bC,new Forward(3));
+    }
+    @Then("The robot dies.")
+    public void the_robot_dies() {
+        assertEquals(new Position(0,3),(robot1.getPos()));
+}
 }

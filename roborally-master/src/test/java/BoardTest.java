@@ -246,8 +246,8 @@ public class BoardTest {
             {"BT 3 2","T","HT","T","WT 1","WT 4","T","T","T","T"},
             {"T","T","HT","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"},
-            {"T","T","BT 3 1","T","T","T","T","T","T","T"},
-            {"T","T","T","T","T","T","T","T","T","T"},
+            {"T","T","BT 3 1","T","T","T","T","T","HT","T"},
+            {"RT","T","T","T","T","T","T","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"},
             {"T","LT 4","T","T","T","T","BT 1 2","T","T","T"},
             {"T","T","T","T","T","T","T","T","T","T"},
@@ -277,7 +277,7 @@ public class BoardTest {
         robot1.addCheckpoint(new Position(0, 5));
         bC.moveRobot(robot2, new Position(0,10));
         bC.moveRobot(robot3, new Position(2,4));
-               
+    
         bC.RunAllEffects();
     }
     @Then("Each robot is effected accordingly")
@@ -395,7 +395,7 @@ public class BoardTest {
     public void the_robots_are_affected_acordingly() {
     assertEquals(new Position(0,5),player1.getRobot().getPos());
     assertEquals(Direction.DOWN,player1.getRobot().getdir());
-    assertEquals(2,player1.getRobot().getDamageTaken());
+    assertEquals(1,player1.getRobot().getDamageTaken());
     assertEquals(2,player1.getRobot().getLives());
 }
     @When("A robot walks over the next ceckpoint")
@@ -439,7 +439,41 @@ public class BoardTest {
     public void it_spawns_at_the_stating_position() {
         assertEquals(new Position(0,5),robot1.getPos());
 }
+    @When("A robot has taken damage and walks on top of a repairTile")
+    public void a_robot_has_taken_damage_and_walks_on_top_of_a_repair_tile() {
+        bC.moveRobot(robot1,new Position(0, 6));
+        robot1.takeDmg(bC);
+        robot1.takeDmg(bC);
+        robot1.takeDmg(bC);
+        robot1.moveByCard(bC,new Forward(1));
+      
+        bC.getBoard().getTileAt(new Position(0, 5)).effect(robot1, bC);
+    }
+    @Then("The robot heal for all the damage")
+    public void the_robot_heal_for_all_the_damage() {
+        assertEquals(0, robot1.getDamageTaken());
+}
 
+    @When("Robot furthest back moves {int} times and pushes the row")
+    public void robot_furthest_back_moves_times_and_pushes_the_row(Integer int1) {
+     
+        bC.moveRobot(robot1, new Position(7, 4));
+        bC.moveRobot(robot2, new Position(6, 4));
+        bC.moveRobot(robot3, new Position(5, 4));
+        bC.moveRobot(robot4, new Position(4, 4));
+        robot4.turn(1,bC);
+ 
+        robot4.moveByCard(bC,new Forward(3));
+    
+    }
+    @Then("{int} robots die")
+    public void robots_die(Integer int1) {
+        assertEquals(new Position(0,5),robot1.getPos());
+        assertEquals(new Position(1,5),robot2.getPos());
+        assertEquals(new Position(2,5),robot3.getPos());
+        assertEquals(new Position(7,4),robot4.getPos());
+
+}
 }
 
 

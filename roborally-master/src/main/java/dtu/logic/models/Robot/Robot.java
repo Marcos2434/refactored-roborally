@@ -9,6 +9,7 @@ import dtu.logic.models.Observers.RobotObserver;
 import javafx.scene.image.Image;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 
 public class Robot {
     private RobotColor Robotcolor;
@@ -17,7 +18,7 @@ public class Robot {
     private int lives = 3;
     private int checkpointCount = 0;
     
-    private Position pos = new Position(0,0);
+    private Position pos = new Position(0, 0);
     private ArrayList<Position> checkpoints = new ArrayList<Position>();
 
     private int DirID;
@@ -27,10 +28,9 @@ public class Robot {
 
     public List<ProgramCard> register = new ArrayList<ProgramCard>(5);
     
-    // TODO: hashset?
-    private List<RobotObserver> observers = new ArrayList<RobotObserver>();
+    private LinkedHashSet<RobotObserver> observers = new LinkedHashSet<RobotObserver>();
 
-    public int getcheckpointCount(){
+    public int getCheckpointCount(){
         return this.checkpointCount;
     }
 
@@ -45,6 +45,7 @@ public class Robot {
     public void heal(){
         if (this.getDamageTaken() > 0){
             this.damageTaken -=1;
+            
         }
         robotNotify();
     }
@@ -172,13 +173,12 @@ public class Robot {
     }    
 
     public void moveforward(Boolean forward, BoardController boardController){
-        
+      
         this.prevPos = new Position(pos.getColumn(),pos.getRow());
-
         int d;
         Direction MoveDir;
-        boolean shouldpush = false;
-        Robot r = null;
+        
+        
         if (forward) {
             MoveDir = getdir();
             d = 1;
@@ -187,33 +187,24 @@ public class Robot {
             MoveDir = getdir().opposite();
             d = -1;
         }
-
         //Update old tile
         boardController.getBoard().getTileAt(pos).unOccupy();
        
         if (boardController.allowmove(this,MoveDir)){
-
-            
             //Move other robot out of the way first, if there is one
             if (boardController.getBoard().getTileAt(getPosInDir(MoveDir))!=null){
                 if (boardController.getBoard().getTileAt(getPosInDir(MoveDir)).isOcupied()){
-                    r = boardController.getRobotAt(getPosInDir(MoveDir));
-                    shouldpush = true;
+                    Robot r = boardController.getRobotAt(getPosInDir(MoveDir));
+                    Push(r,boardController);
                     
                 }
             }
-
             if (this.DirID == 1){this.addRow(-d);}
             else if (this.DirID == 2){this.addCol(d);}
             else if (this.DirID == 3){this.addRow(d);}
             else if (this.DirID == 4){this.addCol(-d);} 
-            
-            
-            if (shouldpush){
-                Push(r,boardController);
-            }
-            
         }
+        robotNotify();
         
         
     }
@@ -241,9 +232,7 @@ public class Robot {
             else if (!boardController.getBoard().getTileAt(checkpoints.get(i)).isOcupied()){
                 this.pos = new Position (checkpoints.get(i).getColumn(),checkpoints.get(i).getRow());
                 break;
-            }
-            
-            
+            } 
         }
         Collections.reverse(this.checkpoints);
         this.lives -=1;
@@ -276,8 +265,8 @@ public class Robot {
     // interaction with other robots
     public void Push(Robot robot, BoardController boardController){
         robot.setPrevPos(robot.getPos());
-        
 
+        
         if (robot.getPosInDir(Direction.getDirById(this.DirID)).isOutOfBounds()){robot.Death(boardController);}
 
         else{
@@ -290,6 +279,9 @@ public class Robot {
             else if (this.DirID == 4){robot.getPos().addX(-1);}
         }
         robot.robotNotify();
+        try{
+            Thread.sleep(20);
+        }catch(Exception e){System.err.println(e);}
         boardController.getBoard().getTileAt(robot.getPos()).Occupy();  
     } 
     

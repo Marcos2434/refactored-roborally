@@ -73,50 +73,70 @@ public class BoardController {
         for (int i=0; i<5;i++){
             for (int j = 0; j < this.players.size(); j++) {
                 Robot r = this.players.get(j).getRobot();
+               
                 
                 if (r.getRegister().size() > i){
                     notifyCardRemove(this.players.get(j), r.getRegister().get(i).getImage());
+              
                     r.moveByCard(this, r.getRegister().get(i));
                 }
+                
                 
                 if (i == 4){
                     r.getRegister().clear();
                 }
+                try {
+                    Thread.sleep(2000);
+                 } catch (Exception e) { System.err.println(e); }
+                
+                
+                
             }
-            
             RunAllEffects();
             fireRobotLazers();
             fireboardLazers();
-
             try {
-                Thread.sleep(400);
+                Thread.sleep(100);
              } catch (Exception e) { System.err.println(e); }
         }
         this.emptyAllRegisters();
     }
 
-    public void RunAllEffects(){
-        int c;
-        int r;
-        for (int i = 0; i < 10; i++){
-           /* 
-            if (i % 2 == 1){
-
-                c = 4 - (int)Math.floor(i/2);
-            }
-
-            else{c = 9 - i/2;}
-            */
-            for (int j = 0; j < 13; j++){
-               /* 
-                if (i % 2 == 1){
-                    r = 6 - (int)Math.floor(j/2);}
-                else{r = 12 - j/2;}
-               */
-                if (this.getBoard().getTileAt(new Position(i,j)).isOcupied()) {
-                    this.getBoard().getTileAt(new Position(i,j)).effect(getRobotAt(new Position(i,j)), this);
+    public void runAllHoles(){
+            for (int i = 0; i < 10; i++){
+                for (int j = 0; j < 13; j++){
+                    if (this.getBoard().getTileAt(new Position(i,j)) instanceof TileHole){
+                        if (this.getBoard().getTileAt(new Position(i,j)).isOcupied()) {
+                            this.getBoard().getTileAt(new Position(i,j)).effect(getRobotAt(new Position(i,j)), this);
+                        }
+                    }
                 }
-                
+            }
+    }
+
+    public void RunAllEffects(){
+    int r;
+    int c;
+       
+        for (int i = 0; i < 10; i++){
+            if (i % 3 == 1){
+                c = 2 - (int)Math.floor(i/3);}
+            else if (i % 3 == 2){
+                c = 5 - (int)Math.floor(i/3);}
+            else{c = 9 - i/3;}
+               
+            for (int j = 0; j < 13; j++){
+               
+                if (j % 3 == 1){
+                    r = 3 - (int)Math.floor(j/3);}
+                else if (j % 3 == 2){
+                    r = 7 - (int)Math.floor(j/3);}
+                else{r = 12 - j/3;}
+                   
+               
+                if (this.getBoard().getTileAt(new Position(c,r)).isOcupied()) {
+                    this.getBoard().getTileAt(new Position(c,r)).effect(getRobotAt(new Position(c,r)), this);
+                }
             }
         }
     }
@@ -189,7 +209,7 @@ public class BoardController {
                     if (Math.abs(dir.getId() - WT.getDirID()) == 2){return false;} 
                     else{return true;}  
                 }
-        
+                
                 if (this.board.getTileAt(toPos).isOcupied()){getRobotAt(toPos).takeDmg(this);
                                                   return allowmove(getRobotAt(toPos),dir);}
                 else{return true;}  
