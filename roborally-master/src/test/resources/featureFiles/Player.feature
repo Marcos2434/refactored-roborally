@@ -12,6 +12,15 @@ Feature: Robot Selection
         And A robot is assigned to the player
         Then The robot is facing a direction
 
+    @tag3
+        Scenario: As an AI i want to be able to draw cards from a deck
+        Given Two AI'
+        When they draw cards
+        Then their hands are not empty
+    
+ 
+
+
     
     
 

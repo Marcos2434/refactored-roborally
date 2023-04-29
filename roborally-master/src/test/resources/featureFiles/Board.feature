@@ -133,5 +133,5 @@ Feature: Boardfunctions
     @tag23
         Scenario: A row of robots are standing in front of a HoleTile, the one furthest back pushes the whole row to kil all three robots in front of it. 
         Given A Board and four players with different starting points
-        When Robot furthest back moves 3 times and pushes the row
-        Then 3 robots die
+        When Robot furthest back moves three times and pushes the row
+        Then three robots die
