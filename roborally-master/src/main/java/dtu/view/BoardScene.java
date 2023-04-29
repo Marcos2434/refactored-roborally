@@ -2,6 +2,9 @@ package dtu.view;
 
 import java.io.File;
 import java.io.IOException;
+
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BorderPane;
 import java.util.ArrayList;
 
@@ -20,6 +23,8 @@ import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.Lazer;
 import dtu.logic.models.Robot.Robot;
 import dtu.view.drawers.BoardDrawer;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -32,6 +37,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 
 
 
@@ -48,6 +54,7 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
     VBox testpopUP = new VBox();
     BoardDrawer bd;
     Popup popup = new Popup();
+    HBox rightSide = new HBox();
 
     ImageView imageView;
 
@@ -99,79 +106,92 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
         this.c = c;
         this.initialize();
     }
-    public void Popup2(){
-        System.out.println("popup2");
-        Image view1 = new Image("Cards/popup.png");
-        Label label = new Label("New Action!");
-
-        VBox topBox = new VBox();
-        topBox.setAlignment(Pos.CENTER);
-        topBox.setPrefHeight(50);
-        topBox.setStyle("-fx-background-color:#ff3333");
-        boardPane.setTop(topBox);
-        
-        
-        popup.getContent().addAll(label);
-
-        popup.show(boardPane, boardPane.getPrefWidth()/2, boardPane.getPrefHeight()/2);
-
-
-    }
+    
 
     public void Popup1(){
+        System.out.println("we are here!");
+
+        
         imageView.setVisible(true);
-        // Image view = new Image("Cards/popup.png");
-        // ImageView imageView = new ImageView(view);
-        // StackPane.setAlignment(imageView, Pos.CENTER);
-        // StackPane.setMargin(imageView, new Insets(50));
-
-        // boardPane.getChildren().add(imageView);
-
-        // imageView.setFitHeight(100);
-        // imageView.setFitWidth(100);
-        // test.getChildren().add(imageView);
-
-        // System.out.println("children of boardpane bottom before: " + boardPane.getBottom());
-        // boardPane.setBottom(test);
-        // System.out.println("children of boardpane bottom after: " + boardPane.getBottom());
-    
-        // testpopUP.getChildren().add(t);
-        // testpopUP.getChildren().add(imageView);
+        
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(10), event -> {
+            // Show the image after a delay of 3 seconds
+            imageView.setVisible(false);
+        }));
+        
+        timeline.play();
+        // imageView.setVisible(false);
+        
       
-
-        // add the label
-        //stackpane.getChildren().add(imageView);
-        
-        // popup.getContent().add(imageView);
-        // // set size of label
-        // popup.show(boardPane.getScene().getWindow());
-        
     }
 
+    // private void initialize() throws IOException {
+    //     boardPane = (BorderPane) this.getRoot();
+
+    //     Media media = new Media(new File("/Users/Natalia/Downloads/musicPiano.mp3").toURI().toString());
+    //     MediaPlayer mediaPlayer = new MediaPlayer(media);  
+    //     mediaPlayer.setAutoPlay(true);  
+
+    //     // Creating the board
+    //     Board board = new Board(Map.getMapByName(c.getBoardSelecter()));
+    //     c.setBoard(board);
+        
+    //     redraw();
+    //     // Register control panel
+    //     Image view = new Image("Cards/popup.png");
+    //     this.imageView = new ImageView(view);
+    //     StackPane.setAlignment(imageView, Pos.CENTER);
+    //     // StackPane.setMargin(imageView, new Insets(50));
+        
+    //     imageView.setVisible(true);
+    //     cp = new ControlPanel(c);
+    //     cp.getChildren().add(imageView);
+    //     boardPane.setRight(playersUIright);
+    //     // boardPane.setBottom(testpopUP);
+    //     boardPane.setBottom(cp);
+    //     // Popup2();
+    //     // popup.show(boardPane.getScene().getWindow());
+        
+    //     // boardPane.getChildren().add(popup);
+    // }
     private void initialize() throws IOException {
         boardPane = (BorderPane) this.getRoot();
-
+        //Music player
         Media media = new Media(new File("/Users/Natalia/Downloads/musicPiano.mp3").toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);  
         mediaPlayer.setAutoPlay(true);  
 
+        //Background picture
+        Image background = new Image (("playermat/dummyplayermat.png"));
+        BackgroundImage background2 = new BackgroundImage(background, null, null, null, null);
+        Background background3 = new Background(background2);
+
+
+    
         // Creating the board
         Board board = new Board(Map.getMapByName(c.getBoardSelecter()));
         c.setBoard(board);
-        
+
         redraw();
+        // Popup1();
         // Register control panel
         Image view = new Image("Cards/popup.png");
         this.imageView = new ImageView(view);
         imageView.setVisible(false);
+        imageView.setFitWidth(200);
+        imageView.setFitHeight(300);
         cp = new ControlPanel(c);
-        cp.getChildren().add(imageView);
-        boardPane.setRight(playersUIright);
+        VBox cpFinal = new VBox();
+        cpFinal.getChildren().addAll(cp, imageView);
+        // cp.getChildren().add(imageView);
+        rightSide.getChildren().addAll(playersUIright,cpFinal);
         // boardPane.setBottom(testpopUP);
-        boardPane.setBottom(cp);
+        boardPane.setBackground(background3);
+        boardPane.setRight(rightSide);
+
         // Popup2();
         // popup.show(boardPane.getScene().getWindow());
-        
+
         // boardPane.getChildren().add(popup);
     }
 
@@ -194,11 +214,7 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
     }
 
     public void updateNewAction(ActionCard actionCard) {
-        System.out.println("New Action Before loop!");    
         Popup1();
-        Popup2();
-
-        System.out.println("New Action!");
     }
     
     public void updateCardTaken(Player player, String cardImageString){

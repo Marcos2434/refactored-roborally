@@ -216,13 +216,7 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
         }
        
 
-
-        //Displaying Cards
-        Text HandName = new Text("HAND");
-        mainGrid.add(HandName, 3, 0, 2, 1);
-
-
-        
+    
         
 
         //Make cards draggable

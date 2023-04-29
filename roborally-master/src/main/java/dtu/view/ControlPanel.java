@@ -39,8 +39,9 @@ public class ControlPanel extends GridPane {
 
 
 	private void configure() {
-		add(Activate, 0, 0);
-		add(ChooseCards,1,0);
+		add(ChooseCards,0,0);
+		add(Activate, 1, 0);
+		
 	
 
 		// add(comboBox, 0, 5);
