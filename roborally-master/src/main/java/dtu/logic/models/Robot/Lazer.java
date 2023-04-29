@@ -61,9 +61,12 @@ public class Lazer {
     public boolean moveTillHit(BoardController boardController){
       
         for (int i = 0; i <=13;i++){
-            
+            try {
+                Thread.sleep(100);
+              } catch (Exception e) { System.err.println(e); }
             if (boardController.allowmove(this)){
                 // move
+                
                 if (this.Dir.getId() == 1){pos.addY(-1);}
                 else if (this.Dir.getId()  == 2){pos.addX(1);}
                 else if (this.Dir.getId()  == 3){pos.addY(1);}
@@ -75,9 +78,7 @@ public class Lazer {
                 if (boardController.getBoard().getTileAt(getPos())!=null){
                    
                     boardController.notifyLaserObservers(this);
-                    try {
-                      //Thread.sleep(100);
-                    } catch (Exception e) { System.err.println(e); }
+                    
                     if (boardController.getBoard().getTileAt(getPos()).isOcupied()){
                         return true;
                     }

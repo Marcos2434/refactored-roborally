@@ -63,6 +63,12 @@ public class Robot {
         }
     }
 
+    public void robotDamageNotify() {
+        for (RobotObserver observer : observers) {
+            observer.updateRobotDamageSound(this);
+        }
+    }
+
     public void registerNotify(){
         for (RobotObserver observer : observers){
             observer.updateRegister(this);
@@ -245,6 +251,8 @@ public class Robot {
         if (this.damageTaken >= 10){
           this.Death(boardController);
         }
+        robotDamageNotify();
+        
         robotNotify();
     }
     public int getDamageTaken() {
@@ -280,7 +288,7 @@ public class Robot {
         }
         robot.robotNotify();
         try{
-            //Thread.sleep(20);
+            Thread.sleep(20);
         }catch(Exception e){System.err.println(e);}
         boardController.getBoard().getTileAt(robot.getPos()).Occupy();  
     } 

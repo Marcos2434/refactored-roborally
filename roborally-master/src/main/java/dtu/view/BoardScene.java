@@ -23,6 +23,7 @@ import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
@@ -42,7 +43,7 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
     private ImageView fireRain;
     private ImageView oilStorm;
     private ImageView spinLaser;
- 
+    private AudioClip hitSound;
 
     public void setPlayermats(ArrayList<Player> players){
         if (players.size() <= 4){
@@ -113,17 +114,19 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
         timeline.play();        
       
     }
-
+    public void updateRobotDamageSound(Robot robot) {
+        System.out.println("Robot has taken damage, sound shopuld play");
+        hitSound.play();}
     
     private void initialize() throws IOException {
-        
+    
         boardPane = (BorderPane) this.getRoot();
         //Music player
-        //_______________ BRING BAACK MUSIC ___________________________
-        // Media media = new Media(new File("/Users/Natalia/Downloads/musicPiano.mp3").toURI().toString());
-        // MediaPlayer mediaPlayer = new MediaPlayer(media);  
-        // mediaPlayer.setAutoPlay(true);  
-        // _____________________________________________________________
+        Media media = new Media((getClass().getResource("/musicPiano.mp3").toString()));
+        MediaPlayer mediaPlayer = new MediaPlayer(media);  
+        mediaPlayer.setAutoPlay(true);  
+
+        hitSound = new AudioClip((getClass().getResource("/DamageSound.mp3").toString()));
 
         //Background picture
         Image background = new Image (("playermat/dummyplayermat.png"));
