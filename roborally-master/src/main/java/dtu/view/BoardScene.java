@@ -126,7 +126,7 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
         MediaPlayer mediaPlayer = new MediaPlayer(media);  
         mediaPlayer.setAutoPlay(true);  
 
-        hitSound = new AudioClip((getClass().getResource("/damageSound.mp3").toString()));
+        hitSound = new AudioClip((getClass().getResource("/DamageSound.mp3").toString()));
 
         //Background picture
         Image background = new Image (("playermat/dummyplayermat.png"));
