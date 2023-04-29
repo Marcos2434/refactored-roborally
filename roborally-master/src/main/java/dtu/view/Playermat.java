@@ -116,7 +116,6 @@ public class Playermat extends StackPane {
                 this.regSize -= 1;
             }
             catch(Exception i){
-                System.out.println(i);
             }
         } 
         ActiveCardPic = new Image(cardImageURL, 110, 156, false, false);
