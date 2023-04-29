@@ -307,6 +307,7 @@ public class Robot {
         if (register.size() <5){
             register.add(card);
         }
+        registerNotify();
 
     }
     //Register handeling

@@ -155,6 +155,12 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
         });
     };
 
+    public void clearAllActiveCards(){
+        for (int i = 0; i < pMats.size(); i++){
+            pMats.get(i).clearActiveCard();
+        }
+    }
+
     public ControlPanel getControlPanel() {
         return this.cp;
     }

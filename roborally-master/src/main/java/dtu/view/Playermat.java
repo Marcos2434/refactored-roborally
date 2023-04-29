@@ -149,6 +149,11 @@ public class Playermat extends StackPane {
         damage.setText("Damage: " + String.valueOf(player.getRobot().getDamageTaken()));
     }
 
+    public void clearActiveCard(){
+        ActiveCard = new ImageView();
+        hbox1.getChildren().set(1, ActiveCard);
+    }
+
     public String getPName() {
         return player.getName();
     }

@@ -62,6 +62,7 @@ public class ControlPanel extends GridPane {
 		ChooseCards.setOnMouseClicked(new EventHandler<Event>() {
 			@Override
 			public void handle(Event event) {
+				c.getBoardScene().clearAllActiveCards();
 				c.nextScene();
 				c.notifyAllRobotObservers();
 				
