@@ -53,13 +53,15 @@ public class BoardController {
     public void fireboardLazers() {
         for (int i=0; i<13; i++){
             for (int j=0; j<10; j++){
-                Tile tile = this.getBoard().getTileAt(new Position(i,j));
+                Tile tile = this.getBoard().getTileAt(new Position(j,i));
                 if (tile instanceof TileLazer){
+                    
                     TileLazer TL = (TileLazer) tile;
                     TL.FIRE(this);
                 }
             }
         }
+       
     }
 
     public void emptyAllRegisters() {
@@ -86,7 +88,7 @@ public class BoardController {
                     r.getRegister().clear();
                 }
                 try {
-                   // Thread.sleep(2000);
+                    Thread.sleep(2000);
                  } catch (Exception e) { System.err.println(e); }
                 
                 
