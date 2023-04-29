@@ -170,8 +170,8 @@ public class MenuScene extends Scene {
 			String selectedOption = comboBox.getSelectionModel().getSelectedItem();
 			
 			int id =  Integer.parseInt(selectedOption.split(" ")[0]);
+			c.setBoardSelecter(id);
 		
-			System.out.println(c.getBoardSelecter()); 
 			c.setBoard(new Board(Map.getMapById(id)));
 
 
