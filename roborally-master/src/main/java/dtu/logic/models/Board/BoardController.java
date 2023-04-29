@@ -53,7 +53,7 @@ public class BoardController {
     public void fireboardLazers() {
         for (int i=0; i<13; i++){
             for (int j=0; j<10; j++){
-                Tile tile = this.getBoard().getTileAt(new Position(i,j));
+                Tile tile = this.getBoard().getTileAt(new Position(j,i));
                 if (tile instanceof TileLazer){
                     TileLazer TL = (TileLazer) tile;
                     TL.FIRE(this);
@@ -72,6 +72,7 @@ public class BoardController {
     public void runAllRegisters() {
         for (int i=0; i<5;i++){
             for (int j = 0; j < this.players.size(); j++) {
+
                 Robot r = this.players.get(j).getRobot();
                
                 

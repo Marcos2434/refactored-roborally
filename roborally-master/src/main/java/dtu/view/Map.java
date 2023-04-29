@@ -14,14 +14,13 @@ public enum Map {
                                                 {"T","T","T","T","T","T","T","T","T","T"},
                                                 {"T","T","T","T","T","T","T","T","T","T"},
                                                 {"T","T","T","T","T","T","T","T","T","T"},
-                                                {"T","T","T","T","T","T","T","T","T","T"},
-                                                {"T","T","C 1","T","T","T","C 2 ","T","C 3","T"},
-                                                {"T","T","T","T","T","T","T","T","T","T"},
+                                                {"HT","HT","HT","HT","HT","HT","HT","HT","HT","HT"},
+                                                {"HT","HT","HT","HT","HT","HT","HT","HT","HT","HT"},
                                                 
                                                 // Start Field
-                                                {"T","T","T","T","WT 1","WT 1","T","T","T","T"},
-                                                {"AT  ","S","WT 4","T","S","S","T","WT 2","S","T"},
-                                                {"S","T","T","S","T","T","S","T","T","S"},}),
+                                                {"HT","HT","HT","HT","HT","HT","HT","HT","HT","HT"},
+                                                {"HT","S","HT","HT","S","S","HT","HT","S","HT"},
+                                                {"S","HT","HT","S","HT","HT","S","HT","HT","S"},}),
 
     map2("Black holes",3,new String[][]{ {"T   ","T     ","T     ","T     ","T   ","T","T     ","T      ","T    ","T   "},  
                                                     {"T   ","BT 3 1","BT 3 1","BT 4 1","C 1   ","T","BT 2 1","BT 3 1","BT 3 1","T   "},

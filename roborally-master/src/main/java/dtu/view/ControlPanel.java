@@ -152,7 +152,9 @@ public class ControlPanel extends GridPane {
 					Task<Void> task = new Task<Void>() {
 						@Override
 						protected Void call() throws Exception {
+							Activate.setDisable(true);
 							c.getBoardController().runAllRegisters();
+							Activate.setDisable(true);
 							setChoose(false);
 							return null;
 							
