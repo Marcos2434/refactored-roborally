@@ -123,6 +123,7 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
             bd.drawRobot(robot);
             for (int i = 0; i<pMats.size(); i++){
                 if(pMats.get(i).getPlayer().getRobot() == robot){
+                    
                     pMats.get(i).updateInfo();
                 }
             }
@@ -130,20 +131,8 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
     }
 
     public void updateNewAction(ActionCard actionCard) {
-        // Create popup
-        Label label = new Label("You have been acted upon!");
-        Popup popup = new Popup();
-        popup.getContent().add(label);
-        popup.setAutoHide(true);
-    
-        // Position popup relative to the board
-        double popupX = bd.getLayoutX() + bd.getBoundsInLocal().getWidth() / 2 - label.getWidth() / 2;
-        double popupY = bd.getLayoutY() + bd.getBoundsInLocal().getHeight() / 2 - label.getHeight() / 2;
-        popup.setX(popupX);
-        popup.setY(popupY);
-    
-        // Show popup
-        popup.show(boardPane.getScene().getWindow());
+        // Run popup here !
+        // System.out.println("New Action!");
     }
     
     public void updateCardTaken(Player player, String cardImageString){

@@ -10,4 +10,8 @@ public interface ActionCard {
 
     String getImage();
 
+    public String getName();
+
+    public String getDescription();
+
 }

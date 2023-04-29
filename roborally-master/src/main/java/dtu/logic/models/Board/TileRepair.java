@@ -9,8 +9,8 @@ public class TileRepair extends Tile{
         super(type);
         this.imageString = "tiles/Repair.png";
     }
-
-    public void effect(Robot robot){
+    @Override
+    public void effect(Robot robot,BoardController boardController){
         while (robot.getDamageTaken() > 0){
             robot.heal();
         }

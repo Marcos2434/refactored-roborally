@@ -12,3 +12,5 @@ Feature: BoardController functions
         Given a playerlist 
         When Searching for a player by its Color
         Then the player is returned
+    
+    

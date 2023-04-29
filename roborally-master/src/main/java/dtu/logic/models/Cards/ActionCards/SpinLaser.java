@@ -10,17 +10,21 @@ import dtu.logic.models.Robot.Robot;
 
 public class SpinLaser implements ActionCard{
     private String image = "";
-    
+    private String Description = "You are infused with the power of the bayblades, your robot spins uncontrollably, shooting its laser in all directions";
+    private String Name = "Baybladre Shooter";
+
     @Override
     public String getImage(){
         return this.image;
     }
     
     public void action(Robot robot, BoardController boardController){
-        for (int i = 0; i < 5; i++) {
-            robot.turn(1, boardController);
+        for (int i = 0; i < 4; i++) {
+            try{robot.turn(1, boardController);}
+            catch(Exception e){System.out.println(e);}
+           
             try{
-                Thread.sleep(200);
+                Thread.sleep(600);
             }
             catch(Exception e){
                 System.out.println(e);}
@@ -28,5 +32,13 @@ public class SpinLaser implements ActionCard{
             robot.FIRE(boardController);
         }
      }
+
+    public String getName(){
+        return Name;
+    }
+
+    public String getDescription(){
+        return Description;
+    }
     
 }
