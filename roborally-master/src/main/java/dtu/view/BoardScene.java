@@ -115,13 +115,16 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
         timeline.play();        
       
     }
+    //Method for playing a sound when robot gets damage 
     public void updateRobotDamageSound(Robot robot) {
-        System.out.println("Robot has taken damage, sound shopuld play");
+        
         hitSound.play();}
     
+    //Initialize 
     private void initialize() throws IOException {
     
         boardPane = (BorderPane) this.getRoot();
+
         //Music player
         Media media = new Media((getClass().getResource("/LetTheGameBegin.mp3").toString()));
         MediaPlayer mediaPlayer = new MediaPlayer(media);  
@@ -141,6 +144,7 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
         c.setBoard(board);
 
         redraw();
+
         //Creating images for special cards and setting visibility to null
         Image view1 = new Image("Cards/fireRain.png");
         this.fireRain = new ImageView(view1);
@@ -192,7 +196,7 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
             }
         });     
     }
-
+    //Method for displaying a new action card is drawn
     public void updateNewAction(ActionCard actionCard) {
         ActionCard cardToPass = actionCard;
         Popup1(cardToPass);

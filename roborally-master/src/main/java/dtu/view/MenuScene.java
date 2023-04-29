@@ -29,6 +29,7 @@ import dtu.logic.models.RobotColor;
 import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.Robot;
 import javafx.scene.control.ChoiceBox;
+
 public class MenuScene extends Scene {
 
   	private Controller c;
@@ -47,7 +48,7 @@ public class MenuScene extends Scene {
         Background background3 = new Background(background2);
         
 
-		
+		playMusic();
 
 
         //Set backround to the whole scene 
@@ -56,10 +57,6 @@ public class MenuScene extends Scene {
 		menu.setBackground(background3);
 		menu.setPrefSize(500, 500);
 
-		Media media = new Media((getClass().getResource("/musicPiano.mp3").toString()));
-        MediaPlayer mediaPlayer = new MediaPlayer(media);  
-        mediaPlayer.setAutoPlay(true); 
-		mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
 		// RED
 		//Text r = new Text("RED");
 		TextField red= new TextField();
@@ -195,9 +192,6 @@ public class MenuScene extends Scene {
 		VBox.setMargin(createPlayerButton, new Insets(0, 0, 10, 0));
 		VBox.setMargin(comboBox, new Insets(30, 0, 200, 0));
 		
-		// Tuple<Text,Boolean>[] checkarray = {(r,CheckRed.isSelected())};
-		// CheckBox[] checkarray = {CheckRed,CheckBlue,CheckGreen,CheckYellow,CheckOrange,CheckPurple,CheckWhite,CheckBlack};
-       
         createPlayerButton.setOnMouseClicked(new EventHandler<Event>() {
             @Override
             public void handle(Event event) {
@@ -271,7 +265,13 @@ public class MenuScene extends Scene {
 			
 
 		menu.setLeft(RGB);
-        //menu.setBottom(createPlayerButton);
+    
         
     }
+	//Music method 
+	public void playMusic(){
+	Media media1 = new Media((getClass().getResource("/musicPiano.mp3").toString()));
+	MediaPlayer mediaPlayer1 = new MediaPlayer(media1);  
+	mediaPlayer1.setAutoPlay(true); 
+	mediaPlayer1.setCycleCount(MediaPlayer.INDEFINITE);}
 }

@@ -8,6 +8,7 @@ import dtu.logic.models.Cards.ActionCard;
 import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.Robot;
 
+//Implementation of ActionCard SpinLaser
 public class SpinLaser implements ActionCard{
     private String image = "Cards/spinLaser.png";
     private String Description = "You are infused with the power of the bayblades, your robot spins uncontrollably, shooting its laser in all directions";
