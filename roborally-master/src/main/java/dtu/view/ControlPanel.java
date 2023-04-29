@@ -1,4 +1,4 @@
-package dtu.roborally.view.widgets;
+package dtu.view;
 
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -13,7 +13,6 @@ import javafx.scene.layout.Priority;
 import java.util.ArrayList;
 
 import dtu.controller.Controller;
-import dtu.view.ProgrammingPhaseScene;
 import dtu.logic.models.Cards.MovementCards.*;
 import dtu.logic.models.Player.Player;
 
@@ -40,8 +39,8 @@ public class ControlPanel extends GridPane {
 
 
 	private void configure() {
-		add(Activate, 0, 1);
-		add(ChooseCards,0,0);
+		add(Activate, 0, 0);
+		add(ChooseCards,1,0);
 	
 
 		// add(comboBox, 0, 5);
@@ -62,6 +61,7 @@ public class ControlPanel extends GridPane {
 		ChooseCards.setOnMouseClicked(new EventHandler<Event>() {
 			@Override
 			public void handle(Event event) {
+				c.getBoardScene().clearAllActiveCards();
 				c.nextScene();
 				c.notifyAllRobotObservers();
 				
