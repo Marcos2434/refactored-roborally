@@ -164,9 +164,9 @@ public class Playermat extends StackPane {
         color = new Label();
         setColor();
         HBox playerinfo = new HBox(pName, color);
-        playerinfo.setStyle("-fx-padding: 5 0 15 0;");
+        playerinfo.setStyle("-fx-padding: 5 0 14 0;-fx-border-color: red;");
 
-        cardsHbox.setStyle("-fx-padding: 0 0 44 2;");
+        cardsHbox.setStyle("-fx-padding: 0 0 44 2;-fx-border-color: red;");
         cardsHbox.setSpacing(4);
         // setRegister(4);
 
@@ -175,22 +175,21 @@ public class Playermat extends StackPane {
         chPoint = new Label("Checkpoint: " + "Start");
 
         HBox playerinfo2 = new HBox(lives, chPoint);
-        playerinfo2.setStyle("-fx-padding: 10 0 0 0;");
+        playerinfo2.setStyle("-fx-padding: 10 0 0 0;-fx-border-color: red;");
 
         damage = new Label();
         damage.setStyle("-fx-font-weight: bold; -fx-font-size: 15; -fx-padding: 25 0 0 0;");
         updateDamage();
         VBox vbox = new VBox(playerinfo, cardsHbox, playerinfo2, damage);
-        vbox.setMinHeight(height);
-        vbox.setMinWidth(190);
-        vbox.setStyle("-fx-padding: 0 0 0 20;");
+        vbox.setMaxWidth(210);
+        vbox.setMinWidth(210);
+        vbox.setStyle("-fx-padding: 0 0 0 20; -fx-border-color: red;");
 
         ActiveCard = new ImageView(ActiveCardPic);
 
         hbox1 = new HBox(vbox, ActiveCard);
         hbox1.prefWidth(width);
-        hbox1.setStyle("-fx-padding: 15 0 0 0;");
-        hbox1.setSpacing(13);
+        hbox1.setStyle("-fx-padding: 14 0 0 0; -fx-border-color: red;");
 
         super.getChildren().addAll(background, hbox1);
     }
