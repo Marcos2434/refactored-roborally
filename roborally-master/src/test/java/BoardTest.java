@@ -380,6 +380,7 @@ public class BoardTest {
     public void the_board_activates_the_registers_in_a_way_that_makes_them_walk_on_top_of_tiles_with_effects() {
        
         bC.moveRobot(player1.getRobot(),new Position(1,0));
+        player1.getRobot().setDir(Direction.UP);
         robot1.addCheckpoint(new Position(0, 5));
         List<ProgramCard> cards1 = new ArrayList<ProgramCard>(Arrays.asList(new TurnLeft(1),
                                                                             new Forward(1),
@@ -394,7 +395,7 @@ public class BoardTest {
     @Then("The robots are affected acordingly.")
     public void the_robots_are_affected_acordingly() {
     assertEquals(new Position(0,5),player1.getRobot().getPos());
-    assertEquals(Direction.DOWN,player1.getRobot().getdir());
+    assertEquals(Direction.RIGHT,player1.getRobot().getdir());
     assertEquals(1,player1.getRobot().getDamageTaken());
     assertEquals(2,player1.getRobot().getLives());
 }
