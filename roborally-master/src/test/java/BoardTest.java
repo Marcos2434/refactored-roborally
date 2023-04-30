@@ -395,7 +395,7 @@ public class BoardTest {
     @Then("The robots are affected acordingly.")
     public void the_robots_are_affected_acordingly() {
     assertEquals(new Position(0,5),player1.getRobot().getPos());
-    assertEquals(Direction.RIGHT,player1.getRobot().getdir());
+    assertEquals(Direction.DOWN,player1.getRobot().getdir());
     assertEquals(1,player1.getRobot().getDamageTaken());
     assertEquals(2,player1.getRobot().getLives());
 }

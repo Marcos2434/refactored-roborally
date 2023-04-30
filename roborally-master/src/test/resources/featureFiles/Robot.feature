@@ -106,6 +106,12 @@ Feature: Robot Selection
         Given Two robots being created 
         When one moves over a holetile with movepower three.
         Then The robot dies.
+
+    @tag19
+        Scenario: A robot is destroyed and cen be shot over
+        Given Four robots in a row
+        When a robot in the middle is destroyed,
+        Then it will be shot over
    
 
     

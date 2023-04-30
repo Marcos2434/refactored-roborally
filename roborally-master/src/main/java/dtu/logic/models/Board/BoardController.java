@@ -205,7 +205,9 @@ public class BoardController {
                 
                 if (this.board.getTileAt(robot.getPos()) instanceof TileWall){
                     TileWall WT = (TileWall) this.board.getTileAt(robot.getPos());
-                    if (dir.getId() == WT.getDirID()){return false;} 
+                    if (dir.getId() == WT.getDirID()){
+                        return false;
+                    } 
                     
                 }
                
@@ -213,12 +215,25 @@ public class BoardController {
                     TileWall WT = (TileWall) this.board.getTileAt(toPos);
 
                     if (Math.abs(dir.getId() - WT.getDirID()) == 2){return false;} 
-                    else{return true;}  
+                    
                 }
+
                 
-                if (this.board.getTileAt(toPos).isOcupied()){getRobotAt(toPos).takeDmg(this);
-                                                  return allowmove(getRobotAt(toPos),dir);}
+                if (getRobotAt(toPos) != null){
+                    if (this.board.getTileAt(toPos).isOcupied()){getRobotAt(toPos).takeDmg(this);
+                                                   
+                                                    
+                                                    if (getRobotAt(toPos) != null){
+                                                        return allowmove(getRobotAt(toPos),dir);
+                                                    }
+                                                    else{
+                                                        return true;
+                                                    }
+                    }
+                    else{return true;}
+                }
                 else{return true;}  
+                
         }
         else{return true;} 
     }
@@ -242,7 +257,7 @@ public class BoardController {
     }
 
     public Robot getRobotAt(Position pos){
-        
+      
         if (pos.getRow()>=0 && pos.getColumn()>=0 && pos.getColumn()<10 && pos.getRow()<13) {
             
             for (int i = 0; i < this.players.size(); i++){
