@@ -35,14 +35,18 @@ public class BoardDrawer extends GridPane {
     public void drawRobot(Robot robot) {
         StackPane stackPane = (StackPane) this.getChildren().get(robot.getPos().getRow() * 10 + robot.getPos().getColumn());
 
+    
+
         if (robot.getPrevPos() != null && !robot.getPrevPos().isOutOfBounds()) {
             this.unDrawRobot(robot.getPrevPos());
             drawTileAt(robot.getPrevPos(), b.getTileAt(robot.getPrevPos()).getImage());
         }
-        if (!robot.getPos().isOutOfBounds()){
-        ImageView iv = new ImageView(robot.getImage());
-        iv.setRotate(90*(robot.getDirID() - 1));
-        stackPane.getChildren().add(iv);
+        if (robot.getLives() > 0){
+            if (!robot.getPos().isOutOfBounds()){
+            ImageView iv = new ImageView(robot.getImage());
+            iv.setRotate(90*(robot.getDirID() - 1));
+            stackPane.getChildren().add(iv);
+            }
         }
     }
     

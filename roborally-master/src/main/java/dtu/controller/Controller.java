@@ -134,6 +134,11 @@ public class Controller {
         }
         
         this.boardScene.clearAllActiveCards();
+        if (getCount() < realPlayers.size()-1){
+            if (realPlayers.get(getCount()+1).getRobot().getLives()<=0){
+                addCount();
+            }
+        }
 		if (getCount()==realPlayers.size()){
 			count0();
    
@@ -236,7 +241,7 @@ public class Controller {
         return boardController;
     }
 
-    public void getRealPlayers(){
+    public void setRealPlayers(){
 		for (Player i : getBoardController().getPlayers()) {
 			if (!i.isAI()){
 				realPlayers.add(i);
@@ -245,7 +250,10 @@ public class Controller {
                 Ais.add(i);
             }
 		}
+    }
 
+    public ArrayList<Player> getRealPlayers(){
+        return this.realPlayers;
     }
 
     public void setCurrentPlayer(Player currentPlayer) {

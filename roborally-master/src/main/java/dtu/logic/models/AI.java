@@ -21,8 +21,10 @@ public class AI extends Player {
 
     @Override 
     public void drawProgrammingCards() {
+        
         deck.shuffleDeck();
         ArrayList<ProgramCard> array = new ArrayList<ProgramCard>();;
+    if (this.getRobot().getLives() > 0){
         if (this.robot.getDamageTaken()<4) 
         {
             for (int i = 0; i < 5; i++) {
@@ -35,7 +37,9 @@ public class AI extends Player {
                 array.add(deck.cards.get(i));
                 }
         }
-        hand = array;
+        this.hand = array;
+    }
+    this.hand = array;
    
 
     }
