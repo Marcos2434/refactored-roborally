@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import dtu.controller.Controller;
+import dtu.controller.MusicController;
 import dtu.logic.models.Board.Board;
 import dtu.logic.models.Cards.ActionCard;
 import dtu.logic.models.Observers.BoardObserver;
@@ -43,7 +44,7 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
     private ImageView fireRain;
     private ImageView oilStorm;
     private ImageView spinLaser;
-    private AudioClip hitSound;
+    private MusicController musicController = new MusicController();
 
     public void setPlayermats(ArrayList<Player> players){
         if (players.size() <= 4){
@@ -116,21 +117,16 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
     }
     //Method for playing a sound when robot gets damage 
     public void updateRobotDamageSound(Robot robot) {
-        
-        hitSound.play();}
+        musicController.playHitSound();
+    }
     
     //Initialize 
-    private void initialize() throws IOException{
-
+    private void initialize() throws IOException {
+        musicController.letGameBeginSound();
+    
         boardPane = (BorderPane) this.getRoot();
 
-        //Music player
-        Media media = new Media((getClass().getResource("/LetTheGameBegin.mp3").toString()));
-        MediaPlayer mediaPlayer = new MediaPlayer(media);  
-        mediaPlayer.setAutoPlay(true);  
-
-        hitSound = new AudioClip((getClass().getResource("/damageSound.mp3").toString()));
-
+    
         //Background picture
         Image background = new Image (("playermat/dummyplayermat.png"));
         BackgroundImage background2 = new BackgroundImage(background, null, null, null, null);
@@ -198,7 +194,9 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
     //Method for displaying a new action card is drawn
     public void updateNewAction(ActionCard actionCard) {
         ActionCard cardToPass = actionCard;
+        musicController.playActionCardSound();
         Popup1(cardToPass);
+
     }
     
     public void updateCardTaken(Player player, String cardImageString){

@@ -38,7 +38,7 @@ public class Forward implements ProgramCard {
            
             robot.moveforward(true, boardController);
             try{
-                Thread.sleep(50);
+                Thread.sleep(200);
             }
             catch(Exception e){System.out.println(e);}
 
