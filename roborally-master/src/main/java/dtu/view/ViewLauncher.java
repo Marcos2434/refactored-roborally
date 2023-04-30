@@ -4,7 +4,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import dtu.controller.*;
 
-public class View extends Application {
+public class ViewLauncher extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		Controller c = new Controller(primaryStage);
