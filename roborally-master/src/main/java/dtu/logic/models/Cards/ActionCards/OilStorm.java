@@ -8,6 +8,8 @@ import dtu.logic.models.Cards.ActionCard;
 import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.Robot;
 
+
+//Implementation of ActionCard OilStorm
 public class OilStorm implements ActionCard{
 
     private String image = "Cards/OilStorm.png";
