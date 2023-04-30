@@ -37,7 +37,7 @@ public class Forward implements ProgramCard {
             robot.setPrevPos(robot.getPos());
             robot.moveforward(true, boardController);
             try{
-                Thread.sleep(200);
+               // Thread.sleep(200);
             }
             catch(Exception e){System.out.println(e);}
 
@@ -48,7 +48,7 @@ public class Forward implements ProgramCard {
                     break;
             }
             try{
-                Thread.sleep(200);
+               // Thread.sleep(200);
             }
             catch(Exception e){System.out.println(e);}
             robot.robotNotify();
