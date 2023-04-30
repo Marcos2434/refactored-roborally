@@ -20,7 +20,6 @@ public class TileLazer extends TileWall {
     public void effect(Robot robot,BoardController boardController){;}
 
     public void FIRE(BoardController boardController){
-        
         Lazer lazer = new Lazer(new Position(getPos().getColumn(), getPos().getRow()),Direction.getDirById(this.getDirID()).opposite());
         
         if (lazer.moveTillHit(boardController) == true){

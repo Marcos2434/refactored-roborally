@@ -18,7 +18,7 @@ public class Board extends GridPane {
             }
         }
     }
-    @Override
+    
     public Tile[][] getGrid() {
         return this.grid;
     }
