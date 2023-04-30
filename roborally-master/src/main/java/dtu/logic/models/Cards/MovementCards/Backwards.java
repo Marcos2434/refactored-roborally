@@ -28,7 +28,7 @@ public class Backwards implements ProgramCard{
                 break;
             }       
             try {
-            // Thread.sleep(200);
+                Thread.sleep(200);
             } catch (Exception e) { System.err.println(e); }
             boardController.getBoard().getTileAt(robot.getPos()).Occupy();
         }

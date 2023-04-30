@@ -36,27 +36,30 @@ public class Forward implements ProgramCard {
         
         for (int i = 0; i <intensity; i++) {
             boardController.getBoard().getTileAt(robot.getPos()).unOccupy();
+            robot.setPrevPos(robot.getPos());
             robot.moveforward(true, boardController);
             try{
                 Thread.sleep(200);
             }
             catch(Exception e){System.out.println(e);}
 
-            robot.setPrevPos(robot.getPos());
+           
             if (robot.getPos().getRow() < 0 || robot.getPos().getRow() > 12 ||
                 robot.getPos().getColumn() < 0 || robot.getPos().getColumn()>9){
                     robot.Death(boardController);
                     break;
             }
+            try{
+                Thread.sleep(200);
+            }
+            catch(Exception e){System.out.println(e);}
+            robot.robotNotify();
             
             //update new tile
             boardController.getBoard().getTileAt(robot.getPos()).unOccupy();
             boardController.runAllHoles();
             boardController.getBoard().getTileAt(robot.getPos()).Occupy();
-            try{
-               // Thread.sleep(200);
-            }
-            catch(Exception e){System.out.println(e);}
+            
 
             if (boardController.getBoard().getTileAt(robot.getPos()) instanceof TileHole){
                 TileHole TH = (TileHole) boardController.getBoard().getTileAt(robot.getPos());
