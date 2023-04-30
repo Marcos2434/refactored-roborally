@@ -1,7 +1,8 @@
 package dtu.logic.models.Board;
 
 public enum TileType {
-	
+
+	//Enumaration for storing image paths for the different tiles
 	FLOOR("tiles/floor.png"),
 	HOLE("tiles/pit.png"),
 	ACID("tiles/acid.png"),
@@ -14,12 +15,11 @@ public enum TileType {
 	REPAIR("tiles/Repair.png"),
 	ACTION("tiles/Action.png");
 
-	
-	private String pictureFile;
-	
 	private TileType(String pictureFile) {
 		this.pictureFile = pictureFile;
 	}
+
+	private String pictureFile;
 	
 	public String getPictureFile() {
 		return pictureFile;

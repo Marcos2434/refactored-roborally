@@ -1,5 +1,4 @@
 package dtu.view;
-
 import dtu.controller.Controller;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -8,7 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -29,9 +27,6 @@ public class StartMenuScene extends Scene {
         Button localButton = new Button("Local");
         localButton .setPadding(new Insets(10,30,10,30));
         
-        
-
-
         // Set the font and style of the buttons
         Font buttonFont = Font.font("Arial", FontWeight.BOLD, 20);
         hostButton.setFont(buttonFont);
@@ -42,7 +37,6 @@ public class StartMenuScene extends Scene {
         localButton.setStyle("-fx-background-color: linear-gradient(to bottom, #bdc3c7, #2c3e50); -fx-text-fill: white;");
 
         // Stack the buttons vertically in a centered StackPane
-        
         VBox vbox = new VBox(hostButton,joinButton,localButton);
         vbox.setAlignment(Pos.CENTER);
         vbox.setSpacing(20);
@@ -55,6 +49,5 @@ public class StartMenuScene extends Scene {
 
         borderPane.setBackground(background);
         borderPane.setCenter(vbox);
-        
     }
 }

@@ -1,5 +1,5 @@
 @tag
-Feature: Boardfunctions
+Feature: Board methods
     @tag1
     Scenario: A board can be created
         Given A layout, a board is created. And a position is created

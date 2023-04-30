@@ -6,16 +6,7 @@ import dtu.logic.models.Robot.Robot;
 
 public class Forward implements ProgramCard {
     private int intensity;
-    
     private String image;
-
-    public Forward () {
-       
-    }
-    @Override
-    public String getImage(){
-        return this.image;
-    }
 
     public Forward(int intensity) {
         this.intensity = intensity;
@@ -29,9 +20,14 @@ public class Forward implements ProgramCard {
             this.image = "Cards/mv_3.png";
         }
     }
+
+    @Override
+    public String getImage(){
+        return this.image;
+    }
+
     public void effect(Robot robot, BoardController boardController){
         robot.setLastMove(new Forward(intensity));
-        
         for (int i = 0; i <intensity; i++) {
             boardController.getBoard().getTileAt(robot.getPos()).unOccupy();
             robot.setPrevPos(robot.getPos());
@@ -41,7 +37,6 @@ public class Forward implements ProgramCard {
             }
             catch(Exception e){System.out.println(e);}
 
-           
             if (robot.getPos().getRow() < 0 || robot.getPos().getRow() > 12 ||
                 robot.getPos().getColumn() < 0 || robot.getPos().getColumn()>9){
                     robot.Death(boardController);
@@ -58,7 +53,6 @@ public class Forward implements ProgramCard {
             boardController.runAllHoles();
             boardController.getBoard().getTileAt(robot.getPos()).Occupy();
             
-
             if (boardController.getBoard().getTileAt(robot.getPos()) instanceof TileHole){
                 TileHole TH = (TileHole) boardController.getBoard().getTileAt(robot.getPos());
                 TH.effect(robot,boardController);
@@ -66,6 +60,5 @@ public class Forward implements ProgramCard {
             }
             boardController.getBoard().getTileAt(robot.getPos()).Occupy();
         }
-        
     }
 }

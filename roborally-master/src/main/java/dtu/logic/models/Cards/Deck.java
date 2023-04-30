@@ -22,7 +22,6 @@ public class Deck {
         {cards.add(ProCardFactory.createProgramCard(ProCardTypes.FORWARD, 3));}
         for(int i=0; i<5; i++)
         {cards.add(ProCardFactory.createProgramCard(ProCardTypes.BACKWARDS, 1));}
-       
         for(int i=0; i<2; i++)
         {cards.add(ProCardFactory.createProgramCard(ProCardTypes.AGAIN, 0));}
 
@@ -31,8 +30,9 @@ public class Deck {
     public ArrayList<ProgramCard> getDeck(){
         return this.cards;
     }
-    //Shuffles the deck
+
     public void shuffleDeck(){
+        // We call Collections to shuffle deck
         Collections.shuffle(cards);
     }
 }

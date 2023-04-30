@@ -7,6 +7,10 @@ import dtu.logic.models.Robot.Robot;
 
 
 public class Player {
+    /* 
+    Class which represents a player in the game
+    */
+
     private String name;
     protected Robot robot;
     protected Deck deck = new Deck();
@@ -32,22 +36,21 @@ public class Player {
         this.deck = new Deck();
     }
 
-    public void drawProgrammingCards() {
+    public void drawProgrammingCards() { 
         deck.shuffleDeck();
         ArrayList<ProgramCard> arr = new ArrayList<ProgramCard>();;
+        // We draw the 9 cards unless there is a damage taken on the robot, then the hand gets smaller
         for (int i = 0; i < 9 - this.robot.getDamageTaken(); i++) {
-            //String name = ((deck.cards).get(i)).name;
             arr.add(deck.cards.get(i));
-            
-            //hand.add(new ProgramCard(name, 3));
         }
         hand = arr;
     }
 
+    //The method is overriden in the AI class, therefore the  normal player needs to be set as not AI
     public boolean isAI(){
         return false;
     }
-
+    
     public void chooseProgrammingCards() {
         List<ProgramCard> registerCards;
         if (hand.size() >= 5){

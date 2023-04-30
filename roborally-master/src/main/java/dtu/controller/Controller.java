@@ -38,6 +38,7 @@ public class Controller {
     private Player winner=null;
     private Player currentPlayer;
     private ArrayList<Player> playersAlive = new ArrayList<Player>();
+    private MusicController musicController;
     ArrayList<Position> availableBoardSpawns = new ArrayList<Position>();
 
     public Controller(Stage primaryStage) {
@@ -46,6 +47,7 @@ public class Controller {
     
     // Starting from the start menu scene
     public void launch() {
+        this.musicController = new MusicController();
         this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
     }
 

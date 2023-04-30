@@ -22,14 +22,10 @@ public class WinScene extends Scene {
   private VBox mainBox = new VBox();
   private Text winText;
 
-  
-
-
+  //Getting controller and initializing the scene
   public WinScene(Controller c) {
     super(new GridPane());
     this.c = c;
-  
-
     this.initialize();
   }
 
@@ -45,18 +41,14 @@ public class WinScene extends Scene {
     
     
     //Setting the text
-
-    
     if (c.getWinner()!=null){
         this.winText = new Text("THE WINNNER IS:  " + c.getWinner().getName() + " !");
-
     }else{
         this.winText = new Text("GAME OVER");
-
     }
         
     
-
+    //Making the text look nice
     DropShadow dropShadow = new DropShadow();
     dropShadow.setColor(Color.DARKGRAY);
     dropShadow.setOffsetX(5);
@@ -66,10 +58,7 @@ public class WinScene extends Scene {
     winText.setFill(Color.WHITE);
 
     
-    //Showing the text
-    
-
-  
+    //Making the button for going back to the menu
     Button retMenu = new Button();
     VBox vBoxForButton = new VBox(retMenu);
     vBoxForButton.setAlignment(Pos.CENTER);
@@ -82,7 +71,7 @@ public class WinScene extends Scene {
         }
     });
 
-
+    //Displaying the text and button
     mainBox.getChildren().addAll(winText,vBoxForButton);
     
     grid.setAlignment(Pos.CENTER);
