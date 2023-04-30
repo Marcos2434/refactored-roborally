@@ -21,7 +21,7 @@ public class SpinLaser implements ActionCard{
             catch(Exception e){System.out.println(e);}
            
             try{
-               // Thread.sleep(600);
+                Thread.sleep(600);
             }
             catch(Exception e){
                 System.out.println(e);}

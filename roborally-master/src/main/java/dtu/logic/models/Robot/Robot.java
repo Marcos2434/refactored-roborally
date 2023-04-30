@@ -211,7 +211,7 @@ public class Robot {
         boardController.getBoard().getTileAt(pos).Occupy();
         robotNotify();
         try{
-            //Thread.sleep(200);
+            Thread.sleep(200);
         }catch(Exception e){System.out.println(e);}
 
         if (this.getLives() <=0){
@@ -220,7 +220,7 @@ public class Robot {
             this.getRegister().clear();
             robotNotify();
             try{
-               // Thread.sleep(200);
+                Thread.sleep(200);
             }catch(Exception e){System.out.println(e);}
         }
         
@@ -254,7 +254,7 @@ public class Robot {
         }
         robot.robotNotify();
         try{
-           // Thread.sleep(20);
+            Thread.sleep(20);
         }catch(Exception e){System.err.println(e);}
         boardController.getBoard().getTileAt(robot.getPos()).Occupy();  
     } 
