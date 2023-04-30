@@ -199,9 +199,13 @@ public class MenuScene extends Scene {
             public void handle(Event event) {
 				// For loop going through all checkboxes
 				if (c.getBoardSelecter() != 0){
-					try {BoardScene boardScene = new BoardScene(c);
-						c.setBoardScene(boardScene);}
-					catch(Exception e){System.out.println(e);}
+					try {
+						BoardScene boardScene = new BoardScene(c);
+						c.setBoardScene(boardScene);
+					}
+					catch(Exception e){
+						System.out.println(e);
+					}
 					
 					if (ChoiceRed.getValue()=="Player"){
 						

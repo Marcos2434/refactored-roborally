@@ -1,117 +1,57 @@
-<<<<<<< HEAD
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Cards\Card.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\AI.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Cards\MovementCards\Again.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Board\Board.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Robot\Lazer.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\view\MenuScene.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\Roborally.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\view\BoardScene.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Cards\MovementCards\TurnRight.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\roborally\view\widgets\BoardTeacher.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Board\TileHole.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Cards\ActionCards\SpinLaser.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\view\ControlPanel.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Cards\MovementCards\ProCardFactory.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Observers\RobotObserver.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Observers\BoardObserver.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\view\Map.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Board\Tile.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\controller\Controller.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Cards\ActionCard.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Cards\ProgramCard.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Board\TileFactory.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Board\TileStart.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Board\TileBelt.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\Main.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Direction.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Player\Player.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Board\TileType.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Board\TileWall.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Cards\MovementCards\ProCardTypes.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Board\TileLazer.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\RobotColor.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Cards\MovementCards\Backwards.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Robot\Robot.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Board\TileCheckpoint.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\roborally\view\CardinalPoints.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Cards\Deck.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\roborally\view\widgets\TileTeacher.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\view\ProgrammingPhaseScene.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Cards\MovementCards\Forward.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Cards\ActionCards\ActionCardFactory.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Cards\MovementCards\Uturn.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Board\TileAction.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Cards\ActionCards\ActionCardTypes.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\view\StartMenuScene.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\view\View.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Position.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\view\drawers\BoardDrawer.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Board\TileRepair.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\roborally\view\TileType.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Cards\ActionCards\OilStorm.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Cards\MovementCards\TurnLeft.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\view\Playermat.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\roborally\view\widgets\Board.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Cards\ActionCards\FireRain.java
-C:\Users\csonn\OneDrive\1UNI\AOOP\Project\refactored-roborally\roborally-master\src\main\java\dtu\logic\models\Board\BoardController.java
-=======
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/MovementCards/ProCardFactory.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/view/WinScene.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/roborally/view/TileType.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Board/BoardController.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/RobotColor.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/view/drawers/BoardDrawer.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Board/TileStart.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/AI.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Board/Board.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/Deck.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/view/ControlPanel.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/roborally/view/widgets/Board.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Board/TileLazer.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/MovementCards/Again.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/MovementCards/Forward.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Robot/Lazer.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/MovementCards/ProCardTypes.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/Main.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Board/TileRepair.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Board/TileCheckpoint.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Position.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/ActionDeck.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Board/TileBelt.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/MovementCards/TurnRight.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/ActionCards/ActionCardFactory.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Player/Player.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/view/MenuScene.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/ActionCards/SpinLaser.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/view/Map.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/ProgramCard.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Board/TileWall.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/Card.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/ActionCards/FireRain.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/MovementCards/TurnLeft.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/Roborally.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/ActionCards/ActionCardTypes.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/controller/Controller.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/view/Playermat.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Board/TileType.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/roborally/view/widgets/TileTeacher.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/ActionCards/OilStorm.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/view/StartMenuScene.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/view/ProgrammingPhaseScene.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/ActionCard.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/MovementCards/Uturn.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Robot/Robot.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/view/View.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/roborally/view/CardinalPoints.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Observers/BoardObserver.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/view/BoardScene.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Board/TileAction.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Observers/RobotObserver.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Direction.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/roborally/view/widgets/BoardTeacher.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Board/TileFactory.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Board/TileHole.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Board/Tile.java
-/Users/gleb/Documents/STUDIES/year 2/secondSemester/Jaba xd/newRoborally/refactored-roborally/roborally-master/src/main/java/dtu/logic/models/Cards/MovementCards/Backwards.java
->>>>>>> df303f98a28de225f68bdf608d3aea666abe7601
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Player/Player.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/view/Playermat.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/view/View.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/controller/Controller.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/view/ControlPanel.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Robot/Robot.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/view/StartMenuScene.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/view/Map.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/roborally/view/TileType.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Cards/Deck.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Cards/MovementCards/ProCardTypes.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Cards/ActionCard.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/view/WinScene.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Board/TileBelt.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/view/MenuScene.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Observers/BoardObserver.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Cards/ProgramCard.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Position.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Board/Tile.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Cards/ActionCards/ActionCardFactory.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Observers/RobotObserver.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/roborally/view/widgets/TileTeacher.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Board/TileHole.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/view/ProgrammingPhaseScene.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/roborally/view/CardinalPoints.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Direction.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/view/drawers/BoardDrawer.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/roborally/view/widgets/Board.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Board/Board.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Board/TileType.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Cards/MovementCards/Backwards.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/RobotColor.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Board/TileStart.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Board/TileAction.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Cards/Card.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Cards/ActionCards/ActionCardTypes.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/roborally/view/widgets/BoardTeacher.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Board/TileWall.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Cards/ActionCards/FireRain.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/view/BoardScene.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/Main.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Cards/MovementCards/Uturn.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Board/TileRepair.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Board/TileFactory.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Cards/MovementCards/Forward.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/AI.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Board/TileLazer.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Cards/ActionCards/OilStorm.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Board/TileCheckpoint.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Robot/Lazer.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/Roborally.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Cards/ActionCards/SpinLaser.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Board/BoardController.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Cards/MovementCards/ProCardFactory.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Cards/MovementCards/TurnRight.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Cards/MovementCards/TurnLeft.java
+/Users/marcosbauch/Documents/Remote_Projects/Roborally/roborally-master/src/main/java/dtu/logic/models/Cards/MovementCards/Again.java
