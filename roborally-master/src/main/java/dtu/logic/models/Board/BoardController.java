@@ -92,6 +92,9 @@ public class BoardController {
              } catch (Exception e) { System.err.println(e); }
         }
         this.emptyAllRegisters();
+        for (Player p : players) {
+            p.getRobot().robotNotify();
+        }
     }
 
     //Checking all holes posiitions
@@ -118,8 +121,9 @@ public class BoardController {
             else if (i % 3 == 2){
                 c = 5 - (int)Math.floor(i/3);}
             else{c = 9 - i/3;}
-
+               
             for (int j = 0; j < 13; j++){
+               
                 if (j % 3 == 1){
                     r = 3 - (int)Math.floor(j/3);}
                 else if (j % 3 == 2){
@@ -131,6 +135,10 @@ public class BoardController {
                     this.getBoard().getTileAt(new Position(c,r)).effect(getRobotAt(new Position(c,r)), this);
                 }
             }
+        }
+        for (Player p : players) {
+            getBoard().getTileAt(p.getRobot().getPos()).Occupy();
+            p.getRobot().robotNotify();
         }
     }
     

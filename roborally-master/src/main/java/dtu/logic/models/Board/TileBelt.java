@@ -36,16 +36,18 @@ public class TileBelt extends Tile{
                 TileBelt currtile = (TileBelt)boardController.getBoard().getTileAt(robot.getPos());
             
                 pushRobot(robot,currtile.getdir());
-                boardController.getBoard().getTileAt(robot.getPos()).Occupy();
+                
                 
 
-                try{Thread.sleep(50);}
+                try{
+                    //Thread.sleep(50);
+                }
                 catch(Exception e){System.out.println(e);}
 
                 robot.robotNotify();
 
                 try{
-                   Thread.sleep(500);
+                  // Thread.sleep(500);
                 }
                 catch(Exception e){System.out.println(e);}
                 robot.setPrevPos(robot.getPos());
@@ -72,12 +74,12 @@ public class TileBelt extends Tile{
         }
         else{ 
            try{
-              Thread.sleep(500);
+             // Thread.sleep(500);
         }
                catch(Exception e){System.out.println(e);}
            pushRobot(robot, this.dir);
         }
-        boardController.getBoard().getTileAt(robot.getPos()).Occupy(); 
+       
         robot.robotNotify();
 
        
@@ -85,6 +87,7 @@ public class TileBelt extends Tile{
 }
 
     private void pushRobot(Robot robot,Direction dir){
+
         if (dir.getId() == 1){robot.getPos().addY(-1);}
             else if (dir.getId() == 2){robot.getPos().addX(1);}
             else if (dir.getId() == 3){robot.getPos().addY(1);}
