@@ -218,6 +218,7 @@ public class Robot {
         if (this.getLives() <=0){
             this.setPrevPos(getPos());
             boardController.getBoard().getTileAt(pos).unOccupy();
+            this.getRegister().clear();
             robotNotify();
             try{
                 Thread.sleep(200);
