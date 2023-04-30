@@ -62,7 +62,7 @@ public class Lazer {
       
         for (int i = 0; i <=13;i++){
             try {
-                Thread.sleep(100);
+               // Thread.sleep(100);
               } catch (Exception e) { System.err.println(e); }
             if (boardController.allowmove(this)){
                 // move

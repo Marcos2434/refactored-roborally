@@ -173,45 +173,53 @@ public class Robot {
     }    
 
     public void moveforward(Boolean forward, BoardController boardController){
-      
-        this.prevPos = new Position(pos.getColumn(),pos.getRow());
-        int d;
-        Direction MoveDir;
         
-        
-        if (forward) {
-            MoveDir = getdir();
-            d = 1;
-        } else {  
+            this.prevPos = new Position(pos.getColumn(),pos.getRow());
+            int d;
+            Direction MoveDir;
             
-            MoveDir = getdir().opposite();
-            d = -1;
-        }
-        //Update old tile
-        boardController.getBoard().getTileAt(pos).unOccupy();
-       
-        if (boardController.allowmove(this,MoveDir)){
-            //Move other robot out of the way first, if there is one
-            if (boardController.getBoard().getTileAt(getPosInDir(MoveDir))!=null){
-                if (boardController.getBoard().getTileAt(getPosInDir(MoveDir)).isOcupied()){
-                    Robot r = boardController.getRobotAt(getPosInDir(MoveDir));
-                    Push(r,boardController);
-                    
-                }
+            System.out.println("start");
+            if (forward) {
+                MoveDir = getdir();
+                d = 1;
+            } else {  
+                
+                MoveDir = getdir().opposite();
+                d = -1;
             }
-            if (this.DirID == 1){this.addRow(-d);}
-            else if (this.DirID == 2){this.addCol(d);}
-            else if (this.DirID == 3){this.addRow(d);}
-            else if (this.DirID == 4){this.addCol(-d);} 
-        }
-        robotNotify();
+            //Update old tile
+            boardController.getBoard().getTileAt(pos).unOccupy();
+            System.out.println("After unoccupying");
+            if (boardController.allowmove(this,MoveDir)){
+                System.out.println("in allow move");
+                //Move other robot out of the way first, if there is one
+                if (boardController.getBoard().getTileAt(getPosInDir(MoveDir))!=null){
+                    if (boardController.getBoard().getTileAt(getPosInDir(MoveDir)).isOcupied()){
+                        System.out.println("In occupied");
+                        Robot r = boardController.getRobotAt(getPosInDir(MoveDir));
+                        System.out.println("Robot retreived");
+                        System.out.println(r);
+                        
+                        Push(r,boardController);
+                        System.out.println("Robot pushed");
+                        
+                    }
+                }
+                System.out.println("before move");
+                if (this.DirID == 1){this.addRow(-d);}
+                else if (this.DirID == 2){this.addCol(d);}
+                else if (this.DirID == 3){this.addRow(d);}
+                else if (this.DirID == 4){this.addCol(-d);} 
+            }
+            System.out.println("before notfying");
+            robotNotify();
         
         
     }
 
     // Damage and live control
     public void Death(BoardController boardController){
-        
+       
         if (this.pos.getRow() >= 0 && this.pos.getRow() < 13 &&
             this.pos.getColumn() >= 0 && this.pos.getColumn()<10){
             boardController.getBoard().getTileAt(pos).unOccupy();
@@ -236,10 +244,22 @@ public class Robot {
         }
         Collections.reverse(this.checkpoints);
         LoseLive();
+        
         this.damageTaken = 0;
         boardController.getBoard().getTileAt(pos).Occupy();
         robotNotify();
+        if (this.getLives() <=0){
+            this.setPrevPos(getPos());
+            boardController.getBoard().getTileAt(pos).unOccupy();
+            robotNotify();
+        }
+        
     }
+
+
+
+
+
     public void takeDmg(BoardController boardController){
         this.damageTaken += 1;
         if (this.damageTaken >= 10){
@@ -265,35 +285,39 @@ public class Robot {
     }
     // interaction with other robots
     public void Push(Robot robot, BoardController boardController){
-        robot.setPrevPos(robot.getPos());
-
         
-        if (robot.getPosInDir(Direction.getDirById(this.DirID)).isOutOfBounds()){robot.Death(boardController);}
+            robot.setPrevPos(robot.getPos());
+            System.out.println("Push start");
+            if (robot.getPosInDir(Direction.getDirById(this.DirID)).isOutOfBounds()){robot.Death(boardController);}
 
-        else{
-            if (boardController.getBoard().getTileAt(robot.getPosInDir(Direction.getDirById(this.DirID))).isOcupied()){
-                Push(boardController.getRobotAt(robot.getPosInDir(Direction.getDirById(this.DirID))),boardController);}
-            
-            if (this.DirID == 1){robot.getPos().addY(-1);}
-            else if (this.DirID == 2){robot.getPos().addX(1);}
-            else if (this.DirID == 3){robot.getPos().addY(1);}
-            else if (this.DirID == 4){robot.getPos().addX(-1);}
-        }
-        robot.robotNotify();
-        try{
-            Thread.sleep(50);
-        }catch(Exception e){System.err.println(e);}
-        boardController.getBoard().getTileAt(robot.getPos()).Occupy();  
-    } 
+            else{
+                if (boardController.getBoard().getTileAt(robot.getPosInDir(Direction.getDirById(this.DirID))).isOcupied()){
+                    Push(boardController.getRobotAt(robot.getPosInDir(Direction.getDirById(this.DirID))),boardController);}
+                System.out.println("Push move");
+                if (this.DirID == 1){robot.getPos().addY(-1);}
+                else if (this.DirID == 2){robot.getPos().addX(1);}
+                else if (this.DirID == 3){robot.getPos().addY(1);}
+                else if (this.DirID == 4){robot.getPos().addX(-1);}
+            }
+            robot.robotNotify();
+            try{
+               // Thread.sleep(50);
+            }catch(Exception e){System.err.println(e);}
+            boardController.getBoard().getTileAt(robot.getPos()).Occupy();  
+        
+    }
+    
     
     public void FIRE(BoardController boardController){
         
         Lazer lazer = new Lazer(new Position(pos.getColumn(), pos.getRow()),this.getdir());
         if (lazer.moveTillHit(boardController) == true){
-            
+           
             Robot hitRob = boardController.getRobotAt(lazer.getPos());
+            try{hitRob.takeDmg(boardController);}
+            catch(Exception e){System.err.println(e);}
             
-            hitRob.takeDmg(boardController);
+            
         }
     }
     public void AddToRegister(ProgramCard card){
@@ -332,6 +356,7 @@ public class Robot {
     public void moveByCard(BoardController boardController, ProgramCard card){
         
     card.effect(this,boardController);
+    
     }
     
     @Override
@@ -342,5 +367,6 @@ public class Robot {
         }
         return false;
     }
-}   
+}
+
 

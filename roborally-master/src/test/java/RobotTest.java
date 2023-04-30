@@ -386,4 +386,16 @@ public class RobotTest {
     public void the_laser_hits_the_left_robot() {
         assertEquals(1,robot1.getDamageTaken());
 }
+    @When("a robot in the middle is destroyed,")
+    public void a_robot_in_the_middle_is_destroyed() {
+        for (int i = 0; i <3; i++){
+            robot2.Death(bC);    
+            robot3.Death(bC);       
+        }
+        robot1.FIRE(bC);
+    }
+    @Then("it will be shot over")
+    public void it_will_be_shot_over() {
+        assertEquals(1,robot4.getDamageTaken());
+}
 }
