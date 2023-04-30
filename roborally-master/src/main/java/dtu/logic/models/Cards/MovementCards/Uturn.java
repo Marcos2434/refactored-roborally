@@ -1,6 +1,4 @@
 package dtu.logic.models.Cards.MovementCards;
-
-import dtu.logic.models.Board.Board;
 import dtu.logic.models.Board.BoardController;
 import dtu.logic.models.Cards.ProgramCard;
 import dtu.logic.models.Robot.Robot;
@@ -17,7 +15,5 @@ public class Uturn implements ProgramCard{
     public String getImage(){
         return this.image;
     }
-    
-    
 }
 

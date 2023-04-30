@@ -1,5 +1,4 @@
 package dtu.logic.models.Cards.ActionCards;
-import java.util.ArrayList;
 import dtu.logic.models.Cards.ActionCard;
 
 
@@ -18,8 +17,4 @@ public class ActionCardFactory {
         }
         else{return null;}
     }
-
-    
-
-
 }

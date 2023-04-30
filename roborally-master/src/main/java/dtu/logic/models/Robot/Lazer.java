@@ -2,7 +2,6 @@ package dtu.logic.models.Robot;
 
 import dtu.logic.models.Direction;
 import dtu.logic.models.Position;
-import dtu.logic.models.Board.Board;
 import dtu.logic.models.Board.BoardController;
 
 public class Lazer {
@@ -62,7 +61,7 @@ public class Lazer {
       
         for (int i = 0; i <=13;i++){
             try {
-               // Thread.sleep(100);
+                 Thread.sleep(100);
               } catch (Exception e) { System.err.println(e); }
             if (boardController.allowmove(this)){
                 // move

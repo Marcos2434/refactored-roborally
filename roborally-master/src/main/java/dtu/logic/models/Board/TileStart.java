@@ -7,7 +7,7 @@ public class TileStart extends Tile {
     
     public TileStart(TileType type) {
 	    super(type);
-        this.imageString = "tiles/start.png";
+        super.setImageString("tiles/start.png");
 	}
 
     @Override

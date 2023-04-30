@@ -12,64 +12,56 @@ import javafx.stage.Stage;
 import dtu.view.BoardScene;
 import dtu.view.MenuScene;
 import dtu.view.ProgrammingPhaseScene;
-import dtu.view.StartMenuScene;
 import javafx.scene.Scene;
 import dtu.logic.models.Board.TileType;
 import dtu.logic.models.Board.TileStart;
 import dtu.view.WinScene;
+
+
 public class Controller {
 
-    // --- Scenes ---
-    private StartMenuScene startMenuScene;
+    // -------------- Scenes --------------
+    private Stage primaryStage;
     private MenuScene menuScene;
     private BoardScene boardScene;
     private ProgrammingPhaseScene programmingPhaseScene;
+    // ------------------------------------
+
+    
     private static int count;
-    // --- Scenes ---
-    private Stage primaryStage;
     private WinScene winScene;
     private Board board;
     private int boardSelecter = 0;
     private BoardController boardController;
-    ArrayList<Position> availableBoardSpawns = new ArrayList<Position>();
     private ArrayList<Player> realPlayers = new ArrayList<Player>();
     private ArrayList<Player> Ais = new ArrayList<Player>();
     private Player winner=null;
     private Player currentPlayer;
-    private boolean doRegs = false;
     private ArrayList<Player> playersAlive = new ArrayList<Player>();
     private MusicController musicController;
+    ArrayList<Position> availableBoardSpawns = new ArrayList<Position>();
 
     public Controller(Stage primaryStage) {
         this.primaryStage = primaryStage;
     }
     
-    //Starting from the start menu scene
+    // Starting from the start menu scene
     public void launch() {
-        this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
         this.musicController = new MusicController();
+        this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
     }
 
-    //Setting current player
-    public void setCurrentPlayer(Player currentPlayer) {
-        this.currentPlayer = currentPlayer;
-    }
-    //Setting current player
-    public Player getCurrentPlayer() {
-        return currentPlayer;
-    }
-
-    //Creating list of alive players
+    // Creating list of alive players
     public void checkPlayersAlive(){
         playersAlive.clear();
         for (Player i : boardController.getPlayers()) {
-            if (i.getRobot().getLives()>0) {
+            if (i.getRobot().getLives() > 0) {
                 playersAlive.add(i);
             }
         }
     }
 
-    //Creating AI and adding to all players
+    // Creating AI and adding it to all the players
     public void createAI(RobotColor color, String name){
         Robot robot = new Robot(color);
         robot.registerObserver(this.boardScene);
@@ -79,23 +71,6 @@ public class Controller {
         else{
             this.boardController.addPlayer(new AI(robot,name));
         }
-    }
-
-    //Returning winner
-    public Player getWinner(){
-        return winner;
-    }
-
-    public void addCount(){
-        count+=1;
-    }
-
-    public void count0(){
-        count=0;
-    }
-
-    public int getCount(){
-        return count;
     }
 
     //Creating player and adding to all players
@@ -109,25 +84,6 @@ public class Controller {
         this.boardController.addPlayer(new Player(robot, name));
     };
 
-    //Setting board in board controller
-    public void setBoard(Board board) {
-        this.board = board;
-        this.boardController = new BoardController(board);
-    }
-
-    //Returning board
-    public Board getBoard() {
-        return board;
-    }
-
-    public void setBoardSelecter(int SelBoard) {
-        this.boardSelecter = SelBoard;
-    }
-
-    public int getBoardSelecter(){
-        return this.boardSelecter;
-    }
-
     //Notifying all robot observers
     public void notifyAllRobotObservers() {
         for (int i = 0; i < this.boardController.getPlayers().size(); i++) {
@@ -135,59 +91,16 @@ public class Controller {
         }
     }
 
-    //Switching to board scene
-    public void changeToBoardScene() {
-        boardScene.setPlayermats(boardController.getPlayers());
-        this.setTheScene(this.getBoardScene(), "Roborally!");
-        this.spawnRobots();
-    }
-
-    //Returning to board scene
-    public void backToBoardScene() {
-        this.setTheScene(this.getBoardScene(), "Roborally!");
-    }
-
-    //Setting start scene
-    public void setStartScene(StartMenuScene StartMenu){
-        this.startMenuScene = StartMenu;
-    }
-
-    //Getting start scene
-    public StartMenuScene getStartScene(){
-        return this.startMenuScene;
-    }
-
-    //Setting menu
-    public void setMenuScene(MenuScene s) {
-        this.menuScene = s;
-    }
-
-    //Getting menu
-    public MenuScene getMenuScene() {
-        return menuScene;
-    }
-
-
     public void setTheScene(Scene s) {
+        // We set THE Scene, meaning we show the scene on the stage
         this.primaryStage.setScene(s);
         primaryStage.setTitle("Roborally!");
         this.primaryStage.show();
     }
 
-    public BoardScene getBoardScene() {
-        return boardScene;
-    }
-    public void setWinScene(){
-        this.winScene=new WinScene(this);
-    }
-    public WinScene getWinScene(){
-        return winScene;
-    }
-    public void setBoardScene(BoardScene boardScene) {
-        this.boardScene = boardScene;
-    }
-
     public void setTheScene(Scene s, String title) {
+        // We set THE Scene, meaning we show the scene on the stage
+        // We used method overloading in case we want to specify a title for the scene
         this.primaryStage.setScene(s);
         primaryStage.setTitle(title);
         this.primaryStage.show();
@@ -199,24 +112,6 @@ public class Controller {
         for (int i = 0; i < this.boardController.getPlayers().size(); i++) {
             this.boardController.getPlayers().get(i).getRobot().registerObserver(this.programmingPhaseScene);
         }
-    }
-
-    public ProgrammingPhaseScene getProgrammingPhaseScene() {
-        return programmingPhaseScene;
-    }
-
-    public BoardController getBoardController() {
-        return boardController;
-    }
-
-    public ArrayList<String> getPlayersNames() {
-        ArrayList<String> playerNames = new ArrayList<String>();
-        for (Player i: this.boardController.getPlayers()) {
-            if (!i.isAI()) {
-                playerNames.add(i.getName());
-            }
-        }
-        return playerNames;
     }
 
 	public void nextScene(){
@@ -262,17 +157,6 @@ public class Controller {
         notifyAllRobotObservers();
         
     }
-    public void getRealPlayers(){
-		for (Player i : getBoardController().getPlayers()) {
-			if (!i.isAI()){
-				realPlayers.add(i);
-			}
-            else {
-                Ais.add(i);
-            }
-		}
-
-    }
 
     public void spawnRobots() {
         // Find spawn positions
@@ -301,4 +185,109 @@ public class Controller {
             this.boardController.getPlayers().get(i).getRobot().addCheckpoint(this.availableBoardSpawns.get(i));
         }
     }
+
+    public ArrayList<String> getPlayersNames() {
+        ArrayList<String> playerNames = new ArrayList<String>();
+        for (Player i: this.boardController.getPlayers()) {
+            if (!i.isAI()) {
+                playerNames.add(i.getName());
+            }
+        }
+        return playerNames;
+    }
+
+    public void changeToBoardScene() {
+        boardScene.setPlayermats(boardController.getPlayers());
+        this.setTheScene(this.getBoardScene(), "Roborally!");
+        this.spawnRobots();
+    }
+
+    public void backToBoardScene() {
+        this.setTheScene(this.getBoardScene(), "Roborally!");
+    }
+
+    public void setMenuScene(MenuScene s) {
+        this.menuScene = s;
+    }
+
+    //Getting menu
+    public MenuScene getMenuScene() {
+        return menuScene;
+    }
+
+    public BoardScene getBoardScene() {
+        return boardScene;
+    }
+    public void setWinScene(){
+        this.winScene=new WinScene(this);
+    }
+    public WinScene getWinScene(){
+        return winScene;
+    }
+    public void setBoardScene(BoardScene boardScene) {
+        this.boardScene = boardScene;
+    }
+
+    public ProgrammingPhaseScene getProgrammingPhaseScene() {
+        return programmingPhaseScene;
+    }
+
+    public BoardController getBoardController() {
+        return boardController;
+    }
+
+    public void getRealPlayers(){
+		for (Player i : getBoardController().getPlayers()) {
+			if (!i.isAI()){
+				realPlayers.add(i);
+			}
+            else {
+                Ais.add(i);
+            }
+		}
+
+    }
+
+    public void setCurrentPlayer(Player currentPlayer) {
+        this.currentPlayer = currentPlayer;
+    }
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public void setBoard(Board board) {
+        this.board = board;
+        // A board controller is created along with the board
+        this.boardController = new BoardController(board);
+    }
+
+    public Board getBoard() {
+        return board;
+    }
+
+    public void setBoardSelecter(int SelBoard) {
+        this.boardSelecter = SelBoard;
+    }
+
+    public int getBoardSelecter(){
+        return this.boardSelecter;
+    }
+
+    public Player getWinner(){
+        return winner;
+    }
+
+    public void addCount(){
+        count+=1;
+    }
+
+    public void count0(){
+        count=0;
+    }
+
+    public int getCount(){
+        return count;
+
+        }
 }

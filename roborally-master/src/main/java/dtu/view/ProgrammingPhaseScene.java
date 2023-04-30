@@ -10,7 +10,6 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import dtu.logic.models.Cards.Deck;
@@ -27,16 +26,8 @@ import javafx.application.Platform;
 public class ProgrammingPhaseScene extends Scene implements RobotObserver {
     //------------------------------------- GLOBALS_START -------------------------------------//
     private Controller c;
-  
-    // private Robot robot1;
     private Deck deck;
 
-    //Columns in grid
-    // private ColumnConstraints column1;
-    // private ColumnConstraints column2;
-    // private ColumnConstraints column3;
-    // private ColumnConstraints column4;
-    
     //Vboxes for register
     private VBox leftBox1;
     private VBox leftBox2;
@@ -61,6 +52,7 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
     private Node store3;
     private Node store4;
     private Node store5;
+    
     //Card Images
     private ImageView imageView1;
 
@@ -373,7 +365,7 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
     }
     
     //------------------------------------- EVENTS_START -------------------------------------//
-    //These events habndle the drag and drop functionality of the cards
+    //These events habndle the drag and drop ality of the cards
     private void makeDraggable (Node node){
         // (1) Mouse Pressed
         node.setOnMousePressed(e->{

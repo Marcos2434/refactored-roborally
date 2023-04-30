@@ -4,13 +4,10 @@ import dtu.logic.models.Position;
 import dtu.logic.models.RobotColor;
 import dtu.logic.models.Cards.ActionCard;
 import dtu.logic.models.Cards.ProgramCard;
-import dtu.logic.models.Cards.ActionCards.FireRain;
-import dtu.logic.models.Cards.ActionCards.SpinLaser;
 import dtu.logic.models.Observers.BoardObserver;
 import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.Lazer;
 import dtu.logic.models.Robot.Robot;
-import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -21,15 +18,21 @@ import dtu.logic.models.Direction;
 public class BoardController {
     private ArrayList<Player> players = new ArrayList<Player>();
     private LinkedHashSet<BoardObserver> boardObservers = new LinkedHashSet<BoardObserver>(1);
-
     private Board board;
 
+    //Constructor
     public BoardController(Board board) {
         this.board = board;
     }
 
     public void registerBoardObserver(BoardObserver o) {
         this.boardObservers.add(o);
+    }
+
+    public void notifyLaserObservers(Lazer laser) {
+        for (BoardObserver o : this.boardObservers) {
+            o.updateLaser(laser);
+        }
     }
 
     public void notifyNewAction(ActionCard actionCard) {
@@ -43,12 +46,6 @@ public class BoardController {
             o.updateCardTaken(player, cardImageString);
         }
 	}
-
-    public void notifyLaserObservers(Lazer laser) {
-        for (BoardObserver o : this.boardObservers) {
-            o.updateLaser(laser);
-        }
-    }
     
     public void fireboardLazers() {
         for (int i=0; i<13; i++){
@@ -61,7 +58,6 @@ public class BoardController {
                 }
             }
         }
-       
     }
 
     public void emptyAllRegisters() {
@@ -74,49 +70,47 @@ public class BoardController {
     public void runAllRegisters() {
         for (int i=0; i<5;i++){
             for (int j = 0; j < this.players.size(); j++) {
-
                 Robot r = this.players.get(j).getRobot();
                
-                
                 if (r.getRegister().size() > i){
                     notifyCardRemove(this.players.get(j), r.getRegister().get(i).getImage());
-              
                     r.moveByCard(this, r.getRegister().get(i));
                 }
-                
                 
                 if (i == 4){
                     r.getRegister().clear();
                 }
                 try {
-                  //  Thread.sleep(2000);
+                //    Thread.sleep(2000);
                  } catch (Exception e) { System.err.println(e); }
-                
-                
-                
             }
             RunAllEffects();
             fireRobotLazers();
             fireboardLazers();
             try {
-              //  Thread.sleep(100);
+            //    Thread.sleep(100);
              } catch (Exception e) { System.err.println(e); }
         }
         this.emptyAllRegisters();
+        for (Player p : players) {
+            p.getRobot().robotNotify();
+        }
     }
 
+    //Checking all holes posiitions
     public void runAllHoles(){
-            for (int i = 0; i < 10; i++){
-                for (int j = 0; j < 13; j++){
-                    if (this.getBoard().getTileAt(new Position(i,j)) instanceof TileHole){
-                        if (this.getBoard().getTileAt(new Position(i,j)).isOcupied()) {
-                            this.getBoard().getTileAt(new Position(i,j)).effect(getRobotAt(new Position(i,j)), this);
-                        }
+        for (int i = 0; i < 10; i++){
+            for (int j = 0; j < 13; j++){
+                if (this.getBoard().getTileAt(new Position(i,j)) instanceof TileHole){
+                    if (this.getBoard().getTileAt(new Position(i,j)).isOcupied()) {
+                        this.getBoard().getTileAt(new Position(i,j)).effect(getRobotAt(new Position(i,j)), this);
                     }
                 }
             }
+        }
     }
 
+    //Going through effects on board
     public void RunAllEffects(){
     int r;
     int c;
@@ -142,6 +136,10 @@ public class BoardController {
                 }
             }
         }
+        for (Player p : players) {
+            getBoard().getTileAt(p.getRobot().getPos()).Occupy();
+            p.getRobot().robotNotify();
+        }
     }
     
     public void fireRobotLazers(){
@@ -149,20 +147,21 @@ public class BoardController {
             players.get(i).getRobot().FIRE(this);
         }
     }
+
     public void addAI(AI ai){
         for (int i = 0; i < this.players.size(); i++){
             if (players.get(i).getName()  ==  (ai.getName())){
                 ai = new AI(new Robot(ai.getRobot().getRobotColor())); 
             }
-
         }
+
         addPlayer(ai);
         return;
-
     }
+
     public void addPlayer(Player player){
         boolean allowed = true;
-        
+
         for (int i = 0; i < this.players.size(); i++){
             if (players.get(i).getRobot().getRobotColor()  ==  (player.getRobot().getRobotColor())){
                 allowed = false;   
@@ -174,29 +173,17 @@ public class BoardController {
         }
     }
 
-    public Player getPlayerByName(String name) {
-        for (int i = 0; i < this.players.size(); i++){
-            if (players.get(i).getName().equals(name)){
-                return players.get(i);
-            }
-        }
-        return null;
-    }
-
     public void moveRobot(Robot robot,Position pos){
         this.board.getTileAt(robot.getPos()).unOccupy();
         robot.setPos(pos);
         this.board.getTileAt(robot.getPos()).Occupy();
     }
 
-    public ArrayList<Player> getPlayers(){
-        return this.players;
-    }
     public void wipePlayers(){
         players=new ArrayList<Player>();
     }
 
-    // check if a robot is allowed a move:
+    // check if a robot is allowed a move
     public boolean allowmove(Robot robot, Direction dir){
         
         Position toPos = robot.getPosInDir(dir);
@@ -238,7 +225,6 @@ public class BoardController {
         else{return true;} 
     }
 
-    //@Overload
     public boolean allowmove(Lazer lazer){
         if (this.getBoard().getTileAt(lazer.getPos()) instanceof TileWall){
             TileWall WT = (TileWall) this.getBoard().getTileAt(lazer.getPos());
@@ -254,6 +240,19 @@ public class BoardController {
 
     public Board getBoard() {
         return board;
+    }
+
+    public ArrayList<Player> getPlayers(){
+        return this.players;
+    }
+
+    public Player getPlayerByName(String name) {
+        for (int i = 0; i < this.players.size(); i++){
+            if (players.get(i).getName().equals(name)){
+                return players.get(i);
+            }
+        }
+        return null;
     }
 
     public Robot getRobotAt(Position pos){

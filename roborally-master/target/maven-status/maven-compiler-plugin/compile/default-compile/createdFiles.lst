@@ -29,6 +29,7 @@ dtu\logic\models\Board\TileType.class
 dtu\view\MenuScene$1.class
 dtu\view\Playermat.class
 dtu\logic\models\Cards\MovementCards\TurnRight.class
+dtu\controller\MusicController.class
 dtu\logic\models\Cards\ActionCards\SpinLaser.class
 dtu\view\WinScene.class
 dtu\logic\models\Position.class

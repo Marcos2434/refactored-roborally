@@ -1,7 +1,7 @@
 package dtu.logic.models.Cards.MovementCards;
-
 import dtu.logic.models.Cards.ProgramCard;
 
+// Creation of all movement cards on the basis of their types, with added intensity
 public class ProCardFactory {
     public static ProgramCard createProgramCard(ProCardTypes type,int intensity){
         if (type == ProCardTypes.TURNLEFT){
@@ -23,6 +23,5 @@ public class ProCardFactory {
             return new Again();
         }
         else{return null;}
-
     }
 }

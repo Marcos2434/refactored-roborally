@@ -1,14 +1,12 @@
 package dtu.logic.models.Cards;
 import java.util.ArrayList;
 import java.util.Collections;
-
-import javafx.scene.image.Image;
 import dtu.logic.models.Cards.MovementCards.ProCardFactory;
 import dtu.logic.models.Cards.MovementCards.ProCardTypes;
 
 public class Deck {
     public ArrayList<ProgramCard> cards = new ArrayList<ProgramCard>();
-  
+  //Creates a deck of cards
     public Deck(){
         for(int i=0; i<5; i++){
         cards.add(ProCardFactory.createProgramCard(ProCardTypes.TURNLEFT, 1));}
@@ -24,7 +22,6 @@ public class Deck {
         {cards.add(ProCardFactory.createProgramCard(ProCardTypes.FORWARD, 3));}
         for(int i=0; i<5; i++)
         {cards.add(ProCardFactory.createProgramCard(ProCardTypes.BACKWARDS, 1));}
-       
         for(int i=0; i<2; i++)
         {cards.add(ProCardFactory.createProgramCard(ProCardTypes.AGAIN, 0));}
 
@@ -34,25 +31,8 @@ public class Deck {
         return this.cards;
     }
 
-    /*public Boolean CheckDeckMovement(){
-        
-        int cardsTypes = 0;
-
-        for(int i=0; i<(cards.size()-1); i++){
-            for(int j=i+1; j<(cards.size()-1);j++){
-                if (cards.get(i).name != null && cards.get(j).name != null && cards.get(i).name.equals(cards.get(j).name)) {
-                    cardsTypes++;
-                }
-            }   
-        }
-        
-        if (cardsTypes == 7){
-            return true;
-        }
-        else return false;
-    }*/
-
     public void shuffleDeck(){
+        // We call Collections to shuffle deck
         Collections.shuffle(cards);
     }
 }

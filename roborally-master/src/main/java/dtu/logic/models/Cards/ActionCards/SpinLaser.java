@@ -1,11 +1,6 @@
 package dtu.logic.models.Cards.ActionCards;
-
-import java.util.ArrayList;
-
-import dtu.logic.models.Board.Board;
 import dtu.logic.models.Board.BoardController;
 import dtu.logic.models.Cards.ActionCard;
-import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.Robot;
 
 //Implementation of ActionCard SpinLaser
@@ -18,21 +13,22 @@ public class SpinLaser implements ActionCard{
     public String getImage(){
         return this.image;
     }
-    
+
+    //Robot shoots laser in different directions
     public void action(Robot robot, BoardController boardController){
         for (int i = 0; i < 4; i++) {
             try{robot.turn(1, boardController);}
             catch(Exception e){System.out.println(e);}
            
             try{
-              //  Thread.sleep(600);
+                Thread.sleep(600);
             }
             catch(Exception e){
                 System.out.println(e);}
                 
             robot.FIRE(boardController);
         }
-     }
+    }
 
     public String getName(){
         return Name;
@@ -41,5 +37,4 @@ public class SpinLaser implements ActionCard{
     public String getDescription(){
         return Description;
     }
-    
 }
