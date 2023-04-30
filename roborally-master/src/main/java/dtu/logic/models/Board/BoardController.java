@@ -232,8 +232,7 @@ public class BoardController {
                     }
                     else{return true;}
                 }
-                else{System.out.println("After");
-                    return true;}  
+                else{return true;}  
                 
         }
         else{return true;} 
