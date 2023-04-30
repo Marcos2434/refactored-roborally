@@ -80,7 +80,7 @@ public class Cards9Test {
         }
         @Then("The player has {int} cards in the register")
         public void the_player_has_cards_in_the_register(Integer int1) {
-            assertEquals(5, testPlayer.getRobot().register.size());
+            assertEquals(5, testPlayer.getRobot().getRegisterSize());
             //testPlayer.getRobot().register.size();
         }
 
@@ -124,7 +124,7 @@ public class Cards9Test {
             assertEquals(1,robot1.getDamageTaken());
             assertEquals(0,robot2.getDamageTaken());
             assertEquals(1,robot3.getDamageTaken());
-            // only to run through the Tileaction function for coverage, as it is random it cannot be in an actual test.
+            // only to run through the Tileaction meth for coverage, as it is random it cannot be in an actual test.
             bC.RunAllEffects();
 }
 }

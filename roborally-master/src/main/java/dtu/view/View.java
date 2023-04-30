@@ -12,17 +12,6 @@ public class View extends Application {
 		// --- Define Scenes ---
 		MenuScene menuScene = new MenuScene(c);
 		c.setMenuScene(menuScene);
-
-		// ProgrammingPhaseScene programmingScene = new ProgrammingPhaseScene(c);
-		// c.setProgrammingPhaseScene(programmingScene);
-		// try {
-		// } catch (Exception e) { System.err.println(e); }
-
-		// ProgrammingPhaseSceneSimple programmingPhaseSceneSimple = new ProgrammingPhaseSceneSimple(c);
-		// c.setProgrammingPhaseSceneSimple(programmingPhaseSceneSimple);
-
-		// ---------------------
-
 		c.launch(); // => Launches main menu screen
 	}
 	

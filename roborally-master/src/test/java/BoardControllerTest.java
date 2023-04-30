@@ -1,19 +1,5 @@
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-
-import org.junit.runner.RunWith;
-import io.cucumber.junit.Cucumber;
-import io.cucumber.junit.CucumberOptions;
-import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
@@ -21,13 +7,6 @@ import dtu.logic.models.RobotColor;
 import dtu.logic.models.*;
 import dtu.logic.models.Board.*;
 import dtu.logic.models.Board.BoardController;
-import dtu.logic.models.Cards.ProgramCard;
-import dtu.logic.models.Cards.MovementCards.Again;
-import dtu.logic.models.Cards.MovementCards.Backwards;
-import dtu.logic.models.Cards.MovementCards.Forward;
-import dtu.logic.models.Cards.MovementCards.TurnLeft;
-import dtu.logic.models.Cards.MovementCards.TurnRight;
-import dtu.logic.models.Cards.MovementCards.Uturn;
 import dtu.logic.models.Player.Player;
 import dtu.logic.models.Robot.*;
 public class BoardControllerTest {

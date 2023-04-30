@@ -13,6 +13,7 @@ public class SpinLaser implements ActionCard{
     public String getImage(){
         return this.image;
     }
+
     //Robot shoots laser in different directions
     public void action(Robot robot, BoardController boardController){
         for (int i = 0; i < 4; i++) {
@@ -27,7 +28,7 @@ public class SpinLaser implements ActionCard{
                 
             robot.FIRE(boardController);
         }
-     }
+    }
 
     public String getName(){
         return Name;
@@ -36,5 +37,4 @@ public class SpinLaser implements ActionCard{
     public String getDescription(){
         return Description;
     }
-    
 }

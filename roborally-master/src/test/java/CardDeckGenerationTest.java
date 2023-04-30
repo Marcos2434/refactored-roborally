@@ -1,11 +1,5 @@
-import static org.junit.Assert.assertNotNull;
-
-import org.junit.runner.RunWith;
-import io.cucumber.junit.Cucumber;
-import io.cucumber.junit.CucumberOptions;
 
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 
 import dtu.logic.models.*;

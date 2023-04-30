@@ -1,5 +1,5 @@
 @tag
-Feature: BoardController functions
+Feature: BoardController methods
 
     @tag1 
         Scenario: The boardController is able to return a player by name:

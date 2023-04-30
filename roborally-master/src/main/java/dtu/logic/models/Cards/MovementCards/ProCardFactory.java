@@ -23,6 +23,5 @@ public class ProCardFactory {
             return new Again();
         }
         else{return null;}
-
     }
 }

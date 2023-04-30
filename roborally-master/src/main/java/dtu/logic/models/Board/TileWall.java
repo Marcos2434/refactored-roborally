@@ -10,10 +10,8 @@ public class TileWall extends Tile{
         super(type);
         this.DirID = dir;
         super.setImageString("tiles/wall" + DirID + ".png");
-  
 	}
     
-
     @Override
     public void effect(Robot robot,BoardController boardController){;}
     

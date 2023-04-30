@@ -15,7 +15,5 @@ public class Uturn implements ProgramCard{
     public String getImage(){
         return this.image;
     }
-    
-    
 }
 

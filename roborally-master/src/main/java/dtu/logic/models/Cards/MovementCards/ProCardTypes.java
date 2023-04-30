@@ -1,7 +1,9 @@
 package dtu.logic.models.Cards.MovementCards;
 
-//Enum of all movement cards types
 public enum ProCardTypes {
+    /*
+    Enum of all movement cards types
+    */
     FORWARD, BACKWARDS, TURNRIGHT, TURNLEFT, UTURN,AGAIN 
     
 }

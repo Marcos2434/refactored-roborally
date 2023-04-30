@@ -1,6 +1,5 @@
 package dtu.view;
 
-
 import dtu.logic.models.RobotColor;
 import dtu.logic.models.Player.Player;
 import javafx.scene.control.Label;
@@ -35,129 +34,6 @@ public class Playermat extends StackPane {
 
     private Image ActiveCardPic; // = new Image("Cards/AgainCard.png");
     private ImageView ActiveCard = new ImageView(ActiveCardPic);
-
-    private void setColor(){
-        if (player.getRobot().getRobotColor().equals(RobotColor.BLACK)){
-            this.color.setText("BLACK");
-            this.color.setStyle("-fx-font-weight: bold; -fx-text-fill:BLACK; -fx-font-size: 15; -fx-padding: 0 0 0 10;");
-        }
-        else if (player.getRobot().getRobotColor().equals(RobotColor.BLUE)){
-            this.color.setText("BLUE");
-            this.color.setStyle("-fx-font-weight: bold; -fx-text-fill:BLUE; -fx-font-size: 15; -fx-padding: 0 0 0 10;");
-        }
-        else if (player.getRobot().getRobotColor().equals(RobotColor.GREEN)){
-            this.color.setText("GREEN");
-            this.color.setStyle("-fx-font-weight: bold; -fx-text-fill:GREEN; -fx-font-size: 15; -fx-padding: 0 0 0 10;");
-        }
-        else if (player.getRobot().getRobotColor().equals(RobotColor.ORANGE)){
-            this.color.setText("ORANGE");
-            this.color.setStyle("-fx-font-weight: bold; -fx-text-fill:ORANGE; -fx-font-size: 15; -fx-padding: 0 0 0 10;");
-        }
-        else if (player.getRobot().getRobotColor().equals(RobotColor.PURPLE)){
-            this.color.setText("PURPLE");
-            this.color.setStyle("-fx-font-weight: bold; -fx-text-fill:PURPLE; -fx-font-size: 15; -fx-padding: 0 0 0 10;");
-        }
-        else if (player.getRobot().getRobotColor().equals(RobotColor.RED)){
-            this.color.setText("RED");
-            this.color.setStyle("-fx-font-weight: bold; -fx-text-fill:RED; -fx-font-size: 15; -fx-padding: 0 0 0 10;");
-        }
-        else if (player.getRobot().getRobotColor().equals(RobotColor.WHITE)){
-            this.color.setText("WHITE");
-            this.color.setStyle("-fx-font-weight: bold; -fx-text-fill:WHITE; -fx-font-size: 15; -fx-padding: 0 0 0 10;");
-        }
-        else if (player.getRobot().getRobotColor().equals(RobotColor.YELLOW)){
-            this.color.setText("YELLOW");
-            this.color.setStyle("-fx-font-weight: bold; -fx-text-fill:YELLOW; -fx-font-size: 15; -fx-padding: 0 0 0 10;");
-        }
-    }
-
-    public Player getPlayer(){
-        return player;
-    }
-
-    public void destroyed(){
-        Image shaderpic = new Image("playermat/destroyed.png");
-        ImageView shader = new ImageView(shaderpic);
-        super.getChildren().add(shader);
-    }
-
-    public void setRegister(int amountInHand) {
-        cardsHbox.getChildren().clear();
-        for (int i = 0; i < amountInHand; i++) {
-            ImageView cb = new ImageView(cardbackpic);
-            cardsHbox.getChildren().add(cb);
-        }
-        for (int i = amountInHand; i < 5; i++) {
-            ImageView cb = new ImageView(lockedpic);
-            cardsHbox.getChildren().add(cb);
-        }
-        cardsHbox.setStyle("-fx-padding: 0 0 0 2;");
-        regSize = 5;
-    }
-
-    public void addRegister(){
-        if (cardsHbox.getChildren().size() < 5 && regSize < 5){
-            ImageView cb = new ImageView(cardbackpic);
-            cardsHbox.getChildren().add(cb);
-            cardsHbox.setStyle("-fx-padding: 0 0 2 2;");
-            this.regSize += 1;
-        } 
-    }
-    
-    public void activateCard(String cardImageURL){
-        if (regSize == 1){
-            cardsHbox.getChildren().clear();
-            cardsHbox.setStyle("-fx-padding: 0 0 44 2;");
-            regSize = 0;
-        } else if (regSize > 0){
-            try {
-                cardsHbox.getChildren().set(5 - regSize, new ImageView(dummypic));
-                this.regSize -= 1;
-            }
-            catch(Exception i){
-            }
-        } 
-        ActiveCardPic = new Image(cardImageURL, 110, 156, false, false);
-        ActiveCard = new ImageView(ActiveCardPic);
-        hbox1.getChildren().set(1, ActiveCard);
-
-        
-    }
-
-    public void updateChPInfo(String info) {
-        chPoint.setText("Checkpoint: " + info);
-    }
-
-    public void updatelives() {
-        lives.setText("Lives: " + String.valueOf(player.getRobot().getLives()) + "   ");
-
-    }
-
-    public void updateDamage() {
-        damage.setText("Damage: " + String.valueOf(player.getRobot().getDamageTaken()));
-    }
-
-    public void updateInfo(){
-        if (this.player.getRobot().getCheckpointCount() == 0){
-            chPoint.setText("Checkpoint: Start");
-        } else {
-            chPoint.setText("Checkpoint: " + this.player.getRobot().getCheckpointCount() + "    ");
-        }
-        lives.setText("Lives: " + String.valueOf(player.getRobot().getLives()) + "    ");
-        if (player.getRobot().getLives() <= 0 && super.getChildren().size() == 2){
-            destroyed();
-        }
-        damage.setText("Damage: " + String.valueOf(player.getRobot().getDamageTaken()));
-    }
-
-    public void clearActiveCard(){
-        ActiveCard = new ImageView();
-        hbox1.getChildren().set(1, ActiveCard);
-    }
-
-    public String getPName() {
-        return player.getName();
-    }
 
     public Playermat(Player player) {
 
@@ -198,5 +74,130 @@ public class Playermat extends StackPane {
         hbox1.setStyle("-fx-padding: 15 0 0 0;");
 
         super.getChildren().addAll(background, hbox1);
+    }
+
+    private void setColor(){
+        if (player.getRobot().getRobotColor().equals(RobotColor.BLACK)){
+            this.color.setText("BLACK");
+            this.color.setStyle("-fx-font-weight: bold; -fx-text-fill:BLACK; -fx-font-size: 15; -fx-padding: 0 0 0 10;");
+        }
+        else if (player.getRobot().getRobotColor().equals(RobotColor.BLUE)){
+            this.color.setText("BLUE");
+            this.color.setStyle("-fx-font-weight: bold; -fx-text-fill:BLUE; -fx-font-size: 15; -fx-padding: 0 0 0 10;");
+        }
+        else if (player.getRobot().getRobotColor().equals(RobotColor.GREEN)){
+            this.color.setText("GREEN");
+            this.color.setStyle("-fx-font-weight: bold; -fx-text-fill:GREEN; -fx-font-size: 15; -fx-padding: 0 0 0 10;");
+        }
+        else if (player.getRobot().getRobotColor().equals(RobotColor.ORANGE)){
+            this.color.setText("ORANGE");
+            this.color.setStyle("-fx-font-weight: bold; -fx-text-fill:ORANGE; -fx-font-size: 15; -fx-padding: 0 0 0 10;");
+        }
+        else if (player.getRobot().getRobotColor().equals(RobotColor.PURPLE)){
+            this.color.setText("PURPLE");
+            this.color.setStyle("-fx-font-weight: bold; -fx-text-fill:PURPLE; -fx-font-size: 15; -fx-padding: 0 0 0 10;");
+        }
+        else if (player.getRobot().getRobotColor().equals(RobotColor.RED)){
+            this.color.setText("RED");
+            this.color.setStyle("-fx-font-weight: bold; -fx-text-fill:RED; -fx-font-size: 15; -fx-padding: 0 0 0 10;");
+        }
+        else if (player.getRobot().getRobotColor().equals(RobotColor.WHITE)){
+            this.color.setText("WHITE");
+            this.color.setStyle("-fx-font-weight: bold; -fx-text-fill:WHITE; -fx-font-size: 15; -fx-padding: 0 0 0 10;");
+        }
+        else if (player.getRobot().getRobotColor().equals(RobotColor.YELLOW)){
+            this.color.setText("YELLOW");
+            this.color.setStyle("-fx-font-weight: bold; -fx-text-fill:YELLOW; -fx-font-size: 15; -fx-padding: 0 0 0 10;");
+        }
+    }
+
+    public Player getPlayer(){
+        return player;
+    }
+
+    //Show a "destroyed" shader when robot life is <= 0
+    public void destroyed(){
+        Image shaderpic = new Image("playermat/destroyed.png");
+        ImageView shader = new ImageView(shaderpic);
+        super.getChildren().add(shader);
+    }
+
+    //Sets the small card icons on the player's mat according to the amount in their robot's register
+    public void setRegister(int amountInRobotRegister) {
+        cardsHbox.getChildren().clear();
+        for (int i = 0; i < amountInRobotRegister; i++) {
+            ImageView cb = new ImageView(cardbackpic);
+            cardsHbox.getChildren().add(cb);
+        }
+        //if the robot's register has locked memories, they need to be showed too
+        for (int i = amountInRobotRegister; i < 5; i++) {
+            ImageView cb = new ImageView(lockedpic);
+            cardsHbox.getChildren().add(cb);
+        }
+        cardsHbox.setStyle("-fx-padding: 0 0 0 2;");
+        regSize = 5;
+    }
+    
+    //When a card is played from the robot's register, take it out visually from the register and show the active card
+    public void activateCard(String cardImageURL){
+        if (regSize == 1){
+            cardsHbox.getChildren().clear();
+            cardsHbox.setStyle("-fx-padding: 0 0 44 2;");
+            regSize = 0;
+        } else if (regSize > 0){
+            try {
+                //As long there are cards to be shown, we cannot just delete the previous card, but needs to be
+                //substituted by a "dummy" transparent png.
+                cardsHbox.getChildren().set(5 - regSize, new ImageView(dummypic));
+                this.regSize -= 1;
+            }
+            catch(Exception i){
+            }
+        } 
+        //Show the played card
+        ActiveCardPic = new Image(cardImageURL, 110, 156, false, false);
+        ActiveCard = new ImageView(ActiveCardPic);
+        hbox1.getChildren().set(1, ActiveCard);
+
+        
+    }
+
+    public void updateChPInfo(String info) {
+        chPoint.setText("Checkpoint: " + info);
+    }
+
+    public void updatelives() {
+        lives.setText("Lives: " + String.valueOf(player.getRobot().getLives()) + "   ");
+
+    }
+
+    public void updateDamage() {
+        damage.setText("Damage: " + String.valueOf(player.getRobot().getDamageTaken()));
+    }
+
+    //Update all infos at once
+    public void updateInfo(){
+        if (this.player.getRobot().getCheckpointCount() == 0){
+            chPoint.setText("Checkpoint: Start");
+        } else {
+            chPoint.setText("Checkpoint: " + this.player.getRobot().getCheckpointCount() + "    ");
+        }
+        lives.setText("Lives: " + String.valueOf(player.getRobot().getLives()) + "    ");
+        
+        //Show "destroyed" shader when out of lives
+        if (player.getRobot().getLives() <= 0 && super.getChildren().size() == 2){
+            destroyed();
+        }
+        damage.setText("Damage: " + String.valueOf(player.getRobot().getDamageTaken()));
+    }
+
+    //When the new round is about to start, we want the last active card to disappear from our screen
+    public void clearActiveCard(){
+        ActiveCard = new ImageView();
+        hbox1.getChildren().set(1, ActiveCard);
+    }
+
+    public String getPName() {
+        return player.getName();
     }
 }

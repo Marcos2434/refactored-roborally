@@ -1,21 +1,14 @@
-
 package dtu.view;
 
 import dtu.controller.Controller;
 import dtu.logic.models.RobotColor;
 import dtu.logic.models.Board.Board;
-import dtu.logic.models.Player.Player;
-import dtu.logic.models.Robot.Robot;
-import dtu.controller.Controller;
 import javafx.scene.Scene;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
@@ -25,9 +18,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import dtu.logic.models.RobotColor;
-import dtu.logic.models.Player.Player;
-import dtu.logic.models.Robot.Robot;
 import javafx.scene.control.ChoiceBox;
 
 public class MenuScene extends Scene {
@@ -60,7 +50,7 @@ public class MenuScene extends Scene {
 		TextField red= new TextField();
 		red.setPromptText("Player Name");
 		red.setStyle("-fx-background-color: #ff3333;");
-		ChoiceBox ChoiceRed= new ChoiceBox();
+		ChoiceBox<String> ChoiceRed = new ChoiceBox<String>();
 		ChoiceRed.getItems().add("--");
 		ChoiceRed.getItems().add("Player");
 		ChoiceRed.getItems().add("AI");
@@ -73,7 +63,7 @@ public class MenuScene extends Scene {
 		TextField blue= new TextField();
 		blue.setPromptText("Player Name");
 		blue.setStyle("-fx-background-color: #80e5ff;");
-		ChoiceBox ChoiceBlue= new ChoiceBox();
+		ChoiceBox<String> ChoiceBlue = new ChoiceBox<String>();
 		ChoiceBlue.getItems().add("--");
 		ChoiceBlue.getItems().add("Player");
 		ChoiceBlue.getItems().add("AI");
@@ -86,7 +76,7 @@ public class MenuScene extends Scene {
 		TextField green= new TextField();
 		green.setPromptText("Player Name");
 		green.setStyle("-fx-background-color: #66ff33;");
-		ChoiceBox ChoiceGreen= new ChoiceBox();
+		ChoiceBox<String> ChoiceGreen = new ChoiceBox<String>();
 		ChoiceGreen.getItems().add("--");
 		ChoiceGreen.getItems().add("Player");
 		ChoiceGreen.getItems().add("AI");
@@ -99,7 +89,7 @@ public class MenuScene extends Scene {
 		TextField yellow= new TextField();
 		yellow.setPromptText("Player Name");
 		yellow.setStyle("-fx-background-color: #ffff33;");
-		ChoiceBox ChoiceYellow= new ChoiceBox();
+		ChoiceBox<String> ChoiceYellow = new ChoiceBox<String>();
 		ChoiceYellow.getItems().add("--");
 		ChoiceYellow.getItems().add("Player");
 		ChoiceYellow.getItems().add("AI");
@@ -115,7 +105,7 @@ public class MenuScene extends Scene {
 		TextField orange= new TextField();
 		orange.setPromptText("Player Name");
 		orange.setStyle("-fx-background-color: #ff8533;");
-		ChoiceBox ChoiceOrange= new ChoiceBox();
+		ChoiceBox<String> ChoiceOrange = new ChoiceBox<String>();
 		ChoiceOrange.getItems().add("--");
 		ChoiceOrange.getItems().add("Player");
 		ChoiceOrange.getItems().add("AI");
@@ -128,7 +118,7 @@ public class MenuScene extends Scene {
 		TextField purple= new TextField();
 		purple.setPromptText("Player Name");
 		purple.setStyle("-fx-background-color: #9933ff;");
-		ChoiceBox ChoicePurple= new ChoiceBox();
+		ChoiceBox<String> ChoicePurple = new ChoiceBox<String>();
 		ChoicePurple.getItems().add("--");
 		ChoicePurple.getItems().add("Player");
 		ChoicePurple.getItems().add("AI");
@@ -141,7 +131,7 @@ public class MenuScene extends Scene {
 		TextField white= new TextField();
 		white.setPromptText("Player Name");
 		white.setStyle("-fx-background-color: #ffffff;");
-		ChoiceBox ChoiceWhite= new ChoiceBox();
+		ChoiceBox<String> ChoiceWhite = new ChoiceBox<String>();
 		ChoiceWhite.getItems().add("--");
 		ChoiceWhite.getItems().add("Player");
 		ChoiceWhite.getItems().add("AI");
@@ -154,7 +144,7 @@ public class MenuScene extends Scene {
 		TextField black= new TextField();
 		black.setPromptText("Player Name");
 		black.setStyle("-fx-background-color: #262626;");
-		ChoiceBox ChoiceBlack= new ChoiceBox();
+		ChoiceBox<String> ChoiceBlack = new ChoiceBox<String>();
 		ChoiceBlack.getItems().add("--");
 		ChoiceBlack.getItems().add("Player");
 		ChoiceBlack.getItems().add("AI");
@@ -197,13 +187,9 @@ public class MenuScene extends Scene {
             public void handle(Event event) {
 				// For loop going through all checkboxes
 				if (c.getBoardSelecter() != 0){
-					try {
-						BoardScene boardScene = new BoardScene(c);
-						c.setBoardScene(boardScene);
-					}
-					catch(Exception e){
-						System.out.println(e);
-					}
+					try {BoardScene boardScene = new BoardScene(c);
+						c.setBoardScene(boardScene);}
+					catch(Exception e){System.out.println(e);}
 					
 					if (ChoiceRed.getValue()=="Player"){
 						
