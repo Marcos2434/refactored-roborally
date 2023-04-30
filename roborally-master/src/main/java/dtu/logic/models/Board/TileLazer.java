@@ -3,22 +3,20 @@ import dtu.logic.models.Direction;
 import dtu.logic.models.Position;
 import dtu.logic.models.Robot.Robot;
 import dtu.logic.models.Robot.Lazer;
-import javafx.scene.image.Image;
 
-public class TileLazer extends TileWall{
-    private String name = "LT";
+public class TileLazer extends TileWall {
     private Position pos;
+
+    public TileLazer(TileType Type,Direction dir,Position pos){
+        super(Type,dir.getId());
+        this.pos = pos;
+        super.setImageString("tiles/Lazer" + dir.getId() + ".png");
+    }
+ 
     public Position getPos(){
         return pos;
     }
     
-    public TileLazer(TileType Type,Direction dir,Position pos){
-        super(Type,dir.getId());
-        this.pos = pos;
-        this.imageString = "tiles/Lazer" + dir.getId() + ".png";
-   
-    }
- 
     public void effect(Robot robot,BoardController boardController){;}
 
     public void FIRE(BoardController boardController){

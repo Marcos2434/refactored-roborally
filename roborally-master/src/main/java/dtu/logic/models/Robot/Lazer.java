@@ -2,7 +2,6 @@ package dtu.logic.models.Robot;
 
 import dtu.logic.models.Direction;
 import dtu.logic.models.Position;
-import dtu.logic.models.Board.Board;
 import dtu.logic.models.Board.BoardController;
 
 public class Lazer {

@@ -6,8 +6,12 @@ import javafx.scene.media.MediaPlayer;
 
 public class MusicController {
 
+    /*
+    We have an extra controller to handle all the music in one single source of truth.
+    */
+
     private MediaPlayer mediaPlayer;
-    AudioClip hitSound = new AudioClip((getClass().getResource("/DamageSound.mp3").toString()));
+    AudioClip hitSound = new AudioClip((getClass().getResource("/damageSound.mp3").toString()));
     AudioClip gameBeginSound = new AudioClip((getClass().getResource("/LetTheGameBegin.mp3").toString()));
     AudioClip ActionCard = new AudioClip((getClass().getResource("/specialCardsMusic.mp3").toString()));
     Media bgMusic = new Media((getClass().getResource("/bgmusic.mp3").toString()));

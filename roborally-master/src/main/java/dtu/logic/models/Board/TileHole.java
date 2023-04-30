@@ -6,7 +6,7 @@ public class TileHole extends Tile {
     
     public TileHole(TileType type) {
 	    super(type);
-        this.imageString = "tiles/pit.png";
+        super.setImageString("tiles/pit.png");
 	}
 
     @Override
@@ -19,6 +19,5 @@ public class TileHole extends Tile {
     public String getname(){
     
     return this.name;
-}
-
+    }
 }

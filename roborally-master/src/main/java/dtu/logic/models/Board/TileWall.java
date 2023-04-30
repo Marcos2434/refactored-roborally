@@ -1,10 +1,6 @@
 package dtu.logic.models.Board;
 
 import dtu.logic.models.Robot.Robot;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
-import javafx.scene.transform.Affine;
-import javafx.scene.transform.Rotate;
 
 public class TileWall extends Tile{
     private String name = "WT";
@@ -13,7 +9,7 @@ public class TileWall extends Tile{
     public TileWall(TileType type, int dir){
         super(type);
         this.DirID = dir;
-        this.imageString = "tiles/wall" + DirID + ".png";
+        super.setImageString("tiles/wall" + DirID + ".png");
   
 	}
     

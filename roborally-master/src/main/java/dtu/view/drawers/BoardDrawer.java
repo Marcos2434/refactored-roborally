@@ -7,7 +7,6 @@ import dtu.logic.models.Robot.Lazer;
 import dtu.logic.models.Robot.Robot;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;

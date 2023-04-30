@@ -1,10 +1,9 @@
 package dtu.logic.models.Cards.MovementCards;
-
-import dtu.logic.models.Board.Board;
 import dtu.logic.models.Board.BoardController;
 import dtu.logic.models.Cards.ProgramCard;
 import dtu.logic.models.Robot.Robot;
 
+//Implementation of a card that makes the robot turn left
 public class TurnLeft implements ProgramCard {
     private int intensity;
 

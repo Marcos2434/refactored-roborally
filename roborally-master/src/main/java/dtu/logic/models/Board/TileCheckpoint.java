@@ -1,10 +1,6 @@
 package dtu.logic.models.Board;
 import dtu.logic.models.Position;
 import dtu.logic.models.Robot.Robot;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
-import javafx.scene.transform.Affine;
-import javafx.scene.transform.Rotate;
 
 public class TileCheckpoint extends Tile {
     private String name = "C";
@@ -14,13 +10,10 @@ public class TileCheckpoint extends Tile {
     public TileCheckpoint(TileType type, int id, Position pos) {
 	    super(type);
         this.id = id;
-        this.imageString = "tiles/checkpoint" + id + ".png";
+        super.setImageString("tiles/checkpoint" + id + ".png");
         this.position = pos;
        
 	}
-    //@overload
-
-
 
     @Override
     public void effect(Robot robot, BoardController boardController) {
@@ -29,8 +22,6 @@ public class TileCheckpoint extends Tile {
             robot.addCheckpoint(position);
             robot.CheckpointReached();
         }
-        
-        
     }
 
     @Override

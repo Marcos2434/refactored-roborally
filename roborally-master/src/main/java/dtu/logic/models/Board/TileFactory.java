@@ -6,7 +6,6 @@ public class TileFactory {
     public static Tile createtile(String T, int col, int row){
         String[] tiles = T.split(" ");
         
-        
         if  (tiles[0].equals("HT")){
             
             return new TileHole(TileType.HOLE);
@@ -52,6 +51,5 @@ public class TileFactory {
 
         else{return new Tile(TileType.FLOOR);}
     }
-
 }
 

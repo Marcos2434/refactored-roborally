@@ -1,18 +1,13 @@
 package dtu.logic.models.Board;
-import java.util.ArrayList;
-
 import dtu.logic.models.Position;
 import javafx.scene.layout.GridPane;
 
 public class Board extends GridPane {
-
     private Tile[][] grid = new Tile[13][10];
-    
-    
     
     public Board(String[][] boardGrid){
         if (boardGrid.length != 13 || boardGrid[0].length != 10){
-            // System.out.println("Invalid size of grid");
+            System.out.println("Invalid size of grid");
         }
         else{
             for (int row = 0; row < 13; row++) { 
@@ -23,7 +18,7 @@ public class Board extends GridPane {
             }
         }
     }
-
+    @Override
     public Tile[][] getGrid() {
         return this.grid;
     }

@@ -2,7 +2,6 @@ package dtu.logic.models.Board;
 
 import dtu.logic.models.Direction;
 import dtu.logic.models.Robot.Robot;
-import javafx.scene.image.Image;
 
 public class TileBelt extends Tile{
     private String name = "BT";
@@ -15,10 +14,9 @@ public class TileBelt extends Tile{
         super(type);
         this.dir = dir;
         this.intensity = intensity;
-        this.imageString = "tiles/" + intensity + "speedBelt" + dir.getId() + ".png";
+        super.setImageString("tiles/" + intensity + "speedBelt" + dir.getId() + ".png");
        
 	}
-   //muahahahh
 
     public String getname(){
         return this.name;
