@@ -89,7 +89,7 @@ public class BoardController {
                     r.getRegister().clear();
                 }
                 try {
-                    Thread.sleep(2000);
+                   // Thread.sleep(2000);
                  } catch (Exception e) { System.err.println(e); }
                 
                 
@@ -99,7 +99,7 @@ public class BoardController {
             fireRobotLazers();
             fireboardLazers();
             try {
-                Thread.sleep(100);
+              //  Thread.sleep(100);
              } catch (Exception e) { System.err.println(e); }
         }
         this.emptyAllRegisters();
