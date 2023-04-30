@@ -173,6 +173,7 @@ public class Controller {
         
     }
 
+
     public void spawnRobots() {
         // Find spawn positions
         for (int j = 0; j < 13; j++){
