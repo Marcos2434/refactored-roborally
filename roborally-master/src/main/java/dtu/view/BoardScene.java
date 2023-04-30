@@ -92,7 +92,6 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
         super(new BorderPane());
         this.c = c;
         this.initialize();
-        
     }
     
     //Popup window (handled as a VBox which shows or doesn't show it's visibility, depending on the position of the robot-if the special tile was pressed)
@@ -132,7 +131,7 @@ public class BoardScene extends Scene implements RobotObserver, BoardObserver {
         Image background = new Image (("playermat/dummyplayermat.png"));
         BackgroundImage background2 = new BackgroundImage(background, null, null, null, null);
         Background background3 = new Background(background2);
-        
+
 
     
         // Creating the board
