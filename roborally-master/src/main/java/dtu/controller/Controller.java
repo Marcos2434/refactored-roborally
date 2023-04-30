@@ -124,6 +124,16 @@ public class Controller {
             setTheScene(getWinScene(), "Winner!!!");
             return;
         }
+        for (Player p : getBoardController().getPlayers()){
+            if (p.getRobot().getCheckpointCount() == 3){
+            winner=p;
+            this.realPlayers= new ArrayList<Player>();
+            this.playersAlive= new ArrayList<Player>();
+            setWinScene();
+            setTheScene(getWinScene(), "Winner!!!");
+            return;
+            }
+        }
         if (playersAlive.size()==0){
             winner=null;
             this.realPlayers= new ArrayList<Player>();
@@ -162,6 +172,7 @@ public class Controller {
         notifyAllRobotObservers();
         
     }
+
 
     public void spawnRobots() {
         // Find spawn positions
