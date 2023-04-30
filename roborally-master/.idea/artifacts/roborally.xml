@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="roborally">
+    <output-path>$PROJECT_DIR$/out/artifacts/roborally</output-path>
+    <root id="root">
+      <element id="archive" name="roborally.jar">
+        <element id="module-output" name="roborally" />
+      </element>
+    </root>
+  </artifact>
+</component>
