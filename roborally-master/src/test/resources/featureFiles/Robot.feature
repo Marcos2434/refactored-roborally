@@ -112,6 +112,12 @@ Feature: Robot Selection
         Given Four robots in a row
         When a robot in the middle is destroyed,
         Then it will be shot over
+
+    @tag20
+        Scenario: A robot pushes another robot backwards
+        Given Two robots being created 
+        When one pushes the other by moving backwards
+        Then it is pushed
    
 
     
