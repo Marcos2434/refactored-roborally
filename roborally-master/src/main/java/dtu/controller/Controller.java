@@ -25,8 +25,7 @@ public class Controller {
     private BoardScene boardScene;
     private ProgrammingPhaseScene programmingPhaseScene;
     private static int count;
-    // private ProgrammingPhaseSceneSimple programmingPhaseSceneSimple;
-    // --------------
+    // --- Scenes ---
     private Stage primaryStage;
     private WinScene winScene;
     private Board board;
@@ -37,39 +36,37 @@ public class Controller {
     private ArrayList<Player> Ais = new ArrayList<Player>();
     private Player winner=null;
     private Player currentPlayer;
-    private boolean doRegs = false;
     private ArrayList<Player> playersAlive= new ArrayList<Player>();
+
     public Controller(Stage primaryStage) {
         this.primaryStage = primaryStage;
     }
     
+    //Starting from the start menu scene
     public void launch() {
-        //this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
         this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
-        //this.setTheScene(this.getStartScene(), "Pick the type of play");
-        //this.setTheScene(this.getProgrammingPhaseScene(), "Roborally - Programming Phase"); //for natalia
-        // this.setTheScene(this.getProgrammingPhaseSceneSimple(), "Roborally - Programming Phase"); //for oli/gleb
-
     }
-    //asd
+
+    //Setting current player
     public void setCurrentPlayer(Player currentPlayer) {
         this.currentPlayer = currentPlayer;
     }
-
+    //Setting current player
     public Player getCurrentPlayer() {
         return currentPlayer;
     }
+
+    //Creating list of alive players
     public void checkPlayersAlive(){
         playersAlive.clear();
-
         for (Player i : boardController.getPlayers()) {
-            
             if (i.getRobot().getLives()>0) {
                 playersAlive.add(i);
             }
         }
-
     }
+
+    //Creating AI and adding to all players
     public void createAI(RobotColor color, String name){
         Robot robot = new Robot(color);
         robot.registerObserver(this.boardScene);
@@ -79,20 +76,26 @@ public class Controller {
         else{
             this.boardController.addPlayer(new AI(robot,name));
         }
-        
     }
+
+    //Returning winner
     public Player getWinner(){
         return winner;
     }
+
     public void addCount(){
         count+=1;
     }
+
     public void count0(){
         count=0;
     }
+
     public int getCount(){
         return count;
     }
+
+    //Creating player and adding to all players
     public void createPlayer(RobotColor color, String name) {
         Robot robot = new Robot(color);
         robot.registerObserver(this.boardScene);
@@ -101,14 +104,15 @@ public class Controller {
             name=color.toString();
         }
         this.boardController.addPlayer(new Player(robot, name));
-
     };
+
+    //Setting board in board controller
     public void setBoard(Board board) {
         this.board = board;
-        //this.availableBoardSpawns = this.board.getStartFields();
         this.boardController = new BoardController(board);
     }
 
+    //Returning board
     public Board getBoard() {
         return board;
     }
@@ -120,42 +124,50 @@ public class Controller {
     public int getBoardSelecter(){
         return this.boardSelecter;
     }
+
+    //Notifying all robot observers
     public void notifyAllRobotObservers() {
         for (int i = 0; i < this.boardController.getPlayers().size(); i++) {
             this.boardController.getPlayers().get(i).getRobot().robotNotify();
         }
     }
 
-
-
+    //Switching to board scene
     public void changeToBoardScene() {
         boardScene.setPlayermats(boardController.getPlayers());
         this.setTheScene(this.getBoardScene(), "Roborally!");
         this.spawnRobots();
     }
 
+    //Returning to board scene
     public void backToBoardScene() {
         this.setTheScene(this.getBoardScene(), "Roborally!");
     }
 
+    //Setting start scene
     public void setStartScene(StartMenuScene StartMenu){
         this.startMenuScene = StartMenu;
     }
 
+    //Getting start scene
     public StartMenuScene getStartScene(){
         return this.startMenuScene;
     }
+
+    //Setting menu
     public void setMenuScene(MenuScene s) {
         this.menuScene = s;
     }
 
+    //Getting menu
     public MenuScene getMenuScene() {
         return menuScene;
     }
 
+
     public void setTheScene(Scene s) {
         this.primaryStage.setScene(s);
-        primaryStage.setTitle("Roborally - 0.5 - Playermat update");
+        primaryStage.setTitle("Roborally!");
         this.primaryStage.show();
     }
 
