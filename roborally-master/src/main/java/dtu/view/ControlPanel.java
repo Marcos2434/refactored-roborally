@@ -51,9 +51,11 @@ public class ControlPanel extends GridPane {
 			@Override
 			public void handle(Event event) {
 				c.getBoardScene().clearAllActiveCards();
-				if (c.getRealPlayers().get(0).getRobot().getLives() <= 0){
-					c.addCount();
-				}
+				if (c.getRealPlayers().size() > 0){
+					if (c.getRealPlayers().get(0).getRobot().getLives() <= 0){
+						c.addCount();
+					}
+				}	
 				c.nextScene();
 				c.notifyAllRobotObservers();
 				
