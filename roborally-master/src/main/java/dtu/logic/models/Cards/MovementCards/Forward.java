@@ -33,33 +33,39 @@ public class Forward implements ProgramCard {
         robot.setLastMove(new Forward(intensity));
         
         for (int i = 0; i <intensity; i++) {
-           
+            boardController.getBoard().getTileAt(robot.getPos()).unOccupy();
+            robot.setPrevPos(robot.getPos());
             robot.moveforward(true, boardController);
             try{
                 Thread.sleep(200);
             }
             catch(Exception e){System.out.println(e);}
 
-            robot.setPrevPos(robot.getPos());
+           
             if (robot.getPos().getRow() < 0 || robot.getPos().getRow() > 12 ||
                 robot.getPos().getColumn() < 0 || robot.getPos().getColumn()>9){
                     robot.Death(boardController);
                     break;
             }
-            
-            //update new tile
-            boardController.getBoard().getTileAt(robot.getPos()).Occupy();
-            boardController.runAllHoles();
             try{
-               // Thread.sleep(200);
+                Thread.sleep(200);
             }
             catch(Exception e){System.out.println(e);}
+            robot.robotNotify();
+            
+            //update new tile
+            boardController.getBoard().getTileAt(robot.getPos()).unOccupy();
+            boardController.runAllHoles();
+            boardController.getBoard().getTileAt(robot.getPos()).Occupy();
+            
+
             if (boardController.getBoard().getTileAt(robot.getPos()) instanceof TileHole){
                 TileHole TH = (TileHole) boardController.getBoard().getTileAt(robot.getPos());
                 TH.effect(robot,boardController);
                 break;
             }
+            boardController.getBoard().getTileAt(robot.getPos()).Occupy();
         }
-        boardController.getBoard().getTileAt(robot.getPos()).Occupy();
+        
     }
 }
