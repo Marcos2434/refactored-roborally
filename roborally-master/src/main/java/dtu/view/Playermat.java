@@ -80,29 +80,23 @@ public class Playermat extends StackPane {
         ImageView shader = new ImageView(shaderpic);
         super.getChildren().add(shader);
     }
-
-    public void setRegister(int amountInHand) {
+    
+    //Sets the card icons to the corresponding amount in the robot's register
+    public void setRegister(int amountInRobotRegister) {
         cardsHbox.getChildren().clear();
-        for (int i = 0; i < amountInHand; i++) {
+        for (int i = 0; i < amountInRobotRegister; i++) {
             ImageView cb = new ImageView(cardbackpic);
             cardsHbox.getChildren().add(cb);
         }
-        for (int i = amountInHand; i < 5; i++) {
+        //if the register has locked memories, show an X there
+        for (int i = amountInRobotRegister; i < 5; i++) {
             ImageView cb = new ImageView(lockedpic);
             cardsHbox.getChildren().add(cb);
         }
         cardsHbox.setStyle("-fx-padding: 0 0 0 2;");
         regSize = 5;
     }
-
-    public void addRegister(){
-        if (cardsHbox.getChildren().size() < 5 && regSize < 5){
-            ImageView cb = new ImageView(cardbackpic);
-            cardsHbox.getChildren().add(cb);
-            cardsHbox.setStyle("-fx-padding: 0 0 2 2;");
-            this.regSize += 1;
-        } 
-    }
+    
     
     public void activateCard(String cardImageURL){
         if (regSize == 1){
