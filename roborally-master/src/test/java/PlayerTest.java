@@ -1,4 +1,5 @@
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.runner.RunWith;
@@ -10,13 +11,30 @@ import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 
 import dtu.logic.models.*;
+import dtu.logic.models.Board.Board;
 import dtu.logic.models.Board.BoardController;
 import dtu.logic.models.Player.*;
 import dtu.logic.models.Robot.Robot;
 
 public class PlayerTest {
     Player testPlayer;
-    
+    String[][] board1 = {   
+        {"T","T","T","T","T","T","T","T","T","T"},
+        {"T","T","T","T","WT 1","WT 4","T","T","T","T"},
+        {"T","T","T","T","T","T","T","T","T","T"},
+        {"T","T","T","T","T","T","T","T","T","T"},
+        {"T","T","AT","T","T","T","T","T","T","T"},
+        {"T","T","T","T","T","T","T","T","T","T"},
+        {"T","T","T","T","T","T","T","T","T","T"},
+        {"T","T","T","T","T","T","T","T","T","T"},
+        {"T","T","T","T","T","T","T","T","T","T"},
+        {"T","T","T","T","T","T","T","T","T","T"},
+        {"T","T","T","T","T","T","T","T","T","T"},
+        {"T","T","T","T","T","T","T","T","T","T"},
+        {"T","T","T","T","T","T","T","T","T","T"},
+    };
+    Board board = new Board(board1);
+    BoardController bC = new BoardController(board);
     
     @Given("A player is created with a chosen color for the robot")
     public void a_player_is_created() {
@@ -59,4 +77,17 @@ public class PlayerTest {
         assertTrue(ai1.isAI());
 }
 
+    @When("One robot loses three lives and the other dont.")
+    public void one_robot_loses_three_lives_and_the_other_dont() {
+       robot1.Death(bC);
+       robot1.Death(bC);
+       robot1.Death(bC);
+    }
+    @Then("the first robot is no longer on the board")
+    public void the_first_robot_is_no_longer_on_the_board() {
+        assertNull(robot1.getPos());
+        assertNotNull(robot2.getPos());
+
+
+}
 }
