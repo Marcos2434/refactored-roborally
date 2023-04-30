@@ -1,9 +1,5 @@
 package dtu.view;
-
 import java.util.ArrayList;
-import java.util.Comparator;
-
-import javax.management.relation.RelationSupportMBean;
 
 public enum Map {
     map1(1,"Empty",1,new String[][]{   

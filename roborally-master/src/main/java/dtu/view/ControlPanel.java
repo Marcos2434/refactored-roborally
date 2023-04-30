@@ -5,14 +5,11 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
-import java.util.ArrayList;
 import dtu.controller.Controller;
-import dtu.logic.models.Cards.MovementCards.*;
-import dtu.logic.models.Player.Player;
+
 
 public class ControlPanel extends GridPane {
 

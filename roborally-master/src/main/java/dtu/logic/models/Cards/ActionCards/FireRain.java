@@ -1,9 +1,4 @@
 package dtu.logic.models.Cards.ActionCards;
-
-
-import java.util.ArrayList;
-
-import dtu.logic.models.Board.Board;
 import dtu.logic.models.Board.BoardController;
 import dtu.logic.models.Cards.ActionCard;
 import dtu.logic.models.Player.Player;
@@ -19,7 +14,7 @@ public class FireRain implements ActionCard {
     public String getImage(){
         return this.image;
     }
-    
+    //Each robot takes 1 damage when this card appears
     public void action(Robot robot, BoardController boardController){
         for (Player player : boardController.getPlayers()) {
            player.getRobot().takeDmg(boardController);

@@ -1,12 +1,10 @@
 package dtu.logic.models.Cards.MovementCards;
-
-import dtu.logic.models.Board.Board;
 import dtu.logic.models.Board.BoardController;
 import dtu.logic.models.Cards.ProgramCard;
 import dtu.logic.models.Robot.Robot;
 
 
-
+//Implementation of a card tgat makes the robot do its last move again
 public class Again implements ProgramCard{
     private String image = "Cards/again.png";
     

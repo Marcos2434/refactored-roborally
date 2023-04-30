@@ -3,22 +3,22 @@ package dtu.logic.models.Board;
 import dtu.logic.models.Direction;
 import dtu.logic.models.Robot.Robot;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.transform.Affine;
-import javafx.scene.transform.Rotate;
 
 public class Tile extends Canvas {
-    public static final int TILE_SIZE = 66;
+    /*
+    Main Tile class that other tiles extend from. If the methods are not
+    overriden then the default tile is a floor tile.
+    */
 
+    public static final int TILE_SIZE = 66;
     private String name = "T";
-    protected TileType type;
-    protected Direction direction;
-    protected Image image;
-    protected String imageString;
-	protected Image robotImage;
-    protected int robotDirection;
-    protected Boolean Ocupied = false;
+    private TileType type;
+    private Direction direction;
+    private String imageString;
+	private Image robotImage;
+    private int robotDirection;
+    private Boolean Ocupied = false;
 
     public Tile(TileType type) {
 		super(TILE_SIZE, TILE_SIZE);
@@ -26,12 +26,20 @@ public class Tile extends Canvas {
 		this.imageString = "tiles/floor.png";
 	}
 
-    public void setImage(Image image){
-        this.image = image;
+    public int getRobotDirection(){
+        return this.robotDirection;
+    }
+
+    public Direction getDirection(){
+        return this.direction;
     }
 
     public String getImageString(){
         return this.imageString;
+    }
+
+    public Image getRobotImage(){
+        return this.robotImage;
     }
 
     public void setImageString(String IS){
