@@ -43,12 +43,10 @@ public class MenuScene extends Scene {
     private void initialize() {
         // BorderPane menu = new BorderPane();
 
-		Image background = new Image (("playermat/menubackground1.png"));
+		Image background = new Image(("playermat/menubackground1.png"));
         BackgroundImage background2 = new BackgroundImage(background, null, null, null, null);
         Background background3 = new Background(background2);
         
-
-		playMusic();
 
 
         //Set backround to the whole scene 
@@ -270,10 +268,4 @@ public class MenuScene extends Scene {
     
         
     }
-	//Music method 
-	public void playMusic(){
-	Media media1 = new Media((getClass().getResource("/musicPiano.mp3").toString()));
-	MediaPlayer mediaPlayer1 = new MediaPlayer(media1);  
-	mediaPlayer1.setAutoPlay(true); 
-	mediaPlayer1.setCycleCount(MediaPlayer.INDEFINITE);}
 }

@@ -38,18 +38,16 @@ public class Controller {
     private Player winner=null;
     private Player currentPlayer;
     private boolean doRegs = false;
-    private ArrayList<Player> playersAlive= new ArrayList<Player>();
+    private ArrayList<Player> playersAlive = new ArrayList<Player>();
+    private MusicController musicController;
+
     public Controller(Stage primaryStage) {
         this.primaryStage = primaryStage;
     }
     
     public void launch() {
-        //this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
         this.setTheScene(this.getMenuScene(), "Roborally - Main Menu");
-        //this.setTheScene(this.getStartScene(), "Pick the type of play");
-        //this.setTheScene(this.getProgrammingPhaseScene(), "Roborally - Programming Phase"); //for natalia
-        // this.setTheScene(this.getProgrammingPhaseSceneSimple(), "Roborally - Programming Phase"); //for oli/gleb
-
+        this.musicController = new MusicController();
     }
     //asd
     public void setCurrentPlayer(Player currentPlayer) {
