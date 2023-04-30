@@ -398,4 +398,15 @@ public class RobotTest {
     public void it_will_be_shot_over() {
         assertEquals(1,robot4.getDamageTaken());
 }
+    @When("one pushes the other by moving backwards")
+    public void one_pushes_the_other_by_moving_backwards() {
+        bC.moveRobot(robot1, new Position(5, 5));
+        bC.moveRobot(robot2, new Position(5, 4));
+        robot2.moveforward(false, bC);
+
+    }
+    @Then("it is pushed")
+    public void it_is_pushed() {
+        assertEquals(new Position(5, 6),robot1.getPos());
+}
 }

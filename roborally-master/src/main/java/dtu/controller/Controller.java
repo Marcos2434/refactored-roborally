@@ -115,8 +115,10 @@ public class Controller {
     }
 
 	public void nextScene(){
+    
         checkPlayersAlive();
         if (playersAlive.size()==1){
+            
             winner=playersAlive.get(0);
             this.realPlayers= new ArrayList<Player>();
             this.playersAlive= new ArrayList<Player>();
@@ -124,6 +126,7 @@ public class Controller {
             setTheScene(getWinScene(), "Winner!!!");
             return;
         }
+        
         for (Player p : getBoardController().getPlayers()){
             if (p.getRobot().getCheckpointCount() == 3){
             winner=p;
@@ -134,6 +137,7 @@ public class Controller {
             return;
             }
         }
+      
         if (playersAlive.size()==0){
             winner=null;
             this.realPlayers= new ArrayList<Player>();
@@ -142,13 +146,14 @@ public class Controller {
             setTheScene(getWinScene(), "Winner!!!");
             return;
         }
-        
+       
         this.boardScene.clearAllActiveCards();
         if (getCount() < realPlayers.size()-1){
             if (realPlayers.get(getCount()+1).getRobot().getLives()<=0){
                 addCount();
             }
         }
+      
 		if (getCount()==realPlayers.size()){
 			count0();
    
@@ -162,7 +167,9 @@ public class Controller {
             }
             this.getBoardController().registerBoardObserver(this.getBoardScene());
 			setTheScene(getBoardScene(),"RoboRally!!");
+      
 		}
+        
 		else{
 			setCurrentPlayer(realPlayers.get(getCount()));
 			addCount();
@@ -170,8 +177,10 @@ public class Controller {
 			setTheScene(getProgrammingPhaseScene(), getCurrentPlayer().getName());
 		}   
         notifyAllRobotObservers();
+      
         
     }
+
 
     public void spawnRobots() {
         // Find spawn positions
