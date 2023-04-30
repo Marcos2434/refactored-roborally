@@ -97,7 +97,7 @@ public class ProgrammingPhaseScene extends Scene implements RobotObserver {
 
     //Initialize
     public void initialize() {
-        System.out.println(c.getCurrentPlayer().getHand().toString());
+      
 
 
         Image background = new Image (("playermat/lava.png"));

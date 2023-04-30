@@ -178,7 +178,7 @@ public class Robot {
             int d;
             Direction MoveDir;
             
-            System.out.println("start");
+            
             if (forward) {
                 MoveDir = getdir();
                 d = 1;
@@ -189,29 +189,28 @@ public class Robot {
             }
             //Update old tile
             boardController.getBoard().getTileAt(pos).unOccupy();
-            System.out.println("After unoccupying");
+           
             if (boardController.allowmove(this,MoveDir)){
-                System.out.println("in allow move");
+             
                 //Move other robot out of the way first, if there is one
                 if (boardController.getBoard().getTileAt(getPosInDir(MoveDir))!=null){
                     if (boardController.getBoard().getTileAt(getPosInDir(MoveDir)).isOcupied()){
-                        System.out.println("In occupied");
+                    
                         Robot r = boardController.getRobotAt(getPosInDir(MoveDir));
-                        System.out.println("Robot retreived");
-                        System.out.println(r);
+               
                         
                         Push(r,boardController);
-                        System.out.println("Robot pushed");
+                      
                         
                     }
                 }
-                System.out.println("before move");
+              
                 if (this.DirID == 1){this.addRow(-d);}
                 else if (this.DirID == 2){this.addCol(d);}
                 else if (this.DirID == 3){this.addRow(d);}
                 else if (this.DirID == 4){this.addCol(-d);} 
             }
-            System.out.println("before notfying");
+         
             robotNotify();
         
         
@@ -285,15 +284,15 @@ public class Robot {
     }
     // interaction with other robots
     public void Push(Robot robot, BoardController boardController){
-        
+        boardController.getBoard().getTileAt(robot.getPos()).unOccupy();  
             robot.setPrevPos(robot.getPos());
-            System.out.println("Push start");
+          
             if (robot.getPosInDir(Direction.getDirById(this.DirID)).isOutOfBounds()){robot.Death(boardController);}
 
             else{
                 if (boardController.getBoard().getTileAt(robot.getPosInDir(Direction.getDirById(this.DirID))).isOcupied()){
                     Push(boardController.getRobotAt(robot.getPosInDir(Direction.getDirById(this.DirID))),boardController);}
-                System.out.println("Push move");
+            
                 if (this.DirID == 1){robot.getPos().addY(-1);}
                 else if (this.DirID == 2){robot.getPos().addX(1);}
                 else if (this.DirID == 3){robot.getPos().addY(1);}
