@@ -240,7 +240,7 @@ public class MenuScene extends Scene {
 					if (ChoiceBlack.getValue()=="AI"){
 						c.createAI(RobotColor.BLACK,black.getText());
 					}
-					c.getRealPlayers();
+					c.setRealPlayers();
 					c.getBoardController().registerBoardObserver(c.getBoardScene());
 					c.changeToBoardScene();
 					c.spawnRobots();
