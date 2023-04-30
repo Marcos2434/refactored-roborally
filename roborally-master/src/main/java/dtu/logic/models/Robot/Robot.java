@@ -249,7 +249,7 @@ public class Robot {
         }
         Collections.reverse(this.checkpoints);
         LoseLive();
-        
+    
         this.damageTaken = 0;
         boardController.getBoard().getTileAt(pos).Occupy();
         robotNotify();
