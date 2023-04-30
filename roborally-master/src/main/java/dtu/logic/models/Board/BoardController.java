@@ -144,7 +144,9 @@ public class BoardController {
     
     public void fireRobotLazers(){
         for (int i = 0; i < this.players.size(); i++){
-            players.get(i).getRobot().FIRE(this);
+            if ( players.get(i).getRobot().getLives() > 0){
+                players.get(i).getRobot().FIRE(this);
+            }
         }
     }
 
