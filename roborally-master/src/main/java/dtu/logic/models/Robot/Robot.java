@@ -151,15 +151,14 @@ public class Robot {
         int d;
         Direction MoveDir;
         
-        
         if (forward) {
             MoveDir = getdir();
             d = 1;
         } else {  
-            
             MoveDir = getdir().opposite();
             d = -1;
         }
+        
         //Update old tile
         boardController.getBoard().getTileAt(pos).unOccupy();
        
@@ -168,7 +167,7 @@ public class Robot {
             if (boardController.getBoard().getTileAt(getPosInDir(MoveDir))!=null){
                 if (boardController.getBoard().getTileAt(getPosInDir(MoveDir)).isOcupied()){
                     Robot r = boardController.getRobotAt(getPosInDir(MoveDir));
-                    Push(r,boardController);
+                    Push(r,MoveDir,boardController);
                     
                 }
             }
@@ -212,7 +211,7 @@ public class Robot {
         boardController.getBoard().getTileAt(pos).Occupy();
         robotNotify();
         try{
-            Thread.sleep(200);
+            //Thread.sleep(200);
         }catch(Exception e){System.out.println(e);}
 
         if (this.getLives() <=0){
@@ -221,7 +220,7 @@ public class Robot {
             this.getRegister().clear();
             robotNotify();
             try{
-                Thread.sleep(200);
+               // Thread.sleep(200);
             }catch(Exception e){System.out.println(e);}
         }
         
@@ -238,24 +237,24 @@ public class Robot {
     }
 
     // interaction with other robots
-    public void Push(Robot robot, BoardController boardController){
+    public void Push(Robot robot,Direction dir, BoardController boardController){
         robot.setPrevPos(robot.getPos());
 
         
-        if (robot.getPosInDir(Direction.getDirById(this.DirID)).isOutOfBounds()){robot.Death(boardController);}
+        if (robot.getPosInDir(Direction.getDirById(dir.getId())).isOutOfBounds()){robot.Death(boardController);}
 
         else{
-            if (boardController.getBoard().getTileAt(robot.getPosInDir(Direction.getDirById(this.DirID))).isOcupied()){
-                Push(boardController.getRobotAt(robot.getPosInDir(Direction.getDirById(this.DirID))),boardController);}
+            if (boardController.getBoard().getTileAt(robot.getPosInDir(Direction.getDirById(dir.getId()))).isOcupied()){
+                Push(boardController.getRobotAt(robot.getPosInDir(Direction.getDirById(dir.getId()))),dir,boardController);}
             
-            if (this.DirID == 1){robot.getPos().addY(-1);}
-            else if (this.DirID == 2){robot.getPos().addX(1);}
-            else if (this.DirID == 3){robot.getPos().addY(1);}
-            else if (this.DirID == 4){robot.getPos().addX(-1);}
+            if (dir.getId() == 1){robot.getPos().addY(-1);}
+            else if (dir.getId() == 2){robot.getPos().addX(1);}
+            else if (dir.getId() == 3){robot.getPos().addY(1);}
+            else if (dir.getId() == 4){robot.getPos().addX(-1);}
         }
         robot.robotNotify();
         try{
-            Thread.sleep(20);
+           // Thread.sleep(20);
         }catch(Exception e){System.err.println(e);}
         boardController.getBoard().getTileAt(robot.getPos()).Occupy();  
     } 
