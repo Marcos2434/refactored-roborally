@@ -144,7 +144,7 @@ public class Playermat extends StackPane {
             chPoint.setText("Checkpoint: " + this.player.getRobot().getCheckpointCount() + "    ");
         }
         lives.setText("Lives: " + String.valueOf(player.getRobot().getLives()) + "    ");
-        if (player.getRobot().getLives() == 0 && super.getChildren().size() == 2){
+        if (player.getRobot().getLives() <= 0 && super.getChildren().size() == 2){
             destroyed();
         }
         damage.setText("Damage: " + String.valueOf(player.getRobot().getDamageTaken()));
