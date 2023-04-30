@@ -154,7 +154,6 @@ public class BoardController {
                 ai = new AI(new Robot(ai.getRobot().getRobotColor())); 
             }
         }
-
         addPlayer(ai);
         return;
     }
@@ -195,7 +194,6 @@ public class BoardController {
                     if (dir.getId() == WT.getDirID()){
                         return false;
                     } 
-                    
                 }
                
                 if (this.board.getTileAt(toPos) instanceof TileWall){
@@ -256,7 +254,6 @@ public class BoardController {
     }
 
     public Robot getRobotAt(Position pos){
-      
         if (pos.getRow()>=0 && pos.getColumn()>=0 && pos.getColumn()<10 && pos.getRow()<13) {
             
             for (int i = 0; i < this.players.size(); i++){
